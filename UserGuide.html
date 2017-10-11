@@ -5,20 +5,20 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.3">
-<title>AddressBook Level 4 - User Guide</title>
+<title>Rolodex - User Guide</title>
 <link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>AddressBook Level 4 - User Guide</h1>
+<h1>Rolodex - User Guide</h1>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>By: <code>Team SE-EDU</code>      Since: <code>Jun 2016</code>      Licence: <code>MIT</code></p>
+<p>By: <code>Team Rolodex</code>      Since: <code>Sep 2017</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
 <div id="toc" class="toc">
@@ -27,23 +27,31 @@
 <li><a href="#quick-start">1. Quick Start</a></li>
 <li><a href="#features">2. Features</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">2.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-person-code-add-code">2.2. Adding a person: <code>add</code></a></li>
-<li><a href="#listing-all-persons-code-list-code">2.3. Listing all persons : <code>list</code></a></li>
-<li><a href="#editing-a-person-code-edit-code">2.4. Editing a person : <code>edit</code></a></li>
-<li><a href="#locating-persons-by-name-code-find-code">2.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">2.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#selecting-a-person-code-select-code">2.7. Selecting a person : <code>select</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">2.8. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">2.9. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">2.10. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">2.11. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">2.12. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">2.13. Saving the data</a></li>
+<li><a href="#viewing-help-code-help-code-or-code-h-code">2.1. Viewing help : <code>help</code> or <code>h</code></a></li>
+<li><a href="#adding-a-person-code-add-code-or-code-a-code">2.2. Adding a person: <code>add</code> or <code>a</code></a></li>
+<li><a href="#listing-all-persons-code-list-code-or-code-l-code">2.3. Listing all persons : <code>list</code> or <code>l</code></a></li>
+<li><a href="#editing-a-person-code-edit-code-or-code-e-code">2.4. Editing a person : <code>edit</code> or <code>e</code></a></li>
+<li><a href="#locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code">2.5. Locating persons in address book: <code>find</code> or <code>f</code> or <code>search</code></a></li>
+<li><a href="#deleting-a-person-code-delete-code-or-code-d-code">2.6. Deleting a person : <code>delete</code> or <code>d</code></a></li>
+<li><a href="#selecting-a-person-code-select-code-or-code-s-code">2.7. Selecting a person : <code>select</code> or <code>s</code></a></li>
+<li><a href="#listing-entered-commands-code-history-code-or-code-his-code-or-code-past-code">2.8. Listing entered commands : <code>history</code> or <code>his</code> or <code>past</code></a></li>
+<li><a href="#undoing-previous-command-code-undo-code-or-code-u-code">2.9. Undoing previous command : <code>undo</code> or <code>u</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-redo-code-or-code-r-code">2.10. Redoing the previously undone command : <code>redo</code> or <code>r</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code-or-code-c-code">2.11. Clearing all entries : <code>clear</code> or <code>c</code></a></li>
+<li><a href="#keyboard-shortcuts">2.12. Keyboard Shortcuts</a></li>
+<li><a href="#exiting-the-program-code-exit-code">2.13. Exiting the program : <code>exit</code></a></li>
+<li><a href="#saving-the-data">2.14. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">3. FAQ</a></li>
 <li><a href="#command-summary">4. Command Summary</a></li>
+<li><a href="#keyboard-shortcuts-2">5. Keyboard Shortcuts</a>
+<ul class="sectlevel2">
+<li><a href="#command-shortcuts">5.1. Command Shortcuts</a></li>
+<li><a href="#navigation-selection-shortcuts">5.2. Navigation/Selection Shortcuts</a></li>
+<li><a href="#additional-shortcuts">5.3. Additional Shortcuts</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -69,7 +77,7 @@ This app will not work with earlier versions of Java 8.
 </div>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/se-edu/addressbook-level4/releases">here</a>.</p>
+<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/CS2103AUG2017-W11-B2/main/releases">here</a>.</p>
 </li>
 <li>
 <p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
@@ -83,7 +91,7 @@ This app will not work with earlier versions of Java 8.
 </div>
 </li>
 <li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
+<p>Type the command (case insensitive) in the command box and press <kbd>Enter</kbd> to execute it.<br>
 e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
 </li>
 <li>
@@ -139,16 +147,17 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">2.1. Viewing help : <code>help</code></a></h3>
+<h3 id="viewing-help-code-help-code-or-code-h-code"><a class="link" href="#viewing-help-code-help-code-or-code-h-code">2.1. Viewing help : <code>help</code> or <code>h</code></a></h3>
 <div class="paragraph">
-<p>Format: <code>help</code></p>
+<p>Format: <code>help</code> or <code>h</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-person-code-add-code"><a class="link" href="#adding-a-person-code-add-code">2.2. Adding a person: <code>add</code></a></h3>
+<h3 id="adding-a-person-code-add-code-or-code-a-code"><a class="link" href="#adding-a-person-code-add-code-or-code-a-code">2.2. Adding a person: <code>add</code> or <code>a</code></a></h3>
 <div class="paragraph">
 <p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code>
+        or <code>a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -171,23 +180,24 @@ A person can have any number of tags (including 0)
 <p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code></p>
 </li>
 <li>
-<p><code>add n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
+<p><code>a n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-all-persons-code-list-code"><a class="link" href="#listing-all-persons-code-list-code">2.3. Listing all persons : <code>list</code></a></h3>
+<h3 id="listing-all-persons-code-list-code-or-code-l-code"><a class="link" href="#listing-all-persons-code-list-code-or-code-l-code">2.3. Listing all persons : <code>list</code> or <code>l</code></a></h3>
 <div class="paragraph">
 <p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code></p>
+Format: <code>list</code> or <code>l</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="editing-a-person-code-edit-code"><a class="link" href="#editing-a-person-code-edit-code">2.4. Editing a person : <code>edit</code></a></h3>
+<h3 id="editing-a-person-code-edit-code-or-code-e-code"><a class="link" href="#editing-a-person-code-edit-code-or-code-e-code">2.4. Editing a person : <code>edit</code> or <code>e</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code>
+        or <code>e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -222,36 +232,53 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
 </li>
 <li>
-<p><code>edit 2 n/Betsy Crower t/</code><br>
+<p><code>e 2 n/Betsy Crower t/</code><br>
 Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-by-name-code-find-code"><a class="link" href="#locating-persons-by-name-code-find-code">2.5. Locating persons by name: <code>find</code></a></h3>
+<h3 id="locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code"><a class="link" href="#locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code">2.5. Locating persons in address book: <code>find</code> or <code>f</code> or <code>search</code></a></h3>
 <div class="paragraph">
-<p>Finds persons whose names contain any of the given keywords.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
+<p>Finds persons in the address book.<br>
+Format: <code>find KEYWORD [MORE_KEYWORDS]</code>
+        or <code>f KEYWORD [MORE_KEYWORDS]</code>
+        or <code>search KEYWORD [MORE_KEYWORDS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+<p>Only the <span class="underline">name</span> and <span class="underline">tags</span> are searched.</p>
 </li>
 <li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+<p>The <span class="underline">name</span> is searched <em>fuzzily</em>.</p>
 </li>
 <li>
-<p>Only the name is searched.</p>
+<p>The <span class="underline">tags</span> is searched <em>exactly</em>.</p>
 </li>
 <li>
-<p>Only full words will be matched e.g. <code>Han</code> will not match <code>Hans</code></p>
+<p>The search will only find <em>distinct persons</em>. e.g. <code>han solo han solo</code> will only return <code>han solo</code></p>
 </li>
 <li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+<p>The search is <em>case insensitive</em> for <span class="underline">names</span>. e.g. <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The search is <em>case sensitive</em> for <span class="underline">tags</span>. e.g. only <code>School</code> will match <code>School</code></p>
+</li>
+<li>
+<p>The search is <em>fuzzy</em> for <span class="underline">name words</span> of 4 or more characters. e.g <code>Hnas</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The search is <em>exact</em> for <span class="underline">name words</span> of less than 4 characters. e.g. <code>hans</code> will not match <code>Han</code> but <code>han</code> will match <code>Han</code></p>
+</li>
+<li>
+<p>The search is an <em>OR</em> search (i.e. Persons matching at least one keyword will be returned). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+<li>
+<p>The <span class="underline">order of the keywords</span> <em>does not matter</em>. e.g. <code>Hans school Bo</code> will match <code>Bo Hans</code> and others with the <code>school</code> tag</p>
 </li>
 </ul>
 </div>
@@ -263,21 +290,29 @@ Format: <code>find KEYWORD [MORE_KEYWORDS]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>find John</code><br>
+<p><code>find John</code> or <code>find jhon</code><br>
 Returns <code>john</code> and <code>John Doe</code></p>
 </li>
 <li>
-<p><code>find Betsy Tim John</code><br>
+<p><code>search Betsy Tim John</code><br>
 Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+</li>
+<li>
+<p><code>find School</code><br>
+Returns any person having tag <code>School</code></p>
+</li>
+<li>
+<p><code>find School werk</code><br>
+Returns any person having tag <code>School</code> or tag <code>werk</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">2.6. Deleting a person : <code>delete</code></a></h3>
+<h3 id="deleting-a-person-code-delete-code-or-code-d-code"><a class="link" href="#deleting-a-person-code-delete-code-or-code-d-code">2.6. Deleting a person : <code>delete</code> or <code>d</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
+Format: <code>delete INDEX</code> or <code>d INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -308,17 +343,17 @@ Deletes the 2nd person in the address book.</p>
 </li>
 <li>
 <p><code>find Betsy</code><br>
-<code>delete 1</code><br>
+<code>d 1</code><br>
 Deletes the 1st person in the results of the <code>find</code> command.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-person-code-select-code"><a class="link" href="#selecting-a-person-code-select-code">2.7. Selecting a person : <code>select</code></a></h3>
+<h3 id="selecting-a-person-code-select-code-or-code-s-code"><a class="link" href="#selecting-a-person-code-select-code-or-code-s-code">2.7. Selecting a person : <code>select</code> or <code>s</code></a></h3>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the last person listing.<br>
-Format: <code>select INDEX</code></p>
+Format: <code>select INDEX</code> or <code>s INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -349,17 +384,17 @@ Selects the 2nd person in the address book.</p>
 </li>
 <li>
 <p><code>find Betsy</code><br>
-<code>select 1</code><br>
+<code>s 1</code><br>
 Selects the 1st person in the results of the <code>find</code> command.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">2.8. Listing entered commands : <code>history</code></a></h3>
+<h3 id="listing-entered-commands-code-history-code-or-code-his-code-or-code-past-code"><a class="link" href="#listing-entered-commands-code-history-code-or-code-his-code-or-code-past-code">2.8. Listing entered commands : <code>history</code> or <code>his</code> or <code>past</code></a></h3>
 <div class="paragraph">
 <p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code></p>
+Format: <code>history</code> or <code>his</code> or <code>past</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -377,10 +412,10 @@ Format: <code>history</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">2.9. Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code-or-code-u-code"><a class="link" href="#undoing-previous-command-code-undo-code-or-code-u-code">2.9. Undoing previous command : <code>undo</code> or <code>u</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
+Format: <code>undo</code> or <code>u</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -409,23 +444,23 @@ Format: <code>undo</code></p>
 <li>
 <p><code>select 1</code><br>
 <code>list</code><br>
-<code>undo</code><br>
+<code>u</code><br>
 The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
 </li>
 <li>
 <p><code>delete 1</code><br>
 <code>clear</code><br>
 <code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
+<code>u</code> (reverses the <code>delete 1</code> command)<br></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">2.10. Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code-or-code-r-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-or-code-r-code">2.10. Redoing the previously undone command : <code>redo</code> or <code>r</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
+Format: <code>redo</code> or <code>r</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -439,7 +474,7 @@ Format: <code>redo</code></p>
 </li>
 <li>
 <p><code>delete 1</code><br>
-<code>redo</code><br>
+<code>r</code><br>
 The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
 </li>
 <li>
@@ -448,27 +483,33 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <code>undo</code> (reverses the <code>clear</code> command)<br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br>
 <code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+<code>r</code> (reapplies the <code>clear</code> command)<br></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">2.11. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-entries-code-clear-code-or-code-c-code">2.11. Clearing all entries : <code>clear</code> or <code>c</code></a></h3>
 <div class="paragraph">
 <p>Clears all entries from the address book.<br>
-Format: <code>clear</code></p>
+Format: <code>clear</code> or <code>c</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">2.12. Exiting the program : <code>exit</code></a></h3>
+<h3 id="keyboard-shortcuts"><a class="link" href="#keyboard-shortcuts">2.12. Keyboard Shortcuts</a></h3>
+<div class="paragraph">
+<p>A list of keyboard shortcuts is provided <a href="#shortcuts">here</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">2.13. Exiting the program : <code>exit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">2.13. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">2.14. Saving the data</a></h3>
 <div class="paragraph">
 <p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -491,51 +532,123 @@ There is no need to save manually.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Add</strong> <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code><br>
+<p><strong>Add</strong> : <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code> or a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;`<br>
 e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague</code></p>
 </li>
 <li>
-<p><strong>Clear</strong> : <code>clear</code></p>
+<p><strong>Clear</strong> : <code>clear</code> or <code>c</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
+<p><strong>Delete</strong> : <code>delete INDEX</code> or <code>d INDEX</code>+
 e.g. <code>delete 3</code></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
+<p><strong>Edit</strong> : <code>edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code> or <code>e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code><br>
 e.g. <code>edit 2 n/James Lee e/jameslee@example.com</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code><br>
-e.g. <code>find James Jake</code></p>
+<p><strong>Find</strong> : <code>find KEYWORD [MORE_KEYWORDS]</code> or <code>f KEYWORD [MORE_KEYWORDS]</code> or <code>search KEYWORD [MORE_KEYWORDS]</code><br>
+e.g. <code>find James Jake Jhon</code></p>
 </li>
 <li>
-<p><strong>List</strong> : <code>list</code></p>
+<p><strong>List</strong> : <code>list</code> or <code>l</code></p>
 </li>
 <li>
-<p><strong>Help</strong> : <code>help</code></p>
+<p><strong>Help</strong> : <code>help</code> or <code>h</code></p>
 </li>
 <li>
-<p><strong>Select</strong> : <code>select INDEX</code><br>
+<p><strong>Select</strong> : <code>select INDEX</code> or <code>s INDEX</code><br>
 e.g.<code>select 2</code></p>
 </li>
 <li>
-<p><strong>History</strong> : <code>history</code></p>
+<p><strong>History</strong> : <code>history</code> or <code>his</code> or <code>past</code></p>
 </li>
 <li>
-<p><strong>Undo</strong> : <code>undo</code></p>
+<p><strong>Undo</strong> : <code>undo</code> or <code>u</code></p>
 </li>
 <li>
-<p><strong>Redo</strong> : <code>redo</code></p>
+<p><strong>Redo</strong> : <code>redo</code> or <code>r</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="keyboard-shortcuts-2"><a class="link" href="#keyboard-shortcuts-2">5. Keyboard Shortcuts</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="command-shortcuts"><a class="link" href="#command-shortcuts">5.1. Command Shortcuts</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ctrl</code> + <code>a</code> : Add command</p>
+</li>
+<li>
+<p><code>ctrl</code> + <code>c</code> : Clear command</p>
+</li>
+<li>
+<p><code>ctrl</code> + <code>f</code> : Find command</p>
+</li>
+<li>
+<p><code>ctrl</code> + <code>l</code> : List command</p>
+</li>
+<li>
+<p><code>ctrl</code> + <code>h</code> : History command</p>
+</li>
+<li>
+<p><code>ctrl</code> + <code>z</code> : Undo command</p>
+</li>
+<li>
+<p><code>ctrl</code> + <code>y</code> : Redo command</p>
+</li>
+<li>
+<p><code>ctrl</code> + <code>#</code> : Select contact at number <code>#</code></p>
+</li>
+<li>
+<p><code>ctrl</code> + <code>d</code> + <code>#</code>: Delete contact at number <code>#</code></p>
+</li>
+<li>
+<p><code>ctrl</code> + <code>e</code> + <code>#</code> : Edit contact at number <code>#</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="navigation-selection-shortcuts"><a class="link" href="#navigation-selection-shortcuts">5.2. Navigation/Selection Shortcuts</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>↑</code> or <code>↓</code> : Scroll the contact list</p>
+</li>
+<li>
+<p><code>shift</code> + <code>↑</code> or <code>shift</code> + <code>↓</code> : Select multiple contacts</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ctrl</code> + <code>d</code> : Delete selected contacts</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="additional-shortcuts"><a class="link" href="#additional-shortcuts">5.3. Additional Shortcuts</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><code>esc</code> : Exit the application</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 </div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-21 15:57:58 +00:00
+Last updated 2017-10-11 17:13:43 +00:00
 </div>
 </div>
 </body>

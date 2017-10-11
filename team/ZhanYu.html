@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.3">
+<title>Zhan Yu - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Zhan Yu - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-rolodex"><a class="link" href="#project-rolodex">Project: Rolodex</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Rolodex is a desktop Address Book application for computing professionals who prefer working without a mouse to manage their contacts more efficiently.
+Rolodex is an extension of AddressBook - Level 4, which is a desktop address book application used for teaching Software Engineering principles.
+The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.</p>
+</div>
+<div class="paragraph">
+<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] {give links to collated code files}</p>
+</div>
+</div>
+</div>
+<h1 id="" class="sect0"><a class="link" href="#"></a></h1>
+<div class="sect2">
+<h3 id="enhancement-added-find-by-close-words-fuzzy-searching-and-find-by-tags"><a class="link" href="#enhancement-added-find-by-close-words-fuzzy-searching-and-find-by-tags">Enhancement Added: Find by close words (fuzzy searching) and find by tags</a></h3>
+<div class="sect3">
+<h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
+<hr>
+<div class="sect4">
+<h5 id="locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code"><a class="link" href="#locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code">Locating persons in address book: <code>find</code> or <code>f</code> or <code>search</code></a></h5>
+<div class="paragraph">
+<p>Finds persons in the address book.<br>
+Format: <code>find KEYWORD [MORE_KEYWORDS]</code>
+        or <code>f KEYWORD [MORE_KEYWORDS]</code>
+        or <code>search KEYWORD [MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only the <span class="underline">name</span> and <span class="underline">tags</span> are searched.</p>
+</li>
+<li>
+<p>The <span class="underline">name</span> is searched <em>fuzzily</em>.</p>
+</li>
+<li>
+<p>The <span class="underline">tags</span> is searched <em>exactly</em>.</p>
+</li>
+<li>
+<p>The search will only find <em>distinct persons</em>. e.g. <code>han solo han solo</code> will only return <code>han solo</code></p>
+</li>
+<li>
+<p>The search is <em>case insensitive</em> for <span class="underline">names</span>. e.g. <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The search is <em>case sensitive</em> for <span class="underline">tags</span>. e.g. only <code>School</code> will match <code>School</code></p>
+</li>
+<li>
+<p>The search is <em>fuzzy</em> for <span class="underline">name words</span> of 4 or more characters. e.g <code>Hnas</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The search is <em>exact</em> for <span class="underline">name words</span> of less than 4 characters. e.g. <code>hans</code> will not match <code>Han</code> but <code>han</code> will match <code>Han</code></p>
+</li>
+<li>
+<p>The search is an <em>OR</em> search (i.e. Persons matching at least one keyword will be returned). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+<li>
+<p>The <span class="underline">order of the keywords</span> <em>does not matter</em>. e.g. <code>Hans school Bo</code> will match <code>Bo Hans</code> and others with the <code>school</code> tag</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find John</code> or <code>find jhon</code><br>
+Returns <code>john</code> and <code>John Doe</code></p>
+</li>
+<li>
+<p><code>search Betsy Tim John</code><br>
+Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+</li>
+<li>
+<p><code>find School</code><br>
+Returns any person having tag <code>School</code></p>
+</li>
+<li>
+<p><code>find School werk</code><br>
+Returns any person having tag <code>School</code> or tag <code>werk</code></p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
+<div class="paragraph">
+<p>Users may sometimes key commands too quickly or forget the names of their contacts.
+This enhancement allows them to find contacts by close name words or by tags previously assigned to make finding contacts in the Rolodex a lot easier.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+<div class="sect4">
+<h5 id="fuzzy-finding-mechanism"><a class="link" href="#fuzzy-finding-mechanism">Fuzzy finding mechanism</a></h5>
+<div class="paragraph">
+<p>The fuzzy finding mechanism is powered by <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a>,
+a string heuristic for measuring the difference between two character sequences. It can be informally viewed as the number
+of <em>hops</em> that are required to get from a string to another, where <em>hops</em> are insertions, deletions and substitution
+operations.</p>
+</div>
+<div class="paragraph">
+<p>The activity diagram for the fuzzy finding can be loosely described as seen in the figure below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/FuzzyFindActivityDiagram.png" alt="FuzzyFindActivityDiagram">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A user sends a find request</p>
+</li>
+<li>
+<p>Application looks at all contacts currently in the database</p>
+</li>
+<li>
+<p>If the search parameters loosely match any of the name words of the current contact, add it into the list view.</p>
+</li>
+<li>
+<p>Otherwise, if it is an exact match on any of the name words of the current contact, add it into the list view.</p>
+</li>
+<li>
+<p>Otherwise, if it matches any other conditions specified under the find command, add it into the list view.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If a contact&#8217;s name word has a shorter length than the specified global minimum, the condition automatically triggers to false
+and starts searching for exact matches.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The settings for the loose matching can be found as a static constant of the Person class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">Person</span> <span class="directive">implements</span> ReadOnlyPerson {
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">int</span> FIND_NAME_GLOBAL_TOLERANCE = <span class="integer">4</span>;
+    <span class="directive">private</span> <span class="directive">static</span> <span class="directive">final</span> <span class="type">int</span> FIND_NAME_DISTANCE_TOLERANCE = <span class="integer">2</span>;
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>FIND_NAME_GLOBAL_TOLERANCE</code> is the global minimum distance of the currently examined name word for the loose matching to execute.
+<code>FIND_NAME_DISTANCE_TOLERANCE</code> is the maximum levenshtein distance from the currently examined search parameter
+to the currently examined name word in which the contact will be added.</p>
+</div>
+<div class="sect5">
+<h6 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h6>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Length of name word<br>
+<strong>Alternative 1 (current choice):</strong> Use a global minimum for defining when the fuzzy finding should execute.<br>
+<strong>Pros:</strong> Name words have higher minimum hop to length ratio.<br>
+<strong>Cons:</strong> User might need fuzzy finding on name words with character length lesser than the global minimum.<br>
+<strong>Pros:</strong> Easy logic to understand, implement and maintain.<br>
+<strong>Cons:</strong> Rudimentary algorithm.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Location of fuzzy find settings<br>
+<strong>Alternative 1 (current choice):</strong> Use private static constant in a person.<br>
+<strong>Pros:</strong> User does not need to worry about changing the settings or the intricacies of the fuzzy finding.<br>
+<strong>Cons:</strong> User might need stricter or looser limits than the ones defined for them.<br>
+<strong>Pros:</strong> Developers can easily change and manage settings and limits.<br>
+<strong>Cons:</strong> Users have no way of accessing the settings and limits.<br>
+<strong>Alternative 2:</strong> Allow user to set fuzzy find settings in a document file.<br>
+<strong>Pros:</strong> Advanced users can change the settings to suit their needs better.<br>
+<strong>Cons:</strong> Developers need to spend more work maintaining more components including storage.</p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+</div>
+<h1 id="-2" class="sect0"><a class="link" href="#-2"></a></h1>
+<div class="sect2">
+<h3 id="enhancement-proposed-sortable-parameters-in-commands-augmenting-list-view"><a class="link" href="#enhancement-proposed-sortable-parameters-in-commands-augmenting-list-view">Enhancement Proposed: Sortable parameters in commands augmenting list view</a></h3>
+<div class="paragraph">
+<p>To allow users to operate on a sorted list for longer displayed lists by the <code>list</code> or <code>find</code> command.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-contributions"><a class="link" href="#other-contributions">Other contributions</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Updated the General Documentation (Pull requests <a href="https://github.com">#11</a>, <a href="https://github.com">#5</a>)</p>
+</li>
+<li>
+<p>Added continuous integration tools using <a href="https://travis-ci.org/CS2103AUG2017-W11-B2/main">Travis CI</a>,
+<a href="https://ci.appveyor.com/project/ZY-Ang/main">AppVeyor</a>,
+<a href="https://coveralls.io/github/CS2103AUG2017-W11-B2/main?branch=master">Coveralls</a> and
+<a href="https://www.codacy.com/app/ZY-Ang/main/dashboard">Codacy</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<h1 id="-3" class="sect0"><a class="link" href="#-3"></a></h1>
+<div class="sect1">
+<h2 id="project-a-href-https-zy-ang-github-io-autonamegenerator-autonamegenerator-a"><a class="link" href="#project-a-href-https-zy-ang-github-io-autonamegenerator-autonamegenerator-a">Project: <a href="https://zy-ang.github.io/AutoNameGenerator/">AutoNameGenerator</a></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>{Optionally (not graded), you may include other projects in your portfolio.}</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-10-11 17:13:43 +00:00
+</div>
+</div>
+</body>
+</html>
