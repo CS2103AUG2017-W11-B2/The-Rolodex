@@ -188,8 +188,60 @@ A person can have any number of tags (including 0)
 <div class="sect2">
 <h3 id="listing-all-persons-code-list-code-or-code-l-code"><a class="link" href="#listing-all-persons-code-list-code-or-code-l-code">2.3. Listing all persons : <code>list</code> or <code>l</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book.<br>
-Format: <code>list</code> or <code>l</code></p>
+<p>Shows a list of all persons in the address book, sorted by the specified sort order or default sort order.<br>
+Format: <code>list [SORT_ARGUMENTS]</code> or <code>l [SORT_ARGUMENTS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>[SORT_ARGUMENTS]</code> can be none, some, any or all of <code>n/</code> <code>p/</code> <code>e/</code> <code>a/</code> <code>n/desc</code> <code>p/desc</code> <code>e/desc</code> <code>a/desc</code> <code>n/asc</code> <code>p/asc</code>
+<code>e/asc</code> <code>a/asc</code>, delimited by spaces, in no particular fixed order.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">name</span> is <code>n/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">phone</span> is <code>p/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">email</span> is <code>e/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">address</span> is <code>a/</code>.</p>
+</li>
+<li>
+<p>The sort argument postfix <code>desc</code> denotes that the sort field is to be sorted in descending lexicographical order.</p>
+</li>
+<li>
+<p>The sort argument postfix <code>asc</code> denotes that the sort field is to be sorted in ascending lexicographical order.</p>
+</li>
+<li>
+<p>Sort arguments without a postfix are sorted by ascending lexicographical order.</p>
+</li>
+<li>
+<p>The order of the <code>SORT_ARGUMENTS</code> are left-prioritized.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code> or <code>l</code> displays all persons by the default sort order.</p>
+</li>
+<li>
+<p><code>l n/desc</code> displays all persons sorted by descending name.</p>
+</li>
+<li>
+<p><code>list p/ a/desc</code> or <code>list p/asc a/desc</code> displays all persons sorted by ascending phone, then by descending address.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
@@ -242,9 +294,9 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 <h3 id="locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code"><a class="link" href="#locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code">2.5. Locating persons in address book: <code>find</code> or <code>f</code> or <code>search</code></a></h3>
 <div class="paragraph">
 <p>Finds persons in the address book.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code>
-        or <code>f KEYWORD [MORE_KEYWORDS]</code>
-        or <code>search KEYWORD [MORE_KEYWORDS]</code></p>
+Format: <code>find KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
+        or <code>f KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
+        or <code>search KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -304,6 +356,72 @@ Returns any person having tag <code>School</code></p>
 <li>
 <p><code>find School werk</code><br>
 Returns any person having tag <code>School</code> or tag <code>werk</code></p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>[SORT_ARGUMENTS]</code> can be none, some, any or all of <code>n/</code> <code>p/</code> <code>e/</code> <code>a/</code> <code>n/desc</code> <code>p/desc</code> <code>e/desc</code> <code>a/desc</code> <code>n/asc</code> <code>p/asc</code>
+<code>e/asc</code> <code>a/asc</code>, delimited by spaces, in no particular fixed order.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">name</span> is <code>n/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">phone</span> is <code>p/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">email</span> is <code>e/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">address</span> is <code>a/</code>.</p>
+</li>
+<li>
+<p>The sort argument postfix <code>desc</code> denotes that the sort field is to be sorted in descending lexicographical order.</p>
+</li>
+<li>
+<p>The sort argument postfix <code>asc</code> denotes that the sort field is to be sorted in ascending lexicographical order.</p>
+</li>
+<li>
+<p>Sort arguments without a postfix are sorted by ascending lexicographical order.</p>
+</li>
+<li>
+<p>The order of the <code>SORT_ARGUMENTS</code> are left-prioritized.</p>
+</li>
+<li>
+<p>Sort arguments <strong>do not count as search arguments</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find John p/</code> or <code>find jhon p/asc</code><br>
+Returns <code>john</code> and <code>John Doe</code>, sorted by ascending phone number.</p>
+</li>
+<li>
+<p><code>search Betsy Tim John n/ p/desc</code><br>
+Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code>, sorted by name then by descending phone if names are equal.</p>
+</li>
+<li>
+<p><code>find School a/desc</code><br>
+Returns any person having tag <code>School</code>, sorted by descending address.</p>
+</li>
+<li>
+<p><code>find School werk e/</code><br>
+Returns any person having tag <code>School</code> or tag <code>werk</code>, sorted by email.</p>
+</li>
+<li>
+<p><code>find e/ p/desc</code><br>
+Returns an error (do not count as search arguments).</p>
 </li>
 </ul>
 </div>
@@ -648,7 +766,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-11 17:13:43 +00:00
+Last updated 2017-10-13 08:19:50 +00:00
 </div>
 </div>
 </body>

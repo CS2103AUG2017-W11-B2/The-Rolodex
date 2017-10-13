@@ -47,8 +47,9 @@
 <ul class="sectlevel2">
 <li><a href="#undo-redo-mechanism">4.1. Undo/Redo mechanism</a></li>
 <li><a href="#fuzzy-finding-mechanism">4.2. Fuzzy finding mechanism</a></li>
-<li><a href="#logging">4.3. Logging</a></li>
-<li><a href="#configuration">4.4. Configuration</a></li>
+<li><a href="#sorting-mechanism">4.3. Sorting mechanism</a></li>
+<li><a href="#logging">4.4. Logging</a></li>
+<li><a href="#configuration">4.5. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -869,7 +870,142 @@ to the currently examined name word in which the contact will be added.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.3. Logging</a></h3>
+<h3 id="sorting-mechanism"><a class="link" href="#sorting-mechanism">4.3. Sorting mechanism</a></h3>
+<div class="paragraph">
+<p>The sorting mechanism is integrated into the <code>list</code> and <code>find</code> commands which resides in the application&#8217;s <code>logic</code> component.
+It supports sorting in ascending or descending order of most fields of a person (e.g. <span class="underline">Name</span>, <span class="underline">Phone</span>).
+The sort commands update the state of the application at the model level, which resides in <code>ModelManager</code>,
+via the method <code>updateSortComparator</code>.</p>
+</div>
+<div class="paragraph">
+<p>The activity diagram for a sort can be loosely described as seen in the figure below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SortingActivityDiagram.png" alt="SortingActivityDiagram" width="800">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Sort arguments are case-sensitive.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The case for a list command:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A user executes a <code>list</code> command with sort arguments.</p>
+</li>
+<li>
+<p>The application checks for invalid sort arguments.</p>
+</li>
+<li>
+<p>The application model creates a comparator using the sort arguments, in order.</p>
+</li>
+<li>
+<p>The application displays the results in the specified sort order.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The case for a find command:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A user executes a <code>find</code> command.</p>
+</li>
+<li>
+<p>The application separates the command arguments into find data arguments and sort arguments.</p>
+</li>
+<li>
+<p>The application executes a search on the find arguments.</p>
+</li>
+<li>
+<p>The application model creates a comparator using the sort arguments, in order.</p>
+</li>
+<li>
+<p>The application displays the filtered results in the specified sort order.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Find cannot work on name words matching sort arguments.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The list command&#8217;s <code>execute()</code> implementation before sorting implementation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CommandResult execute() {
+    model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The list command&#8217;s <code>execute()</code> implementation after sorting implementation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CommandResult execute() {
+    model.updateSortComparator(sortArguments);
+    model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that <code>model.updateSortComparator(sortArguments)</code> is added to the command logic. The update will give the model a
+comparator before executing a sort and filter which is handled by the event consumer.</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Integrating sort<br>
+<strong>Alternative 1 (current choice):</strong> Integrate sort into existing commands.<br>
+<strong>Pros:</strong> User can quickly sort and list or find the data as specified without executing another separate command.<br>
+<strong>Cons:</strong> User might need to use the sort arguments for other purposes (e.g. <code>find n/</code> does not return anyone matching <code>n/</code>).<br>
+<strong>Pros:</strong> Adds onto existing functionality and reduces clutter and unnecessary creation of a new command.<br>
+<strong>Cons:</strong> Bad SLAP on a user level.<br>
+<strong>Alternative 2:</strong> Create a new <code>sort</code> command.<br>
+<strong>Pros:</strong> User can decide when to sort the current list view<br>
+<strong>Cons:</strong> User needs an additional step before sorting a list.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Resetting sort comparator on <code>add</code> commands<br>
+<strong>Alternative 1 (current choice):</strong> Reset the current displayed list on an <code>add</code> command.<br>
+<strong>Pros:</strong> The displayed list always complies with the model comparator.<br>
+<strong>Cons:</strong> User might need to continue operating on the previous listing.<br>
+<strong>Alternative 2:</strong> Append added person to the current list view.<br>
+<strong>Pros:</strong> Users can immediately <code>edit</code> the person using the last listing index.<br>
+<strong>Cons:</strong> The displayed listing will not comply with the model comparator.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">4.4. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -907,7 +1043,7 @@ to the currently examined name word in which the contact will be added.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration"><a class="link" href="#configuration">4.4. Configuration</a></h3>
+<h3 id="configuration"><a class="link" href="#configuration">4.5. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2515,7 +2651,7 @@ tags matching the specified query</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-11 17:13:43 +00:00
+Last updated 2017-10-13 08:19:50 +00:00
 </div>
 </div>
 </body>

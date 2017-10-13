@@ -26,9 +26,6 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="paragraph">
 <p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] {give links to collated code files}</p>
 </div>
-</div>
-</div>
-<h1 id="" class="sect0"><a class="link" href="#"></a></h1>
 <div class="sect2">
 <h3 id="enhancement-added-find-by-close-words-fuzzy-searching-and-find-by-tags"><a class="link" href="#enhancement-added-find-by-close-words-fuzzy-searching-and-find-by-tags">Enhancement Added: Find by close words (fuzzy searching) and find by tags</a></h3>
 <div class="sect3">
@@ -38,9 +35,9 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <h5 id="locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code"><a class="link" href="#locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code">Locating persons in address book: <code>find</code> or <code>f</code> or <code>search</code></a></h5>
 <div class="paragraph">
 <p>Finds persons in the address book.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS]</code>
-        or <code>f KEYWORD [MORE_KEYWORDS]</code>
-        or <code>search KEYWORD [MORE_KEYWORDS]</code></p>
+Format: <code>find KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
+        or <code>f KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
+        or <code>search KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -103,6 +100,72 @@ Returns any person having tag <code>School</code> or tag <code>werk</code></p>
 </li>
 </ul>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>[SORT_ARGUMENTS]</code> can be none, some, any or all of <code>n/</code> <code>p/</code> <code>e/</code> <code>a/</code> <code>n/desc</code> <code>p/desc</code> <code>e/desc</code> <code>a/desc</code> <code>n/asc</code> <code>p/asc</code>
+<code>e/asc</code> <code>a/asc</code>, delimited by spaces, in no particular fixed order.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">name</span> is <code>n/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">phone</span> is <code>p/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">email</span> is <code>e/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">address</span> is <code>a/</code>.</p>
+</li>
+<li>
+<p>The sort argument postfix <code>desc</code> denotes that the sort field is to be sorted in descending lexicographical order.</p>
+</li>
+<li>
+<p>The sort argument postfix <code>asc</code> denotes that the sort field is to be sorted in ascending lexicographical order.</p>
+</li>
+<li>
+<p>Sort arguments without a postfix are sorted by ascending lexicographical order.</p>
+</li>
+<li>
+<p>The order of the <code>SORT_ARGUMENTS</code> are left-prioritized.</p>
+</li>
+<li>
+<p>Sort arguments <strong>do not count as search arguments</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find John p/</code> or <code>find jhon p/asc</code><br>
+Returns <code>john</code> and <code>John Doe</code>, sorted by ascending phone number.</p>
+</li>
+<li>
+<p><code>search Betsy Tim John n/ p/desc</code><br>
+Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code>, sorted by name then by descending phone if names are equal.</p>
+</li>
+<li>
+<p><code>find School a/desc</code><br>
+Returns any person having tag <code>School</code>, sorted by descending address.</p>
+</li>
+<li>
+<p><code>find School werk e/</code><br>
+Returns any person having tag <code>School</code> or tag <code>werk</code>, sorted by email.</p>
+</li>
+<li>
+<p><code>find e/ p/desc</code><br>
+Returns an error (do not count as search arguments).</p>
+</li>
+</ul>
+</div>
 <hr>
 </div>
 </div>
@@ -116,9 +179,6 @@ This enhancement allows them to find contacts by close name words or by tags pre
 <div class="sect3">
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <hr>
-<div class="paragraph">
-<p><mark>Start of Extract [from: Developer Guide]</mark></p>
-</div>
 <div class="sect4">
 <h5 id="fuzzy-finding-mechanism"><a class="link" href="#fuzzy-finding-mechanism">Fuzzy finding mechanism</a></h5>
 <div class="paragraph">
@@ -206,19 +266,366 @@ to the currently examined name word in which the contact will be added.</p>
 <strong>Pros:</strong> Advanced users can change the settings to suit their needs better.<br>
 <strong>Cons:</strong> Developers need to spend more work maintaining more components including storage.</p>
 </div>
+<hr>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-sort"><a class="link" href="#enhancement-added-sort">Enhancement Added: Sort</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External behavior</a></h4>
+<hr>
+<div class="sect4">
+<h5 id="listing-all-persons-code-list-code-or-code-l-code"><a class="link" href="#listing-all-persons-code-list-code-or-code-l-code">Listing all persons : <code>list</code> or <code>l</code></a></h5>
 <div class="paragraph">
-<p><mark>End of Extract</mark></p>
+<p>Shows a list of all persons in the address book, sorted by the specified sort order or default sort order.<br>
+Format: <code>list [SORT_ARGUMENTS]</code> or <code>l [SORT_ARGUMENTS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>[SORT_ARGUMENTS]</code> can be none, some, any or all of <code>n/</code> <code>p/</code> <code>e/</code> <code>a/</code> <code>n/desc</code> <code>p/desc</code> <code>e/desc</code> <code>a/desc</code> <code>n/asc</code> <code>p/asc</code>
+<code>e/asc</code> <code>a/asc</code>, delimited by spaces, in no particular fixed order.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">name</span> is <code>n/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">phone</span> is <code>p/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">email</span> is <code>e/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">address</span> is <code>a/</code>.</p>
+</li>
+<li>
+<p>The sort argument postfix <code>desc</code> denotes that the sort field is to be sorted in descending lexicographical order.</p>
+</li>
+<li>
+<p>The sort argument postfix <code>asc</code> denotes that the sort field is to be sorted in ascending lexicographical order.</p>
+</li>
+<li>
+<p>Sort arguments without a postfix are sorted by ascending lexicographical order.</p>
+</li>
+<li>
+<p>The order of the <code>SORT_ARGUMENTS</code> are left-prioritized.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code> or <code>l</code> displays all persons by the default sort order.</p>
+</li>
+<li>
+<p><code>l n/desc</code> displays all persons sorted by descending name.</p>
+</li>
+<li>
+<p><code>list p/ a/desc</code> or <code>list p/asc a/desc</code> displays all persons sorted by ascending phone, then by descending address.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code-2"><a class="link" href="#locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code-2">Locating persons in address book: <code>find</code> or <code>f</code> or <code>search</code></a></h5>
+<div class="paragraph">
+<p>Finds persons in the address book.<br>
+Format: <code>find KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
+        or <code>f KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
+        or <code>search KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only the <span class="underline">name</span> and <span class="underline">tags</span> are searched.</p>
+</li>
+<li>
+<p>The <span class="underline">name</span> is searched <em>fuzzily</em>.</p>
+</li>
+<li>
+<p>The <span class="underline">tags</span> is searched <em>exactly</em>.</p>
+</li>
+<li>
+<p>The search will only find <em>distinct persons</em>. e.g. <code>han solo han solo</code> will only return <code>han solo</code></p>
+</li>
+<li>
+<p>The search is <em>case insensitive</em> for <span class="underline">names</span>. e.g. <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The search is <em>case sensitive</em> for <span class="underline">tags</span>. e.g. only <code>School</code> will match <code>School</code></p>
+</li>
+<li>
+<p>The search is <em>fuzzy</em> for <span class="underline">name words</span> of 4 or more characters. e.g <code>Hnas</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The search is <em>exact</em> for <span class="underline">name words</span> of less than 4 characters. e.g. <code>hans</code> will not match <code>Han</code> but <code>han</code> will match <code>Han</code></p>
+</li>
+<li>
+<p>The search is an <em>OR</em> search (i.e. Persons matching at least one keyword will be returned). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+<li>
+<p>The <span class="underline">order of the keywords</span> <em>does not matter</em>. e.g. <code>Hans school Bo</code> will match <code>Bo Hans</code> and others with the <code>school</code> tag</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find John</code> or <code>find jhon</code><br>
+Returns <code>john</code> and <code>John Doe</code></p>
+</li>
+<li>
+<p><code>search Betsy Tim John</code><br>
+Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+</li>
+<li>
+<p><code>find School</code><br>
+Returns any person having tag <code>School</code></p>
+</li>
+<li>
+<p><code>find School werk</code><br>
+Returns any person having tag <code>School</code> or tag <code>werk</code></p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>[SORT_ARGUMENTS]</code> can be none, some, any or all of <code>n/</code> <code>p/</code> <code>e/</code> <code>a/</code> <code>n/desc</code> <code>p/desc</code> <code>e/desc</code> <code>a/desc</code> <code>n/asc</code> <code>p/asc</code>
+<code>e/asc</code> <code>a/asc</code>, delimited by spaces, in no particular fixed order.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">name</span> is <code>n/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">phone</span> is <code>p/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">email</span> is <code>e/</code>.</p>
+</li>
+<li>
+<p>The sort argument prefix for sorting by <span class="underline">address</span> is <code>a/</code>.</p>
+</li>
+<li>
+<p>The sort argument postfix <code>desc</code> denotes that the sort field is to be sorted in descending lexicographical order.</p>
+</li>
+<li>
+<p>The sort argument postfix <code>asc</code> denotes that the sort field is to be sorted in ascending lexicographical order.</p>
+</li>
+<li>
+<p>Sort arguments without a postfix are sorted by ascending lexicographical order.</p>
+</li>
+<li>
+<p>The order of the <code>SORT_ARGUMENTS</code> are left-prioritized.</p>
+</li>
+<li>
+<p>Sort arguments <strong>do not count as search arguments</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find John p/</code> or <code>find jhon p/asc</code><br>
+Returns <code>john</code> and <code>John Doe</code>, sorted by ascending phone number.</p>
+</li>
+<li>
+<p><code>search Betsy Tim John n/ p/desc</code><br>
+Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code>, sorted by name then by descending phone if names are equal.</p>
+</li>
+<li>
+<p><code>find School a/desc</code><br>
+Returns any person having tag <code>School</code>, sorted by descending address.</p>
+</li>
+<li>
+<p><code>find School werk e/</code><br>
+Returns any person having tag <code>School</code> or tag <code>werk</code>, sorted by email.</p>
+</li>
+<li>
+<p><code>find e/ p/desc</code><br>
+Returns an error (do not count as search arguments).</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
+<div class="paragraph">
+<p>Users may sometimes have too many contacts in a listing.
+This enhancement allows them to find contacts quickly by sorting the displayed list of persons.
+Users can operate on a sorted list for longer displayed lists via <code>list</code> or <code>find</code> command.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<hr>
+<div class="sect4">
+<h5 id="sorting-mechanism"><a class="link" href="#sorting-mechanism">Sorting mechanism</a></h5>
+<div class="paragraph">
+<p>The sorting mechanism is integrated into the <code>list</code> and <code>find</code> commands which resides in the application&#8217;s <code>logic</code> component.
+It supports sorting in ascending or descending order of most fields of a person (e.g. <span class="underline">Name</span>, <span class="underline">Phone</span>).
+The sort commands update the state of the application at the model level, which resides in <code>ModelManager</code>,
+via the method <code>updateSortComparator</code>.</p>
+</div>
+<div class="paragraph">
+<p>The activity diagram for a sort can be loosely described as seen in the figure below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SortingActivityDiagram.png" alt="SortingActivityDiagram" width="800">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Sort arguments are case-sensitive.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The case for a list command:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A user executes a <code>list</code> command with sort arguments.</p>
+</li>
+<li>
+<p>The application checks for invalid sort arguments.</p>
+</li>
+<li>
+<p>The application model creates a comparator using the sort arguments, in order.</p>
+</li>
+<li>
+<p>The application displays the results in the specified sort order.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The case for a find command:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A user executes a <code>find</code> command.</p>
+</li>
+<li>
+<p>The application separates the command arguments into find data arguments and sort arguments.</p>
+</li>
+<li>
+<p>The application executes a search on the find arguments.</p>
+</li>
+<li>
+<p>The application model creates a comparator using the sort arguments, in order.</p>
+</li>
+<li>
+<p>The application displays the filtered results in the specified sort order.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Find cannot work on name words matching sort arguments.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The list command&#8217;s <code>execute()</code> implementation before sorting implementation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CommandResult execute() {
+    model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The list command&#8217;s <code>execute()</code> implementation after sorting implementation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CommandResult execute() {
+    model.updateSortComparator(sortArguments);
+    model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(MESSAGE_SUCCESS);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that <code>model.updateSortComparator(sortArguments)</code> is added to the command logic. The update will give the model a
+comparator before executing a sort and filter which is handled by the event consumer.</p>
+</div>
+<div class="sect5">
+<h6 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h6>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Integrating sort<br>
+<strong>Alternative 1 (current choice):</strong> Integrate sort into existing commands.<br>
+<strong>Pros:</strong> User can quickly sort and list or find the data as specified without executing another separate command.<br>
+<strong>Cons:</strong> User might need to use the sort arguments for other purposes (e.g. <code>find n/</code> does not return anyone matching <code>n/</code>).<br>
+<strong>Pros:</strong> Adds onto existing functionality and reduces clutter and unnecessary creation of a new command.<br>
+<strong>Cons:</strong> Bad SLAP on a user level.<br>
+<strong>Alternative 2:</strong> Create a new <code>sort</code> command.<br>
+<strong>Pros:</strong> User can decide when to sort the current list view<br>
+<strong>Cons:</strong> User needs an additional step before sorting a list.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Resetting sort comparator on <code>add</code> commands<br>
+<strong>Alternative 1 (current choice):</strong> Reset the current displayed list on an <code>add</code> command.<br>
+<strong>Pros:</strong> The displayed list always complies with the model comparator.<br>
+<strong>Cons:</strong> User might need to continue operating on the previous listing.<br>
+<strong>Alternative 2:</strong> Append added person to the current list view.<br>
+<strong>Pros:</strong> Users can immediately <code>edit</code> the person using the last listing index.<br>
+<strong>Cons:</strong> The displayed listing will not comply with the model comparator.</p>
 </div>
 <hr>
 </div>
 </div>
 </div>
 </div>
-<h1 id="-2" class="sect0"><a class="link" href="#-2"></a></h1>
 <div class="sect2">
-<h3 id="enhancement-proposed-sortable-parameters-in-commands-augmenting-list-view"><a class="link" href="#enhancement-proposed-sortable-parameters-in-commands-augmenting-list-view">Enhancement Proposed: Sortable parameters in commands augmenting list view</a></h3>
+<h3 id="enhancement-proposed-opening-a-new-and-separate-rolodex"><a class="link" href="#enhancement-proposed-opening-a-new-and-separate-rolodex">Enhancement Proposed: Opening a new and separate Rolodex</a></h3>
 <div class="paragraph">
-<p>To allow users to operate on a sorted list for longer displayed lists by the <code>list</code> or <code>find</code> command.</p>
+<p>To allow users to operate on a different data set for different purposes.</p>
 </div>
 </div>
 <div class="sect2">
@@ -237,7 +644,8 @@ to the currently examined name word in which the contact will be added.</p>
 </ul>
 </div>
 </div>
-<h1 id="-3" class="sect0"><a class="link" href="#-3"></a></h1>
+</div>
+</div>
 <div class="sect1">
 <h2 id="project-a-href-https-zy-ang-github-io-autonamegenerator-autonamegenerator-a"><a class="link" href="#project-a-href-https-zy-ang-github-io-autonamegenerator-autonamegenerator-a">Project: <a href="https://zy-ang.github.io/AutoNameGenerator/">AutoNameGenerator</a></a></h2>
 <div class="sectionbody">
@@ -249,7 +657,7 @@ to the currently examined name word in which the contact will be added.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-11 17:13:43 +00:00
+Last updated 2017-10-13 08:19:50 +00:00
 </div>
 </div>
 </body>
