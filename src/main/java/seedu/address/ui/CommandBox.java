@@ -4,7 +4,9 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
@@ -28,37 +30,42 @@ public class CommandBox extends UiPart<Region> {
     private ListElementPointer historySnapshot;
 
     @FXML
-    private TextField commandTextField;
+    //changed the TextField to a ComboBox to enable drop-down list
+    private ComboBox<String> commandComboBox;
+    private TextField commandTextField = commandComboBox.getEditor();
 
     public CommandBox(Logic logic) {
         super(FXML);
         this.logic = logic;
+        commandComboBox.setEditable(true);
+        commandComboBox.setPromptText("Enter your command here");
+        commandComboBox.getItems().addAll(
+                "add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]",
+                "clear",
+                "delete INDEX",
+                "edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]",
+                "find KEYWORD [MORE_KEYWORDS]",
+                "help",
+                "history",
+                "list",
+                "redo",
+                "select INDEX",
+                "undo"
+        );
+        commandTextField.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
+            if (event.getCode() == KeyCode.UP) {
+                event.consume();
+                navigateToPreviousInput();
+            } else if (event.getCode() == KeyCode.DOWN) {
+                event.consume();
+                navigateToNextInput();
+            }
+        });
         // calls #setStyleToDefault() whenever there is a change to the text of the command box.
-        commandTextField.textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
+        commandComboBox.getEditor().textProperty().addListener((unused1, unused2, unused3) -> setStyleToDefault());
         historySnapshot = logic.getHistorySnapshot();
     }
 
-    /**
-     * Handles the key press event, {@code keyEvent}.
-     */
-    @FXML
-    private void handleKeyPress(KeyEvent keyEvent) {
-        switch (keyEvent.getCode()) {
-        case UP:
-            // As up and down buttons will alter the position of the caret,
-            // consuming it causes the caret's position to remain unchanged
-            keyEvent.consume();
-
-            navigateToPreviousInput();
-            break;
-        case DOWN:
-            keyEvent.consume();
-            navigateToNextInput();
-            break;
-        default:
-            // let JavaFx handle the keypress
-        }
-    }
 
     /**
      * Updates the text field with the previous input in {@code historySnapshot},
@@ -100,12 +107,15 @@ public class CommandBox extends UiPart<Region> {
      */
     @FXML
     private void handleCommandInputChanged() {
+        if (commandTextField.getText().equals("")) {
+            return;
+        }
         try {
             CommandResult commandResult = logic.execute(commandTextField.getText());
             initHistory();
-            historySnapshot.next();
-            // process result of the command
-            commandTextField.setText("");
+            commandComboBox.setValue("");
+            historySnapshot.increaseIndexByOne();
+            setStyleToDefault();
             logger.info("Result: " + commandResult.feedbackToUser);
             raise(new NewResultAvailableEvent(commandResult.feedbackToUser));
 
@@ -132,7 +142,7 @@ public class CommandBox extends UiPart<Region> {
      * Sets the command box style to use the default style.
      */
     private void setStyleToDefault() {
-        commandTextField.getStyleClass().remove(ERROR_STYLE_CLASS);
+        commandComboBox.getEditor().getStyleClass().remove(ERROR_STYLE_CLASS);
     }
 
     /**
