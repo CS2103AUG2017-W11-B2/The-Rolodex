@@ -13,7 +13,7 @@ public class ConfigTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void toStringDefaultObjectStringReturned() {
+    public void toString_defaultObject_stringReturned() {
         String defaultConfigAsString = "App title : Rolodex\n"
                 + "Current log level : INFO\n"
                 + "Preference file Location : preferences.json";

@@ -27,18 +27,18 @@ public class ConfigUtilTest {
     public TemporaryFolder testFolder = new TemporaryFolder();
 
     @Test
-    public void readNullThrowsNullPointerException() throws DataConversionException {
+    public void read_null_throwsNullPointerException() throws DataConversionException {
         thrown.expect(NullPointerException.class);
         read(null);
     }
 
     @Test
-    public void readMissingFileEmptyResult() throws DataConversionException {
+    public void read_missingFile_emptyResult() throws DataConversionException {
         assertFalse(read("NonExistentFile.json").isPresent());
     }
 
     @Test
-    public void readNotJsonFormatExceptionThrown() throws DataConversionException {
+    public void read_notJsonFormat_exceptionThrown() throws DataConversionException {
 
         thrown.expect(DataConversionException.class);
         read("NotJsonFormatConfig.json");
@@ -49,7 +49,7 @@ public class ConfigUtilTest {
     }
 
     @Test
-    public void readFileInOrderSuccessfullyRead() throws DataConversionException {
+    public void read_fileInOrder_successfullyRead() throws DataConversionException {
 
         Config expected = getTypicalConfig();
 
@@ -58,13 +58,13 @@ public class ConfigUtilTest {
     }
 
     @Test
-    public void readValuesMissingFromFileDefaultValuesUsed() throws DataConversionException {
+    public void read_valuesMissingFromFile_defaultValuesUsed() throws DataConversionException {
         Config actual = read("EmptyConfig.json").get();
         assertEquals(new Config(), actual);
     }
 
     @Test
-    public void readExtraValuesInFileExtraValuesIgnored() throws DataConversionException {
+    public void read_extraValuesInFile_extraValuesIgnored() throws DataConversionException {
         Config expected = getTypicalConfig();
         Config actual = read("ExtraValuesConfig.json").get();
 
@@ -85,19 +85,19 @@ public class ConfigUtilTest {
     }
 
     @Test
-    public void saveNullConfigThrowsNullPointerException() throws IOException {
+    public void save_nullConfig_throwsNullPointerException() throws IOException {
         thrown.expect(NullPointerException.class);
         save(null, "SomeFile.json");
     }
 
     @Test
-    public void saveNullFileThrowsNullPointerException() throws IOException {
+    public void save_nullFile_throwsNullPointerException() throws IOException {
         thrown.expect(NullPointerException.class);
         save(new Config(), null);
     }
 
     @Test
-    public void saveConfigAllInOrderSuccess() throws DataConversionException, IOException {
+    public void saveConfig_allInOrder_success() throws DataConversionException, IOException {
         Config original = getTypicalConfig();
 
         String configFilePath = testFolder.getRoot() + File.separator + "TempConfig.json";

@@ -12,7 +12,7 @@ import seedu.address.commons.core.EventsCenter;
 import seedu.address.ui.testutil.UiPartRule;
 
 /**
- * A GUI unit test class for Rolodex.
+ * A GUI unit test class for AddressBook.
  */
 public abstract class GuiUnitTest {
     @Rule

@@ -8,14 +8,14 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
-import seedu.address.model.Rolodex;
+import seedu.address.model.AddressBook;
 import seedu.address.model.person.Person;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.testutil.TestUtil;
 
-public class SampleDataTest extends RolodexGuiTest {
+public class SampleDataTest extends AddressBookGuiTest {
     @Override
-    protected Rolodex getInitialData() {
+    protected AddressBook getInitialData() {
         // return null to force test app to load data from file only
         return null;
     }
@@ -40,7 +40,7 @@ public class SampleDataTest extends RolodexGuiTest {
     }
 
     @Test
-    public void rolodexDataFileDoesNotExistLoadSampleData() {
+    public void addressBook_dataFileDoesNotExist_loadSampleData() {
         Person[] expectedList = SampleDataUtil.getSamplePersons();
         assertListMatching(getPersonListPanel(), expectedList);
     }

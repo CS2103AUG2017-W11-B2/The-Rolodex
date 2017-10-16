@@ -5,9 +5,9 @@ import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.tag.Tag;
 
 /**
- * Unmodifiable view of an rolodex
+ * Unmodifiable view of an address book
  */
-public interface ReadOnlyRolodex {
+public interface ReadOnlyAddressBook {
 
     /**
      * Returns an unmodifiable view of the persons list.

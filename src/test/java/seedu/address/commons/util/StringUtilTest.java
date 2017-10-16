@@ -65,7 +65,7 @@ public class StringUtilTest {
      */
 
     @Test
-    public void containsWordIgnoreCaseNullWordThrowsNullPointerException() {
+    public void containsWordIgnoreCase_nullWord_throwsNullPointerException() {
         assertExceptionThrown(NullPointerException.class, "typical sentence", null, Optional.empty());
     }
 
@@ -77,19 +77,19 @@ public class StringUtilTest {
     }
 
     @Test
-    public void containsWordIgnoreCaseEmptyWordThrowsIllegalArgumentException() {
+    public void containsWordIgnoreCase_emptyWord_throwsIllegalArgumentException() {
         assertExceptionThrown(IllegalArgumentException.class, "typical sentence", "  ",
                 Optional.of("Word parameter cannot be empty"));
     }
 
     @Test
-    public void containsWordIgnoreCaseMultipleWordsThrowsIllegalArgumentException() {
+    public void containsWordIgnoreCase_multipleWords_throwsIllegalArgumentException() {
         assertExceptionThrown(IllegalArgumentException.class, "typical sentence", "aaa BBB",
                 Optional.of("Word parameter should be a single word"));
     }
 
     @Test
-    public void containsWordIgnoreCaseNullSentenceThrowsNullPointerException() {
+    public void containsWordIgnoreCase_nullSentence_throwsNullPointerException() {
         assertExceptionThrown(NullPointerException.class, null, "abc", Optional.empty());
     }
 
@@ -119,7 +119,7 @@ public class StringUtilTest {
      */
 
     @Test
-    public void containsWordIgnoreCaseValidInputsCorrectResult() {
+    public void containsWordIgnoreCase_validInputs_correctResult() {
 
         // Empty sentence
         assertFalse(StringUtil.containsWordIgnoreCase("", "abc")); // Boundary case
@@ -147,13 +147,13 @@ public class StringUtilTest {
      */
 
     @Test
-    public void getDetailsExceptionGiven() {
+    public void getDetails_exceptionGiven() {
         assertThat(StringUtil.getDetails(new FileNotFoundException("file not found")),
                    containsString("java.io.FileNotFoundException: file not found"));
     }
 
     @Test
-    public void getDetailsNullGivenThrowsNullPointerException() {
+    public void getDetails_nullGiven_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
         StringUtil.getDetails(null);
     }

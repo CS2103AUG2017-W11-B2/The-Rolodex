@@ -40,10 +40,10 @@ import seedu.address.model.Model;
 import seedu.address.ui.CommandBox;
 
 /**
- * A system test class for Rolodex, which provides access to handles of GUI components and helper methods
+ * A system test class for AddressBook, which provides access to handles of GUI components and helper methods
  * for test verification.
  */
-public abstract class RolodexSystemTest {
+public abstract class AddressBookSystemTest {
     @ClassRule
     public static ClockRule clockRule = new ClockRule();
 
@@ -116,11 +116,11 @@ public abstract class RolodexSystemTest {
     }
 
     /**
-     * Displays all persons in the rolodex.
+     * Displays all persons in the address book.
      */
     protected void showAllPersons() {
         executeCommand(ListCommand.COMMAND_WORD);
-        assert getModel().getRolodex().getPersonList().size() == getModel().getLatestPersonList().size();
+        assert getModel().getAddressBook().getPersonList().size() == getModel().getLatestPersonList().size();
     }
 
     /**
@@ -128,7 +128,7 @@ public abstract class RolodexSystemTest {
      */
     protected void showPersonsWithName(String keyword) {
         executeCommand(FindCommand.COMMAND_WORD + " " + keyword);
-        assert getModel().getLatestPersonList().size() < getModel().getRolodex().getPersonList().size();
+        assert getModel().getLatestPersonList().size() < getModel().getAddressBook().getPersonList().size();
     }
 
     /**
@@ -149,7 +149,7 @@ public abstract class RolodexSystemTest {
         assertEquals(expectedCommandInput, getCommandBox().getInput());
         assertEquals(expectedResultMessage, getResultDisplay().getText());
         assertEquals(expectedModel, getModel());
-        assertEquals(expectedModel.getRolodex(), testApp.readStorageRolodex());
+        assertEquals(expectedModel.getAddressBook(), testApp.readStorageAddressBook());
         assertListMatching(getPersonListPanel(), expectedModel.getLatestPersonList());
     }
 

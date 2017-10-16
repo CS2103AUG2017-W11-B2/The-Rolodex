@@ -9,6 +9,6 @@
       "z" : 99
     }
   },
-  "rolodexFilePath": "rolodex.xml",
-  "rolodexName": "TypicalRolodexName"
+  "addressBookFilePath" : "addressbook.xml",
+  "addressBookName" : "TypicalAddressBookName"
 }

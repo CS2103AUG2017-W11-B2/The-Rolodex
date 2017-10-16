@@ -14,31 +14,31 @@ public class AppUtilTest {
 
 
     @Test
-    public void getImageExitingImage() {
-        assertNotNull(AppUtil.getImage("/images/rolodex_icon_32.png"));
+    public void getImage_exitingImage() {
+        assertNotNull(AppUtil.getImage("/images/address_book_32.png"));
     }
 
 
     @Test
-    public void getImageNullGivenThrowsNullPointerException() {
+    public void getImage_nullGiven_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
         AppUtil.getImage(null);
     }
 
     @Test
-    public void checkArgumentTrueNothingHappens() {
+    public void checkArgument_true_nothingHappens() {
         AppUtil.checkArgument(true);
         AppUtil.checkArgument(true, "");
     }
 
     @Test
-    public void checkArgumentFalseWithoutErrorMessageThrowsIllegalArgumentException() {
+    public void checkArgument_falseWithoutErrorMessage_throwsIllegalArgumentException() {
         thrown.expect(IllegalArgumentException.class);
         AppUtil.checkArgument(false);
     }
 
     @Test
-    public void checkArgumentFalseWithErrorMessageThrowsIllegalArgumentException() {
+    public void checkArgument_falseWithErrorMessage_throwsIllegalArgumentException() {
         String errorMessage = "error message";
         thrown.expect(IllegalArgumentException.class);
         thrown.expectMessage(errorMessage);

@@ -42,7 +42,7 @@ public class PersonDataContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void testNameContainsKeywordsReturnsTrue() {
+    public void test_nameContainsKeywords_returnsTrue() {
         // One keyword
         PersonDataContainsKeywordsPredicate predicate =
                 new PersonDataContainsKeywordsPredicate(Collections.singletonList("Alice"));
@@ -62,7 +62,7 @@ public class PersonDataContainsKeywordsPredicateTest {
     }
 
     @Test
-    public void testNameDoesNotContainKeywordsReturnsFalse() {
+    public void test_nameDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         PersonDataContainsKeywordsPredicate predicate =
                 new PersonDataContainsKeywordsPredicate(Collections.emptyList());

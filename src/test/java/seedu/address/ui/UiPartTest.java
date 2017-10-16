@@ -27,45 +27,45 @@ public class UiPartTest {
     public TemporaryFolder testFolder = new TemporaryFolder();
 
     @Test
-    public void constructorNullFileUrlThrowsNullPointerException() {
+    public void constructor_nullFileUrl_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
         new TestUiPart<Object>((URL) null);
     }
 
     @Test
-    public void constructorMissingFileUrlThrowsAssertionError() throws Exception {
+    public void constructor_missingFileUrl_throwsAssertionError() throws Exception {
         URL missingFileUrl = new URL(testFolder.getRoot().toURI().toURL(), MISSING_FILE_PATH);
         thrown.expect(AssertionError.class);
         new TestUiPart<Object>(missingFileUrl);
     }
 
     @Test
-    public void constructorInvalidFileUrlThrowsAssertionError() {
+    public void constructor_invalidFileUrl_throwsAssertionError() {
         URL invalidFileUrl = getTestFileUrl(INVALID_FILE_PATH);
         thrown.expect(AssertionError.class);
         new TestUiPart<Object>(invalidFileUrl);
     }
 
     @Test
-    public void constructorValidFileUrlLoadsFile() {
+    public void constructor_validFileUrl_loadsFile() {
         URL validFileUrl = getTestFileUrl(VALID_FILE_PATH);
         assertEquals(VALID_FILE_ROOT, new TestUiPart<TestFxmlObject>(validFileUrl).getRoot());
     }
 
     @Test
-    public void constructorNullFileNameThrowsNullPointerException() {
+    public void constructor_nullFileName_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
         new TestUiPart<Object>((String) null);
     }
 
     @Test
-    public void constructorMissingFileNameThrowsNullPointerException() {
+    public void constructor_missingFileName_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
         new TestUiPart<Object>(MISSING_FILE_PATH);
     }
 
     @Test
-    public void constructorInvalidFileNameThrowsAssertionError() {
+    public void constructor_invalidFileName_throwsAssertionError() {
         thrown.expect(AssertionError.class);
         new TestUiPart<Object>(INVALID_FILE_PATH);
     }

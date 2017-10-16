@@ -10,15 +10,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.ReadOnlyRolodex;
+import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.tag.Tag;
 
 /**
- * An Immutable Rolodex that is serializable to XML format
+ * An Immutable AddressBook that is serializable to XML format
  */
-@XmlRootElement(name = "rolodex")
-public class XmlSerializableRolodex implements ReadOnlyRolodex {
+@XmlRootElement(name = "addressbook")
+public class XmlSerializableAddressBook implements ReadOnlyAddressBook {
 
     @XmlElement
     private List<XmlAdaptedPerson> persons;
@@ -26,10 +26,10 @@ public class XmlSerializableRolodex implements ReadOnlyRolodex {
     private List<XmlAdaptedTag> tags;
 
     /**
-     * Creates an empty XmlSerializableRolodex.
+     * Creates an empty XmlSerializableAddressBook.
      * This empty constructor is required for marshalling.
      */
-    public XmlSerializableRolodex() {
+    public XmlSerializableAddressBook() {
         persons = new ArrayList<>();
         tags = new ArrayList<>();
     }
@@ -37,7 +37,7 @@ public class XmlSerializableRolodex implements ReadOnlyRolodex {
     /**
      * Conversion
      */
-    public XmlSerializableRolodex(ReadOnlyRolodex src) {
+    public XmlSerializableAddressBook(ReadOnlyAddressBook src) {
         this();
         persons.addAll(src.getPersonList().stream().map(XmlAdaptedPerson::new).collect(Collectors.toList()));
         tags.addAll(src.getTagList().stream().map(XmlAdaptedTag::new).collect(Collectors.toList()));

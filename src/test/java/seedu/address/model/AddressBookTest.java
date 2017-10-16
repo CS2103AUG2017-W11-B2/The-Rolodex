@@ -2,7 +2,7 @@ package seedu.address.model;
 
 import static org.junit.Assert.assertEquals;
 import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.getTypicalRolodex;
+import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,63 +20,63 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.model.tag.Tag;
 
-public class RolodexTest {
+public class AddressBookTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    private final Rolodex rolodex = new Rolodex();
+    private final AddressBook addressBook = new AddressBook();
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), rolodex.getPersonList());
-        assertEquals(Collections.emptyList(), rolodex.getTagList());
+        assertEquals(Collections.emptyList(), addressBook.getPersonList());
+        assertEquals(Collections.emptyList(), addressBook.getTagList());
     }
 
     @Test
-    public void resetDataNullThrowsNullPointerException() {
+    public void resetData_null_throwsNullPointerException() {
         thrown.expect(NullPointerException.class);
-        rolodex.resetData(null);
+        addressBook.resetData(null);
     }
 
     @Test
-    public void resetDataWithValidReadOnlyRolodexReplacesData() {
-        Rolodex newData = getTypicalRolodex();
-        rolodex.resetData(newData);
-        assertEquals(newData, rolodex);
+    public void resetData_withValidReadOnlyAddressBook_replacesData() {
+        AddressBook newData = getTypicalAddressBook();
+        addressBook.resetData(newData);
+        assertEquals(newData, addressBook);
     }
 
     @Test
-    public void resetDataWithDuplicatePersonsThrowsAssertionError() {
+    public void resetData_withDuplicatePersons_throwsAssertionError() {
         // Repeat ALICE twice
         List<Person> newPersons = Arrays.asList(new Person(ALICE), new Person(ALICE));
         List<Tag> newTags = new ArrayList<>(ALICE.getTags());
-        RolodexStub newData = new RolodexStub(newPersons, newTags);
+        AddressBookStub newData = new AddressBookStub(newPersons, newTags);
 
         thrown.expect(AssertionError.class);
-        rolodex.resetData(newData);
+        addressBook.resetData(newData);
     }
 
     @Test
-    public void getPersonListModifyListThrowsUnsupportedOperationException() {
+    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
         thrown.expect(UnsupportedOperationException.class);
-        rolodex.getPersonList().remove(0);
+        addressBook.getPersonList().remove(0);
     }
 
     @Test
-    public void getTagListModifyListThrowsUnsupportedOperationException() {
+    public void getTagList_modifyList_throwsUnsupportedOperationException() {
         thrown.expect(UnsupportedOperationException.class);
-        rolodex.getTagList().remove(0);
+        addressBook.getTagList().remove(0);
     }
 
     /**
-     * A stub ReadOnlyRolodex whose persons and tags lists can violate interface constraints.
+     * A stub ReadOnlyAddressBook whose persons and tags lists can violate interface constraints.
      */
-    private static class RolodexStub implements ReadOnlyRolodex {
+    private static class AddressBookStub implements ReadOnlyAddressBook {
         private final ObservableList<ReadOnlyPerson> persons = FXCollections.observableArrayList();
         private final ObservableList<Tag> tags = FXCollections.observableArrayList();
 
-        RolodexStub(Collection<? extends ReadOnlyPerson> persons, Collection<? extends Tag> tags) {
+        AddressBookStub(Collection<? extends ReadOnlyPerson> persons, Collection<? extends Tag> tags) {
             this.persons.setAll(persons);
             this.tags.setAll(tags);
         }

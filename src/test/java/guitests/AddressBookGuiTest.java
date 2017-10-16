@@ -19,13 +19,13 @@ import guitests.guihandles.StatusBarFooterHandle;
 import javafx.stage.Stage;
 import seedu.address.TestApp;
 import seedu.address.commons.core.EventsCenter;
-import seedu.address.model.Rolodex;
+import seedu.address.model.AddressBook;
 import seedu.address.testutil.TypicalPersons;
 
 /**
- * A GUI Test class for Rolodex.
+ * A GUI Test class for AddressBook.
  */
-public abstract class RolodexGuiTest {
+public abstract class AddressBookGuiTest {
 
     /* The TestName Rule makes the current test name available inside test methods */
     @Rule
@@ -63,8 +63,8 @@ public abstract class RolodexGuiTest {
      * Override this in child classes to set the initial local data.
      * Return null to use the data in the file specified in {@link #getDataFileLocation()}
      */
-    protected Rolodex getInitialData() {
-        return TypicalPersons.getTypicalRolodex();
+    protected AddressBook getInitialData() {
+        return TypicalPersons.getTypicalAddressBook();
     }
 
     protected CommandBoxHandle getCommandBox() {

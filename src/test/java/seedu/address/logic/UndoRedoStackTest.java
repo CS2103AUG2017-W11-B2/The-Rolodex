@@ -27,7 +27,7 @@ public class UndoRedoStackTest {
     private UndoRedoStack undoRedoStack = new UndoRedoStack();
 
     @Test
-    public void pushNonUndoableCommandRedoStackClearedAndCommandNotAdded() {
+    public void push_nonUndoableCommand_redoStackClearedAndCommandNotAdded() {
         // non-empty redoStack
         undoRedoStack = prepareStack(Collections.singletonList(dummyUndoableCommandOne),
                 Arrays.asList(dummyUndoableCommandOne, dummyUndoableCommandTwo));
@@ -40,7 +40,7 @@ public class UndoRedoStackTest {
     }
 
     @Test
-    public void pushUndoableCommandRedoStackClearedAndCommandAdded() {
+    public void push_undoableCommand_redoStackClearedAndCommandAdded() {
         // non-empty redoStack
         undoRedoStack = prepareStack(Collections.singletonList(dummyUndoableCommandOne),
                 Arrays.asList(dummyUndoableCommandOne, dummyUndoableCommandTwo));
@@ -55,7 +55,7 @@ public class UndoRedoStackTest {
     }
 
     @Test
-    public void pushUndoCommandStackRemainsUnchanged() {
+    public void push_undoCommand_stackRemainsUnchanged() {
         // non-empty redoStack
         undoRedoStack = prepareStack(Collections.singletonList(dummyUndoableCommandOne),
                 Arrays.asList(dummyUndoableCommandOne, dummyUndoableCommandTwo));
@@ -70,7 +70,7 @@ public class UndoRedoStackTest {
     }
 
     @Test
-    public void pushRedoCommandStackRemainsUnchanged() {
+    public void push_redoCommand_stackRemainsUnchanged() {
         // non-empty redoStack
         undoRedoStack = prepareStack(Collections.singletonList(dummyUndoableCommandOne),
                 Arrays.asList(dummyUndoableCommandOne, dummyUndoableCommandTwo));
