@@ -31,7 +31,7 @@
 <li><a href="#adding-a-person-code-add-code-or-code-a-code">2.2. Adding a person: <code>add</code> or <code>a</code></a></li>
 <li><a href="#listing-all-persons-code-list-code-or-code-l-code">2.3. Listing all persons : <code>list</code> or <code>l</code></a></li>
 <li><a href="#editing-a-person-code-edit-code-or-code-e-code">2.4. Editing a person : <code>edit</code> or <code>e</code></a></li>
-<li><a href="#locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code">2.5. Locating persons in address book: <code>find</code> or <code>f</code> or <code>search</code></a></li>
+<li><a href="#locating-persons-in-rolodex-code-find-code-or-code-f-code-or-code-search-code">2.5. Locating persons in rolodex: <code>find</code> or <code>f</code> or <code>search</code></a></li>
 <li><a href="#deleting-a-person-code-delete-code-or-code-d-code">2.6. Deleting a person : <code>delete</code> or <code>d</code></a></li>
 <li><a href="#selecting-a-person-code-select-code-or-code-s-code">2.7. Selecting a person : <code>select</code> or <code>s</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code-or-code-his-code-or-code-past-code">2.8. Listing entered commands : <code>history</code> or <code>his</code> or <code>past</code></a></li>
@@ -77,10 +77,10 @@ This app will not work with earlier versions of Java 8.
 </div>
 </li>
 <li>
-<p>Download the latest <code>addressbook.jar</code> <a href="https://github.com/CS2103AUG2017-W11-B2/main/releases">here</a>.</p>
+<p>Download the latest <code>rolodex.jar</code> <a href="https://github.com/CS2103AUG2017-W11-B2/main/releases">here</a>.</p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your Address Book.</p>
+<p>Copy the file to the folder you want to use as the home folder for your Rolodex.</p>
 </li>
 <li>
 <p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
@@ -102,7 +102,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <p><strong><code>list</code></strong> : lists all contacts</p>
 </li>
 <li>
-<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Address Book.</p>
+<p><strong><code>add</code></strong><code>n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01</code> : adds a contact named <code>John Doe</code> to the Rolodex.</p>
 </li>
 <li>
 <p><strong><code>delete</code></strong><code>3</code> : deletes the 3rd contact shown in the current list</p>
@@ -155,7 +155,7 @@ e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> wil
 <div class="sect2">
 <h3 id="adding-a-person-code-add-code-or-code-a-code"><a class="link" href="#adding-a-person-code-add-code-or-code-a-code">2.2. Adding a person: <code>add</code> or <code>a</code></a></h3>
 <div class="paragraph">
-<p>Adds a person to the address book<br>
+<p>Adds a person to the rolodex<br>
 Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code>
         or <code>a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code></p>
 </div>
@@ -188,7 +188,7 @@ A person can have any number of tags (including 0)
 <div class="sect2">
 <h3 id="listing-all-persons-code-list-code-or-code-l-code"><a class="link" href="#listing-all-persons-code-list-code-or-code-l-code">2.3. Listing all persons : <code>list</code> or <code>l</code></a></h3>
 <div class="paragraph">
-<p>Shows a list of all persons in the address book, sorted by the specified sort order or default sort order.<br>
+<p>Shows a list of all persons in the rolodex, sorted by the specified sort order or default sort order.<br>
 Format: <code>list [SORT_ARGUMENTS]</code> or <code>l [SORT_ARGUMENTS]</code></p>
 </div>
 <div class="sidebarblock">
@@ -247,7 +247,7 @@ Format: <code>list [SORT_ARGUMENTS]</code> or <code>l [SORT_ARGUMENTS]</code></p
 <div class="sect2">
 <h3 id="editing-a-person-code-edit-code-or-code-e-code"><a class="link" href="#editing-a-person-code-edit-code-or-code-e-code">2.4. Editing a person : <code>edit</code> or <code>e</code></a></h3>
 <div class="paragraph">
-<p>Edits an existing person in the address book.<br>
+<p>Edits an existing person in the rolodex.<br>
 Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code>
         or <code>e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code></p>
 </div>
@@ -291,9 +291,9 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all 
 </div>
 </div>
 <div class="sect2">
-<h3 id="locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code"><a class="link" href="#locating-persons-in-address-book-code-find-code-or-code-f-code-or-code-search-code">2.5. Locating persons in address book: <code>find</code> or <code>f</code> or <code>search</code></a></h3>
+<h3 id="locating-persons-in-rolodex-code-find-code-or-code-f-code-or-code-search-code"><a class="link" href="#locating-persons-in-rolodex-code-find-code-or-code-f-code-or-code-search-code">2.5. Locating persons in rolodex: <code>find</code> or <code>f</code> or <code>search</code></a></h3>
 <div class="paragraph">
-<p>Finds persons in the address book.<br>
+<p>Finds persons in the rolodex.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
         or <code>f KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
         or <code>search KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code></p>
@@ -429,7 +429,7 @@ Returns an error (do not count as search arguments).</p>
 <div class="sect2">
 <h3 id="deleting-a-person-code-delete-code-or-code-d-code"><a class="link" href="#deleting-a-person-code-delete-code-or-code-d-code">2.6. Deleting a person : <code>delete</code> or <code>d</code></a></h3>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
+<p>Deletes the specified person from the rolodex.<br>
 Format: <code>delete INDEX</code> or <code>d INDEX</code></p>
 </div>
 <div class="sidebarblock">
@@ -457,7 +457,7 @@ Format: <code>delete INDEX</code> or <code>d INDEX</code></p>
 <li>
 <p><code>list</code><br>
 <code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
+Deletes the 2nd person in the rolodex.</p>
 </li>
 <li>
 <p><code>find Betsy</code><br>
@@ -498,7 +498,7 @@ Format: <code>select INDEX</code> or <code>s INDEX</code></p>
 <li>
 <p><code>list</code><br>
 <code>select 2</code><br>
-Selects the 2nd person in the address book.</p>
+Selects the 2nd person in the rolodex.</p>
 </li>
 <li>
 <p><code>find Betsy</code><br>
@@ -532,7 +532,7 @@ Format: <code>history</code> or <code>his</code> or <code>past</code></p>
 <div class="sect2">
 <h3 id="undoing-previous-command-code-undo-code-or-code-u-code"><a class="link" href="#undoing-previous-command-code-undo-code-or-code-u-code">2.9. Undoing previous command : <code>undo</code> or <code>u</code></a></h3>
 <div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
+<p>Restores the rolodex to the state before the previous <em>undoable</em> command was executed.<br>
 Format: <code>undo</code> or <code>u</code></p>
 </div>
 <div class="admonitionblock note">
@@ -543,7 +543,7 @@ Format: <code>undo</code> or <code>u</code></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
+<p>Undoable commands: those commands that modify the rolodex&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
 </div>
 </td>
 </tr>
@@ -609,7 +609,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <div class="sect2">
 <h3 id="clearing-all-entries-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-entries-code-clear-code-or-code-c-code">2.11. Clearing all entries : <code>clear</code> or <code>c</code></a></h3>
 <div class="paragraph">
-<p>Clears all entries from the address book.<br>
+<p>Clears all entries from the rolodex.<br>
 Format: <code>clear</code> or <code>c</code></p>
 </div>
 </div>
@@ -629,7 +629,7 @@ Format: <code>exit</code></p>
 <div class="sect2">
 <h3 id="saving-the-data"><a class="link" href="#saving-the-data">2.14. Saving the data</a></h3>
 <div class="paragraph">
-<p>Address book data are saved in the hard disk automatically after any command that changes the data.<br>
+<p>Rolodex data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
 </div>
 </div>
@@ -640,7 +640,7 @@ There is no need to save manually.</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Address Book folder.</p>
+<strong>A</strong>: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Rolodex folder.</p>
 </div>
 </div>
 </div>
@@ -767,7 +767,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-16 03:51:21 +00:00
+Last updated 2017-10-16 04:19:55 +00:00
 </div>
 </div>
 </body>
