@@ -24,11 +24,12 @@ Rolodex is an extension of AddressBook - Level 4, which is a desktop address boo
 The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.
 <strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] {give links to collated code files}</p>
 </div>
-</div>
-</div>
-<h1 id="" class="sect0"><a class="link" href="#"></a></h1>
 <div class="sect2">
 <h3 id="enhancement-added-keyboard-shortcuts"><a class="link" href="#enhancement-added-keyboard-shortcuts">Enhancement Added: Keyboard Shortcuts</a></h3>
+<div class="paragraph">
+<p>The table below shows the keyboard shortcuts that are added, with the exception of shortcuts with the behavior <code>Exit the application</code>
+and <code>View help window</code> which came with the original state of the application.</p>
+</div>
 <div class="sect3">
 <h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
 <hr>
@@ -37,75 +38,91 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </div>
 </div>
 </div>
+</div>
+</div>
 <div class="sect1">
 <h2 id="keyboard-shortcuts"><a class="link" href="#keyboard-shortcuts">Keyboard Shortcuts</a></h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="command-shortcuts"><a class="link" href="#command-shortcuts">Command Shortcuts</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p><code>ctrl</code> + <code>a</code> : Add command</p>
-</li>
-<li>
-<p><code>ctrl</code> + <code>c</code> : Clear command</p>
-</li>
-<li>
-<p><code>ctrl</code> + <code>f</code> : Find command</p>
-</li>
-<li>
-<p><code>ctrl</code> + <code>l</code> : List command</p>
-</li>
-<li>
-<p><code>ctrl</code> + <code>h</code> : History command</p>
-</li>
-<li>
-<p><code>ctrl</code> + <code>z</code> : Undo command</p>
-</li>
-<li>
-<p><code>ctrl</code> + <code>y</code> : Redo command</p>
-</li>
-<li>
-<p><code>ctrl</code> + <code>#</code> : Select contact at number <code>#</code></p>
-</li>
-<li>
-<p><code>ctrl</code> + <code>d</code> + <code>#</code>: Delete contact at number <code>#</code></p>
-</li>
-<li>
-<p><code>ctrl</code> + <code>e</code> + <code>#</code> : Edit contact at number <code>#</code></p>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all" style="width: 50%;">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 66%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Shortcut</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>L</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List all contacts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>H</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">View history</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Z</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Undo last command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Y</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Redo last command</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clear contact list</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>F1</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">View help window</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="navigation-selection-shortcuts"><a class="link" href="#navigation-selection-shortcuts">Navigation/Selection Shortcuts</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p><code>↑</code> or <code>↓</code> : Scroll the contact list</p>
-</li>
-<li>
-<p><code>shift</code> + <code>↑</code> or <code>shift</code> + <code>↓</code> : Select multiple contacts</p>
-<div class="ulist">
-<ul>
-<li>
-<p><code>ctrl</code> + <code>d</code> : Delete selected contacts</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="additional-shortcuts"><a class="link" href="#additional-shortcuts">Additional Shortcuts</a></h3>
-<div class="ulist">
-<ul>
-<li>
-<p><code>esc</code> : Exit the application</p>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all" style="width: 50%;">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 66%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Shortcut</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>Enter</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select the command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>Esc</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Deselect the command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">When the command box is not in selection:</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>↑</kbd> and <kbd>↓</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scroll the contact list</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>D</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete the selected contact <em>(Coming in V2.0)</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Alt</kbd>+<kbd>F4</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Exit the application</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p><mark>End of Extract</mark></p>
 </div>
@@ -113,7 +130,9 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="sect3">
 <h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
 <div class="paragraph">
-<p>{Justify the need for, and the current design (i.e. external behavior) of, the feature}</p>
+<p>The main objective of Rolodex is to facilitate an efficient way of managing contacts for users with a preference for typing.
+Having keyboard shortcuts allows the user to navigate around the application with ease and speed.
+This implementation should enable the user to access all parts of the application without using the mouse.</p>
 </div>
 </div>
 <div class="sect3">
@@ -125,198 +144,94 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-mechanism"><a class="link" href="#undo-redo-mechanism">Undo/Redo mechanism</a></h3>
+<h3 id="keyboard-shortcuts-mechanism"><a class="link" href="#keyboard-shortcuts-mechanism">Keyboard Shortcuts Mechanism</a></h3>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the rolodex (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
+<p>The keyboard shortcuts mechanism is implemented in the <code>KeyListener</code> class under the <code>UI</code> component of the application.
+It listens for key presses done by the user and executes actions mapped to these key presses, or key events.
+The mapping of actions to key events are found in the <code>KeyListenerUtil</code> class.</p>
 </div>
 <div class="paragraph">
-<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram shows the inheritance diagram for commands:</p>
+<p>The following class diagram shows the relationship between classes concerning the keyboard shortcuts mechanism.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/LogicCommandClassDiagram.png" alt="LogicCommandClassDiagram" width="800">
+<img src="../images/KeyListenerDiagram.png" alt="KeyListenerDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>As you can see from the diagram, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the rolodex before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
+<p>The <code>KeyListener</code> requires access to the <code>CommandBox</code>, <code>PersonListPanel</code> and <code>Logic</code> components for key event executions,
+such as changing the focus node and executing word commands.</p>
 </div>
 <div class="paragraph">
-<p>Commands that are not undoable are implemented this way:</p>
+<p>When the user launches the application, the <code>UiManager</code> calls <code>mainWindow.setKeyListeners()</code>
+which creates the <code>KeyListener</code> class to handle the key events.
+In <code>KeyListener</code>, the main method for handling the key events has the following code:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ListCommand</span> <span class="directive">extends</span> Command {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... list logic ...</span>
-    }
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> handleKeyPress() {
+    mainNode.addEventFilter(<span class="predefined-type">KeyEvent</span>.KEY_PRESSED, event -&gt; {
+        <span class="comment">// actions to execute key event</span>
+    });
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>With the extra layer, the commands that are undoable are implemented this way:</p>
+<p>The <code>mainNode</code> refers to the node containing the all UI components in the application,
+and <code>addEventFilter</code> captures key events received by that node.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Another common method used for capturing key events is <code>keyOnPressed</code>.
+In this case, <code>addEventFilter</code> is used instead as key events captured by the former will be consumed by the <code>TextField</code> used in the application.
+<code>addEventFilter</code> captures the key events before they are consumed by the <code>TextField</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When the user presses a key combination which matches one that is assigned to the <code>KeyCombination</code> attribute in the <code>KeyListenerUtil</code> class, the corresponding action will be executed.
+An example of such an execution is given as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">abstract</span> <span class="type">class</span> <span class="class">UndoableCommand</span> <span class="directive">extends</span> Command {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult execute() {
-        <span class="comment">// ... undo logic ...</span>
-
-        executeUndoableCommand();
-    }
-}
-
-<span class="directive">public</span> <span class="type">class</span> <span class="class">DeleteCommand</span> <span class="directive">extends</span> UndoableCommand {
-    <span class="annotation">@Override</span>
-    <span class="directive">public</span> CommandResult executeUndoableCommand() {
-        <span class="comment">// ... delete logic ...</span>
-    }
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> executeKeyEvents(<span class="predefined-type">KeyEvent</span> keyEvent) {
+        <span class="keyword">if</span> (FOCUS_PERSON_LIST.match(keyEvent)) {
+                <span class="comment">// action to focus on person list</span>
+        }
+        <span class="comment">// … more cases</span>
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Suppose that the user has just launched the application. The <code>UndoRedoStack</code> will be empty at the beginning.</p>
-</div>
-<div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in the rolodex. The current state of the rolodex is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoStartingStackDiagram.png" alt="UndoRedoStartingStackDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand1StackDiagram.png" alt="UndoRedoNewCommand1StackDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not be pushed to the <code>UndoRedoStack</code> at all.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The user now decides that adding the person was a mistake, and decides to undo that action using <code>undo</code>.</p>
-</div>
-<div class="paragraph">
-<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>. We will restore the rolodex to the state before the <code>add</code> command executed.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStackDiagram.png" alt="UndoRedoExecuteUndoStackDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>undoStack</code> is empty, then there are no other commands left to be undone, and an <code>Exception</code> will be thrown when popping the <code>undoStack</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The redo does the exact opposite (pops from <code>redoStack</code>, push to <code>undoStack</code>, and restores the rolodex to the state after the command is executed).</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>redoStack</code> is empty, then there are no other commands left to be redone, and an <code>Exception</code> will be thrown when popping the <code>redoStack</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StackDiagram.png" alt="UndoRedoNewCommand2StackDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StackDiagram.png" alt="UndoRedoNewCommand3StackDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="200">
-</div>
+<p>Where the key combination <code>FOCUS_PERSON_LIST</code> matches the <code>keyEvent</code> captured by the event filter.</p>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Implementation of <code>UndoableCommand</code><br>
-<strong>Alternative 1 (current choice):</strong> Add a new abstract method <code>executeUndoableCommand()</code><br>
-<strong>Pros:</strong> We will not lose any undone/redone functionality as it is now part of the default behaviour. Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.<br>
-<strong>Cons:</strong> Hard for new developers to understand the template pattern.<br>
-<strong>Alternative 2:</strong> Just override <code>execute()</code><br>
-<strong>Pros:</strong> Does not involve the template pattern, easier for new developers to understand.<br>
-<strong>Cons:</strong> Classes that inherit from <code>UndoableCommand</code> must remember to call <code>super.execute()</code>, or lose the ability to undo/redo.</p>
+<p><strong>Aspect:</strong> The way commands words are executed<br>
+<strong>Alternative 1 (current choice):</strong> Pressing the shortcut automatically executes the command<br>
+<strong>Pros:</strong> Execution of command is faster and more convenient for the user.<br>
+<strong>Cons:</strong> User may want to check what the shortcut does before executing the command.<br>
+<strong>Alternative 2:</strong> Pressing the shortcut replaces the <code>TextField</code> with the command word<br>
+<strong>Pros:</strong> Allows the user to check the command before executing it.<br>
+<strong>Cons:</strong>  An extra step for user to execute the command, i.e. pressing <code>Enter</code>.</p>
 </div>
-<hr>
 <div class="paragraph">
-<p><strong>Aspect:</strong> How undo &amp; redo executes<br>
-<strong>Alternative 1 (current choice):</strong> Saves the entire rolodex.<br>
-<strong>Pros:</strong> Easy to implement.<br>
-<strong>Cons:</strong> May have performance issues in terms of memory usage.<br>
-<strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.<br>
-<strong>Pros:</strong> Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).<br>
-<strong>Cons:</strong> We must ensure that the implementation of each individual command are correct.</p>
-</div>
-<hr>
-<div class="paragraph">
-<p><strong>Aspect:</strong> Type of commands that can be undone/redone<br>
-<strong>Alternative 1 (current choice):</strong> Only include commands that modifies the rolodex (<code>add</code>, <code>clear</code>, <code>edit</code>).<br>
-<strong>Pros:</strong> We only revert changes that are hard to change back (the view can easily be re-modified as no data are lost).<br>
-<strong>Cons:</strong> User might think that undo also applies when the list is modified (undoing filtering for example), only to realize that it does not do that, after executing <code>undo</code>.<br>
-<strong>Alternative 2:</strong> Include all commands.<br>
-<strong>Pros:</strong> Might be more intuitive for the user.<br>
-<strong>Cons:</strong> User have no way of skipping such commands if he or she just want to reset the state of the rolodex and not the view.<br>
-<strong>Additional Info:</strong> See our discussion  <a href="https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672">here</a>.</p>
-</div>
-<hr>
-<div class="paragraph">
-<p><strong>Aspect:</strong> Data structure to support the undo/redo commands<br>
-<strong>Alternative 1 (current choice):</strong> Use separate stack for undo and redo<br>
-<strong>Pros:</strong> Easy to understand for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.<br>
-<strong>Cons:</strong> Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>UndoRedoStack</code>.<br>
-<strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo<br>
-<strong>Pros:</strong> We do not need to maintain a separate stack, and just reuse what is already in the codebase.<br>
-<strong>Cons:</strong> Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.<br></p>
+<p><strong>Aspect:</strong> Scrolling of the contact list<br>
+<strong>Alternative 1 (current choice):</strong> Pressing the <code>Esc</code> key focuses on the person list panel, then scrolling is handled by selecting the next contact with either the up or down arrow key.<br>
+<strong>Pros:</strong>  User can select contacts quickly.<br>
+<strong>Cons:</strong> Scrolling is done by selection of contacts one at a time.
+Thus, it may be time consuming for the user to search for a contact by scrolling.<br>
+<strong>Alternative 2:</strong> Contact list scrolls without triggering selection of a contact in the list<br>
+<strong>Pros:</strong> Scrolling motion is faster and smoother.<br>
+<strong>Cons:</strong> An extra step is needed for users who want to select a contact,
+          i.e. scroll the list until the contact is visible, then select the desired contact with a select command/shortcut.<br></p>
 </div>
 <div class="paragraph">
 <p><mark>End of Extract</mark></p>
@@ -324,35 +239,113 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <hr>
 </div>
 </div>
-</div>
-</div>
-<h1 id="-2" class="sect0"><a class="link" href="#-2"></a></h1>
 <div class="sect2">
-<h3 id="enhancement-proposed-add-command-code-remark-code"><a class="link" href="#enhancement-proposed-add-command-code-remark-code">Enhancement Proposed: Add command <code>remark</code></a></h3>
+<h3 id="enhancement-proposed-add-profile-pictures"><a class="link" href="#enhancement-proposed-add-profile-pictures">Enhancement Proposed: Add Profile Pictures</a></h3>
+<hr>
 <div class="paragraph">
-<p>{Explain similar to the Undo/Redo feature above.}</p>
+<p><mark>Start of Extract [from: User Guide]</mark></p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="adding-a-profile-picture-code-picture-code-or-code-pic-code-em-coming-in-v2-0-em"><a class="link" href="#adding-a-profile-picture-code-picture-code-or-code-pic-code-em-coming-in-v2-0-em">Adding a profile picture: <code>picture</code> or <code>pic</code> <em>(Coming in V2.0)</em></a></h3>
+<div class="paragraph">
+<p>Adds a profile picture to the specified person in Rolodex.<br>
+Format: <code>picture INDEX FILE_DIRECTORY</code> or <code>pic INDEX FILE_DIRECTORY</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Adds a profile picture to the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+<li>
+<p>The <code>FILE_DIRECTORY</code> indicates the location of the profile picture to be added.</p>
+</li>
+<li>
+<p>An existing profile picture will be replaced.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>picture 1 C:\Users\John\Pictures\my_pic.png</code><br>
+Sets the profile picture of the 1st person to <code>my_pic.png</code>.</p>
+</li>
+<li>
+<p><code>pic 6 C:\Users\Alice\Pictures\Contacts\john.png</code><br>
+Sets the profile picture of the 6th person to <code>john.png</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The second example is illustrated in greater detail here:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Before the addition of profile pictures, the contact list is loaded with the default avatar image as shown below.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/profile_pic_before.png" alt="profile pic before" width="500">
+</div>
+</div>
+</li>
+<li>
+<p><code>pic 6 C:\Users\Alice\Pictures\Contacts\john.png</code> is entered in the command box with the valid <code>FILE_DIRECTORY</code>.</p>
+</li>
+<li>
+<p>If the command is entered correctly, you should see the updated profile picture as specified in the <code>FILE_DIRECTORY</code> of the command.</p>
+<div class="imageblock">
+<div class="content">
+<img src="../images/profile_pic_after.png" alt="profile pic after" width="500">
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
 </div>
 <div class="sect2">
 <h3 id="other-contributions"><a class="link" href="#other-contributions">Other contributions</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull request <a href="https://github.com">#16</a>)</p>
+<p>Updated the GUI layout and color scheme (Pull request <a href="https://github.com">#16</a>)</p>
+</li>
+<li>
+<p>Added a keyboard icon in the command box which provides visual feedback for some user events (Pull request <a href="https://github.com">#28</a>)</p>
 </li>
 <li>
 <p>Added the removeTag method (Pull request <a href="https://github.com">#6</a>)</p>
 </li>
 <li>
-<p>Updated the General Documentation (Pull requests <a href="https://github.com">#2</a>)</p>
+<p>Updated the General Documentation (Pull requests <a href="https://github.com">#2</a>, <a href="https://github.com">#66</a>)</p>
 </li>
 </ul>
 </div>
 </div>
 </div>
+</div>
+</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-20 09:42:42 +00:00
+Last updated 2017-10-20 10:01:54 +00:00
 </div>
 </div>
 </body>
