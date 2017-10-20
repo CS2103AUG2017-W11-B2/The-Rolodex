@@ -48,9 +48,10 @@
 <li><a href="#undo-redo-mechanism">4.1. Undo/Redo mechanism</a></li>
 <li><a href="#fuzzy-finding-mechanism">4.2. Fuzzy finding mechanism</a></li>
 <li><a href="#sorting-mechanism">4.3. Sorting mechanism</a></li>
-<li><a href="#keyboard-shortcuts-mechanism">4.4. Keyboard Shortcuts Mechanism</a></li>
-<li><a href="#logging">4.5. Logging</a></li>
-<li><a href="#configuration">4.6. Configuration</a></li>
+<li><a href="#auto-completion-mechanism">4.4. Auto-completion mechanism</a></li>
+<li><a href="#keyboard-shortcuts-mechanism">4.5. Keyboard Shortcuts Mechanism</a></li>
+<li><a href="#logging">4.6. Logging</a></li>
+<li><a href="#configuration">4.7. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -1039,7 +1040,74 @@ comparator before executing a sort and filter which is handled by the event cons
 </div>
 </div>
 <div class="sect2">
-<h3 id="keyboard-shortcuts-mechanism"><a class="link" href="#keyboard-shortcuts-mechanism">4.4. Keyboard Shortcuts Mechanism</a></h3>
+<h3 id="auto-completion-mechanism"><a class="link" href="#auto-completion-mechanism">4.4. Auto-completion mechanism</a></h3>
+<div class="paragraph">
+<p>Auto-completion mechanism is implemented in <code>CommandBox</code> class under UI component.</p>
+</div>
+<div class="paragraph">
+<p>Auto-completion is activated when <code>TAB</code> key is pressed. This is done by adding a case in the keypress handler in <code>CommandBox</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@FXML</span>
+<span class="directive">private</span> <span class="type">void</span> handleKeyPress(<span class="predefined-type">KeyEvent</span> keyEvent) {
+    <span class="keyword">switch</span> (keyEvent.getCode()) {
+    <span class="keyword">case</span> TAB:
+        autocomplete(); <span class="comment">//checkes the input and performs actions accordingly</span>
+        <span class="keyword">break</span>;
+    <span class="comment">//other cases</span>
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When <code>TAB</code> is pressed, the current input in the command box is checked against the list of commands.
+* If the input command is a valid command that requires additional field(s), the full format of the command is displayed in the command box.
+At the same time, the placeholder for the first field that the user needs to key in is selected (as shown below).</p>
+</div>
+<div class="paragraph">
+<p>image::AutoCompletionAfterTab.png</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the input is already in the required format of the add command, the <code>TAB</code> is meant to navigate to the next input field (only <code>add</code> command require multiple fields).
+The current caret position is checked and used to determine the current field the user is at.
+The anchor and caret positions are reset to the start and end of the next field so that the placeholder is selected (as shown below).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>image::AutoCompletionNextField.png</p>
+</div>
+<div class="paragraph">
+<p>Below is an activity diagram for <code>TAB</code> keypress which activates autocompletion.
+image::AutoCompleteActivityDiagram.png</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> text input control<br>
+<strong>Alternative 1 (current choice):</strong> Continue to use the original TextField<br>
+<strong>Pros:</strong> External library enables bindAutocompletion for TextField (the drop down list of suggested commands that appears and updates itself as user types).<br>
+<strong>Pros:</strong> Minimise changes need to be made to the original text input control structure.<br>
+<strong>Cons:</strong> Text formatting is limited. All text in the TextField must have the same format.<br>
+<strong>Alternative 2:</strong> Create additional TextField as user request for additional fields<br>
+<strong>Pros:</strong> Allows for different formatting for different fields (Commands can have a different colour from the fields)<br>
+<strong>Cons:</strong> Original structure will be disrupted. Command box will no longer be single line text input, which have consequences such as the user cannot backspace or select through the entire line.</p>
+</div>
+<div class="paragraph">
+<p><strong>Aspect:</strong> auto-completion drop-down list<br>
+<strong>Alternative 1 (current choice):</strong> Continue to use the original TextField and use external library to bind auto-completion<br>
+<strong>Pros:</strong> Easy to implement<br>
+<strong>Cons:</strong> User cannot see the full format of the commands in the drop-down list<br>
+<strong>Alternative 2:</strong> Use ComboBox<br>
+<strong>Pros:</strong> User can see the required fields for each command in the drop-down box<br>
+<strong>Cons:</strong> As user selects an option, the command is executed with the place holders, resulting in an invalid command. User has to manually select the placeholders and change accordingly.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="keyboard-shortcuts-mechanism"><a class="link" href="#keyboard-shortcuts-mechanism">4.5. Keyboard Shortcuts Mechanism</a></h3>
 <div class="paragraph">
 <p>The keyboard shortcuts mechanism is implemented in the <code>KeyListener</code> class under the <code>UI</code> component of the application.
 It listens for key presses done by the user and executes actions mapped to these key presses, or key events.
@@ -1107,7 +1175,7 @@ An example of such an execution is given as shown:</p>
 <p>Where the key combination <code>FOCUS_PERSON_LIST</code> matches the <code>keyEvent</code> captured by the event filter.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.1. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> The way commands words are executed<br>
 <strong>Alternative 1 (current choice):</strong> Pressing the shortcut automatically executes the command<br>
@@ -1131,7 +1199,7 @@ Thus, it may be time consuming for the user to search for a contact by scrolling
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.5. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.6. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -1169,7 +1237,7 @@ Thus, it may be time consuming for the user to search for a contact by scrolling
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration"><a class="link" href="#configuration">4.6. Configuration</a></h3>
+<h3 id="configuration"><a class="link" href="#configuration">4.7. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2805,7 +2873,7 @@ tags matching the specified query</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-20 11:55:28 +00:00
+Last updated 2017-10-20 18:16:27 +00:00
 </div>
 </div>
 </body>
