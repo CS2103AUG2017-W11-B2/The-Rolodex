@@ -38,9 +38,11 @@
 <li><a href="#undoing-previous-command-code-undo-code-or-code-u-code">2.9. Undoing previous command : <code>undo</code> or <code>u</code></a></li>
 <li><a href="#redoing-the-previously-undone-command-code-redo-code-or-code-r-code">2.10. Redoing the previously undone command : <code>redo</code> or <code>r</code></a></li>
 <li><a href="#clearing-all-entries-code-clear-code-or-code-c-code">2.11. Clearing all entries : <code>clear</code> or <code>c</code></a></li>
-<li><a href="#keyboard-shortcuts">2.12. Keyboard Shortcuts</a></li>
-<li><a href="#exiting-the-program-code-exit-code">2.13. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">2.14. Saving the data</a></li>
+<li><a href="#opening-an-existing-rolodex-storage-file-code-open-code-or-code-o-code">2.12. Opening an existing Rolodex storage file: <code>open</code> or <code>o</code></a></li>
+<li><a href="#creating-a-new-rolodex-storage-file-code-new-code-or-code-n-code">2.13. Creating a new Rolodex storage file: <code>new</code> or <code>n</code></a></li>
+<li><a href="#keyboard-shortcuts">2.14. Keyboard Shortcuts</a></li>
+<li><a href="#exiting-the-program-code-exit-code-or-code-quit-code">2.15. Exiting the program : <code>exit</code> or <code>quit</code></a></li>
+<li><a href="#saving-the-data">2.16. Saving the data</a></li>
 </ul>
 </li>
 <li><a href="#faq">3. FAQ</a></li>
@@ -614,20 +616,133 @@ Format: <code>clear</code> or <code>c</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="keyboard-shortcuts"><a class="link" href="#keyboard-shortcuts">2.12. Keyboard Shortcuts</a></h3>
+<h3 id="opening-an-existing-rolodex-storage-file-code-open-code-or-code-o-code"><a class="link" href="#opening-an-existing-rolodex-storage-file-code-open-code-or-code-o-code">2.12. Opening an existing Rolodex storage file: <code>open</code> or <code>o</code></a></h3>
+<div class="paragraph">
+<p>Reloads the application with data from a rolodex at the specified filepath.<br>
+Format: <code>open FILEPATH</code> or <code>o FILEPATH</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Loads the rolodex at the specified <code>FILEPATH</code>.</p>
+</li>
+<li>
+<p>The <code>FILEPATH</code> can be project-relative or any directory on the system.</p>
+</li>
+<li>
+<p>The <code>FILEPATH</code> must be a file with xml formatted data.</p>
+</li>
+<li>
+<p>The <code>FILEPATH</code> must end with a file extension .rldx in order for data to be saved.</p>
+</li>
+<li>
+<p>If <code>FILEPATH</code> does not exist, use the <code>new</code> command instead.</p>
+</li>
+<li>
+<p>The command recognizes directories in formats <kbd>/</kbd> or <kbd>\</kbd> as valid filepaths</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Opening a file without a .rldx extension will not save your changes.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>open C:/Users/Rolodex/downloads/myOwn.rldx</code><br>
+<code>o C:/Users/Rolodex/downloads/myOwn.rldx</code><br>
+<code>o C:\Users\Rolodex\downloads\myOwn.rldx</code><br>
+Loads the application with the data at the directory <code>C:/Users/Rolodex/downloads/myOwn.rldx</code>.</p>
+</li>
+<li>
+<p><code>open data/default.rldx</code><br>
+<code>open data\default.rldx</code><br>
+Loads the application with the data in <code>default.rldx</code> in the folder <code>data</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="creating-a-new-rolodex-storage-file-code-new-code-or-code-n-code"><a class="link" href="#creating-a-new-rolodex-storage-file-code-new-code-or-code-n-code">2.13. Creating a new Rolodex storage file: <code>new</code> or <code>n</code></a></h3>
+<div class="paragraph">
+<p>Creates a new Rolodex at the specified filepath and reloads the application with new sample data.<br>
+Format: <code>new FILEPATH</code> or <code>n FILEPATH</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Creates the rolodex at the specified <code>FILEPATH</code>.</p>
+</li>
+<li>
+<p>The <code>FILEPATH</code> can be project-relative or any directory on the system.</p>
+</li>
+<li>
+<p>The <code>FILEPATH</code> must end with a file extension .rldx in order for data to be created and saved.</p>
+</li>
+<li>
+<p>If <code>FILEPATH</code> already exists, use the <code>open</code> command instead.</p>
+</li>
+<li>
+<p>The command recognizes directories in formats <kbd>/</kbd> or <kbd>\</kbd> as valid filepaths</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>new C:/Users/Rolodex/downloads/myOwn.rldx</code><br>
+<code>n C:/Users/Rolodex/downloads/myOwn.rldx</code><br>
+<code>n C:\Users\Rolodex\downloads\myOwn.rldx</code><br>
+Creates a new Rolodex file <code>myOwn.rldx</code> at the directory <code>C:\Users\Rolodex\downloads</code> and reloads the application with sample data created for the new Rolodex.</p>
+</li>
+<li>
+<p><code>new data/default.rldx</code><br>
+<code>new data\default.rldx</code><br>
+Creates a new Rolodex file <code>default.rldx</code> at the relative directory <code>data</code> and reloads the application with sample data created for the new Rolodex.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="keyboard-shortcuts"><a class="link" href="#keyboard-shortcuts">2.14. Keyboard Shortcuts</a></h3>
 <div class="paragraph">
 <p>A list of keyboard shortcuts is provided <a href="#shortcuts">here</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">2.13. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-the-program-code-exit-code-or-code-quit-code"><a class="link" href="#exiting-the-program-code-exit-code-or-code-quit-code">2.15. Exiting the program : <code>exit</code> or <code>quit</code></a></h3>
 <div class="paragraph">
 <p>Exits the program.<br>
 Format: <code>exit</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">2.14. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">2.16. Saving the data</a></h3>
 <div class="paragraph">
 <p>Rolodex data are saved in the hard disk automatically after any command that changes the data.<br>
 There is no need to save manually.</p>
@@ -657,7 +772,7 @@ e.g. <code>add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1
 <p><strong>Clear</strong> : <code>clear</code> or <code>c</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code> or <code>d INDEX</code>+
+<p><strong>Delete</strong> : <code>delete INDEX</code> or <code>d INDEX</code><br>
 e.g. <code>delete 3</code></p>
 </li>
 <li>
@@ -687,6 +802,17 @@ e.g.<code>select 2</code></p>
 </li>
 <li>
 <p><strong>Redo</strong> : <code>redo</code> or <code>r</code></p>
+</li>
+<li>
+<p><strong>Open</strong> : <code>open FILEPATH</code> or <code>o FILEPATH</code><br>
+e.g. <code>open data/default.rldx</code> or <code>o D:\someDirectory\some.rldx</code></p>
+</li>
+<li>
+<p><strong>New</strong> : <code>new FILEPATH</code> or <code>n FILEPATH</code><br>
+e.g. <code>new data/default.rldx</code> or <code>n D:\someDirectory\some.rldx</code></p>
+</li>
+<li>
+<p><strong>Exit</strong> : <code>exit</code> or <code>quit</code></p>
 </li>
 </ul>
 </div>
@@ -767,7 +893,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-20 06:53:14 +00:00
+Last updated 2017-10-20 07:55:22 +00:00
 </div>
 </div>
 </body>
