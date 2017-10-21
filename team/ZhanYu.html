@@ -35,7 +35,7 @@ It is written in Java, and has about 6 kLoC.<br></p>
 <h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
 <hr>
 <div class="sect4">
-<h5 id="locating-persons-in-rolodex-code-find-code-or-code-f-code-or-code-search-code"><a class="link" href="#locating-persons-in-rolodex-code-find-code-or-code-f-code-or-code-search-code">Locating persons in Rolodex: <code>find</code> or <code>f</code> or <code>search</code></a></h5>
+<h5 id="locating-persons-in-rolodex-code-find-code-code-f-code-code-filter-code-or-code-search-code"><a class="link" href="#locating-persons-in-rolodex-code-find-code-code-f-code-code-filter-code-or-code-search-code">Locating persons in Rolodex: <code>find</code>, <code>f</code>, <code>filter</code> or <code>search</code></a></h5>
 <div class="paragraph">
 <p>Finds persons in Rolodex.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
@@ -281,7 +281,7 @@ to the currently examined name word in which the contact will be added.</p>
 <h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External behavior</a></h4>
 <hr>
 <div class="sect4">
-<h5 id="listing-all-persons-code-list-code-or-code-l-code"><a class="link" href="#listing-all-persons-code-list-code-or-code-l-code">Listing all persons : <code>list</code> or <code>l</code></a></h5>
+<h5 id="listing-all-persons-code-list-code-code-l-code-code-show-code-or-code-display-code"><a class="link" href="#listing-all-persons-code-list-code-code-l-code-code-show-code-or-code-display-code">Listing all persons : <code>list</code>, <code>l</code>, <code>show</code> or <code>display</code></a></h5>
 <div class="paragraph">
 <p>Shows a list of all persons in Rolodex, sorted by the specified sort order or default sort order.<br>
 Format: <code>list [SORT_ARGUMENTS]</code> or <code>l [SORT_ARGUMENTS]</code><br>
@@ -341,7 +341,7 @@ Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>L</kbd></span></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="locating-persons-in-rolodex-code-find-code-or-code-f-code-or-code-search-code-2"><a class="link" href="#locating-persons-in-rolodex-code-find-code-or-code-f-code-or-code-search-code-2">Locating persons in Rolodex: <code>find</code> or <code>f</code> or <code>search</code></a></h5>
+<h5 id="locating-persons-in-rolodex-code-find-code-code-f-code-code-filter-code-or-code-search-code-2"><a class="link" href="#locating-persons-in-rolodex-code-find-code-code-f-code-code-filter-code-or-code-search-code-2">Locating persons in Rolodex: <code>find</code>, <code>f</code>, <code>filter</code> or <code>search</code></a></h5>
 <div class="paragraph">
 <p>Finds persons in Rolodex.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
@@ -634,7 +634,7 @@ comparator before executing a sort and filter which is handled by the event cons
 <h4 id="external-behavior-3"><a class="link" href="#external-behavior-3">External behavior</a></h4>
 <hr>
 <div class="sect4">
-<h5 id="opening-an-existing-rolodex-storage-file-code-open-code-or-code-o-code"><a class="link" href="#opening-an-existing-rolodex-storage-file-code-open-code-or-code-o-code">Opening an existing Rolodex storage file: <code>open</code> or <code>o</code></a></h5>
+<h5 id="opening-an-existing-rolodex-storage-file-code-open-code-code-o-code-code-cd-code-code-ls-code-code-code"><a class="link" href="#opening-an-existing-rolodex-storage-file-code-open-code-code-o-code-code-cd-code-code-ls-code-code-code">Opening an existing Rolodex storage file: <code>open</code>, <code>o</code>, <code>cd</code>, <code>ls</code>, <code>&lt;</code></a></h5>
 <div class="paragraph">
 <p>Reloads the application with data from a rolodex at the specified filepath.<br>
 Format: <code>open FILEPATH</code> or <code>o FILEPATH</code></p>
@@ -699,7 +699,7 @@ Loads the application with the data in <code>default.rldx</code> in the folder <
 </div>
 </div>
 <div class="sect4">
-<h5 id="creating-a-new-rolodex-storage-file-code-new-code-or-code-n-code"><a class="link" href="#creating-a-new-rolodex-storage-file-code-new-code-or-code-n-code">Creating a new Rolodex storage file: <code>new</code> or <code>n</code></a></h5>
+<h5 id="creating-a-new-rolodex-storage-file-code-new-code-code-n-code-code-touch-code-or-code-code"><a class="link" href="#creating-a-new-rolodex-storage-file-code-new-code-code-n-code-code-touch-code-or-code-code">Creating a new Rolodex storage file: <code>new</code>, <code>n</code>, <code>touch</code> or <code>&gt;</code></a></h5>
 <div class="paragraph">
 <p>Creates a new Rolodex at the specified filepath and reloads the application with new sample data.<br>
 Format: <code>new FILEPATH</code> or <code>n FILEPATH</code></p>
@@ -832,15 +832,15 @@ the specified active directory:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>@Override
-public CommandResult execute() throws CommandException {
-    if (new File(filePath).exists()) {
-        throw  new CommandException(String.format(MESSAGE_ALREADY_EXISTS, filePath));
-    } else {
-        EventsCenter.getInstance().post(new OpenRolodexRequestEvent(filePath));
-        return new CommandResult(String.format(MESSAGE_CREATING, filePath));
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+    <span class="keyword">if</span> (<span class="keyword">new</span> <span class="predefined-type">File</span>(filePath).exists()) {
+        <span class="keyword">throw</span>  <span class="keyword">new</span> CommandException(<span class="predefined-type">String</span>.format(MESSAGE_ALREADY_EXISTS, filePath));
+    } <span class="keyword">else</span> {
+        EventsCenter.getInstance().post(<span class="keyword">new</span> OpenRolodexRequestEvent(filePath));
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_CREATING, filePath));
     }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -848,15 +848,15 @@ public CommandResult execute() throws CommandException {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>@Override
-public CommandResult execute() throws CommandException {
-    if (new File(filePath).exists()) {
-        EventsCenter.getInstance().post(new OpenRolodexRequestEvent(filePath));
-        return new CommandResult(String.format(MESSAGE_OPENING, filePath));
-    } else {
-        throw new CommandException(String.format(MESSAGE_NOT_EXIST, filePath));
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+    <span class="keyword">if</span> (<span class="keyword">new</span> <span class="predefined-type">File</span>(filePath).exists()) {
+        EventsCenter.getInstance().post(<span class="keyword">new</span> OpenRolodexRequestEvent(filePath));
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_OPENING, filePath));
+    } <span class="keyword">else</span> {
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(<span class="predefined-type">String</span>.format(MESSAGE_NOT_EXIST, filePath));
     }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -874,14 +874,14 @@ subset of xml for the Rolodex application, as seen in the snippet below:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>public void saveRolodex(ReadOnlyRolodex rolodex, String filePath) throws IOException {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> saveRolodex(ReadOnlyRolodex rolodex, <span class="predefined-type">String</span> filePath) <span class="directive">throws</span> <span class="exception">IOException</span> {
     ...
     if (!isValidRolodexStorageExtension(filePath)) {
-        throw new InvalidExtensionException(
-                String.format(MESSAGE_INVALID_EXTENSION_FORMAT, ROLODEX_FILE_EXTENSION));
+        <span class="keyword">throw</span> <span class="keyword">new</span> InvalidExtensionException(
+                <span class="predefined-type">String</span>.format(MESSAGE_INVALID_EXTENSION_FORMAT, ROLODEX_FILE_EXTENSION));
     }
     ...
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="sect5">
@@ -916,6 +916,89 @@ Another approach would be to reload the application with a loaded and built .jar
 <strong>Alternative 1 (current choice):</strong> Two commands, one for opening existing files and one for creating new files.<br>
 <strong>Pros:</strong> The user can easily be notified if a file exists or if it has been moved.<br>
 <strong>Cons:</strong> The user would have to take note of two commands instead of one.<br></p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-improved-code-java-util-set-code-implementation-for-command-abbreviations"><a class="link" href="#enhancement-improved-code-java-util-set-code-implementation-for-command-abbreviations">Enhancement Improved: <code>java.util.Set</code> implementation for command abbreviations</a></h3>
+<div class="sect3">
+<h4 id="justification-4"><a class="link" href="#justification-4">Justification</a></h4>
+<div class="paragraph">
+<p>Using constants to manually check if a command word belongs to a particular command is extremely tedious for both
+developers and users. In addition, using constants forces the program to have to check through all possible command
+abbreviations belonging to a command word in the worst case. A java <code>HashSet</code> takes care of these problems by improving
+access time and improves manageability of the codebase.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h4>
+<hr>
+<div class="sect4">
+<h5 id="abbreviation-mechanism"><a class="link" href="#abbreviation-mechanism">Abbreviation mechanism</a></h5>
+<div class="paragraph">
+<p>The ability for users to enter a variety of different words for a same command is implemented using <code>java.util.set</code>.</p>
+</div>
+<div class="paragraph">
+<p>An example as implemented in the open command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">java.util.HashSet</span>;
+<span class="keyword">import</span> <span class="include">java.util.Set</span>;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">OpenCommand</span> <span class="directive">extends</span> Command {
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> COMMAND_WORD = <span class="string"><span class="delimiter">&quot;</span><span class="content">open</span><span class="delimiter">&quot;</span></span>;
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt; COMMAND_WORD_ABBREVIATIONS =
+            <span class="keyword">new</span> <span class="predefined-type">HashSet</span>&lt;&gt;(<span class="predefined-type">Arrays</span>.asList(COMMAND_WORD, <span class="string"><span class="delimiter">&quot;</span><span class="content">o</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">cd</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">ls</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;</span><span class="delimiter">&quot;</span></span>));
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>COMMAND_WORD_ABBREVIATIONS</code> is implemented using a <code>java.util.HashSet</code> which offers reasonably fast access times.</p>
+</div>
+<div class="paragraph">
+<p>The user would be able to use a wide variety of different commands such as <code>o</code>, <code>cd</code> like on Windows cmd, <code>ls</code> on
+UNIX-like systems or the loose <code>&lt;</code> such as when you run a <code>java program &lt; input &gt; output</code> on a wide variety of systems.</p>
+</div>
+<div class="paragraph">
+<p>It can easily be seen that using a set implementation, the developer would have an extremely easy time adding/ deleting
+new abbreviations. A set implementation also allows an easy way of testing if there are conflicting abbreviations, by
+simply permuting the <code>COMMAND_WORD_ABBREVIATIONS</code> property of all possible commands and checking if all permutations are
+pairwise disjoint:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> parseAllCommandAbbreviationsAreDisjoint() {
+    <span class="predefined-type">ArrayList</span>&lt;Pair&lt;<span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt;, <span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt;&gt;&gt; commandAbbreviationPermutations =
+            generateCommandAbbreviationPermutations(POSSIBLE_COMMAND_ABBREVIATIONS);
+    <span class="keyword">for</span> (Pair&lt;<span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt;, <span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt;&gt; commandAbbreviationPair : commandAbbreviationPermutations) {
+        assertTrue(<span class="predefined-type">Collections</span>.disjoint(commandAbbreviationPair.getKey(), commandAbbreviationPair.getValue()));
+    }
+}</code></pre>
+</div>
+</div>
+<div class="sect5">
+<h6 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h6>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation<br>
+<strong>Alternative 1 (current choice):</strong> A Set of strings<br>
+<strong>Pros:</strong> Constant access time per command level. Improves performance and reliability significantly.<br>
+<strong>Pros:</strong> Ease of testing for conflicting abbreviations, particularly where developers forget if they used a
+same abbreviation for two different commands (e.g. assigning <code>h</code> to both the <code>history</code> and <code>help</code> commands).<br>
+<strong>Cons:</strong> If you have a better suggestion than the above implementation, feel free to create a new issue for discussion
+on <a href="https://github.com/CS2103AUG2017-W11-B2/main/issues">github</a>.<br>
+<strong>Alternative 2 (previous choice):</strong> Manually named string Constants<br>
+<strong>Pros:</strong> Forces developer to be more prudent in checking through the conflicting abbreviations.<br>
+<strong>Cons:</strong> Developers would have to manually check through all commands to ensure the accuracy of the abbreviations,
+which is time-consuming and makes way for human errors.<br>
+<strong>Cons:</strong> A switch-case for all possible commands abbreviations would perform significantly slower than direct memory
+access on a java <code>HashSet</code>, in the worst case.</p>
 </div>
 <hr>
 </div>
@@ -982,7 +1065,7 @@ Another approach would be to reload the application with a loaded and built .jar
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-21 13:10:10 +00:00
+Last updated 2017-10-21 20:58:31 +00:00
 </div>
 </div>
 </body>

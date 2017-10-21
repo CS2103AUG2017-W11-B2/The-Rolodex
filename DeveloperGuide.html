@@ -49,10 +49,11 @@
 <li><a href="#open-file-and-new-file-mechanism">4.2. Open file and New file mechanism</a></li>
 <li><a href="#fuzzy-finding-mechanism">4.3. Fuzzy finding mechanism</a></li>
 <li><a href="#sorting-mechanism">4.4. Sorting mechanism</a></li>
-<li><a href="#auto-completion-mechanism">4.5. Auto-completion mechanism</a></li>
-<li><a href="#keyboard-shortcuts-mechanism">4.6. Keyboard Shortcuts Mechanism</a></li>
-<li><a href="#logging">4.7. Logging</a></li>
-<li><a href="#configuration">4.8. Configuration</a></li>
+<li><a href="#abbreviation-mechanism">4.5. Abbreviation mechanism</a></li>
+<li><a href="#auto-completion-mechanism">4.6. Auto-completion mechanism</a></li>
+<li><a href="#keyboard-shortcuts-mechanism">4.7. Keyboard Shortcuts Mechanism</a></li>
+<li><a href="#logging">4.8. Logging</a></li>
+<li><a href="#configuration">4.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -889,15 +890,15 @@ the specified active directory:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>@Override
-public CommandResult execute() throws CommandException {
-    if (new File(filePath).exists()) {
-        throw  new CommandException(String.format(MESSAGE_ALREADY_EXISTS, filePath));
-    } else {
-        EventsCenter.getInstance().post(new OpenRolodexRequestEvent(filePath));
-        return new CommandResult(String.format(MESSAGE_CREATING, filePath));
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+    <span class="keyword">if</span> (<span class="keyword">new</span> <span class="predefined-type">File</span>(filePath).exists()) {
+        <span class="keyword">throw</span>  <span class="keyword">new</span> CommandException(<span class="predefined-type">String</span>.format(MESSAGE_ALREADY_EXISTS, filePath));
+    } <span class="keyword">else</span> {
+        EventsCenter.getInstance().post(<span class="keyword">new</span> OpenRolodexRequestEvent(filePath));
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_CREATING, filePath));
     }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -905,15 +906,15 @@ public CommandResult execute() throws CommandException {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>@Override
-public CommandResult execute() throws CommandException {
-    if (new File(filePath).exists()) {
-        EventsCenter.getInstance().post(new OpenRolodexRequestEvent(filePath));
-        return new CommandResult(String.format(MESSAGE_OPENING, filePath));
-    } else {
-        throw new CommandException(String.format(MESSAGE_NOT_EXIST, filePath));
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+    <span class="keyword">if</span> (<span class="keyword">new</span> <span class="predefined-type">File</span>(filePath).exists()) {
+        EventsCenter.getInstance().post(<span class="keyword">new</span> OpenRolodexRequestEvent(filePath));
+        <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_OPENING, filePath));
+    } <span class="keyword">else</span> {
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(<span class="predefined-type">String</span>.format(MESSAGE_NOT_EXIST, filePath));
     }
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -931,14 +932,14 @@ subset of xml for the Rolodex application, as seen in the snippet below:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre>public void saveRolodex(ReadOnlyRolodex rolodex, String filePath) throws IOException {
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">void</span> saveRolodex(ReadOnlyRolodex rolodex, <span class="predefined-type">String</span> filePath) <span class="directive">throws</span> <span class="exception">IOException</span> {
     ...
     if (!isValidRolodexStorageExtension(filePath)) {
-        throw new InvalidExtensionException(
-                String.format(MESSAGE_INVALID_EXTENSION_FORMAT, ROLODEX_FILE_EXTENSION));
+        <span class="keyword">throw</span> <span class="keyword">new</span> InvalidExtensionException(
+                <span class="predefined-type">String</span>.format(MESSAGE_INVALID_EXTENSION_FORMAT, ROLODEX_FILE_EXTENSION));
     }
     ...
-}</pre>
+}</code></pre>
 </div>
 </div>
 <div class="sect3">
@@ -1201,7 +1202,73 @@ comparator before executing a sort and filter which is handled by the event cons
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-completion-mechanism"><a class="link" href="#auto-completion-mechanism">4.5. Auto-completion mechanism</a></h3>
+<h3 id="abbreviation-mechanism"><a class="link" href="#abbreviation-mechanism">4.5. Abbreviation mechanism</a></h3>
+<div class="paragraph">
+<p>The ability for users to enter a variety of different words for a same command is implemented using <code>java.util.set</code>.</p>
+</div>
+<div class="paragraph">
+<p>An example as implemented in the open command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">java.util.HashSet</span>;
+<span class="keyword">import</span> <span class="include">java.util.Set</span>;
+
+<span class="directive">public</span> <span class="type">class</span> <span class="class">OpenCommand</span> <span class="directive">extends</span> Command {
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> COMMAND_WORD = <span class="string"><span class="delimiter">&quot;</span><span class="content">open</span><span class="delimiter">&quot;</span></span>;
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt; COMMAND_WORD_ABBREVIATIONS =
+            <span class="keyword">new</span> <span class="predefined-type">HashSet</span>&lt;&gt;(<span class="predefined-type">Arrays</span>.asList(COMMAND_WORD, <span class="string"><span class="delimiter">&quot;</span><span class="content">o</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">cd</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">ls</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;</span><span class="delimiter">&quot;</span></span>));
+    ...
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>COMMAND_WORD_ABBREVIATIONS</code> is implemented using a <code>java.util.HashSet</code> which offers reasonably fast access times.</p>
+</div>
+<div class="paragraph">
+<p>The user would be able to use a wide variety of different commands such as <code>o</code>, <code>cd</code> like on Windows cmd, <code>ls</code> on
+UNIX-like systems or the loose <code>&lt;</code> such as when you run a <code>java program &lt; input &gt; output</code> on a wide variety of systems.</p>
+</div>
+<div class="paragraph">
+<p>It can easily be seen that using a set implementation, the developer would have an extremely easy time adding/ deleting
+new abbreviations. A set implementation also allows an easy way of testing if there are conflicting abbreviations, by
+simply permuting the <code>COMMAND_WORD_ABBREVIATIONS</code> property of all possible commands and checking if all permutations are
+pairwise disjoint:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Test</span>
+<span class="directive">public</span> <span class="type">void</span> parseAllCommandAbbreviationsAreDisjoint() {
+    <span class="predefined-type">ArrayList</span>&lt;Pair&lt;<span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt;, <span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt;&gt;&gt; commandAbbreviationPermutations =
+            generateCommandAbbreviationPermutations(POSSIBLE_COMMAND_ABBREVIATIONS);
+    <span class="keyword">for</span> (Pair&lt;<span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt;, <span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt;&gt; commandAbbreviationPair : commandAbbreviationPermutations) {
+        assertTrue(<span class="predefined-type">Collections</span>.disjoint(commandAbbreviationPair.getKey(), commandAbbreviationPair.getValue()));
+    }
+}</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation<br>
+<strong>Alternative 1 (current choice):</strong> A Set of strings<br>
+<strong>Pros:</strong> Constant access time per command level. Improves performance and reliability significantly.<br>
+<strong>Pros:</strong> Ease of testing for conflicting abbreviations, particularly where developers forget if they used a
+same abbreviation for two different commands (e.g. assigning <code>h</code> to both the <code>history</code> and <code>help</code> commands).<br>
+<strong>Cons:</strong> If you have a better suggestion than the above implementation, feel free to create a new issue for discussion
+on <a href="https://github.com/CS2103AUG2017-W11-B2/main/issues">github</a>.<br>
+<strong>Alternative 2 (previous choice):</strong> Manually named string Constants<br>
+<strong>Pros:</strong> Forces developer to be more prudent in checking through the conflicting abbreviations.<br>
+<strong>Cons:</strong> Developers would have to manually check through all commands to ensure the accuracy of the abbreviations,
+which is time-consuming and makes way for human errors.<br>
+<strong>Cons:</strong> A switch-case for all possible commands abbreviations would perform significantly slower than direct memory
+access on a java <code>HashSet</code>, in the worst case.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="auto-completion-mechanism"><a class="link" href="#auto-completion-mechanism">4.6. Auto-completion mechanism</a></h3>
 <div class="paragraph">
 <p>Auto-completion mechanism is implemented in <code>CommandBox</code> class under UI component.</p>
 </div>
@@ -1253,7 +1320,7 @@ The anchor and caret positions are reset to the start and end of the next field 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.1. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.6.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> text input control<br>
 <strong>Alternative 1 (current choice):</strong> Continue to use the original TextField<br>
@@ -1276,7 +1343,7 @@ The anchor and caret positions are reset to the start and end of the next field 
 </div>
 </div>
 <div class="sect2">
-<h3 id="keyboard-shortcuts-mechanism"><a class="link" href="#keyboard-shortcuts-mechanism">4.6. Keyboard Shortcuts Mechanism</a></h3>
+<h3 id="keyboard-shortcuts-mechanism"><a class="link" href="#keyboard-shortcuts-mechanism">4.7. Keyboard Shortcuts Mechanism</a></h3>
 <div class="paragraph">
 <p>The keyboard shortcuts mechanism is implemented in the <code>KeyListener</code> class under the <code>UI</code> component of the application.
 It listens for key presses done by the user and executes actions mapped to these key presses, or key events.
@@ -1344,7 +1411,7 @@ An example of such an execution is given as shown:</p>
 <p>Where the key combination <code>FOCUS_PERSON_LIST</code> matches the <code>keyEvent</code> captured by the event filter.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.6.1. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.7.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> The way commands words are executed<br>
 <strong>Alternative 1 (current choice):</strong> Pressing the shortcut automatically executes the command<br>
@@ -1368,7 +1435,7 @@ Thus, it may be time consuming for the user to search for a contact by scrolling
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -1406,7 +1473,7 @@ Thus, it may be time consuming for the user to search for a contact by scrolling
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration"><a class="link" href="#configuration">4.8. Configuration</a></h3>
+<h3 id="configuration"><a class="link" href="#configuration">4.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -3040,7 +3107,7 @@ tags matching the specified query</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-21 13:10:10 +00:00
+Last updated 2017-10-21 20:58:31 +00:00
 </div>
 </div>
 </body>
