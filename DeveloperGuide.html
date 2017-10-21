@@ -46,12 +46,13 @@
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
 <li><a href="#undo-redo-mechanism">4.1. Undo/Redo mechanism</a></li>
-<li><a href="#fuzzy-finding-mechanism">4.2. Fuzzy finding mechanism</a></li>
-<li><a href="#sorting-mechanism">4.3. Sorting mechanism</a></li>
-<li><a href="#auto-completion-mechanism">4.4. Auto-completion mechanism</a></li>
-<li><a href="#keyboard-shortcuts-mechanism">4.5. Keyboard Shortcuts Mechanism</a></li>
-<li><a href="#logging">4.6. Logging</a></li>
-<li><a href="#configuration">4.7. Configuration</a></li>
+<li><a href="#open-file-and-new-file-mechanism">4.2. Open file and New file mechanism</a></li>
+<li><a href="#fuzzy-finding-mechanism">4.3. Fuzzy finding mechanism</a></li>
+<li><a href="#sorting-mechanism">4.4. Sorting mechanism</a></li>
+<li><a href="#auto-completion-mechanism">4.5. Auto-completion mechanism</a></li>
+<li><a href="#keyboard-shortcuts-mechanism">4.6. Keyboard Shortcuts Mechanism</a></li>
+<li><a href="#logging">4.7. Logging</a></li>
+<li><a href="#configuration">4.8. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -816,7 +817,167 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="fuzzy-finding-mechanism"><a class="link" href="#fuzzy-finding-mechanism">4.2. Fuzzy finding mechanism</a></h3>
+<h3 id="open-file-and-new-file-mechanism"><a class="link" href="#open-file-and-new-file-mechanism">4.2. Open file and New file mechanism</a></h3>
+<div class="paragraph">
+<p>The open new file and creating new file mechanism are handled by two new types of requests under the <code>EventsCenter</code>,
+<code>OpenRolodexRequestEvent</code> and <code>RolodexChangedDirectoryEvent</code>. Upon receiving a new command, the <code>MainApp</code> attempts to
+reloads the instance <code>model</code> and <code>logic</code> but <strong>not the <code>UI</code></strong>.</p>
+</div>
+<div class="paragraph">
+<p>The high level sequence diagram for a typical <code>open</code> request can be seen below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/OpenNewHighLevelSequenceDiagram.png" alt="OpenNewHighLevelSequenceDiagram">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A user requests to open <code>data/default.rldx</code>.</p>
+</li>
+<li>
+<p>The command is handled the same way as other commands, by the parser in
+logic, then via the <code>OpenCommand</code> object itself, under the <code>Logic</code> component of the application.</p>
+</li>
+<li>
+<p>Upon a successful parsing of the command and execution, the command would raise a new <code>OpenRolodexRequestEvent</code> to
+be handled by the <code>EventsCenter</code>.</p>
+</li>
+<li>
+<p>The <code>EventsCenter</code> posts a new <code>OpenRolodexRequestEvent</code> back to the <code>MainApp</code> where the new Rolodex path would be
+loaded with the successfully read data from the file path specified:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The preferences file of the user specified under <code>config.json</code> would now point to the latest active directory.</p>
+</li>
+<li>
+<p>The <code>storage</code>, <code>model</code> and <code>logic</code> instances of the <code>MainApp</code> would be now loaded with data from the new active directory.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The behaviour of the <code>save</code> operation remains unchanged, to be handled under the <code>RolodexChangedEvent</code>.
+The Rolodex only writes to the active database upon an editor command (e.g. <code>add</code>, <code>edit</code>).
+The <code>UI</code> however, is updated as seen in the following sequence diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/OpenNewRolodexChangedLocationEventSequenceDiagram.png" alt="OpenNewRolodexChangedLocationEventSequenceDiagram">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Upon successful handling of a <code>OpenRolodexRequestEvent</code>, <code>MainApp</code> raises a new <code>RolodexChangedDirectoryEvent</code>.</p>
+</li>
+<li>
+<p>The event is then reposted by the <code>EventsCenter</code>.</p>
+</li>
+<li>
+<p>The <code>MainWindow</code> of the <code>UI</code> instance consumes the event and updates the status bar with the new active filepath.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The <code>New</code> command only differs from the sequence of the open new Rolodex by being executed when no valid file exists at
+the specified active directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@Override
+public CommandResult execute() throws CommandException {
+    if (new File(filePath).exists()) {
+        throw  new CommandException(String.format(MESSAGE_ALREADY_EXISTS, filePath));
+    } else {
+        EventsCenter.getInstance().post(new OpenRolodexRequestEvent(filePath));
+        return new CommandResult(String.format(MESSAGE_CREATING, filePath));
+    }
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In contrast, the <code>Open</code> command is a reverse of the above:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>@Override
+public CommandResult execute() throws CommandException {
+    if (new File(filePath).exists()) {
+        EventsCenter.getInstance().post(new OpenRolodexRequestEvent(filePath));
+        return new CommandResult(String.format(MESSAGE_OPENING, filePath));
+    } else {
+        throw new CommandException(String.format(MESSAGE_NOT_EXIST, filePath));
+    }
+}</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The <code>XmlRolodexStorage.java</code> now only saves upon recognizing that the current file has a <code>.rldx</code> extension, which is a
+subset of xml for the Rolodex application, as seen in the snippet below:
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>public void saveRolodex(ReadOnlyRolodex rolodex, String filePath) throws IOException {
+    ...
+    if (!isValidRolodexStorageExtension(filePath)) {
+        throw new InvalidExtensionException(
+                String.format(MESSAGE_INVALID_EXTENSION_FORMAT, ROLODEX_FILE_EXTENSION));
+    }
+    ...
+}</pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> General Implementation<br>
+<strong>Alternative 1 (current choice):</strong> Reload the current <code>MainApp</code> with the new database.<br>
+<strong>Pros:</strong> The application can be quickly reloaded onto the active window.<br>
+<strong>Cons:</strong> User might need to switch back and forth between the Rolodex directories.<br>
+<strong>Alternative 2:</strong> Reload <code>MainApp</code> with a new application instance.<br>
+<strong>Constraint:</strong> JavaFX only allows launch(args) to be launched once per execution time on a code level.
+Another approach would be to reload the application with a loaded and built .jar.<br>
+<strong>Pros:</strong> Easier logic to understand for new developers.<br>
+<strong>Cons:</strong> Building and debugging with a second .jar will be confusing and problematic to any development workflow.<br>
+<strong>Alternative 3:</strong> Open a new window with the loaded data.<br>
+<strong>Pros:</strong> The user can continue to operate on the previous Rolodex application.<br>
+<strong>Cons:</strong> The developer would have to spend time configuring different <code>EventsCenter</code> posts for the different application windows.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Saving only to files with <code>.rldx</code> extensions<br>
+<strong>Alternative 1 (current choice):</strong> Write to the active directory only if it has a <code>.rldx</code> extension.<br>
+<strong>Pros:</strong> The application control becomes stricter, preventing users from writing to a file with say a <code>.png</code> extension.<br>
+<strong>Cons:</strong> Extensions become forced even for valid databases with <code>.xml</code> file types.<br>
+<strong>Alternative 2:</strong> Allow writable to all file extensions.<br>
+<strong>Pros:</strong> Users can have more freedom in choice of file naming.<br>
+<strong>Cons:</strong> If the user accidentally writes to a file that is not a valid database, the user would corrupt the file data.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Separating <code>open</code> and <code>new</code> commands<br>
+<strong>Alternative 1 (current choice):</strong> Two commands, one for opening existing files and one for creating new files.<br>
+<strong>Pros:</strong> The user can easily be notified if a file exists or if it has been moved.<br>
+<strong>Cons:</strong> The user would have to take note of two commands instead of one.<br></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="fuzzy-finding-mechanism"><a class="link" href="#fuzzy-finding-mechanism">4.3. Fuzzy finding mechanism</a></h3>
 <div class="paragraph">
 <p>The fuzzy finding mechanism is powered by <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a>,
 a string heuristic for measuring the difference between two character sequences. It can be informally viewed as the number
@@ -881,7 +1042,7 @@ and starts searching for exact matches.
 to the currently examined name word in which the contact will be added.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.1. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Length of name word<br>
 <strong>Alternative 1 (current choice):</strong> Use a global minimum for defining when the fuzzy finding should execute.<br>
@@ -905,7 +1066,7 @@ to the currently examined name word in which the contact will be added.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-mechanism"><a class="link" href="#sorting-mechanism">4.3. Sorting mechanism</a></h3>
+<h3 id="sorting-mechanism"><a class="link" href="#sorting-mechanism">4.4. Sorting mechanism</a></h3>
 <div class="paragraph">
 <p>The sorting mechanism is integrated into the <code>list</code> and <code>find</code> commands which resides in the application&#8217;s <code>logic</code> component.
 It supports sorting in ascending or descending order of most fields of a person (e.g. <span class="underline">Name</span>, <span class="underline">Phone</span>).
@@ -1015,7 +1176,7 @@ Find cannot work on name words matching sort arguments.
 comparator before executing a sort and filter which is handled by the event consumer.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.1. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Integrating sort<br>
 <strong>Alternative 1 (current choice):</strong> Integrate sort into existing commands.<br>
@@ -1040,7 +1201,7 @@ comparator before executing a sort and filter which is handled by the event cons
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-completion-mechanism"><a class="link" href="#auto-completion-mechanism">4.4. Auto-completion mechanism</a></h3>
+<h3 id="auto-completion-mechanism"><a class="link" href="#auto-completion-mechanism">4.5. Auto-completion mechanism</a></h3>
 <div class="paragraph">
 <p>Auto-completion mechanism is implemented in <code>CommandBox</code> class under UI component.</p>
 </div>
@@ -1092,7 +1253,7 @@ The anchor and caret positions are reset to the start and end of the next field 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.1. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> text input control<br>
 <strong>Alternative 1 (current choice):</strong> Continue to use the original TextField<br>
@@ -1115,7 +1276,7 @@ The anchor and caret positions are reset to the start and end of the next field 
 </div>
 </div>
 <div class="sect2">
-<h3 id="keyboard-shortcuts-mechanism"><a class="link" href="#keyboard-shortcuts-mechanism">4.5. Keyboard Shortcuts Mechanism</a></h3>
+<h3 id="keyboard-shortcuts-mechanism"><a class="link" href="#keyboard-shortcuts-mechanism">4.6. Keyboard Shortcuts Mechanism</a></h3>
 <div class="paragraph">
 <p>The keyboard shortcuts mechanism is implemented in the <code>KeyListener</code> class under the <code>UI</code> component of the application.
 It listens for key presses done by the user and executes actions mapped to these key presses, or key events.
@@ -1183,7 +1344,7 @@ An example of such an execution is given as shown:</p>
 <p>Where the key combination <code>FOCUS_PERSON_LIST</code> matches the <code>keyEvent</code> captured by the event filter.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.1. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.6.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> The way commands words are executed<br>
 <strong>Alternative 1 (current choice):</strong> Pressing the shortcut automatically executes the command<br>
@@ -1207,7 +1368,7 @@ Thus, it may be time consuming for the user to search for a contact by scrolling
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.6. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -1245,7 +1406,7 @@ Thus, it may be time consuming for the user to search for a contact by scrolling
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration"><a class="link" href="#configuration">4.7. Configuration</a></h3>
+<h3 id="configuration"><a class="link" href="#configuration">4.8. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -2130,22 +2291,20 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="paragraph">
 <p>Priorities: High (must have) - <code>* * *</code>, Medium (nice to have) - <code>* *</code>, Low (unlikely to have) - <code>*</code></p>
 </div>
-<table class="tableblock frame-all grid-all" style="width: 59%;">
+<table class="tableblock frame-all grid-all spread">
 <colgroup>
-<col style="width: 22%;">
-<col style="width: 23%;">
 <col style="width: 25%;">
-<col style="width: 30%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
 </colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Priority</th>
-<th class="tableblock halign-left valign-top">As a &#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">I want to &#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">So that I can&#8230;&#8203;</th>
-</tr>
-</thead>
 <tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Priority</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">As a &#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">I want to &#8230;&#8203;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">So that I can&#8230;&#8203;</p></td>
+</tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>* * *</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">new user</p></td>
@@ -2881,7 +3040,7 @@ tags matching the specified query</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-20 18:33:25 +00:00
+Last updated 2017-10-21 02:05:46 +00:00
 </div>
 </div>
 </body>
