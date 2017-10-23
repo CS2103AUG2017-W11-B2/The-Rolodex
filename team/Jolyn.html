@@ -81,6 +81,14 @@ and <code>View help window</code> which came with the original state of the appl
 <td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>F1</kbd></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">View help window</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>O</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open a Rolodex file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Create new Rolodex file</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -103,8 +111,12 @@ and <code>View help window</code> which came with the original state of the appl
 <td class="tableblock halign-left valign-top"><p class="tableblock">Select the command box</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>Esc</kbd></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Deselect the command box</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>Esc</kbd> or <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>←</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select the contact list panel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>→</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select the result display panel</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" colspan="2"><p class="tableblock">When the command box is not in selection:</p></td>
@@ -159,8 +171,8 @@ The mapping of actions to key events are found in the <code>KeyListenerUtil</cod
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>KeyListener</code> requires access to the <code>CommandBox</code> and <code>PersonListPanel</code> for key event executions,
-such as changing the focus node and executing word commands.</p>
+<p>The <code>KeyListener</code> requires access to the <code>CommandBox</code>, <code>PersonListPanel</code> and <code>ResultDisplay</code> for key event executions,
+such as changing the focus node.</p>
 </div>
 <div class="paragraph">
 <p>When the user launches the application, the <code>UiManager</code> calls <code>mainWindow.setKeyListeners()</code>
@@ -345,7 +357,7 @@ Sets the profile picture of the 6th person to <code>john.png</code>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-21 22:50:47 +00:00
+Last updated 2017-10-23 10:37:30 +00:00
 </div>
 </div>
 </body>
