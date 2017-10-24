@@ -34,7 +34,7 @@
 <li><a href="#locating-persons-in-rolodex-code-find-code-code-f-code-code-filter-code-or-code-search-code">2.5. Locating persons in Rolodex: <code>find</code>, <code>f</code>, <code>filter</code> or <code>search</code></a></li>
 <li><a href="#deleting-a-person-code-delete-code-code-d-code-or-code-code">2.6. Deleting a person : <code>delete</code>, <code>d</code> or <code>-</code></a></li>
 <li><a href="#selecting-a-person-code-select-code-or-code-s-code">2.7. Selecting a person : <code>select</code> or <code>s</code></a></li>
-<li><a href="#adding-a-note-code-note-code-or-code-n-code-em-coming-in-v2-0-em">2.8. Adding a note: <code>note</code> or <code>n</code> <em>(Coming in V2.0)</em></a></li>
+<li><a href="#adding-a-remark-code-remark-code-or-code-note-code-or-code-rmk-code-em-coming-in-v2-0-em">2.8. Adding a remark: <code>remark</code> or <code>note</code> or <code>rmk</code> <em>(Coming in V2.0)</em></a></li>
 <li><a href="#adding-a-profile-picture-code-picture-code-or-code-pic-code-em-coming-in-v2-0-em">2.9. Adding a profile picture: <code>picture</code> or <code>pic</code> <em>(Coming in V2.0)</em></a></li>
 <li><a href="#listing-entered-commands-code-history-code-code-his-code-or-code-past-code">2.10. Listing entered commands : <code>history</code>, <code>his</code> or <code>past</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code-or-code-u-code">2.11. Undoing previous command : <code>undo</code> or <code>u</code></a></li>
@@ -518,17 +518,17 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-note-code-note-code-or-code-n-code-em-coming-in-v2-0-em"><a class="link" href="#adding-a-note-code-note-code-or-code-n-code-em-coming-in-v2-0-em">2.8. Adding a note: <code>note</code> or <code>n</code> <em>(Coming in V2.0)</em></a></h3>
+<h3 id="adding-a-remark-code-remark-code-or-code-note-code-or-code-rmk-code-em-coming-in-v2-0-em"><a class="link" href="#adding-a-remark-code-remark-code-or-code-note-code-or-code-rmk-code-em-coming-in-v2-0-em">2.8. Adding a remark: <code>remark</code> or <code>note</code> or <code>rmk</code> <em>(Coming in V2.0)</em></a></h3>
 <div class="paragraph">
-<p>Adds a note to the specified person in Rolodex.<br>
-Format: <code>note INDEX [r/NOTE]</code> or <code>note INDEX [r/NOTE]</code></p>
+<p>Adds a remark to the specified person in Rolodex.<br>
+Format: <code>remark INDEX [r/REMARK]</code> or <code>remark INDEX [r/REMARK]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Adds a note to the person at the specified <code>INDEX</code>.</p>
+<p>Adds a remark to the person at the specified <code>INDEX</code>.</p>
 </li>
 <li>
 <p>The index refers to the index number shown in the most recent listing.</p>
@@ -537,7 +537,7 @@ Format: <code>note INDEX [r/NOTE]</code> or <code>note INDEX [r/NOTE]</code></p>
 <p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
 </li>
 <li>
-<p>An existing note will be replaced.</p>
+<p>An existing remark will be replaced.</p>
 </li>
 </ul>
 </div>
@@ -549,12 +549,12 @@ Format: <code>note INDEX [r/NOTE]</code> or <code>note INDEX [r/NOTE]</code></p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>note 1 r/Likes fishing</code><br>
-Sets the note of the 1st person to <code>Likes fishing</code>.</p>
+<p><code>remark 1 r/Likes fishing</code><br>
+Sets the remark of the 1st person to <code>Likes fishing</code>.</p>
 </li>
 <li>
-<p><code>n 1 r/</code><br>
-Removes the note for the 1st person.</p>
+<p><code>note 1 r/</code><br>
+Removes the remark for the 1st person.</p>
 </li>
 </ul>
 </div>
@@ -1107,7 +1107,7 @@ There is no need to save manually.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 12:29:52 +00:00
+Last updated 2017-10-24 12:31:27 +00:00
 </div>
 </div>
 </body>
