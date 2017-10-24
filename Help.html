@@ -272,10 +272,8 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 <p>Existing values will be updated to the input values.</p>
 </li>
 <li>
-<p>When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.</p>
-</li>
-<li>
-<p>You can remove all the person&#8217;s tags by typing <code>t/</code> without specifying any tags after it.</p>
+<p>When editing tags, the existing tags of the person will be toggled i.e if a similar tag exists in the person,
+that tag would be removed, or added otherwise.</p>
 </li>
 </ul>
 </div>
@@ -291,8 +289,9 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;
 Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
 </li>
 <li>
-<p><code>e 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>e 2 n/Betsy Crower t/friends</code><br>
+Edits the name of the 2nd person to be <code>Betsy Crower</code> and adds the tag <code>friends</code> if the tag <code>friends</code> does not exist in
+the 2nd person, or removes it otherwise.</p>
 </li>
 </ul>
 </div>
@@ -1108,7 +1107,7 @@ There is no need to save manually.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-23 10:37:30 +00:00
+Last updated 2017-10-24 12:29:52 +00:00
 </div>
 </div>
 </body>
