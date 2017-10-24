@@ -162,7 +162,8 @@ Keyboard shortcut: <kbd>F1</kbd></p>
 <p>Adds a person to Rolodex<br>
 Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code>
         or <code>a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]&#8230;&#8203;</code>
-        (press TAB after typing <code>add</code> for auto-completion)</p>
+        (press <kbd>Tab</kbd> after typing <code>add</code> for auto-completion)
+Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>A</kbd></span></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -256,7 +257,8 @@ Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>L</kbd></span></p>
 <p>Edits an existing person in Rolodex.<br>
 Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code>
         or <code>e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]&#8230;&#8203;</code>
-        (press TAB after typing <code>edit</code> for auto-completion)</p>
+        (press <kbd>Tab</kbd> after typing <code>edit</code> for auto-completion)
+Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>E</kbd></span></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -303,7 +305,8 @@ the 2nd person, or removes it otherwise.</p>
 Format: <code>find KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
         or <code>f KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
         or <code>search KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
-        (press TAB after typing <code>find</code> for auto-completion)</p>
+        (press <kbd>Tab</kbd> after typing <code>find</code> for auto-completion)
+Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>F</kbd></span></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -438,7 +441,8 @@ Returns an error (do not count as search arguments).</p>
 <div class="paragraph">
 <p>Deletes the specified person from Rolodex.<br>
 Format: <code>delete INDEX</code> or <code>d INDEX</code>
-        (press TAB after typing <code>delete</code> for auto-completion)</p>
+        (press <kbd>Tab</kbd> after typing <code>delete</code> for auto-completion)
+Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></span></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -480,7 +484,8 @@ Deletes the 1st person in the results of the <code>find</code> command.</p>
 <div class="paragraph">
 <p>Selects the person identified by the index number used in the last person listing.<br>
 Format: <code>select INDEX</code> or <code>s INDEX</code>
-        (press TAB after typing <code>select</code> for auto-completion)</p>
+        (press <kbd>Tab</kbd> after typing <code>select</code> for auto-completion)
+Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>S</kbd></span></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -736,7 +741,7 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <div class="paragraph">
 <p>Clears all entries from Rolodex.<br>
 Format: <code>clear</code> or <code>c</code><br>
-Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></span></p>
+Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd></span></p>
 </div>
 </div>
 <div class="sect2">
@@ -1024,12 +1029,28 @@ There is no need to save manually.</p>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>L</kbd></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List all contacts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>A</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the add command format in command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>E</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the edit command format in command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>F</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the find command format in command box</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>H</kbd></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">View history</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>L</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">List all contacts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>S</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the select command format in command box</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Z</kbd></span></p></td>
@@ -1041,6 +1062,10 @@ There is no need to save manually.</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>D</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the delete command format in command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Clear contact list</p></td>
 </tr>
 <tr>
@@ -1129,7 +1154,7 @@ There is no need to save manually.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 12:31:27 +00:00
+Last updated 2017-10-24 21:36:03 +00:00
 </div>
 </div>
 </body>
