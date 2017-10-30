@@ -70,6 +70,8 @@ public class ModelManagerTest {
         assertTrue(modelManager.equals(new ModelManager(rolodex, differentUserPrefs)));
     }
 
+    // @@author jo-lyn-unused
+    // Written as a warm up at the start of phase B and before features were finalised
     @Test
     public void removeTag() throws IllegalValueException, PersonNotFoundException {
 
@@ -106,4 +108,5 @@ public class ModelManagerTest {
         assertFalse(person1.getTags().equals(null));
         assertFalse(person2.getTags().equals(null));
     }
+    // @@author
 }
