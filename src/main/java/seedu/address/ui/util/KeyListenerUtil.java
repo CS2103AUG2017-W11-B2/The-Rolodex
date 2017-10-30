@@ -18,6 +18,7 @@ import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
 
+//@@author jo-lyn
 /**
  * A utility class for mapping key events.
  */
@@ -35,12 +36,14 @@ public class KeyListenerUtil {
     public static final KeyCombination KEY_COMBINATION_LIST = KeyCombination.valueOf(ListCommand.COMMAND_HOTKEY);
     public static final KeyCombination KEY_COMBINATION_OPEN_FILE = KeyCombination.valueOf(OpenCommand.COMMAND_HOTKEY);
     public static final KeyCombination KEY_COMBINATION_NEW_FILE = KeyCombination.valueOf(NewCommand.COMMAND_HOTKEY);
+    //@@author
     public static final KeyCombination KEY_COMBINATION_ADD = KeyCombination.valueOf(AddCommand.COMMAND_HOTKEY);
     public static final KeyCombination KEY_COMBINATION_EDIT = KeyCombination.valueOf(EditCommand.COMMAND_HOTKEY);
     public static final KeyCombination KEY_COMBINATION_FIND = KeyCombination.valueOf(FindCommand.COMMAND_HOTKEY);
     public static final KeyCombination KEY_COMBINATION_SELECT = KeyCombination.valueOf(SelectCommand.COMMAND_HOTKEY);
     public static final KeyCombination KEY_COMBINATION_DELETE = KeyCombination.valueOf(DeleteCommand.COMMAND_HOTKEY);
 
+    //@@author jo-lyn
     public static final Set<KeyCombination> POSSIBLE_KEY_COMBINATIONS =
             new HashSet<>(Arrays.asList(
                     KEY_COMBINATION_FOCUS_PERSON_LIST,
@@ -55,6 +58,7 @@ public class KeyListenerUtil {
                     KEY_COMBINATION_LIST,
                     KEY_COMBINATION_OPEN_FILE,
                     KEY_COMBINATION_NEW_FILE,
+                    //@@author
                     KEY_COMBINATION_ADD,
                     KEY_COMBINATION_EDIT,
                     KEY_COMBINATION_FIND,

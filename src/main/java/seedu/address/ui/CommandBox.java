@@ -36,17 +36,21 @@ public class CommandBox extends UiPart<Region> {
 
     public static final String ERROR_STYLE_CLASS = "error";
     private static final String FXML = "CommandBox.fxml";
-    private static final int TIME_SINCE_TYPING = 300;
+    //@@author jo-lyn
+    private static final int MILLISECONDS_TIME_SINCE_TYPING = 300;
+    //@@author
     private static final int START_OF_FIRST_FIELD = 6;
     private static final int END_OF_FIRST_FIELD = 10;
 
     private final Logger logger = LogsCenter.getLogger(CommandBox.class);
     private final Logic logic;
     private ListElementPointer historySnapshot;
+    //@@author jo-lyn
     private Image keyboardIdle;
     private Image keyboardTyping;
     private Image keyboardError;
     private PauseTransition pause;
+    //@@author
     private int anchorPosition;
     private String selectedText = "";
     private String input;
@@ -69,9 +73,11 @@ public class CommandBox extends UiPart<Region> {
         super(FXML);
         this.logic = logic;
         this.robot = new FxRobot();
+        //@@author jo-lyn
         loadKeyboardIcons();
         keyboardIcon.setImage(keyboardIdle);
-        pause = new PauseTransition(Duration.millis(TIME_SINCE_TYPING));
+        pause = new PauseTransition(Duration.millis(MILLISECONDS_TIME_SINCE_TYPING));
+        //@@author
         final String[] allCommandList = {"add", "delete", "edit", "find", "search", "help", "history",
             "list", "select", "redo", "undo", "exit", "clear"};
         TextFields.bindAutoCompletion(commandTextField, allCommandList);
@@ -81,6 +87,7 @@ public class CommandBox extends UiPart<Region> {
         historySnapshot = logic.getHistorySnapshot();
     }
 
+    //@@author jo-lyn
     public void setFocus() {
         commandTextField.requestFocus();
     }
@@ -97,6 +104,7 @@ public class CommandBox extends UiPart<Region> {
         keyboardTyping = new Image(getClass().getResourceAsStream("/images/keyboardTyping.png"));
         keyboardError = new Image(getClass().getResourceAsStream("/images/keyboardError.png"));
     }
+    //@@author
 
     /**
      * Handles the key press event, {@code keyEvent}.
@@ -228,6 +236,7 @@ public class CommandBox extends UiPart<Region> {
         selectedText = "";
     }
 
+    //@@author jo-lyn
     /**
      * Sets the command box style to use the default style.
      * {@code keyboardTyping} icon changes to {@code keyboardIdle} when there is no change
@@ -244,6 +253,7 @@ public class CommandBox extends UiPart<Region> {
         pause.playFromStart();
         commandTextField.getStyleClass().remove(ERROR_STYLE_CLASS);
     }
+    //@@author
 
     /**
      * if the input matches the command format, automatically selects the first field that the user need to key in
@@ -339,6 +349,7 @@ public class CommandBox extends UiPart<Region> {
         }
     }
 
+    //@@author jo-lyn
     /**
      * Sets the command box style to indicate a failed command.
      */
@@ -352,5 +363,6 @@ public class CommandBox extends UiPart<Region> {
         styleClass.add(ERROR_STYLE_CLASS);
         keyboardIcon.setImage(keyboardError);
     }
+    //@@author
 
 }
