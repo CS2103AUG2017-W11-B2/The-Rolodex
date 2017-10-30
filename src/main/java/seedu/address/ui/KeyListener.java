@@ -63,12 +63,13 @@ public class KeyListener {
             if (commandBox.isFocused() || !(event.getCode() == KeyCode.UP || event.getCode() == KeyCode.DOWN)) {
                 commandBox.processInput();
             }
-            //@author jo-lyn
+            //@@author jo-lyn
             executeKeyEvent(event);
         });
     }
     //@@author
 
+    //@@author jo-lyn
     /**
      * Executes the key event.
      * Matches {@code keyEvent} with non-command events before handling keys mapped to command words.
