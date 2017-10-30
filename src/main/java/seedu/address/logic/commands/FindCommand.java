@@ -20,11 +20,14 @@ import seedu.address.model.person.PersonDataContainsKeywordsPredicate;
 public class FindCommand extends Command {
 
     public static final String COMMAND_WORD = "find";
+    //@@author ZY-Ang
     public static final Set<String> COMMAND_WORD_ABBREVIATIONS =
             new HashSet<>(Arrays.asList(COMMAND_WORD, "f", "filter", "search"));
+    //@@author
     public static final String COMMAND_HOTKEY = "Ctrl+f";
     public static final String FORMAT = "find KEYWORD(S)";
 
+    //@@author ZY-Ang
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names roughly match any of "
             + "the specified keywords (case-insensitive) "
             + "or whose tags contains the specified keywords (case-sensitive), "
@@ -36,18 +39,21 @@ public class FindCommand extends Command {
 
     private final PersonDataContainsKeywordsPredicate predicate;
     private final List<SortArgument> sortArguments;
+    //@@author
 
     public FindCommand(PersonDataContainsKeywordsPredicate predicate, List<SortArgument> sortArguments) {
         this.predicate = predicate;
         this.sortArguments = sortArguments;
     }
 
+    //@@author ZY-Ang
     @Override
     public CommandResult execute() {
         model.updateSortComparator(sortArguments);
         model.updateFilteredPersonList(predicate);
         return new CommandResult(getMessageForPersonListShownSummary(model.getLatestPersonList().size()));
     }
+    //@@author
 
     @Override
     public boolean equals(Object other) {

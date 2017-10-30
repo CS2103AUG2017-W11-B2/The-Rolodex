@@ -1,24 +1,23 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat|Open+Sans);
-@import "asciidoctor.css"; /* Default asciidoc style framework - important */
+# ZY-Ang
+###### \NavigationMenu.adoc
+``` adoc
+// Create the menu as an inline list, only if it's to be displayed in a browser
+ifndef::env-github[]
+[.nav-headbar#navbar]
+- https://cs2103aug2017-w11-b2.github.io/main/[Home]
+- https://cs2103aug2017-w11-b2.github.io/main/UserGuide.html[User Guide]
+- https://cs2103aug2017-w11-b2.github.io/main/DeveloperGuide.html[Developer Guide]
+- https://cs2103aug2017-w11-b2.github.io/main/AboutUs.html[About]
+- https://cs2103aug2017-w11-b2.github.io/main/ContactUs.html[Contact]
+- https://github.com/CS2103AUG2017-W11-B2/main[Github]
+endif::[]
+```
+###### \NavigationMenu.adoc
+``` adoc
 
-/* Custom block: details */
-
-.sidebarblock.details > .content {
-    border-left: .25rem solid rgba(0, 0, 0, 0.1);
-}
-
-.sidebarblock.details > .content {
-    padding-left: .5rem
-}
-
-.sidebarblock.details {
-    background-color: transparent;
-    border: none;
-    padding-bottom: 0;
-    padding-top: 0;
-}
-
-/* @@author ZY-Ang */
+```
+###### \stylesheets\gh-pages.css
+``` css
 #content #navbar {
     width: 100%;
     max-width: 60.8em;
@@ -73,4 +72,4 @@ div.nav-headbar li a:hover {
     color: white;
     background-color: #a53221;
 }
-/* @@author */
+```
