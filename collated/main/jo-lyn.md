@@ -1,4 +1,19 @@
 # jo-lyn
+###### \java\seedu\address\model\ModelManager.java
+``` java
+    @Override
+    public void removeTag(Tag tag) throws DuplicatePersonException, PersonNotFoundException {
+        for (ReadOnlyPerson person: rolodex.getPersonList()) {
+            Person newPerson = new Person(person);
+
+            Set<Tag> newTags = new HashSet<>(newPerson.getTags());
+            newTags.remove(tag);
+            newPerson.setTags(newTags);
+
+            rolodex.updatePerson(person, newPerson);
+        }
+    }
+```
 ###### \java\seedu\address\ui\CommandBox.java
 ``` java
     private static final int MILLISECONDS_TIME_SINCE_TYPING = 300;
@@ -200,9 +215,6 @@ public class PersonDetailPanel extends UiPart<Region> {
         address.setText("");
         initial.setText("");
         avatar.setFill(Color.TRANSPARENT);
-
-        //avatarImage = new Image(getClass().getResourceAsStream("/images/avatarGray.png"));
-        //avatar.fitWidthProperty().bind(personDetailPanel.widthProperty());
     }
 
     /**
