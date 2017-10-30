@@ -60,9 +60,6 @@ public class PersonDetailPanel extends UiPart<Region> {
         address.setText("");
         initial.setText("");
         avatar.setFill(Color.TRANSPARENT);
-
-        //avatarImage = new Image(getClass().getResourceAsStream("/images/avatarGray.png"));
-        //avatar.fitWidthProperty().bind(personDetailPanel.widthProperty());
     }
 
     /**
