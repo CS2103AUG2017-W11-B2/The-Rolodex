@@ -112,6 +112,86 @@ public class KeyListener {
 
         mainNode.addEventFilter(KeyEvent.KEY_PRESSED, event -> {
 ```
+###### \java\seedu\address\ui\KeyListener.java
+``` java
+            executeKeyEvent(event);
+        });
+    }
+```
+###### \java\seedu\address\ui\KeyListener.java
+``` java
+    /**
+     * Executes the key event.
+     * Matches {@code keyEvent} with non-command events before handling keys mapped to command words.
+     */
+    private void executeKeyEvent(KeyEvent keyEvent) {
+
+        if (KEY_COMBINATION_FOCUS_PERSON_LIST.match(keyEvent)
+                || KEY_COMBINATION_FOCUS_PERSON_LIST_ALT.match(keyEvent)) {
+            personListPanel.setFocus();
+
+        } else if (KEY_COMBINATION_FOCUS_COMMAND_BOX.match(keyEvent)) {
+            commandBox.setFocus();
+
+        } else if (KEY_COMBINATION_FOCUS_RESULT_DISPLAY.match(keyEvent)) {
+            resultDisplay.setFocus();
+
+        } else if (KEY_COMBINATION_DELETE_SELECTION.match(keyEvent)) {
+            deleteSelectedContact();
+
+        } else if (KEY_COMBINATION_CLEAR.match(keyEvent)) {
+            executeCommand(ClearCommand.COMMAND_WORD);
+
+        } else if (KEY_COMBINATION_HISTORY.match(keyEvent)) {
+            executeCommand(HistoryCommand.COMMAND_WORD);
+
+        } else if (KEY_COMBINATION_UNDO.match(keyEvent)) {
+            executeCommand(UndoCommand.COMMAND_WORD);
+
+        } else if (KEY_COMBINATION_REDO.match(keyEvent)) {
+            executeCommand(RedoCommand.COMMAND_WORD);
+
+        } else if (KEY_COMBINATION_LIST.match(keyEvent)) {
+            executeCommand(ListCommand.COMMAND_WORD);
+
+        } else if (KEY_COMBINATION_OPEN_FILE.match(keyEvent)) {
+            executeCommand(OpenCommand.COMMAND_WORD);
+
+        } else if (KEY_COMBINATION_NEW_FILE.match(keyEvent)) {
+            executeCommand(NewCommand.COMMAND_WORD);
+
+        } else if (KEY_COMBINATION_ADD.match(keyEvent)) {
+            displayCommandFormat(AddCommand.FORMAT);
+
+        } else if (KEY_COMBINATION_EDIT.match(keyEvent)) {
+            displayCommandFormat(EditCommand.FORMAT);
+
+        } else if (KEY_COMBINATION_FIND.match(keyEvent)) {
+            displayCommandFormat(FindCommand.FORMAT);
+
+        } else if (KEY_COMBINATION_SELECT.match(keyEvent)) {
+            displayCommandFormat(SelectCommand.FORMAT);
+
+        } else if (KEY_COMBINATION_DELETE.match(keyEvent)) {
+            displayCommandFormat(DeleteCommand.FORMAT);
+
+        } else {
+                // no key combination matches, do nothing
+        }
+    }
+
+    /**
+     * Handles execution of command
+     */
+    private void executeCommand(String command) {
+        if (command.equals(OpenCommand.COMMAND_WORD) || command.equals(NewCommand.COMMAND_WORD)) {
+            commandBox.replaceText(command + " ");
+        } else {
+            commandBox.replaceText(command);
+            commandBox.handleCommandInputChanged();
+        }
+    }
+```
 ###### \java\seedu\address\ui\MainWindow.java
 ``` java
     /**
