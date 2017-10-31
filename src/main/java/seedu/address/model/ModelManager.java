@@ -94,6 +94,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateRolodexChanged();
     }
 
+    // @@author jo-lyn
     @Override
     public void removeTag(Tag tag) throws DuplicatePersonException, PersonNotFoundException {
         for (ReadOnlyPerson person: rolodex.getPersonList()) {
@@ -106,6 +107,7 @@ public class ModelManager extends ComponentManager implements Model {
             rolodex.updatePerson(person, newPerson);
         }
     }
+    // @@author
 
     //=========== Latest Person List Accessors =============================================================
 

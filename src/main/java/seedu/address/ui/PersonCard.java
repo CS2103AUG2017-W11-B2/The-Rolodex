@@ -31,10 +31,12 @@ public class PersonCard extends UiPart<Region> {
     private Label name;
     @FXML
     private Label id;
+    //@@author jo-lyn
     @FXML
     private Label initial;
     @FXML
     private Circle avatar; // TODO: Implement support for uploading picture from local directory
+    //@@author
     @FXML
     private FlowPane tags;
 
@@ -45,6 +47,7 @@ public class PersonCard extends UiPart<Region> {
         bindListeners(person);
     }
 
+    //@@author jo-lyn
     /**
      * Initialise the person card with the person details.
      */
@@ -56,6 +59,7 @@ public class PersonCard extends UiPart<Region> {
 
         setTags(person);
     }
+    //@@author
 
     /**
      * Binds the individual UI elements to observe their respective {@code Person} properties
@@ -66,10 +70,12 @@ public class PersonCard extends UiPart<Region> {
         person.tagProperty().addListener((observable, oldValue, newValue) -> setTags(person));
     }
 
+    //@@author jo-lyn
     private void setTags(ReadOnlyPerson person) {
         tags.getChildren().clear();
         person.getTags().forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
     }
+    //@@author
 
     @Override
     public boolean equals(Object other) {

@@ -1,16 +1,10 @@
+/* @@author jo-lyn */
 .root {
+    -fx-background-color: #f7f5f4;
     -fx-accent: derive(#f7f5f4, -10%);
     -fx-focus-color: derive(#f7f5f4, -10%);
 }
-
-.background {
-    -fx-background-color: #f7f5f4;
-    background-color: #ffffff; /* Used in the default.html file */
-}
-
-.v-box {
-    -fx-background-color: #f7f5f4;
-}
+/* @@author */
 
 .label {
     -fx-font-size: 11pt;
@@ -33,10 +27,12 @@
     -fx-opacity: 1;
 }
 
+/* @@author jo-lyn */
 .text-field {
     -fx-font-size: 12pt;
     -fx-font-family: "Segoe UI Semibold";
 }
+/* @@author */
 
 .tab-pane {
     -fx-padding: 0 0 0 1;
@@ -48,6 +44,7 @@
     -fx-max-height: 0;
 }
 
+/* @@author jo-lyn */
 .table-view {
     -fx-base: #f7f5f4;
     -fx-control-inner-background: #f7f5f4;
@@ -147,6 +144,7 @@
     -fx-font-size: 15px;
     -fx-text-fill: #848484;
 }
+/* @@author */
 
 .anchor-pane {
      -fx-background-color: transparent;
@@ -157,9 +155,17 @@
      -fx-border-top-width: 1px;
 }
 
+/* @@author jo-lyn */
 .result-pane {
      -fx-background-color: #ffffff;
      -fx-effect: dropshadow(gaussian, derive(#f7f5f4, -15%), 10, 0, 2, 2);
+}
+
+.result-text-area {
+    -fx-background-color: transparent;
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 12pt;
+    -fx-text-fill: gray;
 }
 
 .person-detail-panel {
@@ -167,20 +173,13 @@
     -fx-effect: dropshadow(gaussian, derive(#f7f5f4, -15%), 10, 0, 2, 2);
 }
 
-.person-vbox {
+.person-list-panel {
     -fx-effect: dropshadow(gaussian, derive(#f7f5f4, -15%), 10, 0, -2, 2);
 }
 
 .status-bar {
     -fx-background-color: derive(#f7f5f4, 80%);
     -fx-padding: 0 10 0 10;
-}
-
-.result-display {
-    -fx-background-color: transparent;
-    -fx-font-family: "Segoe UI Light";
-    -fx-font-size: 12pt;
-    -fx-text-fill: gray;
 }
 
 .status-bar .label {
@@ -198,6 +197,7 @@
 .status-bar-with-border .label {
     -fx-text-fill: gray;
 }
+/* @@author */
 
 .grid-pane {
     -fx-background-color: derive(#f7f5f4, 30%);
@@ -209,6 +209,7 @@
     -fx-background-color: derive(#f7f5f4, 80%);
 }
 
+/* @@author jo-lyn */
 .context-menu {
     -fx-background-color: derive(#f7f5f4, 50%);
 }
@@ -227,10 +228,7 @@
     -fx-text-fill: derive(#716f70, -10%);
     -fx-opacity: 0.9;
 }
-
-.menu .left-container {
-    -fx-background-color: black;
-}
+/* @@author */
 
 /*
  * Metro style Push Button
@@ -306,6 +304,7 @@
     -fx-text-fill: gray;
 }
 
+/* @@author jo-lyn */
 .scroll-bar {
     -fx-background-color: derive(#f7f5f4, -5%);
 }
@@ -337,14 +336,6 @@
     -fx-background-color: transparent;
     -fx-border-width: 0;
 }
-/*
-#avatarImage {
-    -fx-image: url("../images/avatarGray.png");
-}
-*/
-#phone {
-    -fx-image: url("../images/phone.png");
-}
 
 #initial_small {
     -fx-font-family: "Roboto";
@@ -358,9 +349,10 @@
     -fx-font-size: 45px;
 }
 
-#commandTypeLabel {
-    -fx-font-size: 11px;
-    -fx-text-fill: #f70d1a;
+.command-pane {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 18 18 18 18;
+    -fx-effect: dropshadow(gaussian, derive(#f7f5f4, -15%), 10, 0, 1, 2);
 }
 
 #commandTextField {
@@ -372,15 +364,11 @@
     -fx-font-size: 13pt;
     -fx-text-fill: gray;
 }
+/* @@author */
 
-.command-pane {
-    -fx-background-color: #ffffff;
-    -fx-background-radius: 18 18 18 18;
-    -fx-effect: dropshadow(gaussian, derive(#f7f5f4, -15%), 10, 0, 1, 2);
-}
-
-#filterField, #personListPanel {
-    -fx-effect: innershadow(gaussian, black, 10, 0, 0, 0);
+#commandTypeLabel {
+    -fx-font-size: 11px;
+    -fx-text-fill: #f70d1a;
 }
 
 #resultDisplay .content {
@@ -388,6 +376,11 @@
     -fx-background-radius: 0;
 }
 
+#filterField, #personListPanel {
+    -fx-effect: innershadow(gaussian, black, 10, 0, 0, 0);
+}
+
+/* @@author jo-lyn */
 #tags {
     -fx-hgap: 7;
     -fx-vgap: 3;
@@ -399,3 +392,4 @@
     -fx-padding: 1 0 1 0;
     -fx-font-size: 14px;
 }
+/* @@author */

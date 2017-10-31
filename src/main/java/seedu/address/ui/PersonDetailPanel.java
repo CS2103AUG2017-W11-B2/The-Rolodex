@@ -15,7 +15,7 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.PersonPanelSelectionChangedEvent;
 import seedu.address.model.person.ReadOnlyPerson;
 import seedu.address.ui.util.Avatar;
-
+// @@author jo-lyn
 /**
  * The Person Detail Panel of the App.
  */
@@ -60,9 +60,6 @@ public class PersonDetailPanel extends UiPart<Region> {
         address.setText("");
         initial.setText("");
         avatar.setFill(Color.TRANSPARENT);
-
-        //avatarImage = new Image(getClass().getResourceAsStream("/images/avatarGray.png"));
-        //avatar.fitWidthProperty().bind(personDetailPanel.widthProperty());
     }
 
     /**
