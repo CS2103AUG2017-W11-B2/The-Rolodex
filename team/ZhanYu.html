@@ -19,15 +19,32 @@
 <h2 id="project-rolodex"><a class="link" href="#project-rolodex">Project: Rolodex</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Rolodex is a desktop address book application for computing professionals who prefer working without a mouse to manage their contacts more efficiently.
-The user interacts with it using a CLI (Command Line Interface), and it has a GUI created with JavaFX.
+<p>Rolodex is a desktop contact management application for users who prefer working without a mouse to manage their contacts more efficiently.
+If you are a businessmen with a list of clients to remember, a teacher who wants to organize their student information, or anyone with a need for contact
+management, Rolodex provides you with a way to organize your important contacts in a fast and productive manner.</p>
+</div>
+<div class="paragraph">
+<p>The user interacts with the application using a CLI (Command Line Interface), and it has a GUI created with JavaFX.
 It is written in Java, and has about 6 kLoC.<br></p>
 </div>
 <div class="paragraph">
 <p>Rolodex is an extension of AddressBook - Level 4, which is a desktop address book application used for teaching Software Engineering principles.</p>
 </div>
 <div class="paragraph">
-<p><strong>Code contributed</strong>: <a href="https://github.com/CS2103AUG2017-W11-B2/main/pulse">Pulse</a></p>
+<p><strong>Code contributed</strong>:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/CS2103AUG2017-W11-B2/main/collated/main/ZY-Ang.md">Functional Code</a></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2103AUG2017-W11-B2/main/collated/test/ZY-Ang.md">Tests</a></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2103AUG2017-W11-B2/main/collated/docs/ZY-Ang.md">Pages</a></p>
+</li>
+</ul>
 </div>
 <div class="sect2">
 <h3 id="enhancement-added-find-by-close-words-fuzzy-searching-and-find-by-tags"><a class="link" href="#enhancement-added-find-by-close-words-fuzzy-searching-and-find-by-tags">Enhancement Added: Find by close words (fuzzy searching) and find by tags</a></h3>
@@ -35,13 +52,21 @@ It is written in Java, and has about 6 kLoC.<br></p>
 <h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
 <hr>
 <div class="sect4">
-<h5 id="locating-persons-in-rolodex-code-find-code-code-f-code-code-filter-code-or-code-search-code"><a class="link" href="#locating-persons-in-rolodex-code-find-code-code-f-code-code-filter-code-or-code-search-code">Locating persons in Rolodex: <code>find</code>, <code>f</code>, <code>filter</code> or <code>search</code></a></h5>
+<h5 id="code-exit-code-code-quit-code-code-close-code-code-bye-code-code-esc-code-exiting-the-program-em-since-v1-3-em"><a class="link" href="#code-exit-code-code-quit-code-code-close-code-code-bye-code-code-esc-code-exiting-the-program-em-since-v1-3-em"><code>exit</code>, <code>quit</code>, <code>close</code>, <code>bye</code>, <code>esc</code>: Exiting the Program <em>(Since v1.3)</em></a></h5>
+<div class="paragraph">
+<p>Exits the program.<br>
+Format: <code>exit</code><br>
+Keyboard shortcut: <span class="keyseq"><kbd>Alt</kbd>+<kbd>F4</kbd></span></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="code-find-code-code-f-code-code-filter-code-or-code-search-code-locating-persons-in-rolodex-em-since-v1-4-em"><a class="link" href="#code-find-code-code-f-code-code-filter-code-or-code-search-code-locating-persons-in-rolodex-em-since-v1-4-em"><code>find</code>, <code>f</code>, <code>filter</code> or <code>search</code>: Locating Persons in Rolodex <em>(Since v1.4)</em></a></h5>
 <div class="paragraph">
 <p>Finds persons in Rolodex.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
         or <code>f KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
-        or <code>search KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
-        (press <kbd>Tab</kbd> after typing <code>find</code> for auto-completion)
+        or <code>search KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code><br>
+        (press <kbd>Tab</kbd> after typing <code>find</code> for auto-completion)<br>
 Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>F</kbd></span></p>
 </div>
 <div class="sidebarblock">
@@ -126,23 +151,32 @@ Returns any person having tag <code>School</code> or tag <code>werk</code></p>
 <p>The sort argument prefix for sorting by <span class="underline">address</span> is <code>a/</code>.</p>
 </li>
 <li>
-<p>The sort argument postfix <code>desc</code> denotes that the sort field is to be sorted in descending lexicographical order.</p>
+<p>The sort argument postfix <code>desc</code> denotes that the sort field is to be sorted in descending <a href="#lexicographic">lexicographical</a> order.</p>
 </li>
 <li>
-<p>The sort argument postfix <code>asc</code> denotes that the sort field is to be sorted in ascending lexicographical order.</p>
+<p>The sort argument postfix <code>asc</code> denotes that the sort field is to be sorted in ascending <a href="#lexicographic">lexicographical</a> order.</p>
 </li>
 <li>
-<p>Sort arguments without a postfix are sorted by ascending lexicographical order.</p>
+<p>Sort arguments without a postfix are sorted by ascending <a href="#lexicographic">lexicographical</a> order.</p>
 </li>
 <li>
 <p>The order of the <code>SORT_ARGUMENTS</code> are left-prioritized.</p>
 </li>
-<li>
-<p>Sort arguments <strong>do not count as search arguments</strong>.</p>
-</li>
 </ul>
 </div>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Sort arguments <strong>do not count as search arguments</strong>.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -185,15 +219,15 @@ This enhancement allows them to find contacts by close name words or by tags pre
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <hr>
 <div class="sect4">
-<h5 id="fuzzy-finding-mechanism"><a class="link" href="#fuzzy-finding-mechanism">Fuzzy finding mechanism</a></h5>
+<h5 id="fuzzy-finding-mechanism"><a class="link" href="#fuzzy-finding-mechanism">Fuzzy Finding Mechanism</a></h5>
 <div class="paragraph">
-<p>The fuzzy finding mechanism is powered by <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a>,
+<p>The <a href="#fuzzy-finding">fuzzy finding</a> mechanism is powered by <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a>,
 a string heuristic for measuring the difference between two character sequences. It can be informally viewed as the number
 of <em>hops</em> that are required to get from a string to another, where <em>hops</em> are insertions, deletions and substitution
 operations.</p>
 </div>
 <div class="paragraph">
-<p>The activity diagram for the fuzzy finding can be loosely described as seen in the figure below:</p>
+<p>The activity diagram for the <a href="#fuzzy-finding">fuzzy finding</a> can be loosely described as seen in the figure below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -253,9 +287,9 @@ to the currently examined name word in which the contact will be added.</p>
 <h6 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h6>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Length of name word<br>
-<strong>Alternative 1 (current choice):</strong> Use a global minimum for defining when the fuzzy finding should execute.<br>
+<strong>Alternative 1 (current choice):</strong> Use a global minimum for defining when the <a href="#fuzzy-finding">fuzzy finding</a> should execute.<br>
 <strong>Pros:</strong> Name words have higher minimum hop to length ratio.<br>
-<strong>Cons:</strong> User might need fuzzy finding on name words with character length lesser than the global minimum.<br>
+<strong>Cons:</strong> User might need <a href="#fuzzy-finding">fuzzy finding</a> on name words with character length lesser than the global minimum.<br>
 <strong>Pros:</strong> Easy logic to understand, implement and maintain.<br>
 <strong>Cons:</strong> Rudimentary algorithm.</p>
 </div>
@@ -263,7 +297,7 @@ to the currently examined name word in which the contact will be added.</p>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Location of fuzzy find settings<br>
 <strong>Alternative 1 (current choice):</strong> Use private static constant in a person.<br>
-<strong>Pros:</strong> User does not need to worry about changing the settings or the intricacies of the fuzzy finding.<br>
+<strong>Pros:</strong> User does not need to worry about changing the settings or the intricacies of the <a href="#fuzzy-finding">fuzzy finding</a>.<br>
 <strong>Cons:</strong> User might need stricter or looser limits than the ones defined for them.<br>
 <strong>Pros:</strong> Developers can easily change and manage settings and limits.<br>
 <strong>Cons:</strong> Users have no way of accessing the settings and limits.<br>
@@ -282,7 +316,7 @@ to the currently examined name word in which the contact will be added.</p>
 <h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External behavior</a></h4>
 <hr>
 <div class="sect4">
-<h5 id="listing-all-persons-code-list-code-code-l-code-code-show-code-or-code-display-code"><a class="link" href="#listing-all-persons-code-list-code-code-l-code-code-show-code-or-code-display-code">Listing all persons : <code>list</code>, <code>l</code>, <code>show</code> or <code>display</code></a></h5>
+<h5 id="code-list-code-code-l-code-code-show-code-or-code-display-code-listing-all-persons-em-since-v1-3-em"><a class="link" href="#code-list-code-code-l-code-code-show-code-or-code-display-code-listing-all-persons-em-since-v1-3-em"><code>list</code>, <code>l</code>, <code>show</code> or <code>display</code>: Listing All Persons <em>(Since v1.3)</em></a></h5>
 <div class="paragraph">
 <p>Shows a list of all persons in Rolodex, sorted by the specified sort order or default sort order.<br>
 Format: <code>list [SORT_ARGUMENTS]</code> or <code>l [SORT_ARGUMENTS]</code><br>
@@ -309,13 +343,13 @@ Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>L</kbd></span></p>
 <p>The sort argument prefix for sorting by <span class="underline">address</span> is <code>a/</code>.</p>
 </li>
 <li>
-<p>The sort argument postfix <code>desc</code> denotes that the sort field is to be sorted in descending lexicographical order.</p>
+<p>The sort argument postfix <code>desc</code> denotes that the sort field is to be sorted in descending <a href="#lexicographic">lexicographical</a> order.</p>
 </li>
 <li>
-<p>The sort argument postfix <code>asc</code> denotes that the sort field is to be sorted in ascending lexicographical order.</p>
+<p>The sort argument postfix <code>asc</code> denotes that the sort field is to be sorted in ascending <a href="#lexicographic">lexicographical</a> order.</p>
 </li>
 <li>
-<p>Sort arguments without a postfix are sorted by ascending lexicographical order.</p>
+<p>Sort arguments without a postfix are sorted by ascending <a href="#lexicographic">lexicographical</a> order.</p>
 </li>
 <li>
 <p>The order of the <code>SORT_ARGUMENTS</code> are left-prioritized.</p>
@@ -342,13 +376,21 @@ Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>L</kbd></span></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="locating-persons-in-rolodex-code-find-code-code-f-code-code-filter-code-or-code-search-code-2"><a class="link" href="#locating-persons-in-rolodex-code-find-code-code-f-code-code-filter-code-or-code-search-code-2">Locating persons in Rolodex: <code>find</code>, <code>f</code>, <code>filter</code> or <code>search</code></a></h5>
+<h5 id="code-exit-code-code-quit-code-code-close-code-code-bye-code-code-esc-code-exiting-the-program-em-since-v1-3-em-2"><a class="link" href="#code-exit-code-code-quit-code-code-close-code-code-bye-code-code-esc-code-exiting-the-program-em-since-v1-3-em-2"><code>exit</code>, <code>quit</code>, <code>close</code>, <code>bye</code>, <code>esc</code>: Exiting the Program <em>(Since v1.3)</em></a></h5>
+<div class="paragraph">
+<p>Exits the program.<br>
+Format: <code>exit</code><br>
+Keyboard shortcut: <span class="keyseq"><kbd>Alt</kbd>+<kbd>F4</kbd></span></p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="code-find-code-code-f-code-code-filter-code-or-code-search-code-locating-persons-in-rolodex-em-since-v1-4-em-2"><a class="link" href="#code-find-code-code-f-code-code-filter-code-or-code-search-code-locating-persons-in-rolodex-em-since-v1-4-em-2"><code>find</code>, <code>f</code>, <code>filter</code> or <code>search</code>: Locating Persons in Rolodex <em>(Since v1.4)</em></a></h5>
 <div class="paragraph">
 <p>Finds persons in Rolodex.<br>
 Format: <code>find KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
         or <code>f KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
-        or <code>search KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
-        (press <kbd>Tab</kbd> after typing <code>find</code> for auto-completion)
+        or <code>search KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code><br>
+        (press <kbd>Tab</kbd> after typing <code>find</code> for auto-completion)<br>
 Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>F</kbd></span></p>
 </div>
 <div class="sidebarblock">
@@ -433,23 +475,32 @@ Returns any person having tag <code>School</code> or tag <code>werk</code></p>
 <p>The sort argument prefix for sorting by <span class="underline">address</span> is <code>a/</code>.</p>
 </li>
 <li>
-<p>The sort argument postfix <code>desc</code> denotes that the sort field is to be sorted in descending lexicographical order.</p>
+<p>The sort argument postfix <code>desc</code> denotes that the sort field is to be sorted in descending <a href="#lexicographic">lexicographical</a> order.</p>
 </li>
 <li>
-<p>The sort argument postfix <code>asc</code> denotes that the sort field is to be sorted in ascending lexicographical order.</p>
+<p>The sort argument postfix <code>asc</code> denotes that the sort field is to be sorted in ascending <a href="#lexicographic">lexicographical</a> order.</p>
 </li>
 <li>
-<p>Sort arguments without a postfix are sorted by ascending lexicographical order.</p>
+<p>Sort arguments without a postfix are sorted by ascending <a href="#lexicographic">lexicographical</a> order.</p>
 </li>
 <li>
 <p>The order of the <code>SORT_ARGUMENTS</code> are left-prioritized.</p>
 </li>
-<li>
-<p>Sort arguments <strong>do not count as search arguments</strong>.</p>
-</li>
 </ul>
 </div>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Sort arguments <strong>do not count as search arguments</strong>.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -493,7 +544,7 @@ Users can operate on a sorted list for longer displayed lists via <code>list</co
 <h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
 <hr>
 <div class="sect4">
-<h5 id="sorting-mechanism"><a class="link" href="#sorting-mechanism">Sorting mechanism</a></h5>
+<h5 id="sorting-mechanism"><a class="link" href="#sorting-mechanism">Sorting Mechanism</a></h5>
 <div class="paragraph">
 <p>The sorting mechanism is integrated into the <code>list</code> and <code>find</code> commands which resides in the application&#8217;s <code>logic</code> component.
 It supports sorting in ascending or descending order of most fields of a person (e.g. <span class="underline">Name</span>, <span class="underline">Phone</span>).
@@ -636,7 +687,7 @@ comparator before executing a sort and filter which is handled by the event cons
 <h4 id="external-behavior-3"><a class="link" href="#external-behavior-3">External behavior</a></h4>
 <hr>
 <div class="sect4">
-<h5 id="opening-an-existing-rolodex-storage-file-code-open-code-code-o-code-code-cd-code-code-ls-code-code-code"><a class="link" href="#opening-an-existing-rolodex-storage-file-code-open-code-code-o-code-code-cd-code-code-ls-code-code-code">Opening an existing Rolodex storage file: <code>open</code>, <code>o</code>, <code>cd</code>, <code>ls</code>, <code>&lt;</code></a></h5>
+<h5 id="code-open-code-code-o-code-code-cd-code-code-ls-code-code-code-opening-an-existing-rolodex-storage-file-em-since-v1-3-em"><a class="link" href="#code-open-code-code-o-code-code-cd-code-code-ls-code-code-code-opening-an-existing-rolodex-storage-file-em-since-v1-3-em"><code>open</code>, <code>o</code>, <code>cd</code>, <code>ls</code>, <code>&lt;</code>: Opening an Existing Rolodex Storage File <em>(Since v1.3)</em></a></h5>
 <div class="paragraph">
 <p>Reloads the application with data from a rolodex at the specified filepath.<br>
 Format: <code>open FILEPATH</code> or <code>o FILEPATH</code>
@@ -682,6 +733,20 @@ Keyboard Shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>O</kbd></span></p>
 </tr>
 </table>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>open</code> command will refresh your session and all existing <em>undoable</em> commands will be cleared. It is recommended that you confirm you are satisfied with your changes before opening a new file.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>Examples:</p>
 </div>
@@ -702,7 +767,7 @@ Loads the application with the data in <code>default.rldx</code> in the folder <
 </div>
 </div>
 <div class="sect4">
-<h5 id="creating-a-new-rolodex-storage-file-code-new-code-code-n-code-code-touch-code-or-code-code"><a class="link" href="#creating-a-new-rolodex-storage-file-code-new-code-code-n-code-code-touch-code-or-code-code">Creating a new Rolodex storage file: <code>new</code>, <code>n</code>, <code>touch</code> or <code>&gt;</code></a></h5>
+<h5 id="code-new-code-code-n-code-code-touch-code-or-code-code-creating-a-new-rolodex-storage-file-em-since-v1-3-em"><a class="link" href="#code-new-code-code-n-code-code-touch-code-or-code-code-creating-a-new-rolodex-storage-file-em-since-v1-3-em"><code>new</code>, <code>n</code>, <code>touch</code> or <code>&gt;</code>: Creating a New Rolodex Storage File <em>(Since v1.3)</em></a></h5>
 <div class="paragraph">
 <p>Creates a new Rolodex at the specified filepath and reloads the application with new sample data.<br>
 Format: <code>new FILEPATH</code> or <code>n FILEPATH</code>
@@ -730,6 +795,20 @@ Keyboard Shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p>
 </ul>
 </div>
 </div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>new</code> command will refresh your session and all existing <em>undoable</em> commands will be cleared. It is recommended that you confirm you are satisfied with your changes before opening a new file.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -764,7 +843,7 @@ more manageable sizes.</p>
 <h4 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h4>
 <hr>
 <div class="sect4">
-<h5 id="open-file-and-new-file-mechanism"><a class="link" href="#open-file-and-new-file-mechanism">Open file and New file mechanism</a></h5>
+<h5 id="open-file-and-new-file-mechanism"><a class="link" href="#open-file-and-new-file-mechanism">Open File and New File Mechanism</a></h5>
 <div class="paragraph">
 <p>The open new file and creating new file mechanism are handled by two new types of requests under the <code>EventsCenter</code>,
 <code>OpenRolodexRequestEvent</code> and <code>RolodexChangedDirectoryEvent</code>. Upon receiving a new command, the <code>MainApp</code> attempts to
@@ -896,7 +975,7 @@ subset of xml for the Rolodex application, as seen in the snippet below:
 <strong>Pros:</strong> The application can be quickly reloaded onto the active window.<br>
 <strong>Cons:</strong> User might need to switch back and forth between the Rolodex directories.<br>
 <strong>Alternative 2:</strong> Reload <code>MainApp</code> with a new application instance.<br>
-<strong>Constraint:</strong> JavaFX only allows launch(args) to be launched once per execution time on a code level.
+<strong>Constraint:</strong> <a href="#java-fx">JavaFX</a> only allows launch(args) to be launched once per execution time on a code level.
 Another approach would be to reload the application with a loaded and built .jar.<br>
 <strong>Pros:</strong> Easier logic to understand for new developers.<br>
 <strong>Cons:</strong> Building and debugging with a second .jar will be confusing and problematic to any development workflow.<br>
@@ -941,9 +1020,9 @@ access time and improves manageability of the codebase.</p>
 <h4 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h4>
 <hr>
 <div class="sect4">
-<h5 id="abbreviation-mechanism"><a class="link" href="#abbreviation-mechanism">Abbreviation mechanism</a></h5>
+<h5 id="abbreviation-mechanism"><a class="link" href="#abbreviation-mechanism">Abbreviation Mechanism</a></h5>
 <div class="paragraph">
-<p>The ability for users to enter a variety of different words for a same command is implemented using <code>java.util.set</code>.</p>
+<p>The ability for users to enter a variety of different words for a same command is implemented using <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html"><code>java.util.set</code></a>.</p>
 </div>
 <div class="paragraph">
 <p>An example as implemented in the open command:</p>
@@ -991,7 +1070,7 @@ pairwise disjoint:</p>
 <h6 id="design-considerations-4"><a class="link" href="#design-considerations-4">Design Considerations</a></h6>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation<br>
-<strong>Alternative 1 (current choice):</strong> A Set of strings<br>
+<strong>Alternative 1 (current choice):</strong> A <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html">Set</a> of strings<br>
 <strong>Pros:</strong> Constant access time per command level. Improves performance and reliability significantly.<br>
 <strong>Pros:</strong> Ease of testing for conflicting abbreviations, particularly where developers forget if they used a
 same abbreviation for two different commands (e.g. assigning <code>h</code> to both the <code>history</code> and <code>help</code> commands).<br>
@@ -1002,7 +1081,186 @@ on <a href="https://github.com/CS2103AUG2017-W11-B2/main/issues">github</a>.<br>
 <strong>Cons:</strong> Developers would have to manually check through all commands to ensure the accuracy of the abbreviations,
 which is time-consuming and makes way for human errors.<br>
 <strong>Cons:</strong> A switch-case for all possible commands abbreviations would perform significantly slower than direct memory
-access on a java <code>HashSet</code>, in the worst case.</p>
+access on a java <a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html"><code>HashSet</code></a>, in the worst case.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-search-highlighting-in-helpwindow"><a class="link" href="#enhancement-added-search-highlighting-in-helpwindow">Enhancement Added: Search Highlighting in HelpWindow</a></h3>
+<div class="sect3">
+<h4 id="justification-5"><a class="link" href="#justification-5">Justification</a></h4>
+<div class="paragraph">
+<p>JavaFx&#8217;s native WebView does not allow the user to easily search a html document, putting it on a subpar standard to modern
+web browsers. Implementing a search feature in the help window will allow the user to search for terms in the user guide with ease.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-5"><a class="link" href="#implementation-5">Implementation</a></h4>
+<hr>
+<div class="sect4">
+<h5 id="help-window-highlighting"><a class="link" href="#help-window-highlighting">Help Window Highlighting</a></h5>
+<div class="paragraph">
+<p>Rolodex uses <a href="#java-fx">JavaFx</a> version <a href="http://javafx.com/javafx/8.0.111">8.0.111</a>, where WebView does not support
+search functionality that mimics <kbd>Ctrl</kbd> + <kbd>F</kbd> capability of modern web browsers. As a workaround, Johann Burkard&#8217;s
+<a href="http://johannburkard.de/blog/programming/javascript/highlight-javascript-text-higlighting-jquery-plugin.html">jQuery text highlighting</a>
+library is being used to implement such a feature.</p>
+</div>
+<div class="paragraph">
+<p>Users can easily find keywords by using the highlighting feature of the help window, as opposed to manually looking through the
+help document for information, which can be counterproductive:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Highlight.png" alt="Highlight" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The discussion for <a href="#java-fx">JavaFX</a> to implement a native search feature within WebView is ongoing and you can find it
+<a href="https://stackoverflow.com/questions/19418626/javafx-search-and-highlight-text-add-search-bar-for-loaded-web-page">here</a>.</p>
+</div>
+<div class="sect5">
+<h6 id="removing-jquery-implementation"><a class="link" href="#removing-jquery-implementation">Removing jQuery implementation</a></h6>
+<div class="paragraph">
+<p>In a future version of <a href="#java-fx">JavaFx</a> where such an implementation is no longer necessary, you may revert the changes by reverting pull request
+<a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/99">#99</a> on the Rolodex repo on GitHub. You may also choose to manually do this by reverting the following code:</p>
+</div>
+<div class="paragraph">
+<p>Original <code>HelpWindow.fxml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;StackPane</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">helpWindowRoot</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://javafx.com/javafx/8</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:fx</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://javafx.com/fxml/1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;WebView</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">browser</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;/StackPane&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>HelpWindow.fxml</code> with makeshift user guide search functionality:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;StackPane</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">helpWindowRoot</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://javafx.com/javafx/8</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:fx</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://javafx.com/fxml/1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;VBox</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">layout</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;children&gt;</span>
+            <span class="tag">&lt;TextField</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">txtSearch</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">promptText</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Search and press ENTER</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+                <span class="tag">&lt;HBox</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">controls</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;children&gt;</span>
+                        <span class="tag">&lt;Button</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btnSearch</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">mnemonicParsing</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">text</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Search</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;HBox.margin&gt;</span>
+                                <span class="tag">&lt;Insets</span> <span class="attribute-name">right</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">10.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+                            <span class="tag">&lt;/HBox.margin&gt;</span>
+                        <span class="tag">&lt;/Button&gt;</span>
+                        <span class="tag">&lt;Button</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btnClear</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">mnemonicParsing</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">text</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Clear</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+                    <span class="tag">&lt;/children&gt;</span>
+                <span class="tag">&lt;/HBox&gt;</span>
+            <span class="tag">&lt;WebView</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">browser</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">minHeight</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-Infinity</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">minWidth</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-Infinity</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">prefHeight</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">100000.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+        <span class="tag">&lt;/children&gt;</span>
+    <span class="tag">&lt;/VBox&gt;</span>
+<span class="tag">&lt;/StackPane&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Original <code>HelpWindow.java</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@FXML</span>
+<span class="directive">private</span> WebView browser;
+
+<span class="directive">private</span> <span class="directive">final</span> Stage dialogStage;
+
+<span class="directive">public</span> HelpWindow() {
+    <span class="local-variable">super</span>(FXML);
+    Scene scene = <span class="keyword">new</span> Scene(getRoot());
+    <span class="comment">//Null passed as the parent stage to make it non-modal.</span>
+    dialogStage = createDialogStage(TITLE, <span class="predefined-constant">null</span>, scene);
+    dialogStage.setMaximized(<span class="predefined-constant">true</span>); <span class="comment">//TODO: set a more appropriate initial size</span>
+    FxViewUtil.setStageIcon(dialogStage, ICON);
+
+    <span class="predefined-type">String</span> userGuideUrl = getClass().getResource(HELP_FILE_PATH).toString();
+    browser.getEngine().load(userGuideUrl);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>HelpWindow.java</code> with makeshift user guide search functionality:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@FXML</span>
+<span class="directive">private</span> WebView browser;
+
+<span class="annotation">@FXML</span>
+<span class="directive">private</span> <span class="predefined-type">TextField</span> txtSearch;
+
+<span class="annotation">@FXML</span>
+<span class="directive">private</span> <span class="predefined-type">Button</span> btnSearch;
+
+<span class="annotation">@FXML</span>
+<span class="directive">private</span> <span class="predefined-type">Button</span> btnClear;
+
+<span class="annotation">@FXML</span>
+<span class="directive">private</span> HBox controls;
+
+<span class="directive">private</span> <span class="directive">final</span> Stage dialogStage;
+
+<span class="directive">public</span> HelpWindow() {
+    <span class="local-variable">super</span>(FXML);
+
+    txtSearch.setOnAction(event -&gt; {
+        <span class="keyword">if</span> (browser.getEngine().getDocument() != <span class="predefined-constant">null</span>) {
+            highlight(browser.getEngine(), txtSearch.getText());
+        }
+    });
+
+    btnSearch.setDefaultButton(<span class="predefined-constant">true</span>);
+    btnSearch.setOnAction(actionEvent -&gt; txtSearch.fireEvent(<span class="keyword">new</span> <span class="predefined-type">ActionEvent</span>()));
+
+    btnClear.setOnAction(actionEvent -&gt; clearHighlights(browser.getEngine()));
+    btnClear.setCancelButton(<span class="predefined-constant">true</span>);
+
+    controls.disableProperty().bind(browser.getEngine().getLoadWorker().runningProperty());
+    txtSearch.disableProperty().bind(browser.getEngine().getLoadWorker().runningProperty());
+
+    Scene scene = <span class="keyword">new</span> Scene(getRoot());
+    <span class="comment">//Null passed as the parent stage to make it non-modal.</span>
+    dialogStage = createDialogStage(TITLE, <span class="predefined-constant">null</span>, scene);
+    dialogStage.setMaximized(<span class="predefined-constant">true</span>); <span class="comment">//TODO: set a more appropriate initial size</span>
+    FxViewUtil.setStageIcon(dialogStage, ICON);
+
+    <span class="predefined-type">String</span> userGuideUrl = getClass().getResource(HELP_FILE_PATH).toString();
+    browser.getEngine().load(userGuideUrl);
+}
+
+<span class="directive">private</span> <span class="type">void</span> highlight(WebEngine engine, <span class="predefined-type">String</span> text) {
+    engine.executeScript(<span class="string"><span class="delimiter">&quot;</span><span class="content">$('body').removeHighlight().highlight('</span><span class="delimiter">&quot;</span></span> + text + <span class="string"><span class="delimiter">&quot;</span><span class="content">')</span><span class="delimiter">&quot;</span></span>);
+}
+
+<span class="directive">private</span> <span class="type">void</span> clearHighlights(WebEngine engine) {
+    engine.executeScript(<span class="string"><span class="delimiter">&quot;</span><span class="content">$('body').removeHighlight()</span><span class="delimiter">&quot;</span></span>);
+    txtSearch.clear();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Help.adoc</code> passthrough imports:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">scripts/jquery-3.2.1.min.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">scripts/jquery.highlight-5.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>asciidoctor.css</code> <code>.highlight</code> class:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="css"><span class="class">.highlight</span>{<span class="key">background-color</span>:<span class="value">yellow</span>}</code></pre>
+</div>
 </div>
 <hr>
 </div>
@@ -1039,8 +1297,14 @@ access on a java <code>HashSet</code>, in the worst case.</p>
 <div class="sect1">
 <h2 id="project-a-href-https-zy-ang-github-io-autonamegenerator-autonamegenerator-a"><a class="link" href="#project-a-href-https-zy-ang-github-io-autonamegenerator-autonamegenerator-a">Project: <a href="https://zy-ang.github.io/AutoNameGenerator/">AutoNameGenerator</a></a></h2>
 <div class="sectionbody">
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="other-projects"><a class="link" href="#other-projects">Other projects</a></h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>{Optionally (not graded), you may include other projects in your portfolio.}</p>
+<p>You can view my full portfolio <a href="https://zy-ang.github.io/Portfolio">here</a>.</p>
 </div>
 <div id="navbar" class="ulist nav-headbar">
 <ul>
@@ -1069,7 +1333,7 @@ access on a java <code>HashSet</code>, in the worst case.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-31 17:08:35 +00:00
+Last updated 2017-11-01 00:25:17 +00:00
 </div>
 </div>
 </body>

@@ -25,48 +25,49 @@
 <div id="toctitle"></div>
 <ul class="sectlevel1">
 <li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#setting-up">2. Setting up</a>
+<li><a href="#setting-up">2. Setting Up</a>
 <ul class="sectlevel2">
 <li><a href="#prerequisites">2.1. Prerequisites</a></li>
-<li><a href="#setting-up-the-project-in-your-computer">2.2. Setting up the project in your computer</a></li>
-<li><a href="#verifying-the-setup">2.3. Verifying the setup</a></li>
-<li><a href="#configurations-to-do-before-writing-code">2.4. Configurations to do before writing code</a></li>
+<li><a href="#setting-up-the-project-in-your-computer">2.2. Setting up the Project in Your Computer</a></li>
+<li><a href="#verifying-the-setup">2.3. Verifying the Setup</a></li>
+<li><a href="#configurations-to-do-before-writing-code">2.4. Configurations to Do Before Writing Code</a></li>
 </ul>
 </li>
 <li><a href="#design">3. Design</a>
 <ul class="sectlevel2">
 <li><a href="#architecture">3.1. Architecture</a></li>
-<li><a href="#ui-component">3.2. UI component</a></li>
-<li><a href="#logic-component">3.3. Logic component</a></li>
-<li><a href="#model-component">3.4. Model component</a></li>
-<li><a href="#storage-component">3.5. Storage component</a></li>
-<li><a href="#common-classes">3.6. Common classes</a></li>
+<li><a href="#ui-component">3.2. UI Component</a></li>
+<li><a href="#logic-component">3.3. Logic Component</a></li>
+<li><a href="#model-component">3.4. Model Component</a></li>
+<li><a href="#storage-component">3.5. Storage Component</a></li>
+<li><a href="#common-classes">3.6. Common Classes</a></li>
 </ul>
 </li>
 <li><a href="#implementation">4. Implementation</a>
 <ul class="sectlevel2">
-<li><a href="#undo-redo-mechanism">4.1. Undo/Redo mechanism</a></li>
-<li><a href="#open-file-and-new-file-mechanism">4.2. Open file and New file mechanism</a></li>
-<li><a href="#fuzzy-finding-mechanism">4.3. Fuzzy finding mechanism</a></li>
-<li><a href="#sorting-mechanism">4.4. Sorting mechanism</a></li>
-<li><a href="#abbreviation-mechanism">4.5. Abbreviation mechanism</a></li>
-<li><a href="#auto-completion-mechanism">4.6. Auto-completion mechanism</a></li>
+<li><a href="#undo-redo-mechanism">4.1. Undo/Redo Mechanism</a></li>
+<li><a href="#open-file-and-new-file-mechanism">4.2. Open File and New File Mechanism</a></li>
+<li><a href="#fuzzy-finding-mechanism">4.3. Fuzzy Finding Mechanism</a></li>
+<li><a href="#sorting-mechanism">4.4. Sorting Mechanism</a></li>
+<li><a href="#abbreviation-mechanism">4.5. Abbreviation Mechanism</a></li>
+<li><a href="#auto-completion-mechanism">4.6. Auto-completion Mechanism</a></li>
 <li><a href="#keyboard-shortcuts-mechanism">4.7. Keyboard Shortcuts Mechanism</a></li>
-<li><a href="#logging">4.8. Logging</a></li>
-<li><a href="#configuration">4.9. Configuration</a></li>
+<li><a href="#help-window-highlighting">4.8. Help Window Highlighting</a></li>
+<li><a href="#logging">4.9. Logging</a></li>
+<li><a href="#configuration">4.10. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
 <ul class="sectlevel2">
 <li><a href="#editing-documentation">5.1. Editing Documentation</a></li>
 <li><a href="#publishing-documentation">5.2. Publishing Documentation</a></li>
-<li><a href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF format</a></li>
+<li><a href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF Format</a></li>
 </ul>
 </li>
 <li><a href="#testing">6. Testing</a>
 <ul class="sectlevel2">
 <li><a href="#running-tests">6.1. Running Tests</a></li>
-<li><a href="#types-of-tests">6.2. Types of tests</a></li>
+<li><a href="#types-of-tests">6.2. Types of Tests</a></li>
 <li><a href="#troubleshooting-testing">6.3. Troubleshooting Testing</a></li>
 </ul>
 </li>
@@ -80,15 +81,14 @@
 </li>
 <li><a href="#suggested-programming-tasks-to-get-started">Appendix A: Suggested Programming Tasks to Get Started</a>
 <ul class="sectlevel2">
-<li><a href="#improving-each-component">A.1. Improving each component</a></li>
-<li><a href="#creating-a-new-command-code-remark-code">A.2. Creating a new command: <code>remark</code></a></li>
+<li><a href="#improving-each-component">A.1. Improving Each Component</a></li>
+<li><a href="#creating-a-new-command-code-remark-code">A.2. Creating a New Command: <code>remark</code></a></li>
 </ul>
 </li>
 <li><a href="#user-stories">Appendix B: User Stories</a></li>
 <li><a href="#use-cases">Appendix C: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix D: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix E: Glossary</a></li>
-<li><a href="#product-survey">Appendix F: Product Survey</a></li>
 </ul>
 </div>
 </div>
@@ -96,16 +96,20 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Rolodex is a desktop contact management application. It is catered to computing professionals who prefer working without a mouse to manage their contacts more efficiently.</p>
+<p><a href="#rolodex">Rolodex</a> is a desktop contact management application for users who prefer working without a mouse to manage their contacts more efficiently.
+It is useful for busy people who have many connections, such as a businessmen with a list of clients to remember, or a teacher who wants to organize their student information.</p>
 </div>
 <div class="paragraph">
-<p>This guide will walk you through the design, implementation and development environment of Rolodex. This is the go-to page for all your information needs in understanding our application.</p>
+<p>The Developer Guide will walk you through the design, implementation and development environment of <a href="#rolodex">Rolodex</a>. This is the go-to page for all your information needs in understanding our application.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">2. Setting up</a></h2>
+<h2 id="setting-up"><a class="link" href="#setting-up">2. Setting Up</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section will guide you in setting up the Rolodex project in your local machine for the first time.</p>
+</div>
 <div class="sect2">
 <h3 id="prerequisites"><a class="link" href="#prerequisites">2.1. Prerequisites</a></h3>
 <div class="olist arabic">
@@ -119,8 +123,8 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Having any Java 8 version is not enough.<br>
-This app will not work with earlier versions of Java 8.
+Having any <a href="#java">Java 8</a> version is not enough.<br>
+This app will not work with earlier versions of <a href="#java">Java 8</a>.
 </td>
 </tr>
 </table>
@@ -135,7 +139,7 @@ This app will not work with earlier versions of Java 8.
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-IntelliJ by default has Gradle and JavaFx plugins installed.<br>
+IntelliJ by default has Gradle and <a href="#java-fx">JavaFx</a> plugins installed.<br>
 Do not disable them. If you have disabled them, go to <code>File</code> &gt; <code>Settings</code> &gt; <code>Plugins</code> to re-enable them.
 </td>
 </tr>
@@ -146,7 +150,7 @@ Do not disable them. If you have disabled them, go to <code>File</code> &gt; <co
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">2.2. Setting up the project in your computer</a></h3>
+<h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">2.2. Setting up the Project in Your Computer</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -188,7 +192,7 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">2.3. Verifying the setup</a></h3>
+<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">2.3. Verifying the Setup</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -201,9 +205,12 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">2.4. Configurations to do before writing code</a></h3>
+<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">2.4. Configurations to Do Before Writing Code</a></h3>
+<div class="paragraph">
+<p>Before you start coding, there are some important configurations that you have to do for the project to run smoothly.</p>
+</div>
 <div class="sect3">
-<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">2.4.1. Configuring the coding style</a></h4>
+<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">2.4.1. Configuring the Coding Style</a></h4>
 <div class="paragraph">
 <p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.md">oss-generic coding standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours. To rectify,</p>
 </div>
@@ -235,9 +242,9 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="configuring-rolodex-code-rldx-code-extensions"><a class="link" href="#configuring-rolodex-code-rldx-code-extensions">2.4.2. Configuring Rolodex <code>.rldx</code> extensions</a></h4>
+<h4 id="configuring-rolodex-code-rldx-code-extensions"><a class="link" href="#configuring-rolodex-code-rldx-code-extensions">2.4.2. Configuring Rolodex <code>.rldx</code> Extensions</a></h4>
 <div class="paragraph">
-<p>Rolodex files are associated with the <code>.rldx</code> extensions and are an extension of xml. To configure xml tools in intellij for <code>rldx</code> files,</p>
+<p><a href="#rolodex">Rolodex</a> files are associated with the <code>.rldx</code> extensions and are an extension of xml. To configure xml tools in intellij for <code>rldx</code> files,</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -264,11 +271,16 @@ This will generate all resources required by the application and tests.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>You are now configured to use <code>.rldx</code> files with intellij.</p>
+<p>If you can get syntax highlighting as seen below, you are successfully configured to use <code>.rldx</code> files with intellij.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/RldxSyntaxHighlighting.png" alt="RldxSyntaxHighlighting" width="600">
+</div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">2.4.3. Updating documentation to match your fork</a></h4>
+<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">2.4.3. Updating Documentation to Match Your Fork</a></h4>
 <div class="paragraph">
 <p>After forking the repo, links in the documentation will still point to the <code>se-edu/addressbook-level4</code> repo. If you plan to develop this as a separate product (i.e. instead of contributing to the <code>se-edu/addressbook-level4</code>) , you should replace the URL in the variable <code>repoURL</code> in <code>DeveloperGuide.adoc</code> and <code>UserGuide.adoc</code> with the URL of your fork.</p>
 </div>
@@ -276,7 +288,7 @@ This will generate all resources required by the application and tests.</p>
 <div class="sect3">
 <h4 id="setting-up-ci"><a class="link" href="#setting-up-ci">2.4.4. Setting up CI</a></h4>
 <div class="paragraph">
-<p>Set up Travis to perform Continuous Integration (CI) for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to learn how to set it up.</p>
+<p>Set up Travis to perform <a href="#continuous-integration">Continuous Integration (CI)</a> for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to learn how to set it up.</p>
 </div>
 <div class="paragraph">
 <p>Optionally, you can set up AppVeyor as a second CI (see <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a>).</p>
@@ -295,7 +307,7 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 </div>
 </div>
 <div class="sect3">
-<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">2.4.5. Getting started with coding</a></h4>
+<h4 id="getting-started-with-coding"><a class="link" href="#getting-started-with-coding">2.4.5. Getting Started With Coding</a></h4>
 <div class="paragraph">
 <p>When you are ready to start coding,</p>
 </div>
@@ -316,6 +328,10 @@ Having both Travis and AppVeyor ensures your App works on both Unix-based platfo
 <div class="sect1">
 <h2 id="design"><a class="link" href="#design">3. Design</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>To help you better understand the internal design of the application, this section provides model diagrams with accompanying explanations
+for the main architecture of Rolodex.</p>
+</div>
 <div class="sect2">
 <h3 id="architecture"><a class="link" href="#architecture">3.1. Architecture</a></h3>
 <div class="imageblock">
@@ -410,7 +426,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <div class="paragraph">
 <p><em>Figure 2.1.2 : Class Diagram of the Logic Component</em></p>
 </div>
-<h4 id="events-driven-nature-of-the-design" class="discrete">Events-Driven nature of the design</h4>
+<h4 id="events-driven-nature-of-the-design" class="discrete">Events-Driven Nature of the Design</h4>
 <div class="paragraph">
 <p>The <em>Sequence Diagram</em> below shows how the components interact for the scenario where the user issues the command <code>delete 1</code>.</p>
 </div>
@@ -429,7 +445,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Note how the <code>Model</code> simply raises a <code>RolodexChangedEvent</code> when the Rolodex data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
+Note how the <code>Model</code> simply raises a <code>RolodexChangedEvent</code> when the <a href="#rolodex">Rolodex</a> data are changed, instead of asking the <code>Storage</code> to save the updates to the hard disk.
 </td>
 </tr>
 </table>
@@ -462,7 +478,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="ui-component"><a class="link" href="#ui-component">3.2. UI component</a></h3>
+<h3 id="ui-component"><a class="link" href="#ui-component">3.2. UI Component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
@@ -478,7 +494,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>, <code>StatusBarFooter</code>, <code>BrowserPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
 </div>
 <div class="paragraph">
-<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103AUG2017-W11-B2/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103AUG2017-W11-B2/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<p>The <code>UI</code> component uses <a href="#java-fx">JavaFx</a> UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/CS2103AUG2017-W11-B2/main/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="https://github.com/CS2103AUG2017-W11-B2/main/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -498,7 +514,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="logic-component"><a class="link" href="#logic-component">3.3. Logic component</a></h3>
+<h3 id="logic-component"><a class="link" href="#logic-component">3.3. Logic Component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
@@ -548,7 +564,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="model-component"><a class="link" href="#model-component">3.4. Model component</a></h3>
+<h3 id="model-component"><a class="link" href="#model-component">3.4. Model Component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
@@ -569,7 +585,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>stores a <code>UserPref</code> object that represents the user&#8217;s preferences.</p>
 </li>
 <li>
-<p>stores the Rolodex data.</p>
+<p>stores the <a href="#rolodex">Rolodex</a> data.</p>
 </li>
 <li>
 <p>exposes an unmodifiable <code>ObservableList&lt;ReadOnlyPerson&gt;</code> that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</p>
@@ -581,7 +597,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="sect2">
-<h3 id="storage-component"><a class="link" href="#storage-component">3.5. Storage component</a></h3>
+<h3 id="storage-component"><a class="link" href="#storage-component">3.5. Storage Component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
@@ -602,13 +618,13 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>can save <code>UserPref</code> objects in json format and read it back.</p>
 </li>
 <li>
-<p>can save the Rolodex data in xml format and read it back.</p>
+<p>can save the <a href="#rolodex">Rolodex</a> data in xml format and read it back.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="common-classes"><a class="link" href="#common-classes">3.6. Common classes</a></h3>
+<h3 id="common-classes"><a class="link" href="#common-classes">3.6. Common Classes</a></h3>
 <div class="paragraph">
 <p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
 </div>
@@ -622,9 +638,9 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-mechanism"><a class="link" href="#undo-redo-mechanism">4.1. Undo/Redo mechanism</a></h3>
+<h3 id="undo-redo-mechanism"><a class="link" href="#undo-redo-mechanism">4.1. Undo/Redo Mechanism</a></h3>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the rolodex (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
+<p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the <a href="#rolodex">rolodex</a> (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
 </div>
 <div class="paragraph">
 <p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram shows the inheritance diagram for commands:</p>
@@ -635,7 +651,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="paragraph">
-<p>As you can see from the diagram, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the rolodex before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
+<p>As you can see from the diagram, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the <a href="#rolodex">rolodex</a> before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
 </div>
 <div class="paragraph">
 <p>Commands that are not undoable are implemented this way:</p>
@@ -818,7 +834,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="sect2">
-<h3 id="open-file-and-new-file-mechanism"><a class="link" href="#open-file-and-new-file-mechanism">4.2. Open file and New file mechanism</a></h3>
+<h3 id="open-file-and-new-file-mechanism"><a class="link" href="#open-file-and-new-file-mechanism">4.2. Open File and New File Mechanism</a></h3>
 <div class="paragraph">
 <p>The open new file and creating new file mechanism are handled by two new types of requests under the <code>EventsCenter</code>,
 <code>OpenRolodexRequestEvent</code> and <code>RolodexChangedDirectoryEvent</code>. Upon receiving a new command, the <code>MainApp</code> attempts to
@@ -950,7 +966,7 @@ subset of xml for the Rolodex application, as seen in the snippet below:
 <strong>Pros:</strong> The application can be quickly reloaded onto the active window.<br>
 <strong>Cons:</strong> User might need to switch back and forth between the Rolodex directories.<br>
 <strong>Alternative 2:</strong> Reload <code>MainApp</code> with a new application instance.<br>
-<strong>Constraint:</strong> JavaFX only allows launch(args) to be launched once per execution time on a code level.
+<strong>Constraint:</strong> <a href="#java-fx">JavaFX</a> only allows launch(args) to be launched once per execution time on a code level.
 Another approach would be to reload the application with a loaded and built .jar.<br>
 <strong>Pros:</strong> Easier logic to understand for new developers.<br>
 <strong>Cons:</strong> Building and debugging with a second .jar will be confusing and problematic to any development workflow.<br>
@@ -978,15 +994,15 @@ Another approach would be to reload the application with a loaded and built .jar
 </div>
 </div>
 <div class="sect2">
-<h3 id="fuzzy-finding-mechanism"><a class="link" href="#fuzzy-finding-mechanism">4.3. Fuzzy finding mechanism</a></h3>
+<h3 id="fuzzy-finding-mechanism"><a class="link" href="#fuzzy-finding-mechanism">4.3. Fuzzy Finding Mechanism</a></h3>
 <div class="paragraph">
-<p>The fuzzy finding mechanism is powered by <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a>,
+<p>The <a href="#fuzzy-finding">fuzzy finding</a> mechanism is powered by <a href="https://en.wikipedia.org/wiki/Levenshtein_distance">Levenshtein distance</a>,
 a string heuristic for measuring the difference between two character sequences. It can be informally viewed as the number
 of <em>hops</em> that are required to get from a string to another, where <em>hops</em> are insertions, deletions and substitution
 operations.</p>
 </div>
 <div class="paragraph">
-<p>The activity diagram for the fuzzy finding can be loosely described as seen in the figure below:</p>
+<p>The activity diagram for the <a href="#fuzzy-finding">fuzzy finding</a> can be loosely described as seen in the figure below:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1046,9 +1062,9 @@ to the currently examined name word in which the contact will be added.</p>
 <h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Length of name word<br>
-<strong>Alternative 1 (current choice):</strong> Use a global minimum for defining when the fuzzy finding should execute.<br>
+<strong>Alternative 1 (current choice):</strong> Use a global minimum for defining when the <a href="#fuzzy-finding">fuzzy finding</a> should execute.<br>
 <strong>Pros:</strong> Name words have higher minimum hop to length ratio.<br>
-<strong>Cons:</strong> User might need fuzzy finding on name words with character length lesser than the global minimum.<br>
+<strong>Cons:</strong> User might need <a href="#fuzzy-finding">fuzzy finding</a> on name words with character length lesser than the global minimum.<br>
 <strong>Pros:</strong> Easy logic to understand, implement and maintain.<br>
 <strong>Cons:</strong> Rudimentary algorithm.</p>
 </div>
@@ -1056,7 +1072,7 @@ to the currently examined name word in which the contact will be added.</p>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Location of fuzzy find settings<br>
 <strong>Alternative 1 (current choice):</strong> Use private static constant in a person.<br>
-<strong>Pros:</strong> User does not need to worry about changing the settings or the intricacies of the fuzzy finding.<br>
+<strong>Pros:</strong> User does not need to worry about changing the settings or the intricacies of the <a href="#fuzzy-finding">fuzzy finding</a>.<br>
 <strong>Cons:</strong> User might need stricter or looser limits than the ones defined for them.<br>
 <strong>Pros:</strong> Developers can easily change and manage settings and limits.<br>
 <strong>Cons:</strong> Users have no way of accessing the settings and limits.<br>
@@ -1067,7 +1083,7 @@ to the currently examined name word in which the contact will be added.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sorting-mechanism"><a class="link" href="#sorting-mechanism">4.4. Sorting mechanism</a></h3>
+<h3 id="sorting-mechanism"><a class="link" href="#sorting-mechanism">4.4. Sorting Mechanism</a></h3>
 <div class="paragraph">
 <p>The sorting mechanism is integrated into the <code>list</code> and <code>find</code> commands which resides in the application&#8217;s <code>logic</code> component.
 It supports sorting in ascending or descending order of most fields of a person (e.g. <span class="underline">Name</span>, <span class="underline">Phone</span>).
@@ -1202,9 +1218,9 @@ comparator before executing a sort and filter which is handled by the event cons
 </div>
 </div>
 <div class="sect2">
-<h3 id="abbreviation-mechanism"><a class="link" href="#abbreviation-mechanism">4.5. Abbreviation mechanism</a></h3>
+<h3 id="abbreviation-mechanism"><a class="link" href="#abbreviation-mechanism">4.5. Abbreviation Mechanism</a></h3>
 <div class="paragraph">
-<p>The ability for users to enter a variety of different words for a same command is implemented using <code>java.util.set</code>.</p>
+<p>The ability for users to enter a variety of different words for a same command is implemented using <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html"><code>java.util.set</code></a>.</p>
 </div>
 <div class="paragraph">
 <p>An example as implemented in the open command:</p>
@@ -1252,7 +1268,7 @@ pairwise disjoint:</p>
 <h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation<br>
-<strong>Alternative 1 (current choice):</strong> A Set of strings<br>
+<strong>Alternative 1 (current choice):</strong> A <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html">Set</a> of strings<br>
 <strong>Pros:</strong> Constant access time per command level. Improves performance and reliability significantly.<br>
 <strong>Pros:</strong> Ease of testing for conflicting abbreviations, particularly where developers forget if they used a
 same abbreviation for two different commands (e.g. assigning <code>h</code> to both the <code>history</code> and <code>help</code> commands).<br>
@@ -1263,12 +1279,12 @@ on <a href="https://github.com/CS2103AUG2017-W11-B2/main/issues">github</a>.<br>
 <strong>Cons:</strong> Developers would have to manually check through all commands to ensure the accuracy of the abbreviations,
 which is time-consuming and makes way for human errors.<br>
 <strong>Cons:</strong> A switch-case for all possible commands abbreviations would perform significantly slower than direct memory
-access on a java <code>HashSet</code>, in the worst case.</p>
+access on a java <a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html"><code>HashSet</code></a>, in the worst case.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="auto-completion-mechanism"><a class="link" href="#auto-completion-mechanism">4.6. Auto-completion mechanism</a></h3>
+<h3 id="auto-completion-mechanism"><a class="link" href="#auto-completion-mechanism">4.6. Auto-completion Mechanism</a></h3>
 <div class="paragraph">
 <p>Auto-completion mechanism is implemented in <code>CommandBox</code> class under UI component.</p>
 </div>
@@ -1419,6 +1435,15 @@ An example of such an execution is given as shown:</p>
 <div class="sect3">
 <h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.7.1. Design Considerations</a></h4>
 <div class="paragraph">
+<p><strong>Aspect:</strong> Location of <code>KeyCombination</code> constants for the <code>KeyListener</code> class<br>
+<strong>Alternative 1 (current choice):</strong> <code>KeyCombination</code> constants are stored in a separate utility class, <code>KeyListenerUtil</code><br>
+<strong>Pros:</strong> Better modularity given that the number of constants is fairly large.<br>
+<strong>Cons:</strong> The constants have to be imported to be used in the <code>KeyListener</code> class.<br>
+<strong>Alternative 2:</strong> Store the constants in the <code>KeyListener</code> class itself<br>
+<strong>Pros:</strong> Straightforward implementation and the constants does not have to be imported.<br>
+<strong>Cons:</strong> Violates Separation of Concerns as the <code>KeyListener</code> class acts as a storage for the constants in addition to handling key events.</p>
+</div>
+<div class="paragraph">
 <p><strong>Aspect:</strong> The way commands words are executed<br>
 <strong>Alternative 1 (current choice):</strong> Pressing the shortcut automatically executes the command<br>
 <strong>Pros:</strong> Execution of command is faster and more convenient for the user.<br>
@@ -1427,21 +1452,174 @@ An example of such an execution is given as shown:</p>
 <strong>Pros:</strong> Allows the user to check the command before executing it.<br>
 <strong>Cons:</strong>  An extra step for user to execute the command, i.e. pressing <code>Enter</code>.</p>
 </div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="help-window-highlighting"><a class="link" href="#help-window-highlighting">4.8. Help Window Highlighting</a></h3>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Scrolling of the contact list<br>
-<strong>Alternative 1 (current choice):</strong> Pressing the <code>Esc</code> key focuses on the person list panel, then scrolling is handled by selecting the next contact with either the up or down arrow key.<br>
-<strong>Pros:</strong>  User can select contacts quickly.<br>
-<strong>Cons:</strong> Scrolling is done by selection of contacts one at a time.
-Thus, it may be time consuming for the user to search for a contact by scrolling.<br>
-<strong>Alternative 2:</strong> Contact list scrolls without triggering selection of a contact in the list<br>
-<strong>Pros:</strong> Scrolling motion is faster and smoother.<br>
-<strong>Cons:</strong> An extra step is needed for users who want to select a contact,
-          i.e. scroll the list until the contact is visible, then select the desired contact with a select command/shortcut.<br></p>
+<p>Rolodex uses <a href="#java-fx">JavaFx</a> version <a href="http://javafx.com/javafx/8.0.111">8.0.111</a>, where WebView does not support
+search functionality that mimics <kbd>Ctrl</kbd> + <kbd>F</kbd> capability of modern web browsers. As a workaround, Johann Burkard&#8217;s
+<a href="http://johannburkard.de/blog/programming/javascript/highlight-javascript-text-higlighting-jquery-plugin.html">jQuery text highlighting</a>
+library is being used to implement such a feature.</p>
+</div>
+<div class="paragraph">
+<p>Users can easily find keywords by using the highlighting feature of the help window, as opposed to manually looking through the
+help document for information, which can be counterproductive:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Highlight.png" alt="Highlight" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The discussion for <a href="#java-fx">JavaFX</a> to implement a native search feature within WebView is ongoing and you can find it
+<a href="https://stackoverflow.com/questions/19418626/javafx-search-and-highlight-text-add-search-bar-for-loaded-web-page">here</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="removing-jquery-implementation"><a class="link" href="#removing-jquery-implementation">4.8.1. Removing jQuery implementation</a></h4>
+<div class="paragraph">
+<p>In a future version of <a href="#java-fx">JavaFx</a> where such an implementation is no longer necessary, you may revert the changes by reverting pull request
+<a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/99">#99</a> on the Rolodex repo on GitHub. You may also choose to manually do this by reverting the following code:</p>
+</div>
+<div class="paragraph">
+<p>Original <code>HelpWindow.fxml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;StackPane</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">helpWindowRoot</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://javafx.com/javafx/8</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:fx</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://javafx.com/fxml/1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;WebView</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">browser</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+<span class="tag">&lt;/StackPane&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>HelpWindow.fxml</code> with makeshift user guide search functionality:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;StackPane</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">helpWindowRoot</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://javafx.com/javafx/8</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xmlns:fx</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://javafx.com/fxml/1</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;VBox</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">layout</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;children&gt;</span>
+            <span class="tag">&lt;TextField</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">txtSearch</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">promptText</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Search and press ENTER</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+                <span class="tag">&lt;HBox</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">controls</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                    <span class="tag">&lt;children&gt;</span>
+                        <span class="tag">&lt;Button</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btnSearch</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">mnemonicParsing</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">text</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Search</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+                            <span class="tag">&lt;HBox.margin&gt;</span>
+                                <span class="tag">&lt;Insets</span> <span class="attribute-name">right</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">10.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+                            <span class="tag">&lt;/HBox.margin&gt;</span>
+                        <span class="tag">&lt;/Button&gt;</span>
+                        <span class="tag">&lt;Button</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">btnClear</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">mnemonicParsing</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">text</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Clear</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+                    <span class="tag">&lt;/children&gt;</span>
+                <span class="tag">&lt;/HBox&gt;</span>
+            <span class="tag">&lt;WebView</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">browser</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">minHeight</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-Infinity</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">minWidth</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">-Infinity</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">prefHeight</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">100000.0</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+        <span class="tag">&lt;/children&gt;</span>
+    <span class="tag">&lt;/VBox&gt;</span>
+<span class="tag">&lt;/StackPane&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Original <code>HelpWindow.java</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@FXML</span>
+<span class="directive">private</span> WebView browser;
+
+<span class="directive">private</span> <span class="directive">final</span> Stage dialogStage;
+
+<span class="directive">public</span> HelpWindow() {
+    <span class="local-variable">super</span>(FXML);
+    Scene scene = <span class="keyword">new</span> Scene(getRoot());
+    <span class="comment">//Null passed as the parent stage to make it non-modal.</span>
+    dialogStage = createDialogStage(TITLE, <span class="predefined-constant">null</span>, scene);
+    dialogStage.setMaximized(<span class="predefined-constant">true</span>); <span class="comment">//TODO: set a more appropriate initial size</span>
+    FxViewUtil.setStageIcon(dialogStage, ICON);
+
+    <span class="predefined-type">String</span> userGuideUrl = getClass().getResource(HELP_FILE_PATH).toString();
+    browser.getEngine().load(userGuideUrl);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>HelpWindow.java</code> with makeshift user guide search functionality:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@FXML</span>
+<span class="directive">private</span> WebView browser;
+
+<span class="annotation">@FXML</span>
+<span class="directive">private</span> <span class="predefined-type">TextField</span> txtSearch;
+
+<span class="annotation">@FXML</span>
+<span class="directive">private</span> <span class="predefined-type">Button</span> btnSearch;
+
+<span class="annotation">@FXML</span>
+<span class="directive">private</span> <span class="predefined-type">Button</span> btnClear;
+
+<span class="annotation">@FXML</span>
+<span class="directive">private</span> HBox controls;
+
+<span class="directive">private</span> <span class="directive">final</span> Stage dialogStage;
+
+<span class="directive">public</span> HelpWindow() {
+    <span class="local-variable">super</span>(FXML);
+
+    txtSearch.setOnAction(event -&gt; {
+        <span class="keyword">if</span> (browser.getEngine().getDocument() != <span class="predefined-constant">null</span>) {
+            highlight(browser.getEngine(), txtSearch.getText());
+        }
+    });
+
+    btnSearch.setDefaultButton(<span class="predefined-constant">true</span>);
+    btnSearch.setOnAction(actionEvent -&gt; txtSearch.fireEvent(<span class="keyword">new</span> <span class="predefined-type">ActionEvent</span>()));
+
+    btnClear.setOnAction(actionEvent -&gt; clearHighlights(browser.getEngine()));
+    btnClear.setCancelButton(<span class="predefined-constant">true</span>);
+
+    controls.disableProperty().bind(browser.getEngine().getLoadWorker().runningProperty());
+    txtSearch.disableProperty().bind(browser.getEngine().getLoadWorker().runningProperty());
+
+    Scene scene = <span class="keyword">new</span> Scene(getRoot());
+    <span class="comment">//Null passed as the parent stage to make it non-modal.</span>
+    dialogStage = createDialogStage(TITLE, <span class="predefined-constant">null</span>, scene);
+    dialogStage.setMaximized(<span class="predefined-constant">true</span>); <span class="comment">//TODO: set a more appropriate initial size</span>
+    FxViewUtil.setStageIcon(dialogStage, ICON);
+
+    <span class="predefined-type">String</span> userGuideUrl = getClass().getResource(HELP_FILE_PATH).toString();
+    browser.getEngine().load(userGuideUrl);
+}
+
+<span class="directive">private</span> <span class="type">void</span> highlight(WebEngine engine, <span class="predefined-type">String</span> text) {
+    engine.executeScript(<span class="string"><span class="delimiter">&quot;</span><span class="content">$('body').removeHighlight().highlight('</span><span class="delimiter">&quot;</span></span> + text + <span class="string"><span class="delimiter">&quot;</span><span class="content">')</span><span class="delimiter">&quot;</span></span>);
+}
+
+<span class="directive">private</span> <span class="type">void</span> clearHighlights(WebEngine engine) {
+    engine.executeScript(<span class="string"><span class="delimiter">&quot;</span><span class="content">$('body').removeHighlight()</span><span class="delimiter">&quot;</span></span>);
+    txtSearch.clear();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>Help.adoc</code> passthrough imports:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="javascript"><span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">scripts/jquery-3.2.1.min.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">type</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/javascript</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">scripts/jquery.highlight-5.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>asciidoctor.css</code> <code>.highlight</code> class:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="css"><span class="class">.highlight</span>{<span class="key">background-color</span>:<span class="value">yellow</span>}</code></pre>
+</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.8. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -1479,7 +1657,7 @@ Thus, it may be time consuming for the user to search for a contact by scrolling
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration"><a class="link" href="#configuration">4.9. Configuration</a></h3>
+<h3 id="configuration"><a class="link" href="#configuration">4.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1518,7 +1696,7 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 </div>
 </div>
 <div class="sect2">
-<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF format</a></h3>
+<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF Format</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
 </div>
@@ -1555,6 +1733,9 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <div class="sect1">
 <h2 id="testing"><a class="link" href="#testing">6. Testing</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Testing ensures that our software works as expected. In Rolodex, we use several frameworks for running tests.</p>
+</div>
 <div class="sect2">
 <h3 id="running-tests"><a class="link" href="#running-tests">6.1. Running Tests</a></h3>
 <div class="paragraph">
@@ -1618,7 +1799,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 </div>
 </div>
 <div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">6.2. Types of tests</a></h3>
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">6.2. Types of Tests</a></h3>
 <div class="paragraph">
 <p>We have two types of tests:</p>
 </div>
@@ -1680,6 +1861,9 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="sect1">
 <h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>This section contains the tools we use for software collaboration.</p>
+</div>
 <div class="sect2">
 <h3 id="build-automation"><a class="link" href="#build-automation">7.1. Build Automation</a></h3>
 <div class="paragraph">
@@ -1689,7 +1873,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 <div class="sect2">
 <h3 id="continuous-integration"><a class="link" href="#continuous-integration">7.2. Continuous Integration</a></h3>
 <div class="paragraph">
-<p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <em>Continuous Integration</em> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
+<p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <a href="#continuous-integration">Continuous Integration</a> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1741,11 +1925,11 @@ b. Require developers to download those libraries manually (this creates extra w
 </ol>
 </div>
 <div class="sect2">
-<h3 id="improving-each-component"><a class="link" href="#improving-each-component">A.1. Improving each component</a></h3>
+<h3 id="improving-each-component"><a class="link" href="#improving-each-component">A.1. Improving Each Component</a></h3>
 <div class="paragraph">
 <p>Each individual exercise in this section is component-based (i.e. you would not need to modify the other components to get it to work).</p>
 </div>
-<h4 id="code-logic-code-component" class="discrete"><code>Logic</code> component</h4>
+<h4 id="code-logic-code-component" class="discrete"><code>Logic</code> Component</h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1799,7 +1983,7 @@ Do take a look at the <a href="#logic-component">Design: Logic Component</a> sec
 </li>
 </ol>
 </div>
-<h4 id="code-model-code-component" class="discrete"><code>Model</code> component</h4>
+<h4 id="code-model-code-component" class="discrete"><code>Model</code> Component</h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1853,7 +2037,7 @@ Do take a look at the <a href="#model-component">Design: Model Component</a> sec
 </li>
 </ol>
 </div>
-<h4 id="code-ui-code-component" class="discrete"><code>Ui</code> component</h4>
+<h4 id="code-ui-code-component" class="discrete"><code>Ui</code> Component</h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -2032,7 +2216,7 @@ Do take a look at the <a href="#ui-component">Design: UI Component</a> section b
 </li>
 </ol>
 </div>
-<h4 id="code-storage-code-component" class="discrete"><code>Storage</code> component</h4>
+<h4 id="code-storage-code-component" class="discrete"><code>Storage</code> Component</h4>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -2085,7 +2269,7 @@ Do take a look at the <a href="#storage-component">Design: Storage Component</a>
 </div>
 </div>
 <div class="sect2">
-<h3 id="creating-a-new-command-code-remark-code"><a class="link" href="#creating-a-new-command-code-remark-code">A.2. Creating a new command: <code>remark</code></a></h3>
+<h3 id="creating-a-new-command-code-remark-code"><a class="link" href="#creating-a-new-command-code-remark-code">A.2. Creating a New Command: <code>remark</code></a></h3>
 <div class="paragraph">
 <p>By creating this command, you will get a chance to learn how to implement a feature end-to-end, touching all major components of the app.</p>
 </div>
@@ -2470,7 +2654,7 @@ for <code>RemarkCommandParser</code>.</p>
 </tr>
 </tbody>
 </table>
-<h3 id="completed-user-stories" class="discrete">Completed user stories</h3>
+<h3 id="completed-user-stories" class="discrete">Completed User Stories</h3>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 33%;">
@@ -2503,7 +2687,7 @@ for <code>RemarkCommandParser</code>.</p>
 <div class="paragraph">
 <p>(For all use cases below, the <strong>System</strong> is the <code>Rolodex</code> and the <strong>Actor</strong> is the <code>user</code>, unless specified otherwise)</p>
 </div>
-<h3 id="use-case-find-person" class="discrete">Use case: Find person</h3>
+<h3 id="use-case-find-person" class="discrete">Use Case: Find Person</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2535,7 +2719,7 @@ tags matching the specified query</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-delete-person" class="discrete">Use case: Delete person</h3>
+<h3 id="use-case-delete-person" class="discrete">Use Case: Delete Person</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2584,7 +2768,7 @@ tags matching the specified query</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-store-person-note" class="discrete">Use case: Store person note</h3>
+<h3 id="use-case-store-person-note" class="discrete">Use Case: Store Person Note</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2646,7 +2830,7 @@ tags matching the specified query</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-clear-rolodex" class="discrete">Use case: Clear Rolodex</h3>
+<h3 id="use-case-clear-rolodex" class="discrete">Use Case: Clear Rolodex</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2682,7 +2866,7 @@ tags matching the specified query</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-editing-a-person-s-details" class="discrete">Use case: Editing a person&#8217;s details</h3>
+<h3 id="use-case-editing-a-person-s-details" class="discrete">Use Case: Editing a Person&#8217;s Details</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2776,7 +2960,7 @@ tags matching the specified query</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-autocomplete-commands" class="discrete">Use case: Autocomplete commands</h3>
+<h3 id="use-case-autocomplete-commands" class="discrete">Use Case: Autocomplete Commands</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2828,7 +3012,7 @@ tags matching the specified query</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-delete-tag" class="discrete">Use case: Delete tag</h3>
+<h3 id="use-case-delete-tag" class="discrete">Use Case: Delete Tag</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -2874,7 +3058,7 @@ tags matching the specified query</p>
 </li>
 </ul>
 </div>
-<h3 id="use-case-logging-into-the-rolodex-with-login-credentials" class="discrete">Use case: Logging into the Rolodex with login credentials</h3>
+<h3 id="use-case-logging-into-the-rolodex-with-login-credentials" class="discrete">Use Case: Logging into the Rolodex With Login Credentials</h3>
 <div class="paragraph">
 <p><strong>MSS</strong></p>
 </div>
@@ -3012,10 +3196,10 @@ tags matching the specified query</p>
 <p>Startup time should be less than 3s.</p>
 </li>
 <li>
-<p>Should be usable by a human who has never seen a command line interface before.</p>
+<p>Should be usable by a human who has never seen a <a href="#command-line-interface">command line interface</a> before.</p>
 </li>
 <li>
-<p>Should be usable by a human who has never used a command line interface before.</p>
+<p>Should be usable by a human who has never used a <a href="#command-line-interface">command line interface</a> before.</p>
 </li>
 <li>
 <p>Data should be encrypted when application is not running.</p>
@@ -3033,6 +3217,54 @@ tags matching the specified query</p>
 <div class="sect1">
 <h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
 <div class="sectionbody">
+<div id="command-line-interface" class="paragraph">
+<p>Command Line Interface (CLI)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>A user interface to a computer's operating system or an application in which the user responds to a visual prompt by typing in a command on a specified line, receives a response back from the system, and then enters another command, and so forth.</pre>
+</div>
+</div>
+<div id="continuous-integration" class="paragraph">
+<p>Continuous Integration (CI)</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>The practice of merging all developer working copies to a shared mainline several times a day.</pre>
+</div>
+</div>
+<div id="fuzzy-finding" class="paragraph">
+<p>Fuzzy Finding</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>In computer science, approximate string matching (often colloquially referred to as fuzzy string searching) is the technique of finding strings that match a pattern approximately (rather than exactly).</pre>
+</div>
+</div>
+<div id="java" class="paragraph">
+<p>Java</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>A general-purpose computer programming language that is used in many products today.</pre>
+</div>
+</div>
+<div id="java-fx" class="paragraph">
+<p>JavaFX</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>A software platform for creating and delivering desktop applications, as well as rich internet applications (RIAs) that can run across a wide variety of devices.</pre>
+</div>
+</div>
+<div id="lexicographic" class="paragraph">
+<p>Lexicographical order</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>In mathematics, the lexicographic or lexicographical order (also known as lexical order, dictionary order, alphabetical order or lexicographic(al) product) is a generalization of the way words are alphabetically ordered based on the alphabetical order of their component letters. This generalization consists primarily in defining a total order over the sequences (often called words in computer science) of elements of a finite totally ordered set, often called alphabet.</pre>
+</div>
+</div>
 <div id="mainstream-os" class="paragraph">
 <p>Mainstream OS</p>
 </div>
@@ -3049,42 +3281,13 @@ tags matching the specified query</p>
 <pre>A contact detail that is not meant to be shared with others</pre>
 </div>
 </div>
+<div id="rolodex" class="paragraph">
+<p>Rolodex</p>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>The name of this application is Rolodex. It is used to refer to the java object of a similar name developed for this application under the application's model component. A Rolodex is also a rotating file device used to store business contact information. Its name is a combination of the words rolling and index.</pre>
 </div>
-<div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix F: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
 </div>
 <div id="navbar" class="ulist nav-headbar">
 <ul>
@@ -3113,7 +3316,7 @@ tags matching the specified query</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-31 17:08:35 +00:00
+Last updated 2017-11-01 00:25:17 +00:00
 </div>
 </div>
 </body>
