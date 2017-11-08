@@ -20,15 +20,12 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Rolodex is a desktop contact management application for users who prefer working without a mouse to manage their contacts more efficiently.
-If you are a businessmen with a list of clients to remember, a teacher who wants to organize their student information, or anyone with a need for contact
+If you are a businessman with a list of clients to remember, a teacher who wants to organize their student information, or anyone with a need for contact
 management, Rolodex provides you with a way to organize your important contacts in a fast and productive manner.</p>
 </div>
 <div class="paragraph">
 <p>The user interacts with the application using a CLI (Command Line Interface), and it has a GUI created with JavaFX.
-It is written in Java, and has about 6 kLoC.<br></p>
-</div>
-<div class="paragraph">
-<p>Rolodex is an extension of AddressBook - Level 4, which is a desktop address book application used for teaching Software Engineering principles.</p>
+It is written in Java, and has about 10 kLoC.<br></p>
 </div>
 <div class="paragraph">
 <p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103AUG2017-W11-B2/main/blob/master/collated/main/jo-lyn.md">Functional code</a>] [<a href="https://github.com/CS2103AUG2017-W11-B2/main/blob/master/collated/test/jo-lyn.md">Test code</a>]</p>
@@ -40,7 +37,7 @@ It is written in Java, and has about 6 kLoC.<br></p>
 and <code>View help window</code> which came with the original state of the application.</p>
 </div>
 <div class="sect3">
-<h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
+<h4 id="external-behavior"><a class="link" href="#external-behavior">External Behavior</a></h4>
 <hr>
 <div class="sect4">
 <h5 id="quick-command-shortcuts-em-since-v1-2-em"><a class="link" href="#quick-command-shortcuts-em-since-v1-2-em">Quick Command Shortcuts <em>(Since v1.2)</em></a></h5>
@@ -183,7 +180,8 @@ In <code>KeyListener</code>, the main method for handling the key events has the
 </div>
 <div class="paragraph">
 <p>The <code>mainNode</code> refers to the node containing the all UI components in the application,
-and <code>addEventFilter</code> captures key events received by that node.</p>
+and <code>addEventFilter</code> captures key events received by that node. The application will continue to listen
+to key presses done by the user once this method is called.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -192,7 +190,7 @@ and <code>addEventFilter</code> captures key events received by that node.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Another common method used for capturing key events is <code>keyOnPressed</code>.
+Another common method used for capturing key events is <code>onKeyPressed</code>.
 In this case, <code>addEventFilter</code> is used instead as key events captured by the former will be consumed by the <code>TextField</code> used in the application.
 <code>addEventFilter</code> captures the key events before they are consumed by the <code>TextField</code>.
 </td>
@@ -200,13 +198,13 @@ In this case, <code>addEventFilter</code> is used instead as key events captured
 </table>
 </div>
 <div class="paragraph">
-<p>When the user presses a key combination which matches one that is assigned to the <code>KeyCombination</code> attribute in the <code>KeyListenerUtil</code> class, the corresponding action will be executed.
+<p>When the user presses a key combination which matches one that is assigned, a corresponding action will be executed.
 An example of such an execution is given as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> executeKeyEvents(<span class="predefined-type">KeyEvent</span> keyEvent) {
-        <span class="keyword">if</span> (FOCUS_PERSON_LIST.match(keyEvent)) {
+        <span class="keyword">if</span> (KEY_COMBINATION_FOCUS_PERSON_LIST.match(keyEvent)) {
                 <span class="comment">// action to focus on person list</span>
         }
         <span class="comment">// … more cases</span>
@@ -214,7 +212,23 @@ An example of such an execution is given as shown:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Where the key combination <code>FOCUS_PERSON_LIST</code> matches the <code>keyEvent</code> captured by the event filter.</p>
+<p>Where the application focuses on the person list when the user presses a key combination that is assigned to <code>KEY_COMBINATION_FOCUS_PERSON_LIST</code>.</p>
+</div>
+<div class="paragraph">
+<p>The mapping of <code>KEY_COMBINATION_FOCUS_PERSON_LIST</code> to a key combination can be found in the <code>KeyListenerUtil</code> class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">KeyListenerUtil</span> {
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> KeyCombination KEY_COMBINATION_FOCUS_PERSON_LIST = KeyCombination.valueOf(<span class="string"><span class="delimiter">&quot;</span><span class="content">Esc</span><span class="delimiter">&quot;</span></span>);
+    <span class="comment">// … more mappings</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, <code>KEY_COMBINATION_FOCUS_PERSON_LIST</code> is mapped to the <kbd>esc</kbd> key. As such, a user
+pressing the <kbd>esc</kbd> key will result in the application focusing on the person list.</p>
 </div>
 <div class="sect5">
 <h6 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h6>
@@ -242,7 +256,228 @@ An example of such an execution is given as shown:</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="enhancement-added-renovate-ui-color-scheme-and-layout"><a class="link" href="#enhancement-added-renovate-ui-color-scheme-and-layout">Enhancement Added: Renovate UI Color Scheme and Layout</a></h3>
+<div class="paragraph">
+<p>The user interface of the application has been revamped to take on a clean design, which aims to improve
+the user&#8217;s experience with Rolodex.</p>
+</div>
+<div class="sect3">
+<h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External Behavior</a></h4>
+<hr>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui.png" alt="Ui" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Some features of the UI:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A keyboard icon in the command box provides visual feedback for certain user events:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="../images/keyboard.png" alt="keyboard" width="30"></span> : User is idle</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/keyboardTyping.png" alt="keyboardTyping" width="30"></span> : User is typing</p>
+</li>
+<li>
+<p><span class="image"><img src="../images/keyboardError.png" alt="keyboardError" width="30"></span> : User entered an invalid command</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Split pane which separates the contact list from the other UI components is responsive;
+the divider is automatically maintained at the optimal position
+when window size changes</p>
+</li>
+<li>
+<p>Avatar colors are randomized</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-person-detail-panel"><a class="link" href="#enhancement-added-person-detail-panel">Enhancement Added: Person Detail Panel</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-3"><a class="link" href="#external-behavior-3">External Behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p>The person detail panel displays the complete information of a person that is selected.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/detailPanel.png" alt="detailPanel" width="600">
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<hr>
+<div class="paragraph">
+<p>The behavior of the panel is mostly event-driven, where the information displayed on the panel
+changes depending on various user actions, such as a person selection, editing of a person, addition of a person, etc.</p>
+</div>
+<div class="paragraph">
+<p>For example, the sequence diagram below shows the sequence of events to update the panel display when the user edits a person
+(the logic aspect of updating the person detail is omitted for brevity).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DetailPanelSequenceDiagram.png" alt="DetailPanelSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The information displayed on the panel is extracted from the <code>ReadOnlyPerson</code> that is returned by the <code>EventsCenter</code>.
+The details of the implementation can be seen from the following code snippet.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
+* Shows the details of the person on the panel
+*/</span>
+<span class="directive">private</span> <span class="type">void</span> showPersonDetails(ReadOnlyPerson person) {
+    setAvatar(person);
+    setTextFields(person);
+    setTags(person);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The behavior of the panel is summarized in the table below.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 60%;">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">User Action</th>
+<th class="tableblock halign-left valign-top">Panel Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select a person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display selected person</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit a person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display newly edited person</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add a person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display newly added person</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clear the list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display empty panel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Call undo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display empty panel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Call redo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Behavior as per command that is redone</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other commands</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No change in display</p></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-remark-field"><a class="link" href="#enhancement-added-remark-field">Enhancement Added: Remark Field</a></h3>
+<div class="paragraph">
+<p>The remark field allows the user to store miscellaneous notes about their contacts. The field can be added using a standalone <code>remark</code> command,
+or added along with other fields when adding a new person using the existing <code>add</code> command. Similarly, the field can be modified with the <code>remark</code> command,
+or edited along with other fields using the existing <code>edit</code> command.</p>
+</div>
+<div class="sect3">
+<h4 id="external-behavior-4"><a class="link" href="#external-behavior-4">External Behavior</a></h4>
+<hr>
+<div class="sect4">
+<h5 id="code-remark-code-code-rmk-code-code-note-code-or-code-comment-code-adding-a-remark-em-since-v1-4-em"><a class="link" href="#code-remark-code-code-rmk-code-code-note-code-or-code-comment-code-adding-a-remark-em-since-v1-4-em"><code>remark</code>, <code>rmk</code>, <code>note</code> or <code>comment</code> : Adding a Remark <em>(Since v1.4)</em></a></h5>
+<div class="paragraph">
+<p>Adds a remark to the specified person in Rolodex.<br>
+Format: <code>remark INDEX [r/REMARK]</code><br>
+Alternatives: <code>remark</code> can be replaced by <code>note</code> or <code>rmk</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Adds a remark to the person at the specified <code>INDEX</code>.</p>
+</li>
+<li>
+<p>The index refers to the index number shown in the most recent listing.</p>
+</li>
+<li>
+<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
+</li>
+<li>
+<p>An existing remark will be replaced.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>remark 1 r/Likes fishing</code><br>
+Sets the remark of the 1st person to <code>Likes fishing</code>.</p>
+</li>
+<li>
+<p><code>note 1 r/</code><br>
+Removes the remark for the 1st person.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Remarks can also be added using the <code>add</code> command, and modified with the <code>edit</code> command.</p>
+</li>
+<li>
+<p>Remark commands are <em>undoable</em> with the <code>undo</code> command.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect2">
 <h3 id="enhancement-proposed-add-profile-pictures"><a class="link" href="#enhancement-proposed-add-profile-pictures">Enhancement Proposed: Add Profile Pictures</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-5"><a class="link" href="#external-behavior-5">External Behavior</a></h4>
 <hr>
 <div class="sect4">
 <h5 id="adding-a-profile-picture-code-picture-code-or-code-pic-code-em-coming-in-v2-0-em"><a class="link" href="#adding-a-profile-picture-code-picture-code-or-code-pic-code-em-coming-in-v2-0-em">Adding a Profile Picture: <code>picture</code> or <code>pic</code> <em>(Coming in v2.0)</em></a></h5>
@@ -317,21 +552,24 @@ Sets the profile picture of the 6th person to <code>john.png</code>.</p>
 <hr>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="other-contributions"><a class="link" href="#other-contributions">Other contributions</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI layout and color scheme (Pull request <a href="https://github.com">#16</a>)</p>
+<p>Added auto-selection to person that is newly added (Pull request <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/123">#123</a>)</p>
 </li>
 <li>
-<p>Added a keyboard icon in the command box which provides visual feedback for some user events (Pull request <a href="https://github.com">#28</a>)</p>
+<p>Added auto-selection to person that is newly edited (Pull request <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/102">#102</a>)</p>
 </li>
 <li>
-<p>Added the removeTag method (Pull request <a href="https://github.com">#6</a>)</p>
+<p>Added the removeTag method (Pull request <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/6">#6</a>)</p>
 </li>
 <li>
-<p>Updated the General Documentation (Pull requests <a href="https://github.com">#2</a>, <a href="https://github.com">#66</a>)</p>
+<p>Updated the General Documentation (Pull requests <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/2">#2</a>,
+<a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/66">#66</a>,
+<a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/112">#112</a>)</p>
 </li>
 </ul>
 </div>
@@ -363,7 +601,7 @@ Sets the profile picture of the 6th person to <code>john.png</code>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-07 23:22:08 +00:00
+Last updated 2017-11-08 02:30:17 +00:00
 </div>
 </div>
 </body>

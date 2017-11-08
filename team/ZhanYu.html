@@ -20,15 +20,12 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Rolodex is a desktop contact management application for users who prefer working without a mouse to manage their contacts more efficiently.
-If you are a businessmen with a list of clients to remember, a teacher who wants to organize their student information, or anyone with a need for contact
+If you are a businessman with a list of clients to remember, a teacher who wants to organize their student information, or anyone with a need for contact
 management, Rolodex provides you with a way to organize your important contacts in a fast and productive manner.</p>
 </div>
 <div class="paragraph">
 <p>The user interacts with the application using a CLI (Command Line Interface), and it has a GUI created with JavaFX.
-It is written in Java, and has about 6 kLoC.<br></p>
-</div>
-<div class="paragraph">
-<p>Rolodex is an extension of AddressBook - Level 4, which is a desktop address book application used for teaching Software Engineering principles.</p>
+It is written in Java, and has about 10 kLoC.<br></p>
 </div>
 <div class="paragraph">
 <p><strong>Code contributed</strong>:</p>
@@ -52,21 +49,27 @@ It is written in Java, and has about 6 kLoC.<br></p>
 <h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
 <hr>
 <div class="sect4">
-<h5 id="code-exit-code-code-quit-code-code-close-code-code-bye-code-code-esc-code-exiting-the-program-em-since-v1-3-em"><a class="link" href="#code-exit-code-code-quit-code-code-close-code-code-bye-code-code-esc-code-exiting-the-program-em-since-v1-3-em"><code>exit</code>, <code>quit</code>, <code>close</code>, <code>bye</code>, <code>esc</code>: Exiting the Program <em>(Since v1.3)</em></a></h5>
-<div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code><br>
-Keyboard shortcut: <span class="keyseq"><kbd>Alt</kbd>+<kbd>F4</kbd></span></p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="code-find-code-code-f-code-code-filter-code-or-code-search-code-locating-persons-in-rolodex-em-since-v1-4-em"><a class="link" href="#code-find-code-code-f-code-code-filter-code-or-code-search-code-locating-persons-in-rolodex-em-since-v1-4-em"><code>find</code>, <code>f</code>, <code>filter</code> or <code>search</code>: Locating Persons in Rolodex <em>(Since v1.4)</em></a></h5>
+<h5 id="code-find-code-code-filter-code-code-search-code-or-code-f-code-locating-persons-in-rolodex-em-since-v1-4-em"><a class="link" href="#code-find-code-code-filter-code-code-search-code-or-code-f-code-locating-persons-in-rolodex-em-since-v1-4-em"><code>find</code>, <code>filter</code>, <code>search</code> or <code>f</code>: Locating Persons in Rolodex <em>(Since v1.4)</em></a></h5>
 <div class="paragraph">
 <p>Finds persons in Rolodex.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
-        or <code>f KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
-        or <code>search KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code><br>
-        (press <kbd>Tab</kbd> after typing <code>find</code> for auto-completion)<br>
+Format: <code>find KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code><br></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Press <kbd>Tab</kbd> after typing <code>find</code> to generate the required field(s). See <a href="#autocomplete">3.19. Auto-completion</a> for more details.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Alternatives: <code>find</code> can be replaced by <code>filter</code>, <code>search</code> or <code>f</code><br>
 Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>F</kbd></span></p>
 </div>
 <div class="sidebarblock">
@@ -316,10 +319,11 @@ to the currently examined name word in which the contact will be added.</p>
 <h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External behavior</a></h4>
 <hr>
 <div class="sect4">
-<h5 id="code-list-code-code-l-code-code-show-code-or-code-display-code-listing-all-persons-em-since-v1-3-em"><a class="link" href="#code-list-code-code-l-code-code-show-code-or-code-display-code-listing-all-persons-em-since-v1-3-em"><code>list</code>, <code>l</code>, <code>show</code> or <code>display</code>: Listing All Persons <em>(Since v1.3)</em></a></h5>
+<h5 id="code-list-code-code-show-code-code-display-code-or-code-l-code-listing-all-persons-em-since-v1-3-em"><a class="link" href="#code-list-code-code-show-code-code-display-code-or-code-l-code-listing-all-persons-em-since-v1-3-em"><code>list</code>, <code>show</code>, <code>display</code> or <code>l</code>: Listing All Persons <em>(Since v1.3)</em></a></h5>
 <div class="paragraph">
 <p>Shows a list of all persons in Rolodex, sorted by the specified sort order or default sort order.<br>
-Format: <code>list [SORT_ARGUMENTS]</code> or <code>l [SORT_ARGUMENTS]</code><br>
+Format: <code>list [SORT_ARGUMENTS]</code><br>
+Alternatives: <code>list</code> can be replaced by <code>show</code>, <code>display</code> or <code>l</code><br>
 Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>L</kbd></span></p>
 </div>
 <div class="sidebarblock">
@@ -376,21 +380,27 @@ Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>L</kbd></span></p>
 </div>
 </div>
 <div class="sect4">
-<h5 id="code-exit-code-code-quit-code-code-close-code-code-bye-code-code-esc-code-exiting-the-program-em-since-v1-3-em-2"><a class="link" href="#code-exit-code-code-quit-code-code-close-code-code-bye-code-code-esc-code-exiting-the-program-em-since-v1-3-em-2"><code>exit</code>, <code>quit</code>, <code>close</code>, <code>bye</code>, <code>esc</code>: Exiting the Program <em>(Since v1.3)</em></a></h5>
-<div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code><br>
-Keyboard shortcut: <span class="keyseq"><kbd>Alt</kbd>+<kbd>F4</kbd></span></p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="code-find-code-code-f-code-code-filter-code-or-code-search-code-locating-persons-in-rolodex-em-since-v1-4-em-2"><a class="link" href="#code-find-code-code-f-code-code-filter-code-or-code-search-code-locating-persons-in-rolodex-em-since-v1-4-em-2"><code>find</code>, <code>f</code>, <code>filter</code> or <code>search</code>: Locating Persons in Rolodex <em>(Since v1.4)</em></a></h5>
+<h5 id="code-find-code-code-filter-code-code-search-code-or-code-f-code-locating-persons-in-rolodex-em-since-v1-4-em-2"><a class="link" href="#code-find-code-code-filter-code-code-search-code-or-code-f-code-locating-persons-in-rolodex-em-since-v1-4-em-2"><code>find</code>, <code>filter</code>, <code>search</code> or <code>f</code>: Locating Persons in Rolodex <em>(Since v1.4)</em></a></h5>
 <div class="paragraph">
 <p>Finds persons in Rolodex.<br>
-Format: <code>find KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
-        or <code>f KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code>
-        or <code>search KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code><br>
-        (press <kbd>Tab</kbd> after typing <code>find</code> for auto-completion)<br>
+Format: <code>find KEYWORD [MORE_KEYWORDS] [SORT_ARGUMENTS]</code><br></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Press <kbd>Tab</kbd> after typing <code>find</code> to generate the required field(s). See <a href="#autocomplete">3.19. Auto-completion</a> for more details.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Alternatives: <code>find</code> can be replaced by <code>filter</code>, <code>search</code> or <code>f</code><br>
 Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>F</kbd></span></p>
 </div>
 <div class="sidebarblock">
@@ -687,7 +697,7 @@ comparator before executing a sort and filter which is handled by the event cons
 <h4 id="external-behavior-3"><a class="link" href="#external-behavior-3">External behavior</a></h4>
 <hr>
 <div class="sect4">
-<h5 id="code-open-code-code-o-code-code-cd-code-code-ls-code-code-code-opening-an-existing-rolodex-storage-file-em-since-v1-3-em"><a class="link" href="#code-open-code-code-o-code-code-cd-code-code-ls-code-code-code-opening-an-existing-rolodex-storage-file-em-since-v1-3-em"><code>open</code>, <code>o</code>, <code>cd</code>, <code>ls</code>, <code>&lt;</code>: Opening an Existing Rolodex Storage File <em>(Since v1.3)</em></a></h5>
+<h5 id="code-open-code-code-o-code-code-cd-code-code-ls-code-or-code-code-opening-an-existing-rolodex-storage-file-em-since-v1-3-em"><a class="link" href="#code-open-code-code-o-code-code-cd-code-code-ls-code-or-code-code-opening-an-existing-rolodex-storage-file-em-since-v1-3-em"><code>open</code>, <code>o</code>, <code>cd</code>, <code>ls</code> or <code>&lt;</code>: Opening an Existing Rolodex Storage File <em>(Since v1.3)</em></a></h5>
 <div class="paragraph">
 <p>Reloads the application with data from a rolodex at the specified filepath.<br>
 Format: <code>open FILEPATH</code> or <code>o FILEPATH</code>
@@ -770,7 +780,7 @@ Loads the application with the data in <code>default.rldx</code> in the folder <
 <h5 id="code-new-code-code-n-code-code-touch-code-or-code-code-creating-a-new-rolodex-storage-file-em-since-v1-3-em"><a class="link" href="#code-new-code-code-n-code-code-touch-code-or-code-code-creating-a-new-rolodex-storage-file-em-since-v1-3-em"><code>new</code>, <code>n</code>, <code>touch</code> or <code>&gt;</code>: Creating a New Rolodex Storage File <em>(Since v1.3)</em></a></h5>
 <div class="paragraph">
 <p>Creates a new Rolodex at the specified filepath and reloads the application with new sample data.<br>
-Format: <code>new FILEPATH</code> or <code>n FILEPATH</code>
+Format: <code>new FILEPATH</code> or <code>n FILEPATH</code><br>
 Keyboard Shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p>
 </div>
 <div class="sidebarblock">
@@ -1268,6 +1278,132 @@ help document for information, which can be counterproductive:</p>
 </div>
 </div>
 <div class="sect2">
+<h3 id="enhancement-added-suggesting-commands-for-typos"><a class="link" href="#enhancement-added-suggesting-commands-for-typos">Enhancement Added: Suggesting Commands for Typos</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-4"><a class="link" href="#external-behavior-4">External behavior</a></h4>
+<hr>
+<div class="sect4">
+<h5 id="code-y-code-or-code-yes-code-or-code-ok-code-or-code-yea-code-or-code-yeah-code-confirming-a-suggested-command-em-since-v1-5rc-em"><a class="link" href="#code-y-code-or-code-yes-code-or-code-ok-code-or-code-yea-code-or-code-yeah-code-confirming-a-suggested-command-em-since-v1-5rc-em"><code>y</code> or <code>yes</code> or <code>ok</code> or <code>yea</code> or <code>yeah</code>: Confirming a suggested command <em>(Since v1.5rc)</em></a></h5>
+<div class="paragraph">
+<p>Confirms a command suggested by Rolodex.<br>
+Format: <code>y</code> or <code>yes</code> or <code>ok</code> or <code>yea</code> or <code>yeah</code><br></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A command will be suggested by Rolodex if you make a typo in your command.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>s3</code>, a typo for the command <code>s 3</code> will be suggested.
+<code>y</code> or <code>yes</code> or <code>ok</code> or <code>yea</code> or <code>yeah</code> executes <code>s 3</code> as normal and <em>Charlotte Oliviero</em> will be selected:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SuggestionSelect.png" alt="SuggestionSelect" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rmke3 Likes to swim</code> will be suggested as the formatted command, <code>rmk 3 r/Likes to swim</code>.
+<code>y</code> or <code>yes</code> or <code>ok</code> or <code>yea</code> or <code>yeah</code> executes <code>rmk 3 r/Likes to swim</code> as normal and <code>Likes to swim</code> will be added to <em>Charlotte Oliviero</em>:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SuggestionRemark.png" alt="SuggestionRemark" width="500">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="code-y-code-or-code-yes-code-or-code-ok-code-or-code-yea-code-or-code-yeah-code-confirming-a-suggested-command-em-since-v1-5rc-em-2"><a class="link" href="#code-y-code-or-code-yes-code-or-code-ok-code-or-code-yea-code-or-code-yeah-code-confirming-a-suggested-command-em-since-v1-5rc-em-2"><code>y</code> or <code>yes</code> or <code>ok</code> or <code>yea</code> or <code>yeah</code>: Confirming a suggested command <em>(Since v1.5rc)</em></a></h5>
+<div class="paragraph">
+<p>Confirms a command suggested by Rolodex.<br>
+Format: <code>y</code> or <code>yes</code> or <code>ok</code> or <code>yea</code> or <code>yeah</code><br></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A command will be suggested by Rolodex if you make a typo in your command.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>s3</code>, a typo for the command <code>s 3</code> will be suggested.
+<code>y</code> or <code>yes</code> or <code>ok</code> or <code>yea</code> or <code>yeah</code> executes <code>s 3</code> as normal and <em>Charlotte Oliviero</em> will be selected:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SuggestionSelect.png" alt="SuggestionSelect" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>rmke3 Likes to swim</code> will be suggested as the formatted command, <code>rmk 3 r/Likes to swim</code>.
+<code>y</code> or <code>yes</code> or <code>ok</code> or <code>yea</code> or <code>yeah</code> executes <code>rmk 3 r/Likes to swim</code> as normal and <code>Likes to swim</code> will be added to <em>Charlotte Oliviero</em>:</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SuggestionRemark.png" alt="SuggestionRemark" width="500">
+</div>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="justification-6"><a class="link" href="#justification-6">Justification</a></h4>
+<div class="paragraph">
+<p>Users may find it too much of a hassle to remember many of the syntaxes required by Rolodex such as <code>n/</code>, <code>r/</code>, etc.
+Suggesting commands for such occasions would give the user a shallow learning curve and improve user experience significantly.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-6"><a class="link" href="#implementation-6">Implementation</a></h4>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="suggestions-mechanism"><a class="link" href="#suggestions-mechanism">Suggestions Mechanism</a></h4>
+<div class="paragraph">
+<p>This feature is a work in progress for v1.5.</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
 <h3 id="enhancement-proposed-markdown-html-parser"><a class="link" href="#enhancement-proposed-markdown-html-parser">Enhancement Proposed: Markdown/HTML parser</a></h3>
 <div class="paragraph">
 <p>To replace the content field of the note/remark command with 'rich-text', to be displayed on the browser panel.</p>
@@ -1333,7 +1469,7 @@ help document for information, which can be counterproductive:</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-07 23:22:08 +00:00
+Last updated 2017-11-08 02:30:17 +00:00
 </div>
 </div>
 </body>

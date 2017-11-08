@@ -52,31 +52,36 @@
 <li><a href="#abbreviation-mechanism">4.5. Abbreviation Mechanism</a></li>
 <li><a href="#auto-completion-mechanism">4.6. Auto-completion Mechanism</a></li>
 <li><a href="#keyboard-shortcuts-mechanism">4.7. Keyboard Shortcuts Mechanism</a></li>
-<li><a href="#help-window-highlighting">4.8. Help Window Highlighting</a></li>
-<li><a href="#logging">4.9. Logging</a></li>
-<li><a href="#configuration">4.10. Configuration</a></li>
+<li><a href="#person-detail-panel">4.8. Person Detail Panel</a></li>
+<li><a href="#help-window-highlighting">4.9. Help Window Highlighting</a></li>
 </ul>
 </li>
-<li><a href="#documentation">5. Documentation</a>
+<li><a href="#suggestions-mechanism">5. Suggestions Mechanism</a>
 <ul class="sectlevel2">
-<li><a href="#editing-documentation">5.1. Editing Documentation</a></li>
-<li><a href="#publishing-documentation">5.2. Publishing Documentation</a></li>
-<li><a href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF Format</a></li>
+<li><a href="#logging">5.1. Logging</a></li>
+<li><a href="#configuration">5.2. Configuration</a></li>
 </ul>
 </li>
-<li><a href="#testing">6. Testing</a>
+<li><a href="#documentation">6. Documentation</a>
 <ul class="sectlevel2">
-<li><a href="#running-tests">6.1. Running Tests</a></li>
-<li><a href="#types-of-tests">6.2. Types of Tests</a></li>
-<li><a href="#troubleshooting-testing">6.3. Troubleshooting Testing</a></li>
+<li><a href="#editing-documentation">6.1. Editing Documentation</a></li>
+<li><a href="#publishing-documentation">6.2. Publishing Documentation</a></li>
+<li><a href="#converting-documentation-to-pdf-format">6.3. Converting Documentation to PDF Format</a></li>
 </ul>
 </li>
-<li><a href="#dev-ops">7. Dev Ops</a>
+<li><a href="#testing">7. Testing</a>
 <ul class="sectlevel2">
-<li><a href="#build-automation">7.1. Build Automation</a></li>
-<li><a href="#continuous-integration">7.2. Continuous Integration</a></li>
-<li><a href="#making-a-release">7.3. Making a Release</a></li>
-<li><a href="#managing-dependencies">7.4. Managing Dependencies</a></li>
+<li><a href="#running-tests">7.1. Running Tests</a></li>
+<li><a href="#types-of-tests">7.2. Types of Tests</a></li>
+<li><a href="#troubleshooting-testing">7.3. Troubleshooting Testing</a></li>
+</ul>
+</li>
+<li><a href="#dev-ops">8. Dev Ops</a>
+<ul class="sectlevel2">
+<li><a href="#build-automation">8.1. Build Automation</a></li>
+<li><a href="#continuous-integration">8.2. Continuous Integration</a></li>
+<li><a href="#making-a-release">8.3. Making a Release</a></li>
+<li><a href="#managing-dependencies">8.4. Managing Dependencies</a></li>
 </ul>
 </li>
 <li><a href="#suggested-programming-tasks-to-get-started">Appendix A: Suggested Programming Tasks to Get Started</a>
@@ -1399,7 +1404,8 @@ In <code>KeyListener</code>, the main method for handling the key events has the
 </div>
 <div class="paragraph">
 <p>The <code>mainNode</code> refers to the node containing the all UI components in the application,
-and <code>addEventFilter</code> captures key events received by that node.</p>
+and <code>addEventFilter</code> captures key events received by that node. The application will continue to listen
+to key presses done by the user once this method is called.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1408,7 +1414,7 @@ and <code>addEventFilter</code> captures key events received by that node.</p>
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-Another common method used for capturing key events is <code>keyOnPressed</code>.
+Another common method used for capturing key events is <code>onKeyPressed</code>.
 In this case, <code>addEventFilter</code> is used instead as key events captured by the former will be consumed by the <code>TextField</code> used in the application.
 <code>addEventFilter</code> captures the key events before they are consumed by the <code>TextField</code>.
 </td>
@@ -1416,13 +1422,13 @@ In this case, <code>addEventFilter</code> is used instead as key events captured
 </table>
 </div>
 <div class="paragraph">
-<p>When the user presses a key combination which matches one that is assigned to the <code>KeyCombination</code> attribute in the <code>KeyListenerUtil</code> class, the corresponding action will be executed.
+<p>When the user presses a key combination which matches one that is assigned, a corresponding action will be executed.
 An example of such an execution is given as shown:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> executeKeyEvents(<span class="predefined-type">KeyEvent</span> keyEvent) {
-        <span class="keyword">if</span> (FOCUS_PERSON_LIST.match(keyEvent)) {
+        <span class="keyword">if</span> (KEY_COMBINATION_FOCUS_PERSON_LIST.match(keyEvent)) {
                 <span class="comment">// action to focus on person list</span>
         }
         <span class="comment">// … more cases</span>
@@ -1430,7 +1436,23 @@ An example of such an execution is given as shown:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Where the key combination <code>FOCUS_PERSON_LIST</code> matches the <code>keyEvent</code> captured by the event filter.</p>
+<p>Where the application focuses on the person list when the user presses a key combination that is assigned to <code>KEY_COMBINATION_FOCUS_PERSON_LIST</code>.</p>
+</div>
+<div class="paragraph">
+<p>The mapping of <code>KEY_COMBINATION_FOCUS_PERSON_LIST</code> to a key combination can be found in the <code>KeyListenerUtil</code> class.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">KeyListenerUtil</span> {
+
+    <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> KeyCombination KEY_COMBINATION_FOCUS_PERSON_LIST = KeyCombination.valueOf(<span class="string"><span class="delimiter">&quot;</span><span class="content">Esc</span><span class="delimiter">&quot;</span></span>);
+    <span class="comment">// … more mappings</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this case, <code>KEY_COMBINATION_FOCUS_PERSON_LIST</code> is mapped to the <kbd>esc</kbd> key. As such, a user
+pressing the <kbd>esc</kbd> key will result in the application focusing on the person list.</p>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.7.1. Design Considerations</a></h4>
@@ -1455,7 +1477,92 @@ An example of such an execution is given as shown:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="help-window-highlighting"><a class="link" href="#help-window-highlighting">4.8. Help Window Highlighting</a></h3>
+<h3 id="person-detail-panel"><a class="link" href="#person-detail-panel">4.8. Person Detail Panel</a></h3>
+<div class="paragraph">
+<p>The person detail panel displays the complete information of a person that is selected.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/detailPanel.png" alt="detailPanel" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>The behavior of the panel is mostly event-driven, where the information displayed on the panel
+changes depending on various user actions, such as a person selection, editing of a person, addition of a person, etc.</p>
+</div>
+<div class="paragraph">
+<p>For example, the sequence diagram below shows the sequence of events to update the panel display when the user edits a person
+(the logic aspect of updating the person detail is omitted for brevity).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/DetailPanelSequenceDiagram.png" alt="DetailPanelSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>The information displayed on the panel is extracted from the <code>ReadOnlyPerson</code> that is returned by the <code>EventsCenter</code>.
+The details of the implementation can be seen from the following code snippet.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
+* Shows the details of the person on the panel
+*/</span>
+<span class="directive">private</span> <span class="type">void</span> showPersonDetails(ReadOnlyPerson person) {
+    setAvatar(person);
+    setTextFields(person);
+    setTags(person);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The behavior of the panel is summarized in the table below.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 60%;">
+<colgroup>
+<col style="width: 40%;">
+<col style="width: 60%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">User Action</th>
+<th class="tableblock halign-left valign-top">Panel Behavior</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select a person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display selected person</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Edit a person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display newly edited person</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add a person</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display newly added person</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clear the list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display empty panel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Call undo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display empty panel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Call redo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Behavior as per command that is redone</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Other commands</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">No change in display</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="help-window-highlighting"><a class="link" href="#help-window-highlighting">4.9. Help Window Highlighting</a></h3>
 <div class="paragraph">
 <p>Rolodex uses <a href="#java-fx">JavaFx</a> version <a href="http://javafx.com/javafx/8.0.111">8.0.111</a>, where WebView does not support
 search functionality that mimics <kbd>Ctrl</kbd> + <kbd>F</kbd> capability of modern web browsers. As a workaround, Johann Burkard&#8217;s
@@ -1476,7 +1583,7 @@ help document for information, which can be counterproductive:</p>
 <a href="https://stackoverflow.com/questions/19418626/javafx-search-and-highlight-text-add-search-bar-for-loaded-web-page">here</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="removing-jquery-implementation"><a class="link" href="#removing-jquery-implementation">4.8.1. Removing jQuery implementation</a></h4>
+<h4 id="removing-jquery-implementation"><a class="link" href="#removing-jquery-implementation">4.9.1. Removing jQuery implementation</a></h4>
 <div class="paragraph">
 <p>In a future version of <a href="#java-fx">JavaFx</a> where such an implementation is no longer necessary, you may revert the changes by reverting pull request
 <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/99">#99</a> on the Rolodex repo on GitHub. You may also choose to manually do this by reverting the following code:</p>
@@ -1618,8 +1725,16 @@ help document for information, which can be counterproductive:</p>
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="suggestions-mechanism"><a class="link" href="#suggestions-mechanism">5. Suggestions Mechanism</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This feature is a work in progress for v1.5.</p>
+</div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.9. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">5.1. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -1657,7 +1772,7 @@ help document for information, which can be counterproductive:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration"><a class="link" href="#configuration">4.10. Configuration</a></h3>
+<h3 id="configuration"><a class="link" href="#configuration">5.2. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1665,7 +1780,7 @@ help document for information, which can be counterproductive:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">5. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">6. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We use asciidoc for writing documentation.</p>
@@ -1683,20 +1798,20 @@ We chose asciidoc over Markdown because asciidoc, although a bit more complex th
 </table>
 </div>
 <div class="sect2">
-<h3 id="editing-documentation"><a class="link" href="#editing-documentation">5.1. Editing Documentation</a></h3>
+<h3 id="editing-documentation"><a class="link" href="#editing-documentation">6.1. Editing Documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
 Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">5.2. Publishing Documentation</a></h3>
+<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">6.2. Publishing Documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF Format</a></h3>
+<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">6.3. Converting Documentation to PDF Format</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
 </div>
@@ -1731,13 +1846,13 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 </div>
 </div>
 <div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">6. Testing</a></h2>
+<h2 id="testing"><a class="link" href="#testing">7. Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Testing ensures that our software works as expected. In Rolodex, we use several frameworks for running tests.</p>
 </div>
 <div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">6.1. Running Tests</a></h3>
+<h3 id="running-tests"><a class="link" href="#running-tests">7.1. Running Tests</a></h3>
 <div class="paragraph">
 <p>There are three ways to run tests.</p>
 </div>
@@ -1799,7 +1914,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 </div>
 </div>
 <div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">6.2. Types of Tests</a></h3>
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">7.2. Types of Tests</a></h3>
 <div class="paragraph">
 <p>We have two types of tests:</p>
 </div>
@@ -1841,7 +1956,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">6.3. Troubleshooting Testing</a></h3>
+<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">7.3. Troubleshooting Testing</a></h3>
 <div class="paragraph">
 <p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
 </div>
@@ -1859,25 +1974,25 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">8. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section contains the tools we use for software collaboration.</p>
 </div>
 <div class="sect2">
-<h3 id="build-automation"><a class="link" href="#build-automation">7.1. Build Automation</a></h3>
+<h3 id="build-automation"><a class="link" href="#build-automation">8.1. Build Automation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="continuous-integration"><a class="link" href="#continuous-integration">7.2. Continuous Integration</a></h3>
+<h3 id="continuous-integration"><a class="link" href="#continuous-integration">8.2. Continuous Integration</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <a href="#continuous-integration">Continuous Integration</a> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="making-a-release"><a class="link" href="#making-a-release">7.3. Making a Release</a></h3>
+<h3 id="making-a-release"><a class="link" href="#making-a-release">8.3. Making a Release</a></h3>
 <div class="paragraph">
 <p>Here are the steps to create a new release.</p>
 </div>
@@ -1899,7 +2014,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">7.4. Managing Dependencies</a></h3>
+<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">8.4. Managing Dependencies</a></h3>
 <div class="paragraph">
 <p>A project often depends on third-party libraries. For example, Rolodex depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives.<br>
 a. Include those libraries in the repo (this bloats the repo size)<br>
@@ -3316,7 +3431,7 @@ tags matching the specified query</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-07 23:22:08 +00:00
+Last updated 2017-11-08 02:30:17 +00:00
 </div>
 </div>
 </body>

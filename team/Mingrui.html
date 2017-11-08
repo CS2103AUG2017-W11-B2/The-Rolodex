@@ -19,34 +19,225 @@
 <h2 id="project-rolodex"><a class="link" href="#project-rolodex">Project: Rolodex</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Rolodex is a desktop Address Book application for computing professionals who prefer working without a mouse to manage their contacts more efficiently.
-Rolodex is an extension of AddressBook - Level 4, which is a desktop address book application used for teaching Software Engineering principles.
-The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 6 kLoC.</p>
+<p>Rolodex is a desktop contact management application for users who prefer working without a mouse to manage their contacts more efficiently.
+If you are a businessman with a list of clients to remember, a teacher who wants to organize their student information, or anyone with a need for contact
+management, Rolodex provides you with a way to organize your important contacts in a fast and productive manner.</p>
 </div>
 <div class="paragraph">
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] {give links to collated code files}</p>
+<p>The user interacts with the application using a CLI (Command Line Interface), and it has a GUI created with JavaFX.
+It is written in Java, and has about 10 kLoC.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103AUG2017-W11-B2/main/blob/master/collated/main/mingruiii.md">Functional code</a>] [<a href="https://github.com/CS2103AUG2017-W11-B2/main/blob/master/collated/test/jo-lyn.md">Test code</a>]</p>
 </div>
 <div class="sect2">
-<h3 id="enhancement-added-add-a-drop-down-list-for-command-input"><a class="link" href="#enhancement-added-add-a-drop-down-list-for-command-input">Enhancement Added: Add a drop down list for command input</a></h3>
+<h3 id="enhancement-added-auto-completion"><a class="link" href="#enhancement-added-auto-completion">Enhancement Added: Auto-completion</a></h3>
 <div class="sect3">
 <h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
-
+<hr>
+<div class="sect4">
+<h5 id="autocomplete"><a class="link" href="#autocomplete">Auto-completion <em>(Since v1.2)</em></a></h5>
+<div class="paragraph">
+<p>For commands that require additional field(s), auto-completion can be triggered by pressing <kbd>Tab</kbd> after keying in the command word.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Type <code>add</code> in the command box<br></p>
+</li>
+<li>
+<p>Press <kbd>Tab</kbd></p>
+</li>
+<li>
+<p>You will see the full format displayed in the command box as shown below.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AutoCompletionAfterTab.png" alt="AutoCompletionAfterTab" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Note that the placeholder for the name field has been auto-selected. Now you can directly type in the name.</p>
+</li>
+<li>
+<p>After you are done typing the name, press <kbd>Tab</kbd> again to go to the next field.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AutoCompletionNextField.png" alt="AutoCompletionNextField" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>After you are done with the entire command, press <kbd>Enter</kbd> to execute the command.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Commands with auto-completion enabled: <code>add</code>, <code>delete</code>, <code>edit</code>, <code>find</code>, <code>select</code> and <code>remark</code>.<br>
+These are commands that required additonal field(s).</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<hr>
+</div>
 </div>
 <div class="sect3">
 <h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
 <div class="paragraph">
-<p>When users forget the command formats, they can easily view them in the drop down list, without having to go to the help page.</p>
+<p>It is difficult for the user to remember all the fields and the corresponding prefixes. Auto-completion ensures that the user will know exactly what is required.
+Auto-selection of the placeholder will improve user experience by a lot, because the user can directly type in information without having to manually place the cursor.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
-
+<div class="sect4">
+<h5 id="auto-completion-mechanism"><a class="link" href="#auto-completion-mechanism">Auto-completion Mechanism</a></h5>
+<div class="paragraph">
+<p>Auto-completion mechanism is implemented in <code>CommandBox</code> class under UI component.</p>
+</div>
+<div class="paragraph">
+<p>Auto-completion is activated when <code>TAB</code> key is pressed. This is done by adding a case in the keypress handler in <code>CommandBox</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@FXML</span>
+<span class="directive">private</span> <span class="type">void</span> handleKeyPress(<span class="predefined-type">KeyEvent</span> keyEvent) {
+    <span class="keyword">switch</span> (keyEvent.getCode()) {
+    <span class="keyword">case</span> TAB:
+        autocomplete(); <span class="comment">//checkes the input and performs actions accordingly</span>
+        <span class="keyword">break</span>;
+    <span class="comment">//other cases</span>
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When <code>TAB</code> is pressed, the current input in the command box is checked against the list of commands.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the input command is a valid command that requires additional field(s), the full format of the command is displayed in the command box.
+At the same time, the placeholder for the first field that the user needs to key in is selected (as shown below).</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AutoCompletionAfterTab.png" alt="AutoCompletionAfterTab" width="450">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the input is already in the required format of the add command, the <code>TAB</code> is meant to navigate to the next input field (only <code>add</code> command require multiple fields).
+The current caret position is checked and used to determine the current field the user is at.
+The anchor and caret positions are reset to the start and end of the next field so that the placeholder is selected (as shown below).</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AutoCompletionNextField.png" alt="AutoCompletionNextField" width="450">
+</div>
+</div>
+<div class="paragraph">
+<p>Below is an activity diagram for <code>TAB</code> keypress which activates autocompletion.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AutoCompleteActivityDiagram.png" alt="AutoCompleteActivityDiagram" width="800">
+</div>
+</div>
+<div class="sect5">
+<h6 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h6>
+<div class="paragraph">
+<p><strong>Aspect:</strong> text input control<br>
+<strong>Alternative 1 (current choice):</strong> Continue to use the original TextField<br>
+<strong>Pros:</strong> External library enables bindAutocompletion for TextField (the drop down list of suggested commands that appears and updates itself as user types).<br>
+<strong>Pros:</strong> Minimise changes need to be made to the original text input control structure.<br>
+<strong>Cons:</strong> Text formatting is limited. All text in the TextField must have the same format.<br>
+<strong>Alternative 2:</strong> Create additional TextField as user request for additional fields<br>
+<strong>Pros:</strong> Allows for different formatting for different fields (Commands can have a different colour from the fields)<br>
+<strong>Cons:</strong> Original structure will be disrupted. Command box will no longer be single line text input, which have consequences such as the user cannot backspace or select through the entire line.</p>
+</div>
+<div class="paragraph">
+<p><strong>Aspect:</strong> auto-completion drop-down list<br>
+<strong>Alternative 1 (current choice):</strong> Continue to use the original TextField and use external library to bind auto-completion<br>
+<strong>Pros:</strong> Easy to implement<br>
+<strong>Cons:</strong> User cannot see the full format of the commands in the drop-down list<br>
+<strong>Alternative 2:</strong> Use ComboBox<br>
+<strong>Pros:</strong> User can see the required fields for each command in the drop-down box<br>
+<strong>Cons:</strong> As user selects an option, the command is executed with the place holders, resulting in an invalid command. User has to manually select the placeholders and change accordingly.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="enhancement-proposed-enable-auto-completion-in-the-command-line"><a class="link" href="#enhancement-proposed-enable-auto-completion-in-the-command-line">Enhancement Proposed: Enable auto-completion in the command line</a></h3>
+<h3 id="enhancement-added-opening-email-composer"><a class="link" href="#enhancement-added-opening-email-composer">Enhancement Added: Opening email composer</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External behavior</a></h4>
+<hr>
+<div class="sect4">
+<h5 id="code-email-code-code-mail-code-code-mailto-code-code-send-code-or-code-m-code-composing-an-email-em-since-v1-5rc-em"><a class="link" href="#code-email-code-code-mail-code-code-mailto-code-code-send-code-or-code-m-code-composing-an-email-em-since-v1-5rc-em"><code>email</code>, <code>mail</code>, <code>mailto</code>, <code>send</code> or <code>m</code>: Composing an email <em>(Since v1.5rc)</em></a></h5>
 <div class="paragraph">
-<p>Update the drop-down list as the user type in the command, to suggest possible command that the user wants to type.</p>
+<p>Opens the 'compose new email' window of the default email client, with the recipient&#8217;s email address and subject
+(optional) filled in.<br>
+Format: <code>email INDEX [s/SUBJECT]</code><br></p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Press <kbd>Tab</kbd> after typing <code>email</code> to generate the required field(s). See <a href="#autocomplete">3.19. Auto-completion</a> for more details.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Alternatives: <code>email</code> can be replaced by <code>mail</code>, <code>mailto</code>, <code>send</code> or <code>m</code><br>
+Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>M</kbd></span></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect3">
+<h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
+<div class="paragraph">
+<p>This feature makes emailing a contact much easier. The user no longer has to go through the tedious process of copying the contact&#8217;s email address, opening the email application
+or website and pasting the email address there. All these can be done with a short and simple command within two seconds.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-proposed-integration-of-social-media"><a class="link" href="#enhancement-proposed-integration-of-social-media">Enhancement Proposed: Integration of social media</a></h3>
+<div class="paragraph">
+<p>Link Rolodex with the user&#8217;s Facebook account and automatically match contacts in Rolodex to the user&#8217;s Facebook friends, so that the user can view their friends' social media updates in Rolodex.</p>
 </div>
 </div>
 <div class="sect2">
@@ -54,28 +245,48 @@ The user interacts with it using a CLI, and it has a GUI created with JavaFX. It
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the General Documentation (Pull requests <a href="https://github.com">#7</a>)</p>
+<p>Updated the General Documentation (Pull requests <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/7">#7</a> <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/22">#22</a>)</p>
 </li>
 <li>
-<p>Added abbreviations for commands (Pull requests <a href="https://github.com">#10</a>)</p>
+<p>Added abbreviations for commands (Pull requests <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/10">#10</a>)</p>
+</li>
+<li>
+<p>Added hotkeys for auto-completion commands (Pull requests <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/87">#87</a>)</p>
+</li>
+<li>
+<p>Added confirmation dialog for delete, clear and exit commands (Pull requests <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/114">#114</a>)</p>
+</li>
+</ul>
+</div>
+<div id="navbar" class="ulist nav-headbar">
+<ul>
+<li>
+<p><a href="https://cs2103aug2017-w11-b2.github.io/main/">Home</a></p>
+</li>
+<li>
+<p><a href="https://cs2103aug2017-w11-b2.github.io/main/UserGuide.html">User Guide</a></p>
+</li>
+<li>
+<p><a href="https://cs2103aug2017-w11-b2.github.io/main/DeveloperGuide.html">Developer Guide</a></p>
+</li>
+<li>
+<p><a href="https://cs2103aug2017-w11-b2.github.io/main/AboutUs.html">About</a></p>
+</li>
+<li>
+<p><a href="https://cs2103aug2017-w11-b2.github.io/main/ContactUs.html">Contact</a></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2103AUG2017-W11-B2/main">Github</a></p>
 </li>
 </ul>
 </div>
 </div>
 </div>
 </div>
-<div class="sect1">
-<h2 id="project-a-href-https-zy-ang-github-io-autonamegenerator-autonamegenerator-a"><a class="link" href="#project-a-href-https-zy-ang-github-io-autonamegenerator-autonamegenerator-a">Project: <a href="https://zy-ang.github.io/AutoNameGenerator/">AutoNameGenerator</a></a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>{Optionally (not graded), you may include other projects in your portfolio.}</p>
-</div>
-</div>
-</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-07 23:22:08 +00:00
+Last updated 2017-11-08 02:30:17 +00:00
 </div>
 </div>
 </body>
