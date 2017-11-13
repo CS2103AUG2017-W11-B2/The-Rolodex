@@ -28,17 +28,222 @@ management, Rolodex provides you with a way to organize your important contacts 
 It is written in Java, and has about 10 kLoC.<br></p>
 </div>
 <div class="paragraph">
-<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103AUG2017-W11-B2/main/blob/master/collated/main/mingruiii.md">Functional code</a>] [<a href="https://github.com/CS2103AUG2017-W11-B2/main/blob/master/collated/test/jo-lyn.md">Test code</a>]</p>
+<p><strong>Code contributed</strong>: [<a href="https://github.com/CS2103AUG2017-W11-B2/main/blob/master/collated/main/mingruiii.md">Functional code</a>] [<a href="https://github.com/CS2103AUG2017-W11-B2/main/blob/master/collated/test/mingruiii.md">Test code</a>] [<a href="https://github.com/CS2103AUG2017-W11-B2/main/blob/master/collated/unused/mingruiii.md">Unused code</a>]</p>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-drop-down-list"><a class="link" href="#enhancement-added-drop-down-list">Enhancement Added: Drop-down List</a></h3>
+<div class="sect3">
+<h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
+<div class="sect4">
+<h5 id="drop-down-list-of-possible-commands"><a class="link" href="#drop-down-list-of-possible-commands">Drop-down List of Possible Commands</a></h5>
+<div class="paragraph">
+<p>With the help of the drop-down list of suggestions, you do not need to memorise any command.</p>
+</div>
+<div class="paragraph">
+<p>When you type your commands inside the command box, you will notice that a drop-down list appears.</p>
+</div>
+<div class="paragraph">
+<p>For example, if you type the letter "e", a drop-down list consisting of three options <code>edit</code>, <code>email</code> and <code>exit</code> appears, as shown in the screenshot below.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DropDownList1.png" alt="DropDownList1" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>The list will get updated as you type, to only display commands that match your input. Following the previous example,
+if you type the letter "m" after having typed in "e", the list should only consist of the <code>email</code> command now.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DropDownList2.png" alt="DropDownList2" width="300">
+</div>
+</div>
+<div class="paragraph">
+<p>When the drop-down list is shown, you can:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use <code>↑</code> and <code>↓</code> arrow keys to navigate through the list</p>
+</li>
+<li>
+<p>Press <kbd>Enter</kbd> to select the highlighted option</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use your mouse to click on the option to select it</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>After you have selected the command you wish to enter, you should see it displayed in the command box.
+For example, you should see the following when you select <code>email</code> in the drop-down list.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DropDownList3.png" alt="DropDownList3" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Now you can:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>press <kbd>Enter</kbd> to execute the command if no additional fields are required, or</p>
+</li>
+<li>
+<p>continue to type in the rest of the command input, or</p>
+</li>
+<li>
+<p>press <kbd>Tab</kbd> to activate auto-completion, see <a href="#autocomplete">3.2. Auto-completion</a> for details.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you want to see the list of all commands, simply type <kbd>Space</kbd> in an empty command box.
+The following list should appear.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/DropDownList4.png" alt="DropDownList4" width="300">
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
+<div class="paragraph">
+<p>It will be difficult for the user to memorise all the commands. The drop-down list suggests possible commands as he/she types,
+making keying in commands much easier.</p>
+</div>
+<div class="paragraph">
+<p>Users can also make use of the drop-down list to type commands faster. They can directly select the correct suggestion without having to
+manually type out the command word in full.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<div class="sect4">
+<h5 id="drop-down-list-of-possible-commands-2"><a class="link" href="#drop-down-list-of-possible-commands-2">Drop-down List of Possible Commands</a></h5>
+<div class="paragraph">
+<p>The dynamic drop-down list is created using <code>org.controlsfx.control.textfield.TextFields</code> <a href="https://controlsfx.bitbucket.io/org/controlsfx/control/textfield/TextFields.html#bindAutoCompletion-javafx.scene.control.TextField-javafx.util.Callback-">API</a> <a href="#api">(Application Programming Interface)</a>.
+The <code>bindAutoCompletion</code> method in the <code>TestFields</code> creates a new auto-completion binding between the given textField and the given suggestion provider.</p>
+</div>
+<div class="paragraph">
+<p>The code below shows the exact implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">TextFields.bindAutoCompletion(commandTextField, sr -&gt; {
+    <span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt; suggestedCommands = <span class="keyword">new</span> <span class="predefined-type">HashSet</span>&lt;&gt;();
+    <span class="keyword">for</span> (<span class="predefined-type">String</span> command: LIST_OF_ALL_COMMANDS) {
+        <span class="keyword">if</span> (!sr.getUserText().isEmpty() &amp;&amp; !command.equals(sr.getUserText())
+            &amp;&amp; command.startsWith(sr.getUserText().trim().toLowerCase())) {
+
+            suggestedCommands.add(command);
+        }
+    }
+    <span class="keyword">return</span> suggestedCommands;
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Possible commands are checked against the user input and added to the Set <code>suggestedCommands</code> accordingly, which will be displayed as the drop-down list.</p>
+</div>
+<div class="paragraph">
+<p>A command is added if all three conditions are satisfied:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The user input is not empty.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This is to prevent the drop-down list from appearing every time the command box is cleared after the execution of a command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The user input is not a valid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>There is no need to display the drop-down list of suggestions when the user has typed in a correct command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The command starts with the user input.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This is to suggest the possible commands that the user is trying to type.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect5">
+<h6 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h6>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation<br>
+<strong>Alternative 1 (current choice):</strong> Make use of <code>TestFields</code> API<br>
+<strong>Pros:</strong> Easy to implement<br>
+<strong>Pros:</strong> List is dynamic.<br>
+<strong>Cons:</strong> User cannot see the full format of the commands in the drop-down list.<br>
+<strong>Alternative 2:</strong> Use ComboBox<br>
+<strong>Pros:</strong> User can see the required fields for each command in the drop-down box.<br>
+<strong>Cons:</strong> As user selects an option, the command is executed with the place holders, resulting in an invalid command. User has to manually select the placeholders and change accordingly.</p>
+</div>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Auto-completion binding<br>
+<strong>Alternative 1 (current choice):</strong> Only suggest commands that starts with user input<br>
+<strong>Pros:</strong> Suggested commands are accurate.<br>
+<strong>Cons:</strong> The list usually only display one or two options because not many commands start with the same alphabet.<br>
+<strong>Alternative 2:</strong> Suggest commands that contain the user input.<br>
+<strong>Pros:</strong> More suggestions would be displayed.<br>
+<strong>Pros:</strong> User has a higher chance of finding the desired command when a typo is made.<br>
+<strong>Cons:</strong> Most of the time, inaccurate suggestions are not necessary.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="enhancement-added-auto-completion"><a class="link" href="#enhancement-added-auto-completion">Enhancement Added: Auto-completion</a></h3>
 <div class="sect3">
-<h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
-<hr>
+<h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External behavior</a></h4>
 <div class="sect4">
 <h5 id="autocomplete"><a class="link" href="#autocomplete">Auto-completion <em>(Since v1.2)</em></a></h5>
 <div class="paragraph">
 <p>For commands that require additional field(s), auto-completion can be triggered by pressing <kbd>Tab</kbd> after keying in the command word.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Commands with auto-completion enabled: <code>add</code>, <code>delete</code>, <code>edit</code>, <code>email</code>, <code>find</code>, <code>new</code>, <code>open</code>, <code>select</code> and <code>remark</code>.<br>
+These are commands that required additonal field(s).</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Example:</p>
@@ -66,6 +271,15 @@ It is written in Java, and has about 10 kLoC.<br></p>
 <li>
 <p>Note that the placeholder for the name field has been auto-selected. Now you can directly type in the name.</p>
 </li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/AutoCompleteTypeName.png" alt="AutoCompleteTypeName" width="500">
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>After you are done typing the name, press <kbd>Tab</kbd> again to go to the next field.</p>
 </li>
@@ -79,44 +293,42 @@ It is written in Java, and has about 10 kLoC.<br></p>
 <div class="ulist">
 <ul>
 <li>
-<p>After you are done with the entire command, press <kbd>Enter</kbd> to execute the command.</p>
+<p>After you are done with the entire command, press <kbd>Enter</kbd> to execute the command as usual.</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Commands with auto-completion enabled: <code>add</code>, <code>delete</code>, <code>edit</code>, <code>find</code>, <code>select</code> and <code>remark</code>.<br>
-These are commands that required additonal field(s).</p>
+<p>In addition to using <kbd>Tab</kbd> to navigate to the next field, you can press <span class="keyseq"><kbd>Shift</kbd>+<kbd>Tab</kbd></span> to navigate to the previous field.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-<hr>
 </div>
 </div>
 <div class="sect3">
-<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
+<h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
 <div class="paragraph">
-<p>It is difficult for the user to remember all the fields and the corresponding prefixes. Auto-completion ensures that the user will know exactly what is required.
-Auto-selection of the placeholder will improve user experience by a lot, because the user can directly type in information without having to manually place the cursor.</p>
+<p>It will be difficult for the user to remember all the fields and the corresponding prefixes. Auto-completion ensures that the user will know exactly what is required.
+Auto-selection of the placeholder improves the user experience, because the user can directly type in information without having to manually place the cursor.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
 <div class="sect4">
 <h5 id="auto-completion-mechanism"><a class="link" href="#auto-completion-mechanism">Auto-completion Mechanism</a></h5>
 <div class="paragraph">
-<p>Auto-completion mechanism is implemented in <code>CommandBox</code> class under UI component.</p>
+<p>Auto-completion mechanism is implemented in <code>CommandBox</code> class under <code>UI</code> component.</p>
 </div>
 <div class="paragraph">
-<p>Auto-completion is activated when <code>TAB</code> key is pressed. This is done by adding a case in the keypress handler in <code>CommandBox</code>.</p>
+<p>Auto-completion is activated when <kbd>Tab</kbd> key is pressed. This is done by adding a case in the keypress handler in <code>CommandBox</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -124,14 +336,18 @@ Auto-selection of the placeholder will improve user experience by a lot, because
 <span class="directive">private</span> <span class="type">void</span> handleKeyPress(<span class="predefined-type">KeyEvent</span> keyEvent) {
     <span class="keyword">switch</span> (keyEvent.getCode()) {
     <span class="keyword">case</span> TAB:
-        autocomplete(); <span class="comment">//checkes the input and performs actions accordingly</span>
+        <span class="keyword">if</span> (keyEvent.isShiftDown()) {
+            selectPreviousField();
+        } <span class="keyword">else</span> {
+            autocomplete();
+        }
         <span class="keyword">break</span>;
     <span class="comment">//other cases</span>
     }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When <code>TAB</code> is pressed, the current input in the command box is checked against the list of commands.</p>
+<p>When <kbd>Tab</kbd> is pressed, the current input in the command box is checked against the list of commands.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -149,8 +365,8 @@ At the same time, the placeholder for the first field that the user needs to key
 <div class="ulist">
 <ul>
 <li>
-<p>If the input is already in the required format of the add command, the <code>TAB</code> is meant to navigate to the next input field (only <code>add</code> command require multiple fields).
-The current caret position is checked and used to determine the current field the user is at.
+<p>If the input is already in the required format of <code>add</code> or <code>remark</code> command, the <kbd>Tab</kbd> is meant to navigate to the next input field (only <code>add</code> and <code>remark</code> require more than one field).
+The  caret position is used to determine the current field the user is at.
 The anchor and caret positions are reset to the start and end of the next field so that the placeholder is selected (as shown below).</p>
 </li>
 </ul>
@@ -161,7 +377,30 @@ The anchor and caret positions are reset to the start and end of the next field 
 </div>
 </div>
 <div class="paragraph">
-<p>Below is an activity diagram for <code>TAB</code> keypress which activates autocompletion.</p>
+<p>The above implementation is represented in this code snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> autocomplete() {
+    input = commandTextField.getText().trim().toLowerCase();
+    <span class="keyword">if</span> (isAutoCompleteCommand(input)) {
+        <span class="comment">//display the full command format</span>
+
+    } <span class="keyword">else</span> <span class="keyword">if</span> (isAddCommandFormat(input)) {
+        <span class="comment">//change text selection to the next field</span>
+
+    } <span class="keyword">else</span> <span class="keyword">if</span> (isRemarkCommandFormat(input)) {
+        <span class="comment">//change text selection to the next field</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When <span class="keyseq"><kbd>Shift</kbd>+<kbd>Tab</kbd></span> is pressed, the user wants to navigate to the previous field.
+The caret position is used to determine the current field the user is at. The anchor and caret positions are reset to the start and end of the previous field input in order to update text selection.</p>
+</div>
+<div class="paragraph">
+<p>Below is an activity diagram for <kbd>Tab</kbd> keypress which activates auto-completion.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -169,35 +408,29 @@ The anchor and caret positions are reset to the start and end of the next field 
 </div>
 </div>
 <div class="sect5">
-<h6 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h6>
+<h6 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h6>
+<div class="sect6">
+<h7 id="text-input-control-br"><a class="link" href="#text-input-control-br">Text Input Control<br></a></h7>
 <div class="paragraph">
-<p><strong>Aspect:</strong> text input control<br>
-<strong>Alternative 1 (current choice):</strong> Continue to use the original TextField<br>
+<p><strong>Alternative 1 (current choice):</strong> Continue to use the original TextField<br>
 <strong>Pros:</strong> External library enables bindAutocompletion for TextField (the drop down list of suggested commands that appears and updates itself as user types).<br>
 <strong>Pros:</strong> Minimise changes need to be made to the original text input control structure.<br>
-<strong>Cons:</strong> Text formatting is limited. All text in the TextField must have the same format.<br>
-<strong>Alternative 2:</strong> Create additional TextField as user request for additional fields<br>
+<strong>Cons:</strong> Text formatting is limited. All text in the TextField must have the same format.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Create additional TextField as user request for additional fields<br>
 <strong>Pros:</strong> Allows for different formatting for different fields (Commands can have a different colour from the fields)<br>
 <strong>Cons:</strong> Original structure will be disrupted. Command box will no longer be single line text input, which have consequences such as the user cannot backspace or select through the entire line.</p>
 </div>
-<div class="paragraph">
-<p><strong>Aspect:</strong> auto-completion drop-down list<br>
-<strong>Alternative 1 (current choice):</strong> Continue to use the original TextField and use external library to bind auto-completion<br>
-<strong>Pros:</strong> Easy to implement<br>
-<strong>Cons:</strong> User cannot see the full format of the commands in the drop-down list<br>
-<strong>Alternative 2:</strong> Use ComboBox<br>
-<strong>Pros:</strong> User can see the required fields for each command in the drop-down box<br>
-<strong>Cons:</strong> As user selects an option, the command is executed with the place holders, resulting in an invalid command. User has to manually select the placeholders and change accordingly.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="enhancement-added-opening-email-composer"><a class="link" href="#enhancement-added-opening-email-composer">Enhancement Added: Opening email composer</a></h3>
+<h3 id="enhancement-added-opening-email-composer"><a class="link" href="#enhancement-added-opening-email-composer">Enhancement Added: Opening Email Composer</a></h3>
 <div class="sect3">
-<h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External behavior</a></h4>
-<hr>
+<h4 id="external-behavior-3"><a class="link" href="#external-behavior-3">External behavior</a></h4>
 <div class="sect4">
 <h5 id="code-email-code-code-mail-code-code-mailto-code-code-send-code-or-code-m-code-composing-an-email-em-since-v1-5rc-em"><a class="link" href="#code-email-code-code-mail-code-code-mailto-code-code-send-code-or-code-m-code-composing-an-email-em-since-v1-5rc-em"><code>email</code>, <code>mail</code>, <code>mailto</code>, <code>send</code> or <code>m</code>: Composing an email <em>(Since v1.5rc)</em></a></h5>
 <div class="paragraph">
@@ -213,7 +446,7 @@ Format: <code>email INDEX [s/SUBJECT]</code><br></p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>Press <kbd>Tab</kbd> after typing <code>email</code> to generate the required field(s). See <a href="#autocomplete">3.19. Auto-completion</a> for more details.</p>
+<p>Press <kbd>Tab</kbd> after typing <code>email</code> to generate the required field(s). See <a href="#autocomplete">3.2. Auto-completion</a> for more details.</p>
 </div>
 </td>
 </tr>
@@ -223,21 +456,247 @@ Format: <code>email INDEX [s/SUBJECT]</code><br></p>
 <p>Alternatives: <code>email</code> can be replaced by <code>mail</code>, <code>mailto</code>, <code>send</code> or <code>m</code><br>
 Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>M</kbd></span></p>
 </div>
-<hr>
 </div>
 </div>
 <div class="sect3">
-<h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
+<h4 id="justification-3"><a class="link" href="#justification-3">Justification</a></h4>
 <div class="paragraph">
 <p>This feature makes emailing a contact much easier. The user no longer has to go through the tedious process of copying the contact&#8217;s email address, opening the email application
 or website and pasting the email address there. All these can be done with a short and simple command within two seconds.</p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h4>
+<div class="sect4">
+<h5 id="composing-emails"><a class="link" href="#composing-emails">Composing Emails</a></h5>
+<div class="paragraph">
+<p>This functionality is implemented through the <code>EmailCommand</code> class under <code>logic</code> component.</p>
+</div>
+<div class="paragraph">
+<p>An email command has the following format: <code>Email INDEX [s/SUBJECT]</code> (Subject is an optional field). When the command is executed, the user&#8217;s default email client will open
+a new compose window. Email address of the contact indicated by <code>INDEX</code> will be filled in as the recipient&#8217;s address. <code>SUBJECT</code> (if available) will be filled
+in as the subject of the email. The following shows an example of the compose window on Macs.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/EmailComposeWindow.png" alt="EmailComposeWindow" width="600">
+</div>
+</div>
+<div class="sect5">
+<h6 id="using-code-java-awt-desktop-code-api"><a class="link" href="#using-code-java-awt-desktop-code-api">Using <code>java.awt.Desktop</code> API</a></h6>
+<div class="paragraph">
+<p>Requesting the default email client to open a new compose window is achieved with the <code>java.awt.Desktop</code> class. However, not all platforms support the <code>Desktop</code> <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/Desktop.html">API</a>.
+Therefore, it is crucial to check whether the API and the <code>MAIL</code> action are supported. A <code>CommandExecption</code> will be thrown if they are not supported.</p>
+</div>
+<div class="paragraph">
+<p>After confirming that the action can be supported on the platform, an URI <a href="#uri">(Uniform Resource Identifier)</a> is constructed using the recipient&#8217;s email address and subject input by the user (if any).
+It is then passed into the <code>mail</code> method of <code>Desktop</code> class. The following code snippet shows the exact implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">if</span> (Desktop.isDesktopSupported()
+    &amp;&amp; Desktop.getDesktop().isSupported(Desktop.Action.MAIL)) {
+
+    Desktop desktop = Desktop.getDesktop();
+    <span class="keyword">try</span> {
+        mailtoUri = <span class="keyword">new</span> <span class="predefined-type">URI</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">mailto:</span><span class="delimiter">&quot;</span></span> + recipientEmailAddress
+                            + <span class="string"><span class="delimiter">&quot;</span><span class="content">?subject=</span><span class="delimiter">&quot;</span></span> + subject);
+        desktop.mail(mailtoUri);
+        selectRecipient(targetIndex);
+    } <span class="keyword">catch</span> (<span class="exception">URISyntaxException</span> e) {
+        e.printStackTrace();
+    } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
+        e.printStackTrace();
+    }
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_SUCCESS));
+} <span class="keyword">else</span> {
+    <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(<span class="predefined-type">String</span>.format(MESSAGE_NOT_SUPPORTED));
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="auto-selecting-the-recipient"><a class="link" href="#auto-selecting-the-recipient">Auto-selecting the Recipient</a></h6>
+<div class="paragraph">
+<p>After the <code>Email</code> command is executed, the recipient will be auto-selected in the contact list,
+so that the person&#8217;s details can be displayed at contact detail panel. As an example the following screenshot shows
+the behaviour of Rolodex after executing the command <code>Email 1</code>. The contact at index 1 is selected.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/SelectRecipientAfterEmailCommand.png" alt="SelectRecipientAfterEmailCommand" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>This is for the user to confirm that they have typed in the correct index. With the person&#8217;s name and contact details displayed, it is easy
+to double-check if the contact is the intended recipient.</p>
+</div>
+<div class="paragraph">
+<p>This action is performed through the <code>selectRecipient(targetIndex)</code> method call during the execution of <code>EmailCommand</code>, which can be found in the
+code snippet above. The <code>selectRecipient</code> method posts a <code>JumpToListRequestEvent</code> with the recipient&#8217;s index, which will perform the selection in <code>Contact List</code>.
+The method is shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> selectRecipient(Index index) {
+    EventsCenter.getInstance().post(<span class="keyword">new</span> JumpToListRequestEvent(index));
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect5">
+<h6 id="email-command-parser"><a class="link" href="#email-command-parser">Email Command Parser</a></h6>
+<div class="paragraph">
+<p><code>EmailCommandParser</code> class is used to parse input arguments in the context of the <code>EmailCommand</code>. It maps the positive integer in the argument to <code>INDEX</code>,
+and the string following the prefix <code>s/</code> to <code>SUBJECT</code>. If the user did not input a subject, the subject would be an empty string.</p>
+</div>
+<div class="paragraph">
+<p>The <code>SUBJECT</code> string must be <a href="#percent-encoding">percent-encoded</a>, which means all the spaces must be replaced with <code>%20</code>. This is to follow the URI syntax standard.
+Otherwise a <code>java.net.URISyntaxException</code> would be thrown when sending the URI. Above mentioned implementation is shown in the code snippet below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">String</span> subject = ParserUtil.parseSubject(argMultimap.getValue(PREFIX_SUBJECT)).orElse(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>);
+subject = subject.replaceAll(<span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">%20</span><span class="delimiter">&quot;</span></span>);
+Index index = ParserUtil.parseIndex(argMultimap.getPreamble());</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="enhancement-proposed-integration-of-social-media"><a class="link" href="#enhancement-proposed-integration-of-social-media">Enhancement Proposed: Integration of social media</a></h3>
+<h3 id="enhancement-added-keyboard-shortcuts-for-commands-with-auto-complete-function"><a class="link" href="#enhancement-added-keyboard-shortcuts-for-commands-with-auto-complete-function">Enhancement Added: Keyboard Shortcuts for Commands with Auto-complete Function</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-4"><a class="link" href="#external-behavior-4">External behavior</a></h4>
+<div class="sect4">
+<h5 id="auto-complete-command-shortcuts-em-since-v1-3-em"><a class="link" href="#auto-complete-command-shortcuts-em-since-v1-3-em">Auto-complete Command Shortcuts <em>(Since v1.3)</em></a></h5>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Using the keyboard shortcut is equivalent to typing in the corresponding command followed by pressing <kbd>Tab</kbd></p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 60%;">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 66%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Shortcut</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>+</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the <code>add</code> command format in command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>D</kbd></span> or <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>-</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the <code>delete</code> command format in command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>E</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the <code>edit</code> command format in command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>F</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the <code>find</code> command format in command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>M</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the <code>email</code> command format in command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the <code>new</code> command format in command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>O</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the <code>open</code> command format in command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>R</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the <code>remark</code> command format in command box</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>S</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Display the <code>select</code> command format in command box</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="justification-4"><a class="link" href="#justification-4">Justification</a></h4>
+<div class="paragraph">
+<p>The above shortcuts provide a faster way of using the command-line interface.
+Users can simply activate auto-completion with a key press without the need to type in the command word and press <kbd>Tab</kbd> to activate auto-completion.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h4>
+<div class="sect4">
+<h5 id="auto-complete-command-shortcuts"><a class="link" href="#auto-complete-command-shortcuts">Auto-complete Command Shortcuts</a></h5>
+<div class="paragraph">
+<p>The <a href="#shortcut">Keyboard Shortcut Mechanism</a> is the foundation of this implementation.</p>
+</div>
+<div class="paragraph">
+<p>When an auto-complete command shortcut is pressed, the corresponding command format will be displayed.
+The following codes shows the example for <code>add</code> command shortcut.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> executeKeyEvents(<span class="predefined-type">KeyEvent</span> keyEvent) {
+    <span class="keyword">if</span> (KEY_COMBINATION_ADD.match(keyEvent)) {
+        displayCommandFormat(AddCommand.FORMAT);
+    }
+    <span class="comment">// … more cases</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>displayCommandFormat</code> method simulates entering the command word followed by pressing <kbd>Tab</kbd>.
+The method implementation is shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> displayCommandFormat(<span class="predefined-type">String</span> command) {
+    commandBox.replaceText(command);
+    commandBox.pressTab();
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-proposed-integration-of-social-media"><a class="link" href="#enhancement-proposed-integration-of-social-media">Enhancement Proposed: Integration of Social Media</a></h3>
 <div class="paragraph">
 <p>Link Rolodex with the user&#8217;s Facebook account and automatically match contacts in Rolodex to the user&#8217;s Facebook friends, so that the user can view their friends' social media updates in Rolodex.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-proposed-prompt-the-user-for-confirmation-before-execution-of-dangerous-commands"><a class="link" href="#enhancement-proposed-prompt-the-user-for-confirmation-before-execution-of-dangerous-commands">Enhancement Proposed: Prompt the User for Confirmation before Execution of Dangerous Commands</a></h3>
+<div class="paragraph">
+<p>Before executing commands <code>clear</code> and <code>exit</code>, ask the user "Are you sure you want to&#8230;&#8203;?". Continue with the execution if the user responds "yes", stop the execution otherwise.</p>
+</div>
+<div class="paragraph">
+<p>These two commands are considered dangerous because the entire contact list can be cleared or the current Rolodex can be closed. The confirmation can make sure that they are not executed by accident.</p>
+</div>
+<div class="paragraph">
+<p>An implementation of confirmation dialog box can be found <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/114">here</a>. It is not used in the current version of Rolodex due to project requirement.
+Command line confirmation (the user types "yes" in the command box) is a more recommended implementation that integrates well with the command-lind interface.</p>
 </div>
 </div>
 <div class="sect2">
@@ -245,16 +704,13 @@ or website and pasting the email address there. All these can be done with a sho
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the General Documentation (Pull requests <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/7">#7</a> <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/22">#22</a>)</p>
+<p>Added abbreviations for commands (Pull request <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/10">#10</a>)</p>
 </li>
 <li>
-<p>Added abbreviations for commands (Pull requests <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/10">#10</a>)</p>
+<p>Updated the General Documentation (Pull requests <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/7">#7</a> <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/22">#22</a> <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/128">#128</a> <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/150">#150</a>)</p>
 </li>
 <li>
-<p>Added hotkeys for auto-completion commands (Pull requests <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/87">#87</a>)</p>
-</li>
-<li>
-<p>Added confirmation dialog for delete, clear and exit commands (Pull requests <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/114">#114</a>)</p>
+<p>(Unused) Added confirmation dialog for delete, clear and exit commands (Pull request <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/114">#114</a>)</p>
 </li>
 </ul>
 </div>
@@ -286,7 +742,7 @@ or website and pasting the email address there. All these can be done with a sho
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 04:55:13 +00:00
+Last updated 2017-11-13 05:18:09 +00:00
 </div>
 </div>
 </body>

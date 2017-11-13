@@ -77,14 +77,6 @@ and <code>View help window</code> which came with the original state of the appl
 <td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>F1</kbd></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">View help window</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>O</kbd></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Open a Rolodex file</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>N</kbd></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Create new Rolodex file</p></td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -232,21 +224,29 @@ pressing the <kbd>esc</kbd> key will result in the application focusing on the p
 </div>
 <div class="sect5">
 <h6 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h6>
+<div class="sect6">
+<h7 id="location-of-code-keycombination-code-constants-for-the-code-keylistener-code-class-br"><a class="link" href="#location-of-code-keycombination-code-constants-for-the-code-keylistener-code-class-br">Location of <code>KeyCombination</code> constants for the <code>KeyListener</code> class<br></a></h7>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Location of <code>KeyCombination</code> constants for the <code>KeyListener</code> class<br>
-<strong>Alternative 1 (current choice):</strong> <code>KeyCombination</code> constants are stored in a separate utility class, <code>KeyListenerUtil</code><br>
+<p><strong>Alternative 1 (current choice):</strong> <code>KeyCombination</code> constants are stored in a separate utility class, <code>KeyListenerUtil</code><br>
 <strong>Pros:</strong> Better modularity given that the number of constants is fairly large.<br>
-<strong>Cons:</strong> The constants have to be imported to be used in the <code>KeyListener</code> class.<br>
-<strong>Alternative 2:</strong> Store the constants in the <code>KeyListener</code> class itself<br>
+<strong>Cons:</strong> The constants have to be imported to be used in the <code>KeyListener</code> class.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Store the constants in the <code>KeyListener</code> class itself<br>
 <strong>Pros:</strong> Straightforward implementation and the constants does not have to be imported.<br>
 <strong>Cons:</strong> Violates Separation of Concerns as the <code>KeyListener</code> class acts as a storage for the constants in addition to handling key events.</p>
 </div>
+<hr>
+</div>
+<div class="sect6">
+<h7 id="the-way-commands-words-are-executed-br"><a class="link" href="#the-way-commands-words-are-executed-br">The way commands words are executed<br></a></h7>
 <div class="paragraph">
-<p><strong>Aspect:</strong> The way commands words are executed<br>
-<strong>Alternative 1 (current choice):</strong> Pressing the shortcut automatically executes the command<br>
+<p><strong>Alternative 1 (current choice):</strong> Pressing the shortcut automatically executes the command<br>
 <strong>Pros:</strong> Execution of command is faster and more convenient for the user.<br>
-<strong>Cons:</strong> User may want to check what the shortcut does before executing the command.<br>
-<strong>Alternative 2:</strong> Pressing the shortcut replaces the <code>TextField</code> with the command word<br>
+<strong>Cons:</strong> User may want to check what the shortcut does before executing the command.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Pressing the shortcut replaces the <code>TextField</code> with the command word<br>
 <strong>Pros:</strong> Allows the user to check the command before executing it.<br>
 <strong>Cons:</strong>  An extra step for user to execute the command, i.e. pressing <code>Enter</code>.</p>
 </div>
@@ -255,27 +255,79 @@ pressing the <kbd>esc</kbd> key will result in the application focusing on the p
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="enhancement-added-renovate-ui-color-scheme-and-layout"><a class="link" href="#enhancement-added-renovate-ui-color-scheme-and-layout">Enhancement Added: Renovate UI Color Scheme and Layout</a></h3>
+<h3 id="enhancement-added-ui-improvements"><a class="link" href="#enhancement-added-ui-improvements">Enhancement Added: UI Improvements</a></h3>
+<hr>
+<div class="sect3">
+<h4 id="ui-improvements"><a class="link" href="#ui-improvements">UI Improvements</a></h4>
 <div class="paragraph">
 <p>The user interface of the application has been revamped to take on a clean design, which aims to improve
 the user&#8217;s experience with Rolodex.</p>
 </div>
-<div class="sect3">
-<h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External Behavior</a></h4>
-<hr>
 <div class="imageblock">
 <div class="content">
-<img src="../images/Ui.png" alt="Ui" width="800">
+<img src="../images/Ui2.png" alt="Ui2" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Some features of the UI:</p>
+<p>Other improvements made to the UI include the following features:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="sect4">
+<h5 id="randomized-avatars-colors"><a class="link" href="#randomized-avatars-colors">Randomized Avatars Colors</a></h5>
+<div class="paragraph">
+<p>Avatar colors are randomized and generated over a color range to reduce the chance of two adjacent persons sharing the same avatar color.
+Some results from using this color generator can be seen from the following screenshots.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="../images/avatars.png" alt="avatars" width="300"></span> <span class="image"><img src="../images/avatars2.png" alt="avatars2" width="300"></span></p>
+</div>
+<div class="paragraph">
+<p>The generation of avatar colors involves two steps:<br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>A keyboard icon in the command box provides visual feedback for certain user events:</p>
+<p>Randomly pick a default color from <code>ColorsUtil</code>, which contains a list of selected colors chosen from
+<a href="https://www.materialui.co/blog/what-is-material-ui/">Google&#8217;s material ui color palette</a>.<br></p>
+</li>
+<li>
+<p>Generate a randomized offset value to create a new color which values differ from the default color by this offset.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The code snippet below shows the details of how the color values are manipulated in the color generator.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
+* Generates a new color with a random offset from {@code Color defaultColor}.
+*
+* @return The new color in hexadecimal {@code String} format
+*/</span>
+<span class="directive">private</span> <span class="directive">static</span> <span class="predefined-type">String</span> generateNewColor(<span class="predefined-type">Color</span> defaultColor) {
+    <span class="type">int</span> r = defaultColor.getRed();
+    <span class="type">int</span> g = defaultColor.getGreen();
+    <span class="type">int</span> b = defaultColor.getBlue();
+
+    <span class="type">int</span> newR = <span class="predefined-type">Math</span>.max(COLOR_VALUE_MIN, <span class="predefined-type">Math</span>.min(COLOR_VALUE_MAX, (r + generateOffset())));
+    <span class="type">int</span> newG = <span class="predefined-type">Math</span>.max(COLOR_VALUE_MIN, <span class="predefined-type">Math</span>.min(COLOR_VALUE_MAX, (g + generateOffset())));
+    <span class="type">int</span> newB = <span class="predefined-type">Math</span>.max(COLOR_VALUE_MIN, <span class="predefined-type">Math</span>.min(COLOR_VALUE_MAX, (b + generateOffset())));
+
+    <span class="keyword">return</span> <span class="predefined-type">String</span>.format(<span class="string"><span class="delimiter">&quot;</span><span class="content">#%02x%02x%02x</span><span class="delimiter">&quot;</span></span>, newR, newG, newB);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An upper bound is applied to the offset to ensure that the new color does not deviate too far from the default color.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="keyboard-icon"><a class="link" href="#keyboard-icon">Keyboard Icon</a></h5>
+<div class="paragraph">
+<p>A keyboard icon is added in the command box to provide visual feedback for certain user events:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -289,24 +341,79 @@ the user&#8217;s experience with Rolodex.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p>Split pane which separates the contact list from the other UI components is responsive;
-the divider is automatically maintained at the optimal position
-when window size changes</p>
-</li>
-<li>
-<p>Avatar colors are randomized</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>The keyboard icon is updated by setting <code>ImageView</code> of the icon to one of the three variations as shown above, whichever is appropriate
+for the current state of the user.</p>
+</div>
+<div class="paragraph">
+<p>In particular, to check that the user is idle, we measure the time elapsed since any changes made to the
+<code>CommandBox</code>. This is done with the <code>PauseTransition</code> class from JavaFX, which allows us to execute an event after a set duration.
+For better illustration, below is a simplified code snippet of the implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> updateKeyboardIcon() {
+
+    <span class="comment">// set icon to typing keyboard</span>
+
+    pause.setOnFinished(event -&gt; {
+        <span class="comment">// set icon to idle keyboard</span>
+    });
+    pause.playFromStart(); <span class="comment">// reset timer</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>pause</code> is a <code>PauseTransition</code> object, and <code>setOnFinished</code> takes in an event handler as its parameter.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="autoselection-for-newly-added-edited-person"><a class="link" href="#autoselection-for-newly-added-edited-person">Autoselection for Newly Added/Edited Person</a></h5>
+<div class="paragraph">
+<p>A newly added, or edited person will automatically be selected in the <code>PersonListPanel</code>. This makes it easier for the user to take note
+of changes made to their contacts.</p>
+</div>
+<div class="paragraph">
+<p>This implementation is done by raising an event whenever the add and edit commands are executed.
+The <code>PersonListPanel</code> is registered as an event handler and will subsequently scroll to the person that is newly modified.</p>
+</div>
+<div class="paragraph">
+<p>This feature is integrated with the <a href="#detailPanel">Person Detail Panel implementation</a>, and more details on the event handling
+can be found under the section.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="responsive-split-pane"><a class="link" href="#responsive-split-pane">Responsive Split Pane</a></h5>
+<div class="paragraph">
+<p>The split pane which separates the contact list from the other UI components is responsive.
+Its divider is automatically maintained at the optimal position when the window size changes.</p>
+</div>
+<div class="paragraph">
+<p>This is achieved by setting up listeners to the property of the window. The divider will be repositioned when the listener
+detects any changes in the window property. The code below illustrates the implementation in greater detail.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> setSplitPaneDividerPosition() {
+
+    <span class="comment">// repositions divider when window is just showed</span>
+    primaryStage.showingProperty().addListener((observable, oldValue, newValue) -&gt;
+            splitPane.setDividerPositions(SPLIT_PANE_DIVIDER_POSITION));
+
+    <span class="comment">// repositions divider when window width changes</span>
+    primaryStage.widthProperty().addListener((observable, oldValue, newValue) -&gt;
+            splitPane.setDividerPositions(SPLIT_PANE_DIVIDER_POSITION));
+}</code></pre>
+</div>
 </div>
 <hr>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="enhancement-added-person-detail-panel"><a class="link" href="#enhancement-added-person-detail-panel">Enhancement Added: Person Detail Panel</a></h3>
+<h3 id="detailPanel"><a class="link" href="#detailPanel">Enhancement Added: Person Detail Panel</a></h3>
 <div class="sect3">
-<h4 id="external-behavior-3"><a class="link" href="#external-behavior-3">External Behavior</a></h4>
+<h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External Behavior</a></h4>
 <hr>
 <div class="paragraph">
 <p>The person detail panel displays the complete information of a person that is selected.</p>
@@ -314,6 +421,11 @@ when window size changes</p>
 <div class="imageblock">
 <div class="content">
 <img src="../images/detailPanel.png" alt="detailPanel" width="600">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/detailPanelLabeled.png" alt="detailPanelLabeled" width="600">
 </div>
 </div>
 </div>
@@ -335,7 +447,7 @@ changes depending on various user actions, such as a person selection, editing o
 </div>
 <div class="paragraph">
 <p>The information displayed on the panel is extracted from the <code>ReadOnlyPerson</code> that is returned by the <code>EventsCenter</code>.
-The details of the implementation can be seen from the following code snippet.</p>
+The details of the implementation can be seen from the following code snippets.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -346,6 +458,21 @@ The details of the implementation can be seen from the following code snippet.</
     setAvatar(person);
     setTextFields(person);
     setTags(person);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>showPersonDetails</code> method is called when a <code>PersonEditedEvent</code> is raised, which occurs when the user edits a person.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
+* Updates the panel when the details of the selected person is changed
+*/</span>
+<span class="annotation">@Subscribe</span>
+<span class="directive">private</span> <span class="type">void</span> handlePersonDetailsChangedEvent(PersonEditedEvent event) {
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    showPersonDetails(event.editedPerson);
 }</code></pre>
 </div>
 </div>
@@ -394,7 +521,24 @@ The details of the implementation can be seen from the following code snippet.</
 </tr>
 </tbody>
 </table>
+<div class="sect4">
+<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h5>
+<div class="sect5">
+<h6 id="synchronization-of-person-details-with-the-panel-display-br"><a class="link" href="#synchronization-of-person-details-with-the-panel-display-br">Synchronization of person details with the panel display<br></a></h6>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Using the event system to update the panel<br>
+<strong>Pros:</strong> Allows for custom panel behavior for different user actions.<br>
+<strong>Cons:</strong> Increase coupling as updating the panel relies on the logic component for user actions involving commands.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Bind the fields in the panel to their corresponding object properties<br>
+<strong>Pros:</strong> Less coupling.<br>
+<strong>Cons:</strong>  Higher implementation overhead to set up the bindings properly and
+difficult to enforce custom panel behaviour for specific user actions.</p>
+</div>
 <hr>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -405,14 +549,15 @@ or added along with other fields when adding a new person using the existing <co
 or edited along with other fields using the existing <code>edit</code> command.</p>
 </div>
 <div class="sect3">
-<h4 id="external-behavior-4"><a class="link" href="#external-behavior-4">External Behavior</a></h4>
+<h4 id="external-behavior-3"><a class="link" href="#external-behavior-3">External Behavior</a></h4>
 <hr>
 <div class="sect4">
 <h5 id="code-remark-code-code-rmk-code-code-note-code-or-code-comment-code-adding-a-remark-em-since-v1-4-em"><a class="link" href="#code-remark-code-code-rmk-code-code-note-code-or-code-comment-code-adding-a-remark-em-since-v1-4-em"><code>remark</code>, <code>rmk</code>, <code>note</code> or <code>comment</code> : Adding a Remark <em>(Since v1.4)</em></a></h5>
 <div class="paragraph">
 <p>Adds a remark to the specified person in Rolodex.<br>
 Format: <code>remark INDEX [r/REMARK]</code><br>
-Alternatives: <code>remark</code> can be replaced by <code>note</code> or <code>rmk</code></p>
+Alternatives: <code>remark</code> can be replaced by <code>note</code> or <code>rmk</code> or <code>comment</code><br>
+Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>R</kbd></span></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -477,7 +622,7 @@ Removes the remark for the 1st person.</p>
 <div class="sect2">
 <h3 id="enhancement-proposed-add-profile-pictures"><a class="link" href="#enhancement-proposed-add-profile-pictures">Enhancement Proposed: Add Profile Pictures</a></h3>
 <div class="sect3">
-<h4 id="external-behavior-5"><a class="link" href="#external-behavior-5">External Behavior</a></h4>
+<h4 id="external-behavior-4"><a class="link" href="#external-behavior-4">External Behavior</a></h4>
 <hr>
 <div class="sect4">
 <h5 id="adding-a-profile-picture-code-picture-code-or-code-pic-code-em-coming-in-v2-0-em"><a class="link" href="#adding-a-profile-picture-code-picture-code-or-code-pic-code-em-coming-in-v2-0-em">Adding a Profile Picture: <code>picture</code> or <code>pic</code> <em>(Coming in v2.0)</em></a></h5>
@@ -558,10 +703,10 @@ Sets the profile picture of the 6th person to <code>john.png</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Added auto-selection to person that is newly added (Pull request <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/123">#123</a>)</p>
+<p>Imported the Segoe UI font pack into the application (Pull request <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/136">#136</a>)</p>
 </li>
 <li>
-<p>Added auto-selection to person that is newly edited (Pull request <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/102">#102</a>)</p>
+<p>Added a prompt text to the result display panel (Pull request <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/122">#122</a>)</p>
 </li>
 <li>
 <p>Added the removeTag method (Pull request <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/6">#6</a>)</p>
@@ -569,7 +714,9 @@ Sets the profile picture of the 6th person to <code>john.png</code>.</p>
 <li>
 <p>Updated the General Documentation (Pull requests <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/2">#2</a>,
 <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/66">#66</a>,
-<a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/112">#112</a>)</p>
+<a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/112">#112</a>,
+<a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/124">#124</a>,
+<a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/134">#134</a>)</p>
 </li>
 </ul>
 </div>
@@ -601,7 +748,7 @@ Sets the profile picture of the 6th person to <code>john.png</code>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 04:55:13 +00:00
+Last updated 2017-11-13 05:18:09 +00:00
 </div>
 </div>
 </body>

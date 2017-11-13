@@ -50,38 +50,39 @@
 <li><a href="#fuzzy-finding-mechanism">4.3. Fuzzy Finding Mechanism</a></li>
 <li><a href="#sorting-mechanism">4.4. Sorting Mechanism</a></li>
 <li><a href="#abbreviation-mechanism">4.5. Abbreviation Mechanism</a></li>
-<li><a href="#auto-completion-mechanism">4.6. Auto-completion Mechanism</a></li>
-<li><a href="#keyboard-shortcuts-mechanism">4.7. Keyboard Shortcuts Mechanism</a></li>
-<li><a href="#person-detail-panel">4.8. Person Detail Panel</a></li>
-<li><a href="#help-window-highlighting">4.9. Help Window Highlighting</a></li>
+<li><a href="#drop-down-list-of-possible-commands">4.6. Drop-down List of Possible Commands</a></li>
+<li><a href="#auto-completion-mechanism">4.7. Auto-completion Mechanism</a></li>
+<li><a href="#keyboard-shortcuts-mechanism">4.8. Keyboard Shortcuts Mechanism</a></li>
+<li><a href="#auto-complete-command-shortcuts">4.9. Auto-complete Command Shortcuts</a></li>
+<li><a href="#detailPanel">4.10. Person Detail Panel</a></li>
+<li><a href="#ui-improvements">4.11. UI Improvements</a></li>
+<li><a href="#help-window-highlighting">4.12. Help Window Highlighting</a></li>
+<li><a href="#composing-emails">4.13. Composing Emails</a></li>
+<li><a href="#suggestions-mechanism">4.14. Suggestions Mechanism</a></li>
+<li><a href="#logging">4.15. Logging</a></li>
+<li><a href="#configuration">4.16. Configuration</a></li>
 </ul>
 </li>
-<li><a href="#suggestions-mechanism">5. Suggestions Mechanism</a>
+<li><a href="#documentation">5. Documentation</a>
 <ul class="sectlevel2">
-<li><a href="#logging">5.1. Logging</a></li>
-<li><a href="#configuration">5.2. Configuration</a></li>
+<li><a href="#editing-documentation">5.1. Editing Documentation</a></li>
+<li><a href="#publishing-documentation">5.2. Publishing Documentation</a></li>
+<li><a href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF Format</a></li>
 </ul>
 </li>
-<li><a href="#documentation">6. Documentation</a>
+<li><a href="#testing">6. Testing</a>
 <ul class="sectlevel2">
-<li><a href="#editing-documentation">6.1. Editing Documentation</a></li>
-<li><a href="#publishing-documentation">6.2. Publishing Documentation</a></li>
-<li><a href="#converting-documentation-to-pdf-format">6.3. Converting Documentation to PDF Format</a></li>
+<li><a href="#running-tests">6.1. Running Tests</a></li>
+<li><a href="#types-of-tests">6.2. Types of Tests</a></li>
+<li><a href="#troubleshooting-testing">6.3. Troubleshooting Testing</a></li>
 </ul>
 </li>
-<li><a href="#testing">7. Testing</a>
+<li><a href="#dev-ops">7. Dev Ops</a>
 <ul class="sectlevel2">
-<li><a href="#running-tests">7.1. Running Tests</a></li>
-<li><a href="#types-of-tests">7.2. Types of Tests</a></li>
-<li><a href="#troubleshooting-testing">7.3. Troubleshooting Testing</a></li>
-</ul>
-</li>
-<li><a href="#dev-ops">8. Dev Ops</a>
-<ul class="sectlevel2">
-<li><a href="#build-automation">8.1. Build Automation</a></li>
-<li><a href="#continuous-integration">8.2. Continuous Integration</a></li>
-<li><a href="#making-a-release">8.3. Making a Release</a></li>
-<li><a href="#managing-dependencies">8.4. Managing Dependencies</a></li>
+<li><a href="#build-automation">7.1. Build Automation</a></li>
+<li><a href="#continuous-integration">7.2. Continuous Integration</a></li>
+<li><a href="#making-a-release">7.3. Making a Release</a></li>
+<li><a href="#managing-dependencies">7.4. Managing Dependencies</a></li>
 </ul>
 </li>
 <li><a href="#suggested-programming-tasks-to-get-started">Appendix A: Suggested Programming Tasks to Get Started</a>
@@ -345,9 +346,6 @@ for the main architecture of Rolodex.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 2.1.1 : Architecture Diagram</em></p>
-</div>
-<div class="paragraph">
 <p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
 </div>
 <div class="admonitionblock tip">
@@ -429,7 +427,7 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 2.1.2 : Class Diagram of the Logic Component</em></p>
+<p>Above is the <em>Class Diagram</em> of the <code>logic</code> component.</p>
 </div>
 <h4 id="events-driven-nature-of-the-design" class="discrete">Events-Driven Nature of the Design</h4>
 <div class="paragraph">
@@ -439,9 +437,6 @@ The <code>.pptx</code> files used to create diagrams in this document can be fou
 <div class="content">
 <img src="images/SDforDeletePerson.png" alt="SDforDeletePerson" width="800">
 </div>
-</div>
-<div class="paragraph">
-<p><em>Figure 2.1.3a : Component interactions for <code>delete 1</code> command (part 1)</em></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -462,9 +457,6 @@ Note how the <code>Model</code> simply raises a <code>RolodexChangedEvent</code>
 <div class="content">
 <img src="images/SDforDeletePersonEventHandling.png" alt="SDforDeletePersonEventHandling" width="800">
 </div>
-</div>
-<div class="paragraph">
-<p><em>Figure 2.1.3b : Component interactions for <code>delete 1</code> command (part 2)</em></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -490,7 +482,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 2.2.1 : Structure of the UI Component</em></p>
+<p>Structure of the <code>UI</code> component is shown in the above diagram.</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103AUG2017-W11-B2/main/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
@@ -526,7 +518,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 2.3.1 : Structure of the Logic Component</em></p>
+<p>Structure of the <code>logic</code> component is shown in the above diagram.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -534,7 +526,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 2.3.2 : Structure of Commands in the Logic Component. This diagram shows finer details concerning <code>XYZCommand</code> and <code>Command</code> in Figure 2.3.1</em></p>
+<p>The above diagram represents the structure of Commands in the <code>logic</code> component. It shows finer details concerning <code>XYZCommand</code> and <code>Command</code> in the previous diagram.</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -565,7 +557,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 2.3.1 : Interactions Inside the Logic Component for the <code>delete 1</code> Command</em></p>
+<p>The above diagram show the interactions inside the <code>logic</code> component for the <code>delete 1</code> command.</p>
 </div>
 </div>
 <div class="sect2">
@@ -576,7 +568,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 2.4.1 : Structure of the Model Component</em></p>
+<p>Structure of the <code>model</code> component is shown in the above diagram.</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103AUG2017-W11-B2/main/src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -609,7 +601,7 @@ Note how the event is propagated through the <code>EventsCenter</code> to the <c
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 2.5.1 : Structure of the Storage Component</em></p>
+<p>Structure of the <code>storage</code> component is shown in the above diagram.</p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103AUG2017-W11-B2/main/src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -796,32 +788,43 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.1. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="implementation-of-code-undoablecommand-code"><a class="link" href="#implementation-of-code-undoablecommand-code">Implementation of <code>UndoableCommand</code></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Implementation of <code>UndoableCommand</code><br>
-<strong>Alternative 1 (current choice):</strong> Add a new abstract method <code>executeUndoableCommand()</code><br>
+<p><strong>Alternative 1 (current choice):</strong> Add a new abstract method <code>executeUndoableCommand()</code><br>
 <strong>Pros:</strong> We will not lose any undone/redone functionality as it is now part of the default behaviour. Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.<br>
-<strong>Cons:</strong> Hard for new developers to understand the template pattern.<br>
-<strong>Alternative 2:</strong> Just override <code>execute()</code><br>
+<strong>Cons:</strong> Hard for new developers to understand the template pattern.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Just override <code>execute()</code><br>
 <strong>Pros:</strong> Does not involve the template pattern, easier for new developers to understand.<br>
 <strong>Cons:</strong> Classes that inherit from <code>UndoableCommand</code> must remember to call <code>super.execute()</code>, or lose the ability to undo/redo.</p>
 </div>
 <hr>
+</div>
+<div class="sect4">
+<h5 id="how-undo-redo-executes-br"><a class="link" href="#how-undo-redo-executes-br">How undo &amp; redo executes<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> How undo &amp; redo executes<br>
-<strong>Alternative 1 (current choice):</strong> Saves the entire rolodex.<br>
+<p><strong>Alternative 1 (current choice):</strong> Saves the entire rolodex.<br>
 <strong>Pros:</strong> Easy to implement.<br>
-<strong>Cons:</strong> May have performance issues in terms of memory usage.<br>
-<strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.<br>
+<strong>Cons:</strong> May have performance issues in terms of memory usage.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.<br>
 <strong>Pros:</strong> Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).<br>
 <strong>Cons:</strong> We must ensure that the implementation of each individual command are correct.</p>
 </div>
 <hr>
+</div>
+<div class="sect4">
+<h5 id="type-of-commands-that-can-be-undone-redone-br"><a class="link" href="#type-of-commands-that-can-be-undone-redone-br">Type of commands that can be undone/redone<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Type of commands that can be undone/redone<br>
-<strong>Alternative 1 (current choice):</strong> Only include commands that modifies the rolodex (<code>add</code>, <code>clear</code>, <code>edit</code>).<br>
+<p><strong>Alternative 1 (current choice):</strong> Only include commands that modifies the rolodex (<code>add</code>, <code>clear</code>, <code>edit</code>).<br>
 <strong>Pros:</strong> We only revert changes that are hard to change back (the view can easily be re-modified as no data are lost).<br>
-<strong>Cons:</strong> User might think that undo also applies when the list is modified (undoing filtering for example), only to realize that it does not do that, after executing <code>undo</code>.<br>
-<strong>Alternative 2:</strong> Include all commands.<br>
+<strong>Cons:</strong> User might think that undo also applies when the list is modified (undoing filtering for example), only to realize that it does not do that, after executing <code>undo</code>.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Include all commands.<br>
 <strong>Pros:</strong> Might be more intuitive for the user.<br>
 <strong>Cons:</strong> User have no way of skipping such commands if he or she just want to reset the state of the rolodex and not the view.<br>
 <strong>Additional Info:</strong> See our discussion  <a href="https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672">here</a>.</p>
@@ -838,12 +841,13 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
 <h3 id="open-file-and-new-file-mechanism"><a class="link" href="#open-file-and-new-file-mechanism">4.2. Open File and New File Mechanism</a></h3>
 <div class="paragraph">
 <p>The open new file and creating new file mechanism are handled by two new types of requests under the <code>EventsCenter</code>,
 <code>OpenRolodexRequestEvent</code> and <code>RolodexChangedDirectoryEvent</code>. Upon receiving a new command, the <code>MainApp</code> attempts to
-reloads the instance <code>model</code> and <code>logic</code> but <strong>not the <code>UI</code></strong>.</p>
+reload the instance <code>model</code> and <code>logic</code> but <strong>not the <code>UI</code></strong>.</p>
 </div>
 <div class="paragraph">
 <p>The high level sequence diagram for a typical <code>open</code> request can be seen below:</p>
@@ -860,7 +864,7 @@ reloads the instance <code>model</code> and <code>logic</code> but <strong>not t
 </li>
 <li>
 <p>The command is handled the same way as other commands, by the parser in
-logic, then via the <code>OpenCommand</code> object itself, under the <code>Logic</code> component of the application.</p>
+logic, then via the <code>OpenRolodexCommand</code> object itself, under the <code>Logic</code> component of the application.</p>
 </li>
 <li>
 <p>Upon a successful parsing of the command and execution, the command would raise a new <code>OpenRolodexRequestEvent</code> to
@@ -965,36 +969,48 @@ subset of xml for the Rolodex application, as seen in the snippet below:
 </div>
 <div class="sect3">
 <h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.1. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="general-implementation-br"><a class="link" href="#general-implementation-br">General Implementation<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> General Implementation<br>
-<strong>Alternative 1 (current choice):</strong> Reload the current <code>MainApp</code> with the new database.<br>
+<p><strong>Alternative 1 (current choice):</strong> Reload the current <code>MainApp</code> with the new database.<br>
 <strong>Pros:</strong> The application can be quickly reloaded onto the active window.<br>
-<strong>Cons:</strong> User might need to switch back and forth between the Rolodex directories.<br>
-<strong>Alternative 2:</strong> Reload <code>MainApp</code> with a new application instance.<br>
+<strong>Cons:</strong> User might need to switch back and forth between the Rolodex directories.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Reload <code>MainApp</code> with a new application instance.<br>
 <strong>Constraint:</strong> <a href="#java-fx">JavaFX</a> only allows launch(args) to be launched once per execution time on a code level.
 Another approach would be to reload the application with a loaded and built .jar.<br>
 <strong>Pros:</strong> Easier logic to understand for new developers.<br>
-<strong>Cons:</strong> Building and debugging with a second .jar will be confusing and problematic to any development workflow.<br>
-<strong>Alternative 3:</strong> Open a new window with the loaded data.<br>
+<strong>Cons:</strong> Building and debugging with a second .jar will be confusing and problematic to any development workflow.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 3:</strong> Open a new window with the loaded data.<br>
 <strong>Pros:</strong> The user can continue to operate on the previous Rolodex application.<br>
 <strong>Cons:</strong> The developer would have to spend time configuring different <code>EventsCenter</code> posts for the different application windows.</p>
 </div>
 <hr>
+</div>
+<div class="sect4">
+<h5 id="saving-only-to-files-with-code-rldx-code-extensions-br"><a class="link" href="#saving-only-to-files-with-code-rldx-code-extensions-br">Saving only to files with <code>.rldx</code> extensions<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Saving only to files with <code>.rldx</code> extensions<br>
-<strong>Alternative 1 (current choice):</strong> Write to the active directory only if it has a <code>.rldx</code> extension.<br>
+<p><strong>Alternative 1 (current choice):</strong> Write to the active directory only if it has a <code>.rldx</code> extension.<br>
 <strong>Pros:</strong> The application control becomes stricter, preventing users from writing to a file with say a <code>.png</code> extension.<br>
-<strong>Cons:</strong> Extensions become forced even for valid databases with <code>.xml</code> file types.<br>
-<strong>Alternative 2:</strong> Allow writable to all file extensions.<br>
+<strong>Cons:</strong> Extensions become forced even for valid databases with <code>.xml</code> file types.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Allow writable to all file extensions.<br>
 <strong>Pros:</strong> Users can have more freedom in choice of file naming.<br>
 <strong>Cons:</strong> If the user accidentally writes to a file that is not a valid database, the user would corrupt the file data.</p>
 </div>
 <hr>
+</div>
+<div class="sect4">
+<h5 id="separating-code-open-code-and-code-new-code-commands-br"><a class="link" href="#separating-code-open-code-and-code-new-code-commands-br">Separating <code>open</code> and <code>new</code> commands<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Separating <code>open</code> and <code>new</code> commands<br>
-<strong>Alternative 1 (current choice):</strong> Two commands, one for opening existing files and one for creating new files.<br>
+<p><strong>Alternative 1 (current choice):</strong> Two commands, one for opening existing files and one for creating new files.<br>
 <strong>Pros:</strong> The user can easily be notified if a file exists or if it has been moved.<br>
 <strong>Cons:</strong> The user would have to take note of two commands instead of one.<br></p>
+</div>
 </div>
 </div>
 </div>
@@ -1065,25 +1081,31 @@ to the currently examined name word in which the contact will be added.</p>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.1. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="length-of-name-word-br"><a class="link" href="#length-of-name-word-br">Length of name word<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Length of name word<br>
-<strong>Alternative 1 (current choice):</strong> Use a global minimum for defining when the <a href="#fuzzy-finding">fuzzy finding</a> should execute.<br>
+<p><strong>Alternative 1 (current choice):</strong> Use a global minimum for defining when the <a href="#fuzzy-finding">fuzzy finding</a> should execute.<br>
 <strong>Pros:</strong> Name words have higher minimum hop to length ratio.<br>
 <strong>Cons:</strong> User might need <a href="#fuzzy-finding">fuzzy finding</a> on name words with character length lesser than the global minimum.<br>
 <strong>Pros:</strong> Easy logic to understand, implement and maintain.<br>
 <strong>Cons:</strong> Rudimentary algorithm.</p>
 </div>
 <hr>
+</div>
+<div class="sect4">
+<h5 id="location-of-fuzzy-find-settings-br"><a class="link" href="#location-of-fuzzy-find-settings-br">Location of fuzzy find settings<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Location of fuzzy find settings<br>
-<strong>Alternative 1 (current choice):</strong> Use private static constant in a person.<br>
+<p><strong>Alternative 1 (current choice):</strong> Use private static constant in a person.<br>
 <strong>Pros:</strong> User does not need to worry about changing the settings or the intricacies of the <a href="#fuzzy-finding">fuzzy finding</a>.<br>
 <strong>Cons:</strong> User might need stricter or looser limits than the ones defined for them.<br>
 <strong>Pros:</strong> Developers can easily change and manage settings and limits.<br>
-<strong>Cons:</strong> Users have no way of accessing the settings and limits.<br>
-<strong>Alternative 2:</strong> Allow user to set fuzzy find settings in a document file.<br>
+<strong>Cons:</strong> Users have no way of accessing the settings and limits.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Allow user to set fuzzy find settings in a document file.<br>
 <strong>Pros:</strong> Advanced users can change the settings to suit their needs better.<br>
 <strong>Cons:</strong> Developers need to spend more work maintaining more components including storage.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1199,26 +1221,34 @@ comparator before executing a sort and filter which is handled by the event cons
 </div>
 <div class="sect3">
 <h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.1. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="integrating-sort-br"><a class="link" href="#integrating-sort-br">Integrating sort<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Integrating sort<br>
-<strong>Alternative 1 (current choice):</strong> Integrate sort into existing commands.<br>
+<p><strong>Alternative 1 (current choice):</strong> Integrate sort into existing commands.<br>
 <strong>Pros:</strong> User can quickly sort and list or find the data as specified without executing another separate command.<br>
 <strong>Cons:</strong> User might need to use the sort arguments for other purposes (e.g. <code>find n/</code> does not return anyone matching <code>n/</code>).<br>
 <strong>Pros:</strong> Adds onto existing functionality and reduces clutter and unnecessary creation of a new command.<br>
-<strong>Cons:</strong> Bad SLAP on a user level.<br>
-<strong>Alternative 2:</strong> Create a new <code>sort</code> command.<br>
+<strong>Cons:</strong> Bad SLAP on a user level.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Create a new <code>sort</code> command.<br>
 <strong>Pros:</strong> User can decide when to sort the current list view<br>
 <strong>Cons:</strong> User needs an additional step before sorting a list.</p>
 </div>
 <hr>
+</div>
+<div class="sect4">
+<h5 id="resetting-sort-comparator-on-code-add-code-commands-br"><a class="link" href="#resetting-sort-comparator-on-code-add-code-commands-br">Resetting sort comparator on <code>add</code> commands<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Resetting sort comparator on <code>add</code> commands<br>
-<strong>Alternative 1 (current choice):</strong> Reset the current displayed list on an <code>add</code> command.<br>
+<p><strong>Alternative 1 (current choice):</strong> Reset the current displayed list on an <code>add</code> command.<br>
 <strong>Pros:</strong> The displayed list always complies with the model comparator.<br>
-<strong>Cons:</strong> User might need to continue operating on the previous listing.<br>
-<strong>Alternative 2:</strong> Append added person to the current list view.<br>
+<strong>Cons:</strong> User might need to continue operating on the previous listing.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Append added person to the current list view.<br>
 <strong>Pros:</strong> Users can immediately <code>edit</code> the person using the last listing index.<br>
 <strong>Cons:</strong> The displayed listing will not comply with the model comparator.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1235,7 +1265,7 @@ comparator before executing a sort and filter which is handled by the event cons
 <pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">import</span> <span class="include">java.util.HashSet</span>;
 <span class="keyword">import</span> <span class="include">java.util.Set</span>;
 
-<span class="directive">public</span> <span class="type">class</span> <span class="class">OpenCommand</span> <span class="directive">extends</span> Command {
+<span class="directive">public</span> <span class="type">class</span> <span class="class">OpenRolodexCommand</span> <span class="directive">extends</span> Command {
 
     <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> COMMAND_WORD = <span class="string"><span class="delimiter">&quot;</span><span class="content">open</span><span class="delimiter">&quot;</span></span>;
     <span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt; COMMAND_WORD_ABBREVIATIONS =
@@ -1271,15 +1301,18 @@ pairwise disjoint:</p>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.1. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="implementation-br"><a class="link" href="#implementation-br">Implementation<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Implementation<br>
-<strong>Alternative 1 (current choice):</strong> A <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html">Set</a> of strings<br>
+<p><strong>Alternative 1 (current choice):</strong> A <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Set.html">Set</a> of strings<br>
 <strong>Pros:</strong> Constant access time per command level. Improves performance and reliability significantly.<br>
 <strong>Pros:</strong> Ease of testing for conflicting abbreviations, particularly where developers forget if they used a
 same abbreviation for two different commands (e.g. assigning <code>h</code> to both the <code>history</code> and <code>help</code> commands).<br>
 <strong>Cons:</strong> If you have a better suggestion than the above implementation, feel free to create a new issue for discussion
-on <a href="https://github.com/CS2103AUG2017-W11-B2/main/issues">github</a>.<br>
-<strong>Alternative 2 (previous choice):</strong> Manually named string Constants<br>
+on <a href="https://github.com/CS2103AUG2017-W11-B2/main/issues">github</a>.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2 (previous choice):</strong> Manually named string Constants<br>
 <strong>Pros:</strong> Forces developer to be more prudent in checking through the conflicting abbreviations.<br>
 <strong>Cons:</strong> Developers would have to manually check through all commands to ensure the accuracy of the abbreviations,
 which is time-consuming and makes way for human errors.<br>
@@ -1288,13 +1321,102 @@ access on a java <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Ha
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="auto-completion-mechanism"><a class="link" href="#auto-completion-mechanism">4.6. Auto-completion Mechanism</a></h3>
+<h3 id="drop-down-list-of-possible-commands"><a class="link" href="#drop-down-list-of-possible-commands">4.6. Drop-down List of Possible Commands</a></h3>
 <div class="paragraph">
-<p>Auto-completion mechanism is implemented in <code>CommandBox</code> class under UI component.</p>
+<p>The dynamic drop-down list is created using <code>org.controlsfx.control.textfield.TextFields</code> <a href="https://controlsfx.bitbucket.io/org/controlsfx/control/textfield/TextFields.html#bindAutoCompletion-javafx.scene.control.TextField-javafx.util.Callback-">API</a> <a href="#api">(Application Programming Interface)</a>.
+The <code>bindAutoCompletion</code> method in the <code>TestFields</code> creates a new auto-completion binding between the given textField and the given suggestion provider.</p>
 </div>
 <div class="paragraph">
-<p>Auto-completion is activated when <code>TAB</code> key is pressed. This is done by adding a case in the keypress handler in <code>CommandBox</code>.</p>
+<p>The code below shows the exact implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">TextFields.bindAutoCompletion(commandTextField, sr -&gt; {
+    <span class="predefined-type">Set</span>&lt;<span class="predefined-type">String</span>&gt; suggestedCommands = <span class="keyword">new</span> <span class="predefined-type">HashSet</span>&lt;&gt;();
+    <span class="keyword">for</span> (<span class="predefined-type">String</span> command: LIST_OF_ALL_COMMANDS) {
+        <span class="keyword">if</span> (!sr.getUserText().isEmpty() &amp;&amp; !command.equals(sr.getUserText())
+            &amp;&amp; command.startsWith(sr.getUserText().trim().toLowerCase())) {
+
+            suggestedCommands.add(command);
+        }
+    }
+    <span class="keyword">return</span> suggestedCommands;
+});</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Possible commands are checked against the user input and added to the Set <code>suggestedCommands</code> accordingly, which will be displayed as the drop-down list.</p>
+</div>
+<div class="paragraph">
+<p>A command is added if all three conditions are satisfied:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The user input is not empty.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This is to prevent the drop-down list from appearing every time the command box is cleared after the execution of a command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The user input is not a valid command.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>There is no need to display the drop-down list of suggestions when the user has typed in a correct command.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The command starts with the user input.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This is to suggest the possible commands that the user is trying to type.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.6.1. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation<br>
+<strong>Alternative 1 (current choice):</strong> Make use of <code>TestFields</code> API<br>
+<strong>Pros:</strong> Easy to implement<br>
+<strong>Pros:</strong> List is dynamic.<br>
+<strong>Cons:</strong> User cannot see the full format of the commands in the drop-down list.<br>
+<strong>Alternative 2:</strong> Use ComboBox<br>
+<strong>Pros:</strong> User can see the required fields for each command in the drop-down box.<br>
+<strong>Cons:</strong> As user selects an option, the command is executed with the place holders, resulting in an invalid command. User has to manually select the placeholders and change accordingly.</p>
+</div>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Auto-completion binding<br>
+<strong>Alternative 1 (current choice):</strong> Only suggest commands that starts with user input<br>
+<strong>Pros:</strong> Suggested commands are accurate.<br>
+<strong>Cons:</strong> The list usually only display one or two options because not many commands start with the same alphabet.<br>
+<strong>Alternative 2:</strong> Suggest commands that contain the user input.<br>
+<strong>Pros:</strong> More suggestions would be displayed.<br>
+<strong>Pros:</strong> User has a higher chance of finding the desired command when a typo is made.<br>
+<strong>Cons:</strong> Most of the time, inaccurate suggestions are not necessary.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="auto-completion-mechanism"><a class="link" href="#auto-completion-mechanism">4.7. Auto-completion Mechanism</a></h3>
+<div class="paragraph">
+<p>Auto-completion mechanism is implemented in <code>CommandBox</code> class under <code>UI</code> component.</p>
+</div>
+<div class="paragraph">
+<p>Auto-completion is activated when <kbd>Tab</kbd> key is pressed. This is done by adding a case in the keypress handler in <code>CommandBox</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1302,14 +1424,18 @@ access on a java <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Ha
 <span class="directive">private</span> <span class="type">void</span> handleKeyPress(<span class="predefined-type">KeyEvent</span> keyEvent) {
     <span class="keyword">switch</span> (keyEvent.getCode()) {
     <span class="keyword">case</span> TAB:
-        autocomplete(); <span class="comment">//checkes the input and performs actions accordingly</span>
+        <span class="keyword">if</span> (keyEvent.isShiftDown()) {
+            selectPreviousField();
+        } <span class="keyword">else</span> {
+            autocomplete();
+        }
         <span class="keyword">break</span>;
     <span class="comment">//other cases</span>
     }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When <code>TAB</code> is pressed, the current input in the command box is checked against the list of commands.</p>
+<p>When <kbd>Tab</kbd> is pressed, the current input in the command box is checked against the list of commands.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1327,8 +1453,8 @@ At the same time, the placeholder for the first field that the user needs to key
 <div class="ulist">
 <ul>
 <li>
-<p>If the input is already in the required format of the add command, the <code>TAB</code> is meant to navigate to the next input field (only <code>add</code> command require multiple fields).
-The current caret position is checked and used to determine the current field the user is at.
+<p>If the input is already in the required format of <code>add</code> or <code>remark</code> command, the <kbd>Tab</kbd> is meant to navigate to the next input field (only <code>add</code> and <code>remark</code> require more than one field).
+The  caret position is used to determine the current field the user is at.
 The anchor and caret positions are reset to the start and end of the next field so that the placeholder is selected (as shown below).</p>
 </li>
 </ul>
@@ -1339,7 +1465,30 @@ The anchor and caret positions are reset to the start and end of the next field 
 </div>
 </div>
 <div class="paragraph">
-<p>Below is an activity diagram for <code>TAB</code> keypress which activates autocompletion.</p>
+<p>The above implementation is represented in this code snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> autocomplete() {
+    input = commandTextField.getText().trim().toLowerCase();
+    <span class="keyword">if</span> (isAutoCompleteCommand(input)) {
+        <span class="comment">//display the full command format</span>
+
+    } <span class="keyword">else</span> <span class="keyword">if</span> (isAddCommandFormat(input)) {
+        <span class="comment">//change text selection to the next field</span>
+
+    } <span class="keyword">else</span> <span class="keyword">if</span> (isRemarkCommandFormat(input)) {
+        <span class="comment">//change text selection to the next field</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When <span class="keyseq"><kbd>Shift</kbd>+<kbd>Tab</kbd></span> is pressed, the user wants to navigate to the previous field.
+The caret position is used to determine the current field the user is at. The anchor and caret positions are reset to the start and end of the previous field input in order to update text selection.</p>
+</div>
+<div class="paragraph">
+<p>Below is an activity diagram for <kbd>Tab</kbd> keypress which activates auto-completion.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1347,30 +1496,25 @@ The anchor and caret positions are reset to the start and end of the next field 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.6.1. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.7.1. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="text-input-control-br"><a class="link" href="#text-input-control-br">Text Input Control<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> text input control<br>
-<strong>Alternative 1 (current choice):</strong> Continue to use the original TextField<br>
+<p><strong>Alternative 1 (current choice):</strong> Continue to use the original TextField<br>
 <strong>Pros:</strong> External library enables bindAutocompletion for TextField (the drop down list of suggested commands that appears and updates itself as user types).<br>
 <strong>Pros:</strong> Minimise changes need to be made to the original text input control structure.<br>
-<strong>Cons:</strong> Text formatting is limited. All text in the TextField must have the same format.<br>
-<strong>Alternative 2:</strong> Create additional TextField as user request for additional fields<br>
+<strong>Cons:</strong> Text formatting is limited. All text in the TextField must have the same format.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Create additional TextField as user request for additional fields<br>
 <strong>Pros:</strong> Allows for different formatting for different fields (Commands can have a different colour from the fields)<br>
 <strong>Cons:</strong> Original structure will be disrupted. Command box will no longer be single line text input, which have consequences such as the user cannot backspace or select through the entire line.</p>
 </div>
-<div class="paragraph">
-<p><strong>Aspect:</strong> auto-completion drop-down list<br>
-<strong>Alternative 1 (current choice):</strong> Continue to use the original TextField and use external library to bind auto-completion<br>
-<strong>Pros:</strong> Easy to implement<br>
-<strong>Cons:</strong> User cannot see the full format of the commands in the drop-down list<br>
-<strong>Alternative 2:</strong> Use ComboBox<br>
-<strong>Pros:</strong> User can see the required fields for each command in the drop-down box<br>
-<strong>Cons:</strong> As user selects an option, the command is executed with the place holders, resulting in an invalid command. User has to manually select the placeholders and change accordingly.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="keyboard-shortcuts-mechanism"><a class="link" href="#keyboard-shortcuts-mechanism">4.7. Keyboard Shortcuts Mechanism</a></h3>
+<h3 id="keyboard-shortcuts-mechanism"><a class="link" href="#keyboard-shortcuts-mechanism">4.8. Keyboard Shortcuts Mechanism</a></h3>
 <div class="paragraph">
 <p>The keyboard shortcuts mechanism is implemented in the <code>KeyListener</code> class under the <code>UI</code> component of the application.
 It listens for key presses done by the user and executes actions mapped to these key presses, or key events.
@@ -1455,35 +1599,81 @@ An example of such an execution is given as shown:</p>
 pressing the <kbd>esc</kbd> key will result in the application focusing on the person list.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.7.1. Design Considerations</a></h4>
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">4.8.1. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="location-of-code-keycombination-code-constants-for-the-code-keylistener-code-class-br"><a class="link" href="#location-of-code-keycombination-code-constants-for-the-code-keylistener-code-class-br">Location of <code>KeyCombination</code> constants for the <code>KeyListener</code> class<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Location of <code>KeyCombination</code> constants for the <code>KeyListener</code> class<br>
-<strong>Alternative 1 (current choice):</strong> <code>KeyCombination</code> constants are stored in a separate utility class, <code>KeyListenerUtil</code><br>
+<p><strong>Alternative 1 (current choice):</strong> <code>KeyCombination</code> constants are stored in a separate utility class, <code>KeyListenerUtil</code><br>
 <strong>Pros:</strong> Better modularity given that the number of constants is fairly large.<br>
-<strong>Cons:</strong> The constants have to be imported to be used in the <code>KeyListener</code> class.<br>
-<strong>Alternative 2:</strong> Store the constants in the <code>KeyListener</code> class itself<br>
+<strong>Cons:</strong> The constants have to be imported to be used in the <code>KeyListener</code> class.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Store the constants in the <code>KeyListener</code> class itself<br>
 <strong>Pros:</strong> Straightforward implementation and the constants does not have to be imported.<br>
 <strong>Cons:</strong> Violates Separation of Concerns as the <code>KeyListener</code> class acts as a storage for the constants in addition to handling key events.</p>
 </div>
+<hr>
+</div>
+<div class="sect4">
+<h5 id="the-way-commands-words-are-executed-br"><a class="link" href="#the-way-commands-words-are-executed-br">The way commands words are executed<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> The way commands words are executed<br>
-<strong>Alternative 1 (current choice):</strong> Pressing the shortcut automatically executes the command<br>
+<p><strong>Alternative 1 (current choice):</strong> Pressing the shortcut automatically executes the command<br>
 <strong>Pros:</strong> Execution of command is faster and more convenient for the user.<br>
-<strong>Cons:</strong> User may want to check what the shortcut does before executing the command.<br>
-<strong>Alternative 2:</strong> Pressing the shortcut replaces the <code>TextField</code> with the command word<br>
+<strong>Cons:</strong> User may want to check what the shortcut does before executing the command.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Pressing the shortcut replaces the <code>TextField</code> with the command word<br>
 <strong>Pros:</strong> Allows the user to check the command before executing it.<br>
 <strong>Cons:</strong>  An extra step for user to execute the command, i.e. pressing <code>Enter</code>.</p>
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="person-detail-panel"><a class="link" href="#person-detail-panel">4.8. Person Detail Panel</a></h3>
+<h3 id="auto-complete-command-shortcuts"><a class="link" href="#auto-complete-command-shortcuts">4.9. Auto-complete Command Shortcuts</a></h3>
+<div class="paragraph">
+<p>The <a href="#shortcut">Keyboard Shortcut Mechanism</a> is the foundation of this implementation.</p>
+</div>
+<div class="paragraph">
+<p>When an auto-complete command shortcut is pressed, the corresponding command format will be displayed.
+The following codes shows the example for <code>add</code> command shortcut.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> executeKeyEvents(<span class="predefined-type">KeyEvent</span> keyEvent) {
+    <span class="keyword">if</span> (KEY_COMBINATION_ADD.match(keyEvent)) {
+        displayCommandFormat(AddCommand.FORMAT);
+    }
+    <span class="comment">// … more cases</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>displayCommandFormat</code> method simulates entering the command word followed by pressing <kbd>Tab</kbd>.
+The method implementation is shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> displayCommandFormat(<span class="predefined-type">String</span> command) {
+    commandBox.replaceText(command);
+    commandBox.pressTab();
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="detailPanel"><a class="link" href="#detailPanel">4.10. Person Detail Panel</a></h3>
 <div class="paragraph">
 <p>The person detail panel displays the complete information of a person that is selected.</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/detailPanel.png" alt="detailPanel" width="600">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/detailPanelLabeled.png" alt="detailPanelLabeled" width="600">
 </div>
 </div>
 <div class="paragraph">
@@ -1501,7 +1691,7 @@ changes depending on various user actions, such as a person selection, editing o
 </div>
 <div class="paragraph">
 <p>The information displayed on the panel is extracted from the <code>ReadOnlyPerson</code> that is returned by the <code>EventsCenter</code>.
-The details of the implementation can be seen from the following code snippet.</p>
+The details of the implementation can be seen from the following code snippets.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1512,6 +1702,21 @@ The details of the implementation can be seen from the following code snippet.</
     setAvatar(person);
     setTextFields(person);
     setTags(person);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>showPersonDetails</code> method is called when a <code>PersonEditedEvent</code> is raised, which occurs when the user edits a person.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
+* Updates the panel when the details of the selected person is changed
+*/</span>
+<span class="annotation">@Subscribe</span>
+<span class="directive">private</span> <span class="type">void</span> handlePersonDetailsChangedEvent(PersonEditedEvent event) {
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    showPersonDetails(event.editedPerson);
 }</code></pre>
 </div>
 </div>
@@ -1560,9 +1765,175 @@ The details of the implementation can be seen from the following code snippet.</
 </tr>
 </tbody>
 </table>
+<div class="sect3">
+<h4 id="design-considerations-9"><a class="link" href="#design-considerations-9">4.10.1. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="synchronization-of-person-details-with-the-panel-display-br"><a class="link" href="#synchronization-of-person-details-with-the-panel-display-br">Synchronization of person details with the panel display<br></a></h5>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Using the event system to update the panel<br>
+<strong>Pros:</strong> Allows for custom panel behavior for different user actions.<br>
+<strong>Cons:</strong> Increase coupling as updating the panel relies on the logic component for user actions involving commands.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Bind the fields in the panel to their corresponding object properties<br>
+<strong>Pros:</strong> Less coupling.<br>
+<strong>Cons:</strong>  Higher implementation overhead to set up the bindings properly and
+difficult to enforce custom panel behaviour for specific user actions.</p>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="help-window-highlighting"><a class="link" href="#help-window-highlighting">4.9. Help Window Highlighting</a></h3>
+<h3 id="ui-improvements"><a class="link" href="#ui-improvements">4.11. UI Improvements</a></h3>
+<div class="paragraph">
+<p>The user interface of the application has been revamped to take on a clean design, which aims to improve
+the user&#8217;s experience with Rolodex.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui2.png" alt="Ui2" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Other improvements made to the UI include the following features:</p>
+</div>
+<div class="sect3">
+<h4 id="randomized-avatars-colors"><a class="link" href="#randomized-avatars-colors">4.11.1. Randomized Avatars Colors</a></h4>
+<div class="paragraph">
+<p>Avatar colors are randomized and generated over a color range to reduce the chance of two adjacent persons sharing the same avatar color.
+Some results from using this color generator can be seen from the following screenshots.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="images/avatars.png" alt="avatars" width="300"></span> <span class="image"><img src="images/avatars2.png" alt="avatars2" width="300"></span></p>
+</div>
+<div class="paragraph">
+<p>The generation of avatar colors involves two steps:<br></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Randomly pick a default color from <code>ColorsUtil</code>, which contains a list of selected colors chosen from
+<a href="https://www.materialui.co/blog/what-is-material-ui/">Google&#8217;s material ui color palette</a>.<br></p>
+</li>
+<li>
+<p>Generate a randomized offset value to create a new color which values differ from the default color by this offset.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The code snippet below shows the details of how the color values are manipulated in the color generator.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="comment">/**
+* Generates a new color with a random offset from {@code Color defaultColor}.
+*
+* @return The new color in hexadecimal {@code String} format
+*/</span>
+<span class="directive">private</span> <span class="directive">static</span> <span class="predefined-type">String</span> generateNewColor(<span class="predefined-type">Color</span> defaultColor) {
+    <span class="type">int</span> r = defaultColor.getRed();
+    <span class="type">int</span> g = defaultColor.getGreen();
+    <span class="type">int</span> b = defaultColor.getBlue();
+
+    <span class="type">int</span> newR = <span class="predefined-type">Math</span>.max(COLOR_VALUE_MIN, <span class="predefined-type">Math</span>.min(COLOR_VALUE_MAX, (r + generateOffset())));
+    <span class="type">int</span> newG = <span class="predefined-type">Math</span>.max(COLOR_VALUE_MIN, <span class="predefined-type">Math</span>.min(COLOR_VALUE_MAX, (g + generateOffset())));
+    <span class="type">int</span> newB = <span class="predefined-type">Math</span>.max(COLOR_VALUE_MIN, <span class="predefined-type">Math</span>.min(COLOR_VALUE_MAX, (b + generateOffset())));
+
+    <span class="keyword">return</span> <span class="predefined-type">String</span>.format(<span class="string"><span class="delimiter">&quot;</span><span class="content">#%02x%02x%02x</span><span class="delimiter">&quot;</span></span>, newR, newG, newB);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An upper bound is applied to the offset to ensure that the new color does not deviate too far from the default color.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="keyboard-icon"><a class="link" href="#keyboard-icon">4.11.2. Keyboard Icon</a></h4>
+<div class="paragraph">
+<p>A keyboard icon is added in the command box to provide visual feedback for certain user events:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><span class="image"><img src="images/keyboard.png" alt="keyboard" width="30"></span> : User is idle</p>
+</li>
+<li>
+<p><span class="image"><img src="images/keyboardTyping.png" alt="keyboardTyping" width="30"></span> : User is typing</p>
+</li>
+<li>
+<p><span class="image"><img src="images/keyboardError.png" alt="keyboardError" width="30"></span> : User entered an invalid command</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The keyboard icon is updated by setting <code>ImageView</code> of the icon to one of the three variations as shown above, whichever is appropriate
+for the current state of the user.</p>
+</div>
+<div class="paragraph">
+<p>In particular, to check that the user is idle, we measure the time elapsed since any changes made to the
+<code>CommandBox</code>. This is done with the <code>PauseTransition</code> class from JavaFX, which allows us to execute an event after a set duration.
+For better illustration, below is a simplified code snippet of the implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> updateKeyboardIcon() {
+
+    <span class="comment">// set icon to typing keyboard</span>
+
+    pause.setOnFinished(event -&gt; {
+        <span class="comment">// set icon to idle keyboard</span>
+    });
+    pause.playFromStart(); <span class="comment">// reset timer</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>pause</code> is a <code>PauseTransition</code> object, and <code>setOnFinished</code> takes in an event handler as its parameter.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="autoselection-for-newly-added-edited-person"><a class="link" href="#autoselection-for-newly-added-edited-person">4.11.3. Autoselection for Newly Added/Edited Person</a></h4>
+<div class="paragraph">
+<p>A newly added, or edited person will automatically be selected in the <code>PersonListPanel</code>. This makes it easier for the user to take note
+of changes made to their contacts.</p>
+</div>
+<div class="paragraph">
+<p>This implementation is done by raising an event whenever the add and edit commands are executed.
+The <code>PersonListPanel</code> is registered as an event handler and will subsequently scroll to the person that is newly modified.</p>
+</div>
+<div class="paragraph">
+<p>This feature is integrated with the <a href="#detailPanel">Person Detail Panel implementation</a>, and more details on the event handling
+can be found under the section.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="responsive-split-pane"><a class="link" href="#responsive-split-pane">4.11.4. Responsive Split Pane</a></h4>
+<div class="paragraph">
+<p>The split pane which separates the contact list from the other UI components is responsive.
+Its divider is automatically maintained at the optimal position when the window size changes.</p>
+</div>
+<div class="paragraph">
+<p>This is achieved by setting up listeners to the property of the window. The divider will be repositioned when the listener
+detects any changes in the window property. The code below illustrates the implementation in greater detail.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> setSplitPaneDividerPosition() {
+
+    <span class="comment">// repositions divider when window is just showed</span>
+    primaryStage.showingProperty().addListener((observable, oldValue, newValue) -&gt;
+            splitPane.setDividerPositions(SPLIT_PANE_DIVIDER_POSITION));
+
+    <span class="comment">// repositions divider when window width changes</span>
+    primaryStage.widthProperty().addListener((observable, oldValue, newValue) -&gt;
+            splitPane.setDividerPositions(SPLIT_PANE_DIVIDER_POSITION));
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="help-window-highlighting"><a class="link" href="#help-window-highlighting">4.12. Help Window Highlighting</a></h3>
 <div class="paragraph">
 <p>Rolodex uses <a href="#java-fx">JavaFx</a> version <a href="http://javafx.com/javafx/8.0.111">8.0.111</a>, where WebView does not support
 search functionality that mimics <kbd>Ctrl</kbd> + <kbd>F</kbd> capability of modern web browsers. As a workaround, Johann Burkard&#8217;s
@@ -1583,7 +1954,7 @@ help document for information, which can be counterproductive:</p>
 <a href="https://stackoverflow.com/questions/19418626/javafx-search-and-highlight-text-add-search-bar-for-loaded-web-page">here</a>.</p>
 </div>
 <div class="sect3">
-<h4 id="removing-jquery-implementation"><a class="link" href="#removing-jquery-implementation">4.9.1. Removing jQuery implementation</a></h4>
+<h4 id="removing-jquery-implementation"><a class="link" href="#removing-jquery-implementation">4.12.1. Removing jQuery implementation</a></h4>
 <div class="paragraph">
 <p>In a future version of <a href="#java-fx">JavaFx</a> where such an implementation is no longer necessary, you may revert the changes by reverting pull request
 <a href="https://github.com/CS2103AUG2017-W11-B2/main/pull/99">#99</a> on the Rolodex repo on GitHub. You may also choose to manually do this by reverting the following code:</p>
@@ -1725,16 +2096,857 @@ help document for information, which can be counterproductive:</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="suggestions-mechanism"><a class="link" href="#suggestions-mechanism">5. Suggestions Mechanism</a></h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="composing-emails"><a class="link" href="#composing-emails">4.13. Composing Emails</a></h3>
 <div class="paragraph">
-<p>This feature is a work in progress for v1.5.</p>
+<p>This functionality is implemented through the <code>EmailCommand</code> class under <code>logic</code> component.</p>
+</div>
+<div class="paragraph">
+<p>An email command has the following format: <code>Email INDEX [s/SUBJECT]</code> (Subject is an optional field). When the command is executed, the user&#8217;s default email client will open
+a new compose window. Email address of the contact indicated by <code>INDEX</code> will be filled in as the recipient&#8217;s address. <code>SUBJECT</code> (if available) will be filled
+in as the subject of the email. The following shows an example of the compose window on Macs.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EmailComposeWindow.png" alt="EmailComposeWindow" width="600">
+</div>
+</div>
+<div class="sect3">
+<h4 id="using-code-java-awt-desktop-code-api"><a class="link" href="#using-code-java-awt-desktop-code-api">4.13.1. Using <code>java.awt.Desktop</code> API</a></h4>
+<div class="paragraph">
+<p>Requesting the default email client to open a new compose window is achieved with the <code>java.awt.Desktop</code> class. However, not all platforms support the <code>Desktop</code> <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/Desktop.html">API</a>.
+Therefore, it is crucial to check whether the API and the <code>MAIL</code> action are supported. A <code>CommandExecption</code> will be thrown if they are not supported.</p>
+</div>
+<div class="paragraph">
+<p>After confirming that the action can be supported on the platform, an URI <a href="#uri">(Uniform Resource Identifier)</a> is constructed using the recipient&#8217;s email address and subject input by the user (if any).
+It is then passed into the <code>mail</code> method of <code>Desktop</code> class. The following code snippet shows the exact implementation.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="keyword">if</span> (Desktop.isDesktopSupported()
+    &amp;&amp; Desktop.getDesktop().isSupported(Desktop.Action.MAIL)) {
+
+    Desktop desktop = Desktop.getDesktop();
+    <span class="keyword">try</span> {
+        mailtoUri = <span class="keyword">new</span> <span class="predefined-type">URI</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">mailto:</span><span class="delimiter">&quot;</span></span> + recipientEmailAddress
+                            + <span class="string"><span class="delimiter">&quot;</span><span class="content">?subject=</span><span class="delimiter">&quot;</span></span> + subject);
+        desktop.mail(mailtoUri);
+        selectRecipient(targetIndex);
+    } <span class="keyword">catch</span> (<span class="exception">URISyntaxException</span> e) {
+        e.printStackTrace();
+    } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
+        e.printStackTrace();
+    }
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_SUCCESS));
+} <span class="keyword">else</span> {
+    <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(<span class="predefined-type">String</span>.format(MESSAGE_NOT_SUPPORTED));
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="auto-selecting-the-recipient"><a class="link" href="#auto-selecting-the-recipient">4.13.2. Auto-selecting the Recipient</a></h4>
+<div class="paragraph">
+<p>After the <code>Email</code> command is executed, the recipient will be auto-selected in the contact list,
+so that the person&#8217;s details can be displayed at contact detail panel. As an example the following screenshot shows
+the behaviour of Rolodex after executing the command <code>Email 1</code>. The contact at index 1 is selected.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SelectRecipientAfterEmailCommand.png" alt="SelectRecipientAfterEmailCommand" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>This is for the user to confirm that they have typed in the correct index. With the person&#8217;s name and contact details displayed, it is easy
+to double-check if the contact is the intended recipient.</p>
+</div>
+<div class="paragraph">
+<p>This action is performed through the <code>selectRecipient(targetIndex)</code> method call during the execution of <code>EmailCommand</code>, which can be found in the
+code snippet above. The <code>selectRecipient</code> method posts a <code>JumpToListRequestEvent</code> with the recipient&#8217;s index, which will perform the selection in <code>Contact List</code>.
+The method is shown below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> selectRecipient(Index index) {
+    EventsCenter.getInstance().post(<span class="keyword">new</span> JumpToListRequestEvent(index));
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="email-command-parser"><a class="link" href="#email-command-parser">4.13.3. Email Command Parser</a></h4>
+<div class="paragraph">
+<p><code>EmailCommandParser</code> class is used to parse input arguments in the context of the <code>EmailCommand</code>. It maps the positive integer in the argument to <code>INDEX</code>,
+and the string following the prefix <code>s/</code> to <code>SUBJECT</code>. If the user did not input a subject, the subject would be an empty string.</p>
+</div>
+<div class="paragraph">
+<p>The <code>SUBJECT</code> string must be <a href="#percent-encoding">percent-encoded</a>, which means all the spaces must be replaced with <code>%20</code>. This is to follow the URI syntax standard.
+Otherwise a <code>java.net.URISyntaxException</code> would be thrown when sending the URI. Above mentioned implementation is shown in the code snippet below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="predefined-type">String</span> subject = ParserUtil.parseSubject(argMultimap.getValue(PREFIX_SUBJECT)).orElse(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>);
+subject = subject.replaceAll(<span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">%20</span><span class="delimiter">&quot;</span></span>);
+Index index = ParserUtil.parseIndex(argMultimap.getPreamble());</code></pre>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">5.1. Logging</a></h3>
+<h3 id="suggestions-mechanism"><a class="link" href="#suggestions-mechanism">4.14. Suggestions Mechanism</a></h3>
+<div class="paragraph">
+<p>The suggestion mechanism is implemented at Rolodex&#8217;s parser level under the logic component.
+The suggestion is stored as an instance object to be evaluated only if the next command matches any of the suggestion&#8217;s <em>affirmation commands</em>, <code>y</code>, <code>yes</code>, <code>k</code>, <code>ok</code>, <code>yea</code> or <code>yeah</code>, otherwise, the suggestion is destroyed.
+Upon receiving a bogus command, the command string is evaluated by the suggestion object which determines if it can be turned into a valid suggestion to be executed.</p>
+</div>
+<div class="paragraph">
+<p>For this section&#8217;s explanation of the suggestions mechanism, the terms <em>commandWord</em>, <em>arguments</em> or <em>rawArgs</em> are usually a reference to the following:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SuggestionParseLabel.png" alt="SuggestionParseLabel">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>commandWord</em>: The first resulting word in a whitespace delimited string.</p>
+</li>
+<li>
+<p><em>rawArgs</em>: The raw argument string to be parsed for the suggestion, after excluding the <em>commandWord</em>.</p>
+</li>
+<li>
+<p><em>arguments</em>: Can be the same meaning or <em>rawArgs</em> or mean arguments in a broader context. Please adjust to the context if necessary.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The high level sequence diagram for a bogus <code>udon is yummy</code> request can be seen below:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SuggestionHighLevelSequenceDiagram.png" alt="SuggestionHighLevelSequenceDiagram">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User enters a bogus command <code>udon is yummy</code>.</p>
+</li>
+<li>
+<p><code>RolodexParser</code> parses the command and separates the string <code>udon is yummy</code> into the commandWord, <code>udon</code> and arguments, <code>is yummy</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>udon</code> is not a recognized command word</p>
+</li>
+<li>
+<p>The execution is passed on to a new Suggestion instance.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Suggestion determines which command abbreviation <code>udon</code> is closest to up to a <em>specified threshold</em>, which in this case, is <code>undo</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Since <code>undo</code> does not require any arguments, the supplied arguments <code>is yummy</code> are ignored</p>
+</li>
+<li>
+<p>The suggestion is noted as a suggestible exception.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The suggestion is stored as an instance variable in <code>RolodexParser</code>.</p>
+</li>
+<li>
+<p><code>RolodexParser</code> throws a <code>SuggestibleParseException</code> to be handled separately from <code>ParseException</code> by UI elements.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>CommandBox</code> is cleared to make way for the user to easily enter any of the suggestion <em>affirmation commands</em>.</p>
+</li>
+<li>
+<p>The <code>ResultDisplay</code> panel displays a formatted string for the suggestion of the command to be alternatively executed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>At this point, the user enters an <em>affirmation command</em>, <code>k</code> for the <code>RolodexParser</code> to be handled.</p>
+</li>
+<li>
+<p>As a suggestion is present in <code>RolodexParser</code>, the user input <code>k</code> is converted into the parsed <code>Suggestion</code> and handled as usual.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The behaviour of the <code>undo</code> operation remains unchanged, as explained in the <a href="#undo-redo-mechanism">Undo/Redo Mechanism</a> section.
+The suggestions are not limited <code>undo</code> commands and are applicable to all commands in the Rolodex.<br>
+Levenshtein distance is used to determine the closest command to the whitespace delimited first user input.
+If two command abbreviations are of equal distance to the bogus word, an arbitrary command is selected for the suggestion.<br></p>
+</div>
+<div class="paragraph">
+<p>The suggestions are handled differently by different types of <code>Command</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="commands-with-no-arguments"><a class="link" href="#commands-with-no-arguments">4.14.1. Commands with No Arguments</a></h4>
+<div class="paragraph">
+<p>The behaviour of commands that are known to have no arguments by default, namely,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Clear</code></p>
+</li>
+<li>
+<p><code>List</code></p>
+</li>
+<li>
+<p><code>History</code></p>
+</li>
+<li>
+<p><code>Exit</code></p>
+</li>
+<li>
+<p><code>Help</code></p>
+</li>
+<li>
+<p><code>Undo</code></p>
+</li>
+<li>
+<p><code>Redo</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>are handled in a manner similar to <code>undo</code> as described above. The arguments are ignored.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="commands-with-a-single-index-type-argument"><a class="link" href="#commands-with-a-single-index-type-argument">4.14.2. Commands with a Single Index Type Argument</a></h4>
+<div class="paragraph">
+<p>The commands that hold a single, indexed type argument are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Delete</code></p>
+</li>
+<li>
+<p><code>Select</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These commands require an argument of an index type, within the range from 1 to the total number of persons in the Rolodex.
+The behaviour of index parsing can be seen as such:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">int</span> parseFirstIndex(<span class="predefined-type">String</span> value, <span class="type">int</span> rolodexSize) <span class="directive">throws</span> <span class="exception">NumberFormatException</span> {
+    <span class="predefined-type">Matcher</span> m = <span class="predefined-type">Pattern</span>.compile(INDEX_VALIDATION_REGEX).matcher(value);
+    <span class="keyword">while</span> (m.find()) {
+        <span class="type">int</span> firstIndex = <span class="predefined-type">Math</span>.abs(<span class="predefined-type">Integer</span>.parseInt(m.group()));
+        <span class="keyword">if</span> (firstIndex &gt; <span class="integer">0</span> &amp;&amp; firstIndex &lt;= rolodexSize) {
+            <span class="keyword">return</span> firstIndex;
+        }
+    }
+    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">NumberFormatException</span>();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The algorithm searches for instances of an integer in the supplied string and checks if it falls within the possible range of indices.
+If no more integers can be found, the method throws a <code>NumberFormatException</code> to be converted into an non-suggestible <code>ParseException</code>.</p>
+</div>
+<div class="paragraph">
+<p>Sometimes users may include the index in the command word, without a whitespace separation. To handle such a case,
+we first look for the index within the arguments, as usual. If no valid indices are found, we search the command word instead.</p>
+</div>
+<div class="paragraph">
+<p>For example, the invalid command string <code>s3lect</code>,</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SuggestionSelectInvalid.png" alt="SuggestionSelectInvalid" width="800">
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>RolodexParser</code> determines that the closest command word to <code>s3lect</code> is <code>select</code> and use parse logic for single index typed arguments.</p>
+</li>
+<li>
+<p>The parser would attempt to search for an index in the empty arguments and fail.</p>
+</li>
+<li>
+<p>The parser then attempts to search for an index in the command word and finds <code>3</code>.</p>
+</li>
+<li>
+<p>The parser builds the arguments into the formatted command string, <code>select 3</code> and prompts the user:</p>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SuggestionSelectPrompt.png" alt="SuggestionSelectPrompt" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Should the user choose to execute the prompted command, the person <em>Alpha Charlie</em> would be selected.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="commands-with-directory-type-arguments"><a class="link" href="#commands-with-directory-type-arguments">4.14.3. Commands with Directory Type Arguments</a></h4>
+<div class="paragraph">
+<p>The commands that hold a single file path argument are</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Open</code></p>
+</li>
+<li>
+<p><code>New</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Arguments for these commands are parsed by using the same filepath validation as seen in <a href="#open-file-and-new-file-mechanism">Open File and New File Mechanism</a>,
+except with looser regex that does not validate from the beginning to the end of the string given.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="directive">final</span> <span class="predefined-type">String</span> FILEPATH_REGEX_NON_STRICT = <span class="string"><span class="delimiter">&quot;</span><span class="content">(.+)/([^/]+)</span><span class="delimiter">&quot;</span></span>;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The rest of the string is then formatted into a valid file path and a <code>.rldx</code> extension is added to the end of the string.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="predefined-type">String</span> parseFirstFilePath(<span class="predefined-type">String</span> value) <span class="directive">throws</span> <span class="exception">IllegalArgumentException</span> {
+    <span class="predefined-type">Matcher</span> m = <span class="predefined-type">Pattern</span>.compile(FILEPATH_REGEX_NON_STRICT).matcher(replaceBackslashes(value).trim());
+    <span class="keyword">if</span> (m.find() &amp;&amp; isValidRolodexStorageFilepath(m.group())) {
+        <span class="keyword">return</span> m.group().replaceAll(ROLODEX_FILE_EXTENSION, <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>).trim() + ROLODEX_FILE_EXTENSION;
+    }
+    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>();
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="find-command-suggestions"><a class="link" href="#find-command-suggestions">4.14.4. Find Command Suggestions</a></h4>
+<div class="paragraph">
+<p>The <code>find</code> command uses a simpler suggestion format by simply taking all arguments, checking if it is not empty and returning it all together.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="predefined-type">String</span> parseArguments(<span class="predefined-type">String</span> rawArgs) {
+    <span class="comment">// Check if null and is a non-empty string.</span>
+    requireNonNull(rawArgs);
+    <span class="keyword">if</span> (!rawArgs.trim().isEmpty()) {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + rawArgs.trim();
+    }
+    <span class="keyword">return</span> <span class="predefined-constant">null</span>;
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="remark-email-command-suggestions"><a class="link" href="#remark-email-command-suggestions">4.14.5. Remark/Email Command Suggestions</a></h4>
+<div class="paragraph">
+<p>The <code>Remark</code> and <code>Email</code> command are in the format of</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>a command word followed by,</p>
+</li>
+<li>
+<p>an index then,</p>
+</li>
+<li>
+<p>a memo field.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For the remark command, the memo is simply the remark to be entered into the person&#8217;s remark field, preceded by the prefix <code>r/</code>.<br>
+The email command&#8217;s memo field is the subject of the email to be sent, preceded by the prefix <code>s/</code>.</p>
+</div>
+<div class="paragraph">
+<p>Similar to <a href="#commands-with-a-single-index-type-argument">Commands with a Single Index Type Argument</a>, if the index does not exist in the arguments, the command word is checked instead.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="predefined-type">String</span> parseArguments(<span class="predefined-type">String</span> commandWord, <span class="predefined-type">String</span> rawArgs) {
+    <span class="comment">// Check if index (number) exists, removes Remark prefix (if it exists) and re-adds it before returning.</span>
+    <span class="keyword">if</span> (isParsableIndex(rawArgs, getLastRolodexSize())) {
+        <span class="predefined-type">String</span> indexString = <span class="predefined-type">Integer</span>.toString(parseFirstIndex(rawArgs, getLastRolodexSize()));
+        <span class="predefined-type">String</span> remark = parseRemoveFirstIndex(rawArgs, getLastRolodexSize()).trim().replace(PREFIX_REMARK.toString(), <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + indexString + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + PREFIX_REMARK + remark;
+    } <span class="keyword">else</span> <span class="keyword">if</span> (isParsableIndex(commandWord, getLastRolodexSize())) {
+        <span class="predefined-type">String</span> indexString = <span class="predefined-type">Integer</span>.toString(parseFirstIndex(commandWord, getLastRolodexSize()));
+        <span class="predefined-type">String</span> remark = rawArgs.trim().replace(PREFIX_REMARK.toString(), <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>);
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + indexString + <span class="string"><span class="delimiter">&quot;</span><span class="content"> </span><span class="delimiter">&quot;</span></span> + PREFIX_REMARK + remark;
+    }
+    <span class="keyword">return</span> <span class="predefined-constant">null</span>;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, instead of stopping at the index, the remainder of the arguments after the index has been removed is parsed as the memo field&#8217;s contents.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="add-command-suggestions"><a class="link" href="#add-command-suggestions">4.14.6. Add Command Suggestions</a></h4>
+<div class="paragraph">
+<p>When adding a new person, we have to note that a <code>Person</code> has four compulsory fields, <code>Name</code>, <code>Phone</code>, <code>Email</code> and <code>Address</code>.
+<code>Tag</code> and <code>Remark</code> are optional and have to be handled accordingly.</p>
+</div>
+<div class="paragraph">
+<p>The implementation for <code>Add</code> suggestions follow a decision flow model that can be seen through the following activity diagram, from <code>AddCommandParser.parseArguments(rawArgs)</code> execution point of view:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SuggestionAddActivityDiagram.png" alt="SuggestionAddActivityDiagram" width="600">
+</div>
+</div>
+<div class="paragraph">
+<p>During the handling of a suggestible command arguments for an <code>Add</code> command,</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>rawArgs</code> is set to be the initial value of the remaining arguments.</p>
+</li>
+<li>
+<p>Mandatory <code>Phone</code> is checked first. If present, extract, remove and continue. Otherwise stop execution and return as non-suggestible.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Phones are expected to match the phone regex,</p>
+</li>
+<li>
+<p>having a minimum of digits, or</p>
+</li>
+<li>
+<p>optionally prepended with a <code>+</code>,</p>
+</li>
+<li>
+<p>making it easily distinguishable from other numeric formats like the index, building numbers or postal codes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Mandatory <code>Email</code> is checked. If present, extract, remove and continue. Otherwise stop execution and return as non-suggestible.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Emails are expected to have the <code>@</code> character inside them and regex matching is straightforward,</p>
+</li>
+<li>
+<p>making emails easily distinguishable from other fields.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Existing <code>Tag</code> words are checked. If present, extract, remove and continue. Otherwise continue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Words (remaining string delimited by whitespace) that are also tags in the Rolodex session are <em>existing tag words</em>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tag prefixes (<code>t/</code>) are checked. If present, extract, remove and continue. Otherwise continue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>t/TAG</code> behavior as per normal.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Remark prefixes (<code>r/</code>) are checked. If present, extract, remove and continue. Otherwise continue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>r/REMARKS</code> behavior as per normal.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Mandatory <code>Address</code> is checked. If present, extract, remove and continue. Otherwise stop execution and return as non-suggestible.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Addresses commonly begin with <code>Blk</code>, <code>Block</code> or a short number</p>
+</li>
+<li>
+<p>Addresses are expected to be entered after a name (i.e. <code>COMMAND NAME &#8230;&#8203; ADDRESS</code>),
+making it <em>highly possible</em> to obtain the address by getting the substring from the first occurrence of <code>Blk</code>, <code>Block</code> or the number to the end of the remaining string.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Mandatory <code>Name</code> is checked. If present, extract, remove and continue. Otherwise stop execution and return as non-suggestible.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Name is the last mandatory argument to be parsed.</p>
+</li>
+<li>
+<p>Name must be non-empty and matches the defined name regex.</p>
+</li>
+<li>
+<p>The unpredictable nature of name words makes it difficult to identify a person&#8217;s name.</p>
+</li>
+<li>
+<p>As seen in <code>Address</code>, if <code>Name</code> is entered after (to the right of) <code>Address</code>,
+there would be no remaining words to be parsed. Since <code>Name</code> must be non-empty, if it is empty, then <code>Name</code> is not present.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Build the arguments into a formatted command argument string.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+As observed via the decision flow, the suggestion does not always suggest the correct format so it is up to the user to validate the command.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Any missing compulsory fields will result in an immediate failure of the command as specified by a person&#8217;s requirements.
+Optional arguments, on the other hand, may not be present and are represented as empty strings when sent to the final argument builder.</p>
+</div>
+<div class="paragraph">
+<p>If any of the prefixes are missing, they will be added when the parsed arguments are built, with the exception of remarks and tags with prefixes.</p>
+</div>
+<div class="paragraph">
+<p>Given a typical unformatted add command string without prefixes <code>add Bobby Lee <a href="mailto:bobby@lee.com">bobby@lee.com</a> 583 Lexington Avenue NY 10048 friends 95849301</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddBobbyCommand.png" alt="AddBobbyCommand" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>We should receive the following suggestion <code>Did you mean add n/Bobby Lee p/95849301 e/bobby@lee.com a/583 Lexington Avenue NY 10048 t/friends?</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddBobbySuggestion.png" alt="AddBobbySuggestion" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Using the decision flow modeled above, we can see that the argument suggestions were parsed in the following order:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Bobby&#8217;s phone, <code>95849301</code> is detected as a long number and is extracted first.</p>
+</li>
+<li>
+<p>The email, <code>bobby@lee.com</code> is detected as the <code>@</code> character is present and is extracted.</p>
+</li>
+<li>
+<p>The tag, <code>friends</code> is an existing tag in the currently loaded Rolodex and we can extract <code>friends</code> as a tag.</p>
+</li>
+<li>
+<p>The address, <code>583 Lexington Avenue NY 10048</code> begins with a short number and will be picked up till the end of the remaining string.</p>
+</li>
+<li>
+<p>The remainder of the arguments should only contain <code>Bobby Lee</code> and is matched as his name.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+As the <code>Add</code> command&#8217;s decision flow requires many acyclic execution paths to its parser, its corresponding NPath complexity
+is known to be large.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="edit-command-suggestions"><a class="link" href="#edit-command-suggestions">4.14.7. Edit Command Suggestions</a></h4>
+<div class="paragraph">
+<p>Unlike the <code>Add</code> command, the <code>Edit</code> command only requires optional (minimum 1) fields and we handle all fields as such.
+However, the <code>Edit</code> command also requires <a href="#commands-with-a-single-index-type-argument">a mandatory argument of an index type</a>,
+similar to <a href="#remark-email-command-suggestions">Remark/Email Command Suggestions</a>.</p>
+</div>
+<div class="paragraph">
+<p>The implementation for <code>Edit</code> suggestions follow a decision flow model that can be seen through the following activity diagram, from <code>EditCommandParser.parseArguments(commandWord, rawArgs)</code> execution point of view:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SuggestionEditActivityDiagram.png" alt="SuggestionEditActivityDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>During the handling of a suggestible command arguments for an <code>Edit</code> command,</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>rawArgs</code> is set to be the initial value of the remaining arguments.</p>
+</li>
+<li>
+<p>Mandatory <code>Index</code> is checked in the remaining arguments first. If present, extract, remove and continue. Otherwise,</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Mandatory `Index is checked in command word. If present, extract, remove and continue. Otherwise stop execution and return as non-suggestible.</p>
+</li>
+<li>
+<p>Index extraction is similar to behavior in <a href="#commands-with-a-single-index-type-argument">Commands with a Single Index Type Argument</a> section.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Optional <code>Phone</code> is checked first. If present, extract, remove and continue. Otherwise continue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Phones are expected to match the phone regex,</p>
+</li>
+<li>
+<p>having a minimum of digits, or</p>
+</li>
+<li>
+<p>optionally prepended with a <code>+</code>,</p>
+</li>
+<li>
+<p>making it easily distinguishable from other numeric formats like the index, building numbers or postal codes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Optional <code>Email</code> is checked. If present, extract, remove and continue. Otherwise continue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Emails are expected to have the <code>@</code> character inside them and regex matching is straightforward,</p>
+</li>
+<li>
+<p>making emails easily distinguishable from other fields.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Existing <code>Tag</code> words are checked. If present, extract, remove and continue. Otherwise continue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Words (remaining string delimited by whitespace) that are also tags in the Rolodex session are <em>existing tag words</em>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Tag prefixes (<code>t/</code>) are checked. If present, extract, remove and continue. Otherwise continue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>t/TAG</code> behavior as per normal.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Remark prefixes (<code>r/</code>) are checked. If present, extract, remove and continue. Otherwise continue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>r/REMARKS</code> behavior as per normal.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Optional <code>Address</code> is checked. If present, extract, remove and continue. Otherwise continue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Addresses commonly begin with <code>Blk</code>, <code>Block</code> or a short number</p>
+</li>
+<li>
+<p>Addresses are expected to be entered after a name (i.e. <code>COMMAND NAME &#8230;&#8203; ADDRESS</code>),
+making it <em>highly possible</em> to obtain the address by getting the substring from the first occurrence of <code>Blk</code>, <code>Block</code> or the number to the end of the remaining string.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Optional <code>Name</code> is checked. If present, extract, remove and continue. Otherwise continue.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Name is the last mandatory argument to be parsed.</p>
+</li>
+<li>
+<p>Name must be non-empty and matches the defined name regex.</p>
+</li>
+<li>
+<p>The unpredictable nature of name words makes it difficult to identify a person&#8217;s name.</p>
+</li>
+<li>
+<p>As seen in <code>Address</code>, if <code>Name</code> is entered after (to the right of) <code>Address</code>,
+there would be no remaining words to be parsed. Since <code>Name</code> must be non-empty, if it is empty, then <code>Name</code> is not present.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If no arguments exist (i.e. <code>Name</code>, <code>Phone</code>, <code>Email</code>, <code>Address</code>, <code>Tag</code>, <code>Remark</code> are all empty strings), return as non-suggestible.
+Otherwise, build the arguments into a formatted command argument string.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+As observed via the decision flow, the suggestion does not always suggest the correct format so it is up to the user to validate the command.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Any missing or invalid index would result in an immediate failure of the command as specified by the command specifications.
+Optional arguments, on the other hand, may not be present and are represented as empty strings when sent to the final argument builder.
+However, if completely no arguments exist (e.g. <code>edit 1</code>), the Edit parser would fail a well, defaulting to the original behavior.</p>
+</div>
+<div class="paragraph">
+<p>If any of the prefixes are missing, they will be added when the parsed arguments are built, with the exception of remarks and tags with prefixes.</p>
+</div>
+<div class="paragraph">
+<p>Given a typical unformatted edit command string with an invalid address prefix <code>edit1 p/911A Lexington Avenue</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EditBobbyCommand.png" alt="EditBobbyCommand" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>We should receive the following suggestion <code>Did you mean edit 1 a/911A Lexington Avenue?</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/EditBobbySuggestion.png" alt="EditBobbySuggestion" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>Using the decision flow modeled above, we can see that the argument suggestions were parsed in the following order:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The index, <code>1</code> is incorrectly placed within the command word. <code>911</code> is attempted but since 911 is greater than the Rolodex&#8217;s size, no index can be found in the arguments.</p>
+</li>
+<li>
+<p>The index, <code>1</code> is matched in the command word and extracted.</p>
+</li>
+<li>
+<p>No phone is matched. <code>911</code> is detected as a short number and is skipped. The prefix <code>p/</code> is removed.</p>
+</li>
+<li>
+<p>No email is matched.</p>
+</li>
+<li>
+<p>No tags are matched.</p>
+</li>
+<li>
+<p>No remarks are matched.</p>
+</li>
+<li>
+<p>The address, <code>911A Lexington Avenue</code> begins with a short number and will be picked up till the end of the remaining string.</p>
+</li>
+<li>
+<p>The remainder of the arguments are empty when trimmed.</p>
+</li>
+<li>
+<p>Address is the only valid optional field present and the command is suggested as <code>edit 1 a/911A Lexington Avenue</code>.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+As the <code>Edit</code> command&#8217;s decision flow requires many acyclic execution paths to its parser, its corresponding NPath complexity
+is known to be large.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-10"><a class="link" href="#design-considerations-10">4.14.8. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="add-edit-field-matching-br"><a class="link" href="#add-edit-field-matching-br">Add/Edit Field Matching<br></a></h5>
+<div class="paragraph">
+<p><strong>Alternative 1 (current choice):</strong> Parsing easy fields first, then parsing address before name in the <code>Add</code> command.<br>
+<strong>Pros:</strong> Application behaves sufficiently well and efficiently in matching field data given certain input assumptions.<br>
+<strong>Pros:</strong> Shallow learning curve for new users to learn application functions.<br>
+<strong>Cons:</strong> Extremely high NPath complexity<br>
+<strong>Cons:</strong> Deviates from the Object-Oriented nature of the codebase into a procedural/functional style.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Dictionary analysis of field data.<br>
+<strong>Pros:</strong> Easier logic to understand for new developers.<br>
+<strong>Cons:</strong> Maintaining dictionary would be taxing on the development team and may get outdated as data keeps getting outdated.<br>
+<strong>Cons:</strong> Memory performance decreases drastically as memory has to be used to load dictionary into memory for field analysis.<br>
+<strong>Cons:</strong> Storage performance decreases drastically as space has to be used to store dictionary.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 3:</strong> No suggestions for add/edit<br>
+<strong>Pros:</strong> Clean codebase.<br>
+<strong>Cons:</strong> Steep learning curve for new users to learn application functions.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">4.15. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and logging destinations.</p>
 </div>
@@ -1772,7 +2984,7 @@ help document for information, which can be counterproductive:</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration"><a class="link" href="#configuration">5.2. Configuration</a></h3>
+<h3 id="configuration"><a class="link" href="#configuration">4.16. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file (default: <code>config.json</code>).</p>
 </div>
@@ -1780,7 +2992,7 @@ help document for information, which can be counterproductive:</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">6. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">5. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We use asciidoc for writing documentation.</p>
@@ -1798,20 +3010,20 @@ We chose asciidoc over Markdown because asciidoc, although a bit more complex th
 </table>
 </div>
 <div class="sect2">
-<h3 id="editing-documentation"><a class="link" href="#editing-documentation">6.1. Editing Documentation</a></h3>
+<h3 id="editing-documentation"><a class="link" href="#editing-documentation">5.1. Editing Documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview the end result of your edits.
 Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to preview the changes you have made to your <code>.adoc</code> files in real-time.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">6.2. Publishing Documentation</a></h3>
+<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">5.2. Publishing Documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">6.3. Converting Documentation to PDF Format</a></h3>
+<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF Format</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
 </div>
@@ -1839,20 +3051,17 @@ Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows y
 <img src="images/chrome_save_as_pdf.png" alt="chrome save as pdf" width="300">
 </div>
 </div>
-<div class="paragraph">
-<p><em>Figure 5.6.1 : Saving documentation as PDF files in Chrome</em></p>
-</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">7. Testing</a></h2>
+<h2 id="testing"><a class="link" href="#testing">6. Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Testing ensures that our software works as expected. In Rolodex, we use several frameworks for running tests.</p>
 </div>
 <div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">7.1. Running Tests</a></h3>
+<h3 id="running-tests"><a class="link" href="#running-tests">6.1. Running Tests</a></h3>
 <div class="paragraph">
 <p>There are three ways to run tests.</p>
 </div>
@@ -1914,7 +3123,7 @@ See <a href="UsingGradle.html">UsingGradle.adoc</a> for more info on how to run 
 </div>
 </div>
 <div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">7.2. Types of Tests</a></h3>
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">6.2. Types of Tests</a></h3>
 <div class="paragraph">
 <p>We have two types of tests:</p>
 </div>
@@ -1956,7 +3165,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">7.3. Troubleshooting Testing</a></h3>
+<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">6.3. Troubleshooting Testing</a></h3>
 <div class="paragraph">
 <p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
 </div>
@@ -1974,25 +3183,25 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">8. Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section contains the tools we use for software collaboration.</p>
 </div>
 <div class="sect2">
-<h3 id="build-automation"><a class="link" href="#build-automation">8.1. Build Automation</a></h3>
+<h3 id="build-automation"><a class="link" href="#build-automation">7.1. Build Automation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="continuous-integration"><a class="link" href="#continuous-integration">8.2. Continuous Integration</a></h3>
+<h3 id="continuous-integration"><a class="link" href="#continuous-integration">7.2. Continuous Integration</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <a href="#continuous-integration">Continuous Integration</a> on our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="making-a-release"><a class="link" href="#making-a-release">8.3. Making a Release</a></h3>
+<h3 id="making-a-release"><a class="link" href="#making-a-release">7.3. Making a Release</a></h3>
 <div class="paragraph">
 <p>Here are the steps to create a new release.</p>
 </div>
@@ -2014,7 +3223,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">8.4. Managing Dependencies</a></h3>
+<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">7.4. Managing Dependencies</a></h3>
 <div class="paragraph">
 <p>A project often depends on third-party libraries. For example, Rolodex depends on the <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these <em>dependencies</em> can be automated using Gradle. For example, Gradle can download the dependencies automatically, which is better than these alternatives.<br>
 a. Include those libraries in the repo (this bloats the repo size)<br>
@@ -3332,76 +4541,131 @@ tags matching the specified query</p>
 <div class="sect1">
 <h2 id="glossary"><a class="link" href="#glossary">Appendix E: Glossary</a></h2>
 <div class="sectionbody">
+<div id="api" class="paragraph">
+<p>Application Programming Interface (API)</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>An Application Programming Interface specifies the interface through which other programs can interact with a software component. It is a contract between the component and its clients.</p>
+</div>
+</div>
+</div>
 <div id="command-line-interface" class="paragraph">
 <p>Command Line Interface (CLI)</p>
 </div>
-<div class="literalblock">
+<div class="sidebarblock">
 <div class="content">
-<pre>A user interface to a computer's operating system or an application in which the user responds to a visual prompt by typing in a command on a specified line, receives a response back from the system, and then enters another command, and so forth.</pre>
+<div class="paragraph">
+<p>A user interface to a computer&#8217;s operating system or an application in which the user responds to a visual prompt by typing in a command on a specified line, receives a response back from the system, and then enters another command, and so forth.</p>
+</div>
 </div>
 </div>
 <div id="continuous-integration" class="paragraph">
 <p>Continuous Integration (CI)</p>
 </div>
-<div class="literalblock">
+<div class="sidebarblock">
 <div class="content">
-<pre>The practice of merging all developer working copies to a shared mainline several times a day.</pre>
+<div class="paragraph">
+<p>The practice of merging all developer working copies to a shared mainline several times a day.</p>
+</div>
 </div>
 </div>
 <div id="fuzzy-finding" class="paragraph">
 <p>Fuzzy Finding</p>
 </div>
-<div class="literalblock">
+<div class="sidebarblock">
 <div class="content">
-<pre>In computer science, approximate string matching (often colloquially referred to as fuzzy string searching) is the technique of finding strings that match a pattern approximately (rather than exactly).</pre>
+<div class="paragraph">
+<p>In computer science, approximate string matching (often colloquially referred to as fuzzy string searching) is the technique of finding strings that match a pattern approximately (rather than exactly).</p>
+</div>
 </div>
 </div>
 <div id="java" class="paragraph">
 <p>Java</p>
 </div>
-<div class="literalblock">
+<div class="sidebarblock">
 <div class="content">
-<pre>A general-purpose computer programming language that is used in many products today.</pre>
+<div class="paragraph">
+<p>A general-purpose computer programming language that is used in many products today.</p>
+</div>
 </div>
 </div>
 <div id="java-fx" class="paragraph">
 <p>JavaFX</p>
 </div>
-<div class="literalblock">
+<div class="sidebarblock">
 <div class="content">
-<pre>A software platform for creating and delivering desktop applications, as well as rich internet applications (RIAs) that can run across a wide variety of devices.</pre>
+<div class="paragraph">
+<p>A software platform for creating and delivering desktop applications, as well as rich internet applications (RIAs) that can run across a wide variety of devices.</p>
+</div>
 </div>
 </div>
 <div id="lexicographic" class="paragraph">
 <p>Lexicographical order</p>
 </div>
-<div class="literalblock">
+<div class="sidebarblock">
 <div class="content">
-<pre>In mathematics, the lexicographic or lexicographical order (also known as lexical order, dictionary order, alphabetical order or lexicographic(al) product) is a generalization of the way words are alphabetically ordered based on the alphabetical order of their component letters. This generalization consists primarily in defining a total order over the sequences (often called words in computer science) of elements of a finite totally ordered set, often called alphabet.</pre>
+<div class="paragraph">
+<p>In mathematics, the lexicographic or lexicographical order (also known as lexical order, dictionary order, alphabetical order or lexicographic(al) product) is a generalization of the way words are alphabetically ordered based on the alphabetical order of their component letters. This generalization consists primarily in defining a total order over the sequences (often called words in computer science) of elements of a finite totally ordered set, often called alphabet.</p>
+</div>
 </div>
 </div>
 <div id="mainstream-os" class="paragraph">
 <p>Mainstream OS</p>
 </div>
-<div class="literalblock">
+<div class="sidebarblock">
 <div class="content">
-<pre>Windows, Linux, Unix, OS-X</pre>
+<div class="paragraph">
+<p>Windows, Linux, Unix, OS-X</p>
+</div>
+</div>
+</div>
+<div id="percent-encoding" class="paragraph">
+<p>Percent-encoding</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>A mechanism for translating unprintable or special characters to a universally accepted format by web servers and browsers.</p>
+</div>
 </div>
 </div>
 <div id="private-contact-detail" class="paragraph">
 <p>Private contact detail</p>
 </div>
-<div class="literalblock">
+<div class="sidebarblock">
 <div class="content">
-<pre>A contact detail that is not meant to be shared with others</pre>
+<div class="paragraph">
+<p>A contact detail that is not meant to be shared with others</p>
+</div>
 </div>
 </div>
 <div id="rolodex" class="paragraph">
 <p>Rolodex</p>
 </div>
-<div class="literalblock">
+<div class="sidebarblock">
 <div class="content">
-<pre>The name of this application is Rolodex. It is used to refer to the java object of a similar name developed for this application under the application's model component. A Rolodex is also a rotating file device used to store business contact information. Its name is a combination of the words rolling and index.</pre>
+<div class="paragraph">
+<p>The name of this application is Rolodex. It is used to refer to the java object of a similar name developed for this application under the application&#8217;s model component. A Rolodex is also a rotating file device used to store business contact information. Its name is a combination of the words rolling and index.</p>
+</div>
+</div>
+</div>
+<div id="uri" class="paragraph">
+<p>Uniform Resource Identifier (URI)</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Click <a href="http://www.ietf.org/rfc/rfc2396.txt">here</a> to see the full document on URI generic syntax.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="paragraph">
+<p>A compact sequence of characters that identifies an abstract or physical resource.</p>
+</div>
 </div>
 </div>
 <div id="navbar" class="ulist nav-headbar">
@@ -3431,7 +4695,7 @@ tags matching the specified query</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 04:55:13 +00:00
+Last updated 2017-11-13 05:18:09 +00:00
 </div>
 </div>
 </body>
