@@ -34,8 +34,6 @@ It is written in Java, and has about 10 kLoC.<br></p>
 <h3 id="enhancement-added-drop-down-list"><a class="link" href="#enhancement-added-drop-down-list">Enhancement Added: Drop-down List</a></h3>
 <div class="sect3">
 <h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
-<div class="sect4">
-<h5 id="drop-down-list-of-possible-commands"><a class="link" href="#drop-down-list-of-possible-commands">Drop-down List of Possible Commands</a></h5>
 <div class="paragraph">
 <p>With the help of the drop-down list of suggestions, you do not need to memorise any command.</p>
 </div>
@@ -117,7 +115,6 @@ The following list should appear.</p>
 </div>
 </div>
 </div>
-</div>
 <div class="sect3">
 <h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
 <div class="paragraph">
@@ -131,8 +128,6 @@ manually type out the command word in full.</p>
 </div>
 <div class="sect3">
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
-<div class="sect4">
-<h5 id="drop-down-list-of-possible-commands-2"><a class="link" href="#drop-down-list-of-possible-commands-2">Drop-down List of Possible Commands</a></h5>
 <div class="paragraph">
 <p>The dynamic drop-down list is created using <code>org.controlsfx.control.textfield.TextFields</code> <a href="https://controlsfx.bitbucket.io/org/controlsfx/control/textfield/TextFields.html#bindAutoCompletion-javafx.scene.control.TextField-javafx.util.Callback-">API</a> <a href="#api">(Application Programming Interface)</a>.
 The <code>bindAutoCompletion</code> method in the <code>TestFields</code> creates a new auto-completion binding between the given textField and the given suggestion provider.</p>
@@ -195,10 +190,10 @@ The <code>bindAutoCompletion</code> method in the <code>TestFields</code> create
 </li>
 </ul>
 </div>
+<div class="sect4">
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
 <div class="sect5">
-<h6 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h6>
-<div class="sect6">
-<h7 id="implementation-br"><a class="link" href="#implementation-br">Implementation<br></a></h7>
+<h6 id="implementation-br"><a class="link" href="#implementation-br">Implementation<br></a></h6>
 <div class="paragraph">
 <p><strong>Alternative 1 (current choice):</strong> Make use of <code>TestFields</code> API<br>
 <strong>Pros:</strong> Easy to implement<br>
@@ -211,8 +206,8 @@ The <code>bindAutoCompletion</code> method in the <code>TestFields</code> create
 <strong>Cons:</strong> As user selects an option, the command is executed with the place holders, resulting in an invalid command. User has to manually select the placeholders and change accordingly.</p>
 </div>
 </div>
-<div class="sect6">
-<h7 id="auto-completion-binding-br"><a class="link" href="#auto-completion-binding-br">Auto-completion binding<br></a></h7>
+<div class="sect5">
+<h6 id="auto-completion-binding-br"><a class="link" href="#auto-completion-binding-br">Auto-completion binding<br></a></h6>
 <div class="paragraph">
 <p><strong>Alternative 1 (current choice):</strong> Only suggest commands that starts with user input<br>
 <strong>Pros:</strong> Suggested commands are accurate.<br>
@@ -228,13 +223,10 @@ The <code>bindAutoCompletion</code> method in the <code>TestFields</code> create
 </div>
 </div>
 </div>
-</div>
 <div class="sect2">
 <h3 id="enhancement-added-auto-completion"><a class="link" href="#enhancement-added-auto-completion">Enhancement Added: Auto-completion</a></h3>
 <div class="sect3">
 <h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External behavior</a></h4>
-<div class="sect4">
-<h5 id="autocomplete"><a class="link" href="#autocomplete">Auto-completion <em>(Since v1.2)</em></a></h5>
 <div class="paragraph">
 <p>For commands that require additional field(s), auto-completion can be triggered by pressing <kbd>Tab</kbd> after keying in the command word.</p>
 </div>
@@ -320,7 +312,6 @@ These are commands that required additonal field(s).</p>
 </table>
 </div>
 </div>
-</div>
 <div class="sect3">
 <h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
 <div class="paragraph">
@@ -330,8 +321,6 @@ Auto-selection of the placeholder improves the user experience, because the user
 </div>
 <div class="sect3">
 <h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
-<div class="sect4">
-<h5 id="auto-completion-mechanism"><a class="link" href="#auto-completion-mechanism">Auto-completion Mechanism</a></h5>
 <div class="paragraph">
 <p>Auto-completion mechanism is implemented in <code>CommandBox</code> class under <code>UI</code> component.</p>
 </div>
@@ -415,10 +404,10 @@ The caret position is used to determine the current field the user is at. The an
 <img src="../images/AutoCompleteActivityDiagram.png" alt="AutoCompleteActivityDiagram" width="800">
 </div>
 </div>
+<div class="sect4">
+<h5 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h5>
 <div class="sect5">
-<h6 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h6>
-<div class="sect6">
-<h7 id="text-input-control-br"><a class="link" href="#text-input-control-br">Text Input Control<br></a></h7>
+<h6 id="text-input-control-br"><a class="link" href="#text-input-control-br">Text Input Control<br></a></h6>
 <div class="paragraph">
 <p><strong>Alternative 1 (current choice):</strong> Continue to use the original TextField<br>
 <strong>Pros:</strong> External library enables bindAutocompletion for TextField (the drop down list of suggested commands that appears and updates itself as user types).<br>
@@ -434,13 +423,10 @@ The caret position is used to determine the current field the user is at. The an
 </div>
 </div>
 </div>
-</div>
 <div class="sect2">
 <h3 id="enhancement-added-opening-email-composer"><a class="link" href="#enhancement-added-opening-email-composer">Enhancement Added: Opening Email Composer</a></h3>
 <div class="sect3">
 <h4 id="external-behavior-3"><a class="link" href="#external-behavior-3">External behavior</a></h4>
-<div class="sect4">
-<h5 id="code-email-code-code-mail-code-code-mailto-code-code-send-code-or-code-m-code-composing-an-email-em-since-v1-5rc-em"><a class="link" href="#code-email-code-code-mail-code-code-mailto-code-code-send-code-or-code-m-code-composing-an-email-em-since-v1-5rc-em"><code>email</code>, <code>mail</code>, <code>mailto</code>, <code>send</code> or <code>m</code>: Composing an email <em>(Since v1.5rc)</em></a></h5>
 <div class="paragraph">
 <p>Opens the 'compose new email' window of the default email client, with the recipient&#8217;s email address and subject
 (optional) filled in.<br>
@@ -465,7 +451,6 @@ Format: <code>email INDEX [s/SUBJECT]</code><br></p>
 Keyboard shortcut: <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>M</kbd></span></p>
 </div>
 </div>
-</div>
 <div class="sect3">
 <h4 id="justification-3"><a class="link" href="#justification-3">Justification</a></h4>
 <div class="paragraph">
@@ -475,8 +460,6 @@ or website and pasting the email address there. All these can be done with a sho
 </div>
 <div class="sect3">
 <h4 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h4>
-<div class="sect4">
-<h5 id="composing-emails"><a class="link" href="#composing-emails">Composing Emails</a></h5>
 <div class="paragraph">
 <p>This functionality is implemented through the <code>EmailCommand</code> class under <code>logic</code> component.</p>
 </div>
@@ -490,8 +473,8 @@ in as the subject of the email. The following shows an example of the compose wi
 <img src="../images/EmailComposeWindow.png" alt="EmailComposeWindow" width="600">
 </div>
 </div>
-<div class="sect5">
-<h6 id="using-code-java-awt-desktop-code-api"><a class="link" href="#using-code-java-awt-desktop-code-api">Using <code>java.awt.Desktop</code> API</a></h6>
+<div class="sect4">
+<h5 id="using-code-java-awt-desktop-code-api"><a class="link" href="#using-code-java-awt-desktop-code-api">Using <code>java.awt.Desktop</code> API</a></h5>
 <div class="paragraph">
 <p>Requesting the default email client to open a new compose window is achieved with the <code>java.awt.Desktop</code> class. However, not all platforms support the <code>Desktop</code> <a href="https://docs.oracle.com/javase/7/docs/api/java/awt/Desktop.html">API</a>.
 Therefore, it is crucial to check whether the API and the <code>MAIL</code> action are supported. A <code>CommandExecption</code> will be thrown if they are not supported.</p>
@@ -523,8 +506,8 @@ It is then passed into the <code>mail</code> method of <code>Desktop</code> clas
 </div>
 </div>
 </div>
-<div class="sect5">
-<h6 id="auto-selecting-the-recipient"><a class="link" href="#auto-selecting-the-recipient">Auto-selecting the Recipient</a></h6>
+<div class="sect4">
+<h5 id="auto-selecting-the-recipient"><a class="link" href="#auto-selecting-the-recipient">Auto-selecting the Recipient</a></h5>
 <div class="paragraph">
 <p>After the <code>Email</code> command is executed, the recipient will be auto-selected in the contact list,
 so that the person&#8217;s details can be displayed at contact detail panel. As an example the following screenshot shows
@@ -552,8 +535,8 @@ The method is shown below.</p>
 </div>
 </div>
 </div>
-<div class="sect5">
-<h6 id="email-command-parser"><a class="link" href="#email-command-parser">Email Command Parser</a></h6>
+<div class="sect4">
+<h5 id="email-command-parser"><a class="link" href="#email-command-parser">Email Command Parser</a></h5>
 <div class="paragraph">
 <p><code>EmailCommandParser</code> class is used to parse input arguments in the context of the <code>EmailCommand</code>. It maps the positive integer in the argument to <code>INDEX</code>,
 and the string following the prefix <code>s/</code> to <code>SUBJECT</code>. If the user did not input a subject, the subject would be an empty string.</p>
@@ -572,13 +555,13 @@ Index index = ParserUtil.parseIndex(argMultimap.getPreamble());</code></pre>
 </div>
 </div>
 </div>
-</div>
 <div class="sect2">
 <h3 id="enhancement-added-keyboard-shortcuts-for-commands-with-auto-complete-function"><a class="link" href="#enhancement-added-keyboard-shortcuts-for-commands-with-auto-complete-function">Enhancement Added: Keyboard Shortcuts for Commands with Auto-complete Function</a></h3>
 <div class="sect3">
 <h4 id="external-behavior-4"><a class="link" href="#external-behavior-4">External behavior</a></h4>
-<div class="sect4">
-<h5 id="auto-complete-command-shortcuts-em-since-v1-3-em"><a class="link" href="#auto-complete-command-shortcuts-em-since-v1-3-em">Auto-complete Command Shortcuts <em>(Since v1.3)</em></a></h5>
+<div class="paragraph">
+<p>The table below shows all auto-complete command shortcuts.</p>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -644,7 +627,6 @@ Index index = ParserUtil.parseIndex(argMultimap.getPreamble());</code></pre>
 </tbody>
 </table>
 </div>
-</div>
 <div class="sect3">
 <h4 id="justification-4"><a class="link" href="#justification-4">Justification</a></h4>
 <div class="paragraph">
@@ -654,10 +636,8 @@ Users can simply activate auto-completion with a key press without the need to t
 </div>
 <div class="sect3">
 <h4 id="implementation-4"><a class="link" href="#implementation-4">Implementation</a></h4>
-<div class="sect4">
-<h5 id="auto-complete-command-shortcuts"><a class="link" href="#auto-complete-command-shortcuts">Auto-complete Command Shortcuts</a></h5>
 <div class="paragraph">
-<p>The <a href="#shortcut">Keyboard Shortcut Mechanism</a> is the foundation of this implementation.</p>
+<p>The Keyboard Shortcut Mechanism is the foundation of this implementation.</p>
 </div>
 <div class="paragraph">
 <p>When an auto-complete command shortcut is pressed, the corresponding command format will be displayed.
@@ -683,7 +663,6 @@ The method implementation is shown below.</p>
     commandBox.replaceText(command);
     commandBox.pressTab();
 }</code></pre>
-</div>
 </div>
 </div>
 </div>
@@ -750,7 +729,7 @@ Command line confirmation (the user types "yes" in the command box) is a more re
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 08:54:04 +00:00
+Last updated 2017-11-13 09:08:56 +00:00
 </div>
 </div>
 </body>
