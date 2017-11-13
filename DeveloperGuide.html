@@ -830,12 +830,16 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <strong>Additional Info:</strong> See our discussion  <a href="https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672">here</a>.</p>
 </div>
 <hr>
+</div>
+<div class="sect4">
+<h5 id="data-structure-to-support-the-undo-redo-commands-br"><a class="link" href="#data-structure-to-support-the-undo-redo-commands-br">Data structure to support the undo/redo commands<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Data structure to support the undo/redo commands<br>
-<strong>Alternative 1 (current choice):</strong> Use separate stack for undo and redo<br>
+<p><strong>Alternative 1 (current choice):</strong> Use separate stack for undo and redo<br>
 <strong>Pros:</strong> Easy to understand for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.<br>
-<strong>Cons:</strong> Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>UndoRedoStack</code>.<br>
-<strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo<br>
+<strong>Cons:</strong> Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>UndoRedoStack</code>.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo<br>
 <strong>Pros:</strong> We do not need to maintain a separate stack, and just reuse what is already in the codebase.<br>
 <strong>Cons:</strong> Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.<br></p>
 </div>
@@ -1388,25 +1392,33 @@ The <code>bindAutoCompletion</code> method in the <code>TestFields</code> create
 </div>
 <div class="sect3">
 <h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.6.1. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="implementation-br-2"><a class="link" href="#implementation-br-2">Implementation<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Implementation<br>
-<strong>Alternative 1 (current choice):</strong> Make use of <code>TestFields</code> API<br>
+<p><strong>Alternative 1 (current choice):</strong> Make use of <code>TestFields</code> API<br>
 <strong>Pros:</strong> Easy to implement<br>
 <strong>Pros:</strong> List is dynamic.<br>
-<strong>Cons:</strong> User cannot see the full format of the commands in the drop-down list.<br>
-<strong>Alternative 2:</strong> Use ComboBox<br>
+<strong>Cons:</strong> User cannot see the full format of the commands in the drop-down list.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Use ComboBox<br>
 <strong>Pros:</strong> User can see the required fields for each command in the drop-down box.<br>
 <strong>Cons:</strong> As user selects an option, the command is executed with the place holders, resulting in an invalid command. User has to manually select the placeholders and change accordingly.</p>
 </div>
+</div>
+<div class="sect4">
+<h5 id="auto-completion-binding-br"><a class="link" href="#auto-completion-binding-br">Auto-completion binding<br></a></h5>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Auto-completion binding<br>
-<strong>Alternative 1 (current choice):</strong> Only suggest commands that starts with user input<br>
+<p><strong>Alternative 1 (current choice):</strong> Only suggest commands that starts with user input<br>
 <strong>Pros:</strong> Suggested commands are accurate.<br>
-<strong>Cons:</strong> The list usually only display one or two options because not many commands start with the same alphabet.<br>
-<strong>Alternative 2:</strong> Suggest commands that contain the user input.<br>
+<strong>Cons:</strong> The list usually only display one or two options because not many commands start with the same alphabet.<br></p>
+</div>
+<div class="paragraph">
+<p><strong>Alternative 2:</strong> Suggest commands that contain the user input.<br>
 <strong>Pros:</strong> More suggestions would be displayed.<br>
 <strong>Pros:</strong> User has a higher chance of finding the desired command when a typo is made.<br>
 <strong>Cons:</strong> Most of the time, inaccurate suggestions are not necessary.</p>
+</div>
 </div>
 </div>
 </div>
@@ -4695,7 +4707,7 @@ tags matching the specified query</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 07:00:11 +00:00
+Last updated 2017-11-13 08:05:02 +00:00
 </div>
 </div>
 </body>
