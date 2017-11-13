@@ -32,9 +32,14 @@ It is written in Java, and has about 10 kLoC.<br></p>
 </div>
 <div class="sect2">
 <h3 id="enhancement-added-keyboard-shortcuts"><a class="link" href="#enhancement-added-keyboard-shortcuts">Enhancement Added: Keyboard Shortcuts</a></h3>
+<div class="sect3">
+<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
 <div class="paragraph">
-<p>The table below shows the keyboard shortcuts that are added, with the exception of shortcuts with the behavior <code>Exit the application</code>
+<p>Having keyboard shortcuts allows the user to navigate around the application with ease and speed.
+This implementation should enable you to access all parts of Rolodex without using the mouse.
+The table below shows the keyboard shortcuts that have been added, with the exception of shortcuts with the behavior <code>Exit the application</code>
 and <code>View help window</code> which came with the original state of the application.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="external-behavior"><a class="link" href="#external-behavior">External Behavior</a></h4>
@@ -123,22 +128,11 @@ and <code>View help window</code> which came with the original state of the appl
 </tr>
 </tbody>
 </table>
-<hr>
-</div>
-</div>
-<div class="sect3">
-<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
-<div class="paragraph">
-<p>The main objective of Rolodex is to facilitate an efficient way of managing contacts for users with a preference for typing.
-Having keyboard shortcuts allows the user to navigate around the application with ease and speed.
-This implementation should enable the user to access all parts of the application without using the mouse.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
 <hr>
-<div class="sect4">
-<h5 id="keyboard-shortcuts-mechanism"><a class="link" href="#keyboard-shortcuts-mechanism">Keyboard Shortcuts Mechanism</a></h5>
 <div class="paragraph">
 <p>The keyboard shortcuts mechanism is implemented in the <code>KeyListener</code> class under the <code>UI</code> component of the application.
 It listens for key presses done by the user and executes actions mapped to these key presses, or key events.
@@ -222,10 +216,10 @@ An example of such an execution is given as shown:</p>
 <p>In this case, <code>KEY_COMBINATION_FOCUS_PERSON_LIST</code> is mapped to the <kbd>esc</kbd> key. As such, a user
 pressing the <kbd>esc</kbd> key will result in the application focusing on the person list.</p>
 </div>
+<div class="sect4">
+<h5 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h5>
 <div class="sect5">
-<h6 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h6>
-<div class="sect6">
-<h7 id="location-of-code-keycombination-code-constants-for-the-code-keylistener-code-class-br"><a class="link" href="#location-of-code-keycombination-code-constants-for-the-code-keylistener-code-class-br">Location of <code>KeyCombination</code> constants for the <code>KeyListener</code> class<br></a></h7>
+<h6 id="location-of-code-keycombination-code-constants-for-the-code-keylistener-code-class-br"><a class="link" href="#location-of-code-keycombination-code-constants-for-the-code-keylistener-code-class-br">Location of <code>KeyCombination</code> constants for the <code>KeyListener</code> class<br></a></h6>
 <div class="paragraph">
 <p><strong>Alternative 1 (current choice):</strong> <code>KeyCombination</code> constants are stored in a separate utility class, <code>KeyListenerUtil</code><br>
 <strong>Pros:</strong> Better modularity given that the number of constants is fairly large.<br>
@@ -238,8 +232,8 @@ pressing the <kbd>esc</kbd> key will result in the application focusing on the p
 </div>
 <hr>
 </div>
-<div class="sect6">
-<h7 id="the-way-commands-words-are-executed-br"><a class="link" href="#the-way-commands-words-are-executed-br">The way commands words are executed<br></a></h7>
+<div class="sect5">
+<h6 id="the-way-commands-words-are-executed-br"><a class="link" href="#the-way-commands-words-are-executed-br">The way commands words are executed<br></a></h6>
 <div class="paragraph">
 <p><strong>Alternative 1 (current choice):</strong> Pressing the shortcut automatically executes the command<br>
 <strong>Pros:</strong> Execution of command is faster and more convenient for the user.<br>
@@ -251,7 +245,6 @@ pressing the <kbd>esc</kbd> key will result in the application focusing on the p
 <strong>Cons:</strong>  An extra step for user to execute the command, i.e. pressing <code>Enter</code>.</p>
 </div>
 <hr>
-</div>
 </div>
 </div>
 </div>
@@ -271,7 +264,7 @@ the user&#8217;s experience with Rolodex.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Other improvements made to the UI include the following features:</p>
+<p>Some improvements made to the UI include the following features:</p>
 </div>
 <div class="sect4">
 <h5 id="randomized-avatars-colors"><a class="link" href="#randomized-avatars-colors">Randomized Avatars Colors</a></h5>
@@ -413,6 +406,14 @@ detects any changes in the window property. The code below illustrates the imple
 <div class="sect2">
 <h3 id="detailPanel"><a class="link" href="#detailPanel">Enhancement Added: Person Detail Panel</a></h3>
 <div class="sect3">
+<h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
+<div class="paragraph">
+<p>The person detail panel aims to reduce cluttering of information in the contact list. With this panel,
+the contact list will only have to store the essential information for identifying a person, whilst
+additional information about the person will be displayed on this panel.</p>
+</div>
+</div>
+<div class="sect3">
 <h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External Behavior</a></h4>
 <hr>
 <div class="paragraph">
@@ -543,10 +544,13 @@ difficult to enforce custom panel behaviour for specific user actions.</p>
 </div>
 <div class="sect2">
 <h3 id="enhancement-added-remark-field"><a class="link" href="#enhancement-added-remark-field">Enhancement Added: Remark Field</a></h3>
+<div class="sect3">
+<h4 id="justification-3"><a class="link" href="#justification-3">Justification</a></h4>
 <div class="paragraph">
-<p>The remark field allows the user to store miscellaneous notes about their contacts. The field can be added using a standalone <code>remark</code> command,
-or added along with other fields when adding a new person using the existing <code>add</code> command. Similarly, the field can be modified with the <code>remark</code> command,
-or edited along with other fields using the existing <code>edit</code> command.</p>
+<p>The remark field allows the user to store miscellaneous notes about their contacts.
+For example, a user might want to note down a hobby of a friend. Such information can be easily added to the contact
+with the remark field.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="external-behavior-3"><a class="link" href="#external-behavior-3">External Behavior</a></h4>
@@ -748,7 +752,7 @@ Sets the profile picture of the 6th person to <code>john.png</code>.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 05:18:09 +00:00
+Last updated 2017-11-13 07:00:11 +00:00
 </div>
 </div>
 </body>
